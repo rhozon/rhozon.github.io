@@ -5,10 +5,10 @@
 ![](me.jpg)
 
 
+- [Portfolio](https://rhozon.github.io/PortfolioRodrigo.html)
 
-Portfolio  | Site        |
-:--------:| :----------:|
-[Go!](https://rhozon.github.io/PortfolioRodrigo.html)|[Go!](https://rhozon.github.io/site/)|
+- [Site](https://rhozon.github.io/site/)
+
 
 
 
