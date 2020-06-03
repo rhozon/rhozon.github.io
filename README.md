@@ -6,9 +6,9 @@
 
 
 
-Portolio  | Site        |
+Portfolio  | Site        |
 :--------:| :----------:|
-[Go!](endereço aqui)|[Go!](https://rhozon.github.io/site/)|
+[Go!](https://rhozon.github.io/PortfolioRodrigo.html)|[Go!](https://rhozon.github.io/site/)|
 
 
 
