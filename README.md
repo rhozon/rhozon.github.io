@@ -6,10 +6,9 @@
 
 
 
-
-- [Portfólio](https://rhozon.github.io/PortfolioRodrigo.html) 
-
-- [Site](https://rhozon.github.io/site/)
+Portolio  | Site        |
+:--------:| :----------:|
+[Go!](endereço aqui)|[Go!](https://rhozon.github.io/site/)|
 
 
 
