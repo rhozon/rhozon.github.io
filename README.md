@@ -9,7 +9,7 @@
                                                                                                              
 - [Site](https://rhozon.github.io/site/)             
                         <p align="center">
-                        <img align="right" width="300" height="150" src="https://github.com/rhozon/rhozon.github.io/blob/master/econnerd.png">
+                        <img width="300" height="150" src="https://github.com/rhozon/rhozon.github.io/blob/master/econnerd.png">
                         </p>
 
 
