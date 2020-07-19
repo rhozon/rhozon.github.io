@@ -2,7 +2,7 @@
 
 
 
-![](me.jpg)       ![](econnerd.png){:height="24px" width="48px"}
+![](me.jpg)       ![](econnerd.png){:height="10px" width="10px"}
 
 
 - [Portfolio](https://rhozon.github.io/PortfolioRodrigo.html)
