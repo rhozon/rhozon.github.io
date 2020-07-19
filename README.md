@@ -2,7 +2,7 @@
 
 
 
-![](me.jpg)       ![](econnerd.png=250x250)
+![](me.jpg)       ![](econnerd.png= | width=48)
 
 
 - [Portfolio](https://rhozon.github.io/PortfolioRodrigo.html)
