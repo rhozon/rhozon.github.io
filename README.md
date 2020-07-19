@@ -2,7 +2,7 @@
 
 
 
-![](me.jpg)      <img src="https://github.com/rhozon/rhozon.github.io/blob/master/econnerd.png" width="48">
+![](me.jpg)      <img src="https://github.com/rhozon/rhozon.github.io/blob/master/econnerd.png" width="100">
 
 
 - [Portfolio](https://rhozon.github.io/PortfolioRodrigo.html)
