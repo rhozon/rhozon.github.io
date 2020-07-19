@@ -2,7 +2,7 @@
 
 
 
-![](me.jpg)
+![](me.jpg)       ![econnerd.png]
 
 
 - [Portfolio](https://rhozon.github.io/PortfolioRodrigo.html)
