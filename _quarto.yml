@@ -34,6 +34,8 @@ website:
     right:
       - href: contact.qmd
         text: Contact
+      - text: "PT"
+        href: pt/index.html
       - icon: linkedin
         href: https://www.linkedin.com/in/rodrigohermontozon/
       - icon: github

@@ -1,0 +1,63 @@
+# Config completa usada SOMENTE no render PT (substitui _quarto.yml temporariamente)
+project:
+  type: website
+  output-dir: "_build-pt"
+  render:
+    - pt/index.qmd
+    - pt/experience.qmd
+    - pt/research.qmd
+    - pt/teaching.qmd
+    - pt/oquant.qmd
+    - pt/contact.qmd
+
+website:
+  title: "Rodrigo Hermont Ozon"
+  description: "Econometrista e Cientista de Dados — pesquisador de doutorado, consultor e professor. Econometria, forecasting, análise de risco e soluções de IA para negócios."
+  site-url: "https://rhozon.github.io/portcv/"
+  favicon: assets/favicon.png
+  open-graph: true
+  navbar:
+    pinned: true
+    left:
+      - href: pt/index.qmd
+        text: Início
+      - href: pt/experience.qmd
+        text: Experiência
+      - href: pt/research.qmd
+        text: Pesquisa
+      - href: pt/teaching.qmd
+        text: Ensino
+      - href: pt/oquant.qmd
+        text: Consultoria
+      - href: cv.qmd
+        text: CV Completo
+    right:
+      - href: pt/contact.qmd
+        text: Contato
+      - text: "EN"
+        href: index.qmd
+      - icon: linkedin
+        href: https://www.linkedin.com/in/rodrigohermontozon/
+      - icon: github
+        href: https://github.com/rhozon
+  page-footer:
+    center: |
+      © 2026 Rodrigo Hermont Ozon · Econometrista & Cientista de Dados ·
+      [LinkedIn](https://www.linkedin.com/in/rodrigohermontozon/) · [GitHub](https://github.com/rhozon) · [Google Scholar](https://scholar.google.com/citations?user=hPcIR9oAAAAJ) · [Lattes](http://lattes.cnpq.br/3532649625879285)
+
+lang: pt-BR
+
+format:
+  html:
+    theme: [default, theme.scss]
+    css: styles.css
+    toc: false
+    smooth-scroll: true
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&family=Source+Sans+3:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+editor: visual

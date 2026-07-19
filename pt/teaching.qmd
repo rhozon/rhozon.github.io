@@ -1,0 +1,116 @@
+---
+title: ""
+pagetitle: "Ensino — Rodrigo Hermont Ozon"
+description: "Atividades de ensino de Rodrigo Hermont Ozon: disciplinas na FAE Business School, histórico docente, certificações e materiais didáticos abertos."
+toc: false
+---
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">ATUAÇÃO MAIS RECENTE</div>
+```
+
+## FAE Business School
+
+```{=html}
+<div class="rh-card">
+  <h3>Professor de Graduação — FAE Business School</h3>
+  <p><strong>Fev 2025 – Jul 2026 · Curitiba, PR</strong></p>
+  <p>Disciplinas ministradas na graduação em Ciência de Dados para Negócios e Mercado Financeiro:</p>
+  <ul>
+    <li><strong>Big Data for Finance Project</strong> — técnicas de ciência de dados e big data aplicadas à tomada de decisão financeira.</li>
+    <li><strong>Programação Computacional</strong> — fundamentos e aplicações em análise de dados e business intelligence.</li>
+    <li><strong>Gestão de Riscos</strong> — métodos quantitativos e ferramentas práticas para avaliação e mitigação de riscos financeiros.</li>
+    <li><strong>Econometria</strong> — diagnósticos de regressão, inferência causal, métodos de painel e séries temporais, e aplicações em políticas públicas e mercados.</li>
+    <li><strong>Avaliação de Projetos e Análise de Investimentos</strong> — modelagem de fluxo de caixa descontado, VPL/TIR, análise de sensibilidade e cenários, simulação de Monte Carlo e opções reais.</li>
+  </ul>
+  <p>
+    <a class="rh-btn rh-btn-primary" href="https://profrhozon.github.io/site/" target="_blank">Visite o site das disciplinas</a>
+  </p>
+</div>
+```
+:::
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">HISTÓRICO DOCENTE</div>
+```
+
+## Atuações anteriores
+
+```{=html}
+<div class="rh-timeline">
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Ago 2024</div>
+    <h3>Professor de Pós-Graduação — MBA Executivo</h3>
+    <div class="rh-tl-org">ESIC International – Curitiba, PR</div>
+    <p>Ministrou módulo de 12 horas sobre Investimentos no MBA Executivo: critérios de avaliação, risco, impacto da inflação, ambiente fiscal e investimentos estratégicos.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan – Dez 2011</div>
+    <h3>Professor de Pós-Graduação</h3>
+    <div class="rh-tl-org">FESP/PR – Curitiba, PR</div>
+    <p>Ministrou a disciplina de Integração de Projetos no Programa de Pós-Graduação em Gestão de Projetos, com base nas práticas do PMBOK.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2009 – Dez 2011</div>
+    <h3>Professor de Graduação</h3>
+    <div class="rh-tl-org">INESUL – Araucária, PR</div>
+    <p>Ministrou Matemática Financeira, Gestão Financeira, SPC, Informática Empresarial e Indicadores de Desempenho Industrial. Coordenou Pesquisa e Pós-Graduação de jul 2009 a mar 2010.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2009 – Dez 2010</div>
+    <h3>Professor de Graduação</h3>
+    <div class="rh-tl-org">Universidade Positivo – Curitiba, PR</div>
+    <p>Ministrou Mercado Financeiro, Economia Monetária e Financeira e Métodos Quantitativos para estudantes de Administração.</p>
+  </div>
+
+</div>
+```
+:::
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">CERTIFICAÇÕES &amp; EDUCAÇÃO CONTINUADA</div>
+```
+
+## Sempre aprendendo
+
+Formação contínua em econometria, finanças e ciência de dados em instituições e plataformas de referência. Destaques:
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0;">
+  <span class="rh-pill">IBM Data Science Professional Certificate (144h)</span>
+  <span class="rh-pill">Econometrics: Methods &amp; Applications — Erasmus Rotterdam (56h)</span>
+  <span class="rh-pill">Financial Markets — Yale University (38h)</span>
+  <span class="rh-pill">The R Programming Environment — Johns Hopkins (16h)</span>
+  <span class="rh-pill">ETL and ELT in Python — DataCamp (2025)</span>
+  <span class="rh-pill">~40 cursos DataCamp / Dataquest em R, Python, SQL &amp; ML</span>
+</div>
+<p>
+  <a class="rh-btn rh-btn-ghost" href="../cv.html#certifications">Veja a lista completa no CV</a>
+</p>
+```
+:::
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">MATERIAIS DIDÁTICOS ABERTOS</div>
+```
+
+## Tutoriais e aulas gratuitas
+
+```{=html}
+<div class="rh-card">
+  <h3>Tutoriais públicos de econometria, ML e ciência de dados</h3>
+  <p>Mais de 30 tutoriais de acesso aberto e aulas aplicadas cobrindo econometria, machine learning, previsão de séries temporais e ciência de dados — escritos em R e Python e disponíveis gratuitamente online.</p>
+  <p>
+    <a class="rh-btn rh-btn-primary" href="https://rhozon.github.io/selecaodeprodutosnor/index.html" target="_blank">Explore os tutoriais</a>
+  </p>
+</div>
+```
+:::

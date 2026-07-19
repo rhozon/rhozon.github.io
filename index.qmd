@@ -21,6 +21,7 @@ toc: false
     </p>
     <div style="margin-top: 1.2rem;">
       <a class="rh-btn rh-btn-primary" href="oquant.html">Consulting</a>
+      <a class="rh-btn rh-btn-ghost" href="assets/Rodrigo_Hermont_Ozon_CV.pdf">Download CV (PDF)</a>
       <a class="rh-btn rh-btn-ghost" href="cv.html">Full CV</a>
       <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">WhatsApp</a>
     </div>

@@ -1,0 +1,190 @@
+---
+title: ""
+pagetitle: "OQuant Data Science Consulting — Rodrigo Hermont Ozon"
+description: "OQuant Data Science Consulting: econometria, previsão, análise de risco, machine learning e IA generativa aplicados a decisões de negócio. Fundada por Rodrigo Hermont Ozon."
+toc: false
+---
+
+::: {.rh-section}
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; align-items:center; gap:2rem;">
+  <div style="flex:1 1 380px; min-width:280px;">
+    <div class="rh-kicker">OQuant Data Science Consulting</div>
+  </div>
+  <div style="flex:0 0 auto;">
+    <img src="../assets/oquant_logo.png" alt="Logo da OQuant Data Science Consulting" style="max-width:160px; width:100%; border-radius:50%;">
+  </div>
+</div>
+```
+
+## Transformando dados em decisões defensáveis
+
+A OQuant é uma consultoria independente de ciência de dados fundada em março de 2025 por Rodrigo Hermont Ozon — economista, econometrista e pesquisador de doutorado em Engenharia de Produção e Sistemas. A premissa é simples: decisões de negócio merecem o mesmo rigor de uma pesquisa revisada por pares. A OQuant combina modelagem econométrica, validação estatística e engenharia moderna de IA para entregar análises que você pode defender diante de um conselho, de um auditor ou de um regulador — nada de caixas-pretas, nada de slides vazios.
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">Serviços</div>
+```
+
+## O que a OQuant faz
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>Previsão &amp; Séries Temporais</h3>
+    <p>Previsão de demanda, preços e volatilidade com econometria clássica (ARIMA, família GARCH, GAMLSS, MSGARCH bayesiano) e híbridos com machine learning — com validação honesta fora da amostra, não ajuste de curvas.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Modelagem Econométrica &amp; Inferência Causal</h3>
+    <p>Respondendo "o que realmente causa isso?" — diagnósticos de regressão, métodos de painel e variáveis instrumentais, desenhos quase-experimentais e modelos multicausais bayesianos fundamentados em teoria econômica.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Análise de Risco &amp; Simulação</h3>
+    <p>Mensuração quantitativa de risco e análise de cenários: simulação de Monte Carlo, modelagem de valores extremos, otimização de portfólio e multiobjetivo para decisões de precificação, suprimentos e investimento.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Machine Learning &amp; Modelagem Preditiva</h3>
+    <p>Modelos supervisionados e de deep learning (incluindo arquiteturas CNN+LSTM e análise de sobrevivência para manutenção preditiva) construídos com engenharia de atributos adequada, testes de ablação e disciplina de MLOps.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Business Intelligence &amp; Suporte à Decisão</h3>
+    <p>Frameworks de KPIs, dashboards e pipelines analíticos que transformam dados dispersos em uma visão única e confiável — da modelagem de dados e documentação de governança ao reporte pronto para executivos.</p>
+  </div>
+  <div class="rh-card">
+    <h3>IA Generativa para Negócios</h3>
+    <p>Aplicações práticas de LLMs: chatbots internos, orquestração de fluxos de trabalho multiagente e com subagentes, e gestão do conhecimento assistida por IA — desenhadas em torno dos seus processos, com valor mensurável.</p>
+  </div>
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">Clientes selecionados</div>
+```
+
+## Organizações atendidas pela OQuant
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>Grupo Fleury</h3>
+    <p>Trabalho de consultoria para um dos principais grupos de saúde e medicina diagnóstica do Brasil.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Aurora Alimentos</h3>
+    <p>Trabalho de consultoria para uma das maiores cooperativas da indústria de alimentos do Brasil.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Cogna Educacional</h3>
+    <p>Trabalho de consultoria para uma das maiores empresas de educação do Brasil.</p>
+  </div>
+</div>
+```
+
+Os projetos com clientes são confidenciais; as referências de setor são compartilhadas com autorização e os detalhes dos projetos permanecem sob NDA.
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">Como eu trabalho</div>
+```
+
+## Um modelo de engajamento disciplinado
+
+```{=html}
+<div class="rh-timeline">
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Etapa 1</div>
+    <h3>Diagnóstico</h3>
+    <div class="rh-tl-org">Entender a decisão, não apenas os dados</div>
+    <p>Começamos pela pergunta de negócio e pela decisão que ela deve informar. Eu audito os dados disponíveis, mapeio as restrições e defino critérios de sucesso antes de ajustar qualquer modelo. Se os dados não sustentam a pergunta, você ouve isso na primeira semana — não na entrega.</p>
+  </div>
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Etapa 2</div>
+    <h3>Modelagem &amp; validação</h3>
+    <div class="rh-tl-org">Rigor antes dos resultados</div>
+    <p>Modelos candidatos são construídos, submetidos a testes de estresse e comparados com baselines honestos, com protocolos de validação fora da amostra e backtesting. As premissas são documentadas, a incerteza é quantificada e todo resultado vem com suas limitações declaradas com clareza.</p>
+  </div>
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Etapa 3</div>
+    <h3>Implantação &amp; transferência</h3>
+    <div class="rh-tl-org">Código de produção, não um PDF</div>
+    <p>As entregas são reprodutíveis: código versionado, pipelines documentados e dashboards ou APIs que a sua equipe pode assumir. Eu treino as suas pessoas para que a solução sobreviva ao projeto.</p>
+  </div>
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Etapa 4</div>
+    <h3>Monitoramento &amp; assessoria</h3>
+    <div class="rh-tl-org">Modelos derivam; decisões evoluem</div>
+    <p>Suporte contínuo opcional: monitoramento de desempenho, recalibração de modelos e sessões de assessoria à medida que novas perguntas surgem — para que a análise acompanhe o ritmo do negócio.</p>
+  </div>
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">Por que a OQuant</div>
+```
+
+## O que você está de fato comprando
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>Rigor de nível de doutorado</h3>
+    <p>Pesquisa doutoral ativa em otimização multiobjetivo, econometria bayesiana e séries temporais na PUCPR, mestrado em Desenvolvimento Econômico (UFPR), publicações revisadas por pares e atuação como revisor de periódicos como <em>Applied Soft Computing</em>. Os métodos por trás do seu projeto são os que sobrevivem ao escrutínio acadêmico.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Mais de 15 anos de histórico na indústria</h3>
+    <p>Entrega prática dentro de grandes organizações — Volvo Group, BRF, CNH Industrial, Unimed — além de pesquisa para o PNUD/ONU e anos de análise econômica para federações da indústria. Eu sei como dados corporativos, política interna e prazos se comportam de verdade.</p>
+  </div>
+  <div class="rh-card">
+    <h3>Capacidade de ponta a ponta</h3>
+    <p>Da teoria estatística ao código de produção: especificação econométrica, implementação em Python/R/SQL, pipelines de dados em nuvem (Azure, Databricks, PySpark) e MLOps. Um único consultor cobre o caminho completo da hipótese ao sistema implantado.</p>
+  </div>
+</div>
+```
+
+```{=html}
+<div class="rh-logos">
+  <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/volvo_logo.jpg" alt="Volvo Group">
+  <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/brf_logo.jpg" alt="BRF">
+  <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/cnh_logo.jpg" alt="CNH Industrial">
+  <img src="../assets/unimed_logo.png" alt="Unimed do Estado do Paraná">
+  <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/pnud_logo.jpg" alt="PNUD Brasil">
+  <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/fiep_logo.jpg" alt="FIEP">
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">Próximo passo</div>
+```
+
+## Vamos conversar sobre o seu problema
+
+Uma primeira conversa não custa nada e geralmente esclarece se a modelagem quantitativa pode mover a sua decisão — e se eu sou a pessoa certa para construí-la.
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem;">
+  <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904">Agende uma conversa</a>
+  <a class="rh-btn rh-btn-ghost" href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a>
+  <a class="rh-btn rh-btn-ghost" href="mailto:rodrigoozon@yahoo.com.br">E-mail</a>
+</div>
+```
+
+:::

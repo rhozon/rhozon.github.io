@@ -1,0 +1,70 @@
+---
+title: "Rodrigo Hermont Ozon"
+subtitle: "Econometrician & Data Scientist · Curitiba, PR, Brazil"
+format:
+  typst:
+    papersize: a4
+    margin:
+      x: 2cm
+      y: 2cm
+    mainfont: "Georgia"
+    fontsize: 10pt
+---
+
+**Contact:** rodrigoozon@yahoo.com.br · +55 41 98838-2904 · [linkedin.com/in/rodrigohermontozon](https://www.linkedin.com/in/rodrigohermontozon/) · [rhozon.github.io/portcv](https://rhozon.github.io/portcv/) · Lattes: 3532649625879285
+
+Economist and econometrician with 15+ years applying time series analysis, Bayesian econometrics, GARCH-family models, multi-objective optimization and, more recently, Generative AI to problems in healthcare, agribusiness, logistics and industry. PhD researcher in Industrial & Systems Engineering (PUCPR).
+
+## Professional Experience
+
+**Data Scientist — Unimed do Estado do Paraná**, Curitiba (Jan 2026 – Present)\
+Healthcare analytics, BI and Generative AI: dashboards and KPI monitoring, statistical and predictive modeling, internal chatbots, multi-agent orchestration, AI-assisted decision-making.
+
+**Founder & Principal Consultant — OQuant Data Science Consulting**, Remote (Mar 2025 – Present)\
+Econometric modeling, forecasting, causal inference, risk analytics and AI-driven decision support. Clients include Grupo Fleury, Aurora Alimentos and Cogna Educacional.
+
+**Data Engineer/Scientist — Volvo Group**, Curitiba (Jan – Apr 2025)\
+Cloud data systems (Azure, ADF, Databricks), SQL/Python/PySpark pipelines, MLOps.
+
+**Area Coordinator, Data Science — LAB.PR (Public Intelligence & Data Science Laboratory)**, Curitiba (Oct – Dec 2024)\
+Led the data science team; AI solutions and data governance for state public administration.
+
+**Data Science Consultant — CNH Industrial**, Remote (Apr 2023 – Sep 2024)\
+ML/AI models for predictive maintenance of agricultural machinery; time series; Azure data lake.
+
+**Senior Data Scientist — BRF**, Curitiba (May 2021 – Mar 2023)\
+Predictive model for corn prices (CBOT and B3) from ~700 economic time series; Bayesian multicausal driver forecasting; BI & Analytics products.
+
+**Researcher/Consultant — UNDP/UN (PNUD Brasil)** (May – Jul 2021)\
+Socio-economic indicators and dashboards for project BRA/18/024 on violence reduction against children and adolescents.
+
+Earlier: Tecnofit (Senior BI Analyst, 2021), Alcast (Market Intelligence, 2020), Deal Technologies/Rumo (Senior Data Scientist, 2020), Grupo Bitcoin Banco (Senior Statistics Analyst, 2019), FIEP (Economist, 2012–2018), IBQP (Economist/GEM Brazil, 2009–2012), Compagas (Economic Planning, 2006–2007).
+
+## Education
+
+- **PhD, Industrial & Systems Engineering** — PUCPR (2022–2027 expected). Advisor: Gilberto Reynoso-Meza. Time series, financial and Bayesian econometrics, multi-objective portfolio optimization, extremal events.
+- **MSc, Economic Development** — UFPR (2011). Emphasis: big data, multivariate analysis, econometrics.
+- **BSc, Economics** — UFPR (2007).
+
+## Teaching
+
+- **FAE Business School** (Feb 2025 – Jul 2026): Big Data for Finance Project, Computational Programming, Risk Management, Econometrics, Project Appraisal & Investment Analysis.
+- **ESIC Business & Marketing School** (2024): Investments module, Executive MBA.
+- Earlier: FESP/PR (2011), INESUL (2009–2011), Universidade Positivo (2009–2010).
+
+## Selected Publications & Talks
+
+- Ozon, R. H., Reynoso-Meza, G. (2024). *Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.* LVI SBPO, Fortaleza.
+- Ozon, R. H., Reynoso-Meza, G. (2024). *Predictive Maintenance Strategies in Agriculture Using Survival Analysis.* XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro.
+- Ozon, R. H., Reynoso-Meza, G. (2024). *Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.* ICPR Americas, Ohio University.
+- Ozon, R. H. (2023). *Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns.* 1st SouthStat Meeting, UFPR.
+- Ozon, R. H., Reynoso-Meza, G. (2023). *Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers.* CONBREPRO/APREPRO.
+- PhD Finalist — XI ENPPEPRO (2024).
+
+## Academic Service
+
+Reviewer, *Applied Soft Computing* (2024–present) · Reviewer, *PRINCIPIA/UFJF* (2024–present) · Scientific Advisory Committee, PUCPR (2023; 2024–2025) · Scientific Initiation Advisor, PIBIC/PUCPR (2024–2025).
+
+## Skills
+
+**Languages/tools:** Python, R, SQL, PySpark, Scala, DAX, VBA, Quarto/LaTeX. **Platforms:** Azure, Databricks, ADF, Spark, Power BI, Shiny, Git. **Methods:** time series & forecasting, Bayesian econometrics, GARCH/MSGARCH/GAMLSS, causal inference, multi-objective optimization, ML/MLOps, Generative AI (chatbots, multi-agent systems). **Languages:** Portuguese (native), English (fluent), Spanish (reading).

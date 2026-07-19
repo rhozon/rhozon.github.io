@@ -1,0 +1,44 @@
+---
+title: ""
+pagetitle: "Contato — Rodrigo Hermont Ozon"
+description: "Entre em contato: consultoria, colaboração em pesquisa, aulas e palestras."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Contato</div>
+## Vamos conversar
+
+Seja um projeto de consultoria, uma colaboração em pesquisa, uma aula ou uma palestra — o caminho mais rápido para falar comigo é o WhatsApp ou o LinkedIn.
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.1rem; margin-top:1.6rem;">
+  <div class="rh-card">
+    <h3>WhatsApp</h3>
+    <p>Resposta mais rápida para consultas de consultoria.</p>
+    <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904">Envie uma mensagem</a>
+  </div>
+  <div class="rh-card">
+    <h3>LinkedIn</h3>
+    <p>Rede profissional e atualizações.</p>
+    <a class="rh-btn rh-btn-ghost" href="https://www.linkedin.com/in/rodrigohermontozon/">Conectar</a>
+  </div>
+  <div class="rh-card">
+    <h3>E-mail</h3>
+    <p>rodrigoozon@yahoo.com.br<br>
+    Acadêmico: rodrigo.hermont@pucpr.edu.br<br>
+    FAE: rodrigo.ozon@fae.edu</p>
+    <a class="rh-btn rh-btn-ghost" href="mailto:rodrigoozon@yahoo.com.br">Escreva para mim</a>
+  </div>
+  <div class="rh-card">
+    <h3>Perfis acadêmicos</h3>
+    <p>
+      <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> ·
+      <a href="https://orcid.org/0000-0001-8003-4849">ORCID</a> ·
+      <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a> ·
+      <a href="https://github.com/rhozon">GitHub</a>
+    </p>
+  </div>
+</div>
+```
+:::

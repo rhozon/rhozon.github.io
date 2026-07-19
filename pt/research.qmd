@@ -1,0 +1,151 @@
+---
+title: ""
+pagetitle: "Pesquisa & Publicações — Rodrigo Hermont Ozon"
+description: "Pesquisa de doutorado em Engenharia de Produção e Sistemas (PUCPR): séries temporais, econometria financeira e bayesiana, otimização multiobjetivo de portfólios, eventos extremos e previsão. Publicações, apresentações e atividades acadêmicas."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Pesquisa de doutorado</div>
+## Pesquisa doutoral na PUCPR
+
+```{=html}
+<div class="rh-card">
+  <h3>Doutorado em Engenharia de Produção e Sistemas</h3>
+  <p><strong>Pontifícia Universidade Católica do Paraná (PUCPR)</strong> — 2022 a 2027 (previsto).
+  Orientador: <strong>Gilberto Reynoso-Meza</strong>.</p>
+  <p>Pesquisa em previsão econométrica e tomada de decisão multiobjetivo para portfólios de
+  commodities agrícolas: combinação de modelos de previsão de séries temporais, modelagem de
+  volatilidade bayesiana e com mudança de regime, e seleção de portfólios na fronteira de Pareto
+  sob incerteza.</p>
+  <p>
+    <span class="rh-pill">Séries Temporais</span>
+    <span class="rh-pill">Econometria Financeira &amp; Bayesiana</span>
+    <span class="rh-pill">Otimização Multiobjetivo de Portfólios</span>
+    <span class="rh-pill">Eventos Extremos</span>
+    <span class="rh-pill">Previsão</span>
+  </p>
+  <p style="margin-top:1rem;">
+    <a class="rh-btn rh-btn-primary" href="https://pibicagrofinance.github.io/site/">Site do projeto PIBIC AgroFinance </a>
+  </p>
+</div>
+```
+:::
+
+::: {.rh-section}
+<div class="rh-kicker">Formação</div>
+## Formação acadêmica
+
+```{=html}
+<div class="rh-timeline">
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">2022 – 2027 (previsto)</div>
+    <h3>Doutorando em Engenharia de Produção e Sistemas</h3>
+    <div class="rh-tl-org">PUCPR – Curitiba, PR</div>
+    <p>Análise aplicada de séries temporais, econometria financeira e bayesiana, otimização
+    multiobjetivo de portfólios e modelagem de eventos extremos. Orientador: Gilberto Reynoso-Meza.</p>
+  </div>
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">2011</div>
+    <h3>Mestrado em Desenvolvimento Econômico</h3>
+    <div class="rh-tl-org">UFPR – Curitiba, PR</div>
+    <p>Ênfase em big data, análise multivariada e econometria.
+    <a href="https://acervodigital.ufpr.br/xmlui/bitstream/handle/1884/25651/Disserta_v12.pdf?sequence=1&amp;isAllowed=y">Ler a dissertação </a></p>
+  </div>
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">2007</div>
+    <h3>Graduação em Ciências Econômicas</h3>
+    <div class="rh-tl-org">UFPR – Curitiba, PR</div>
+    <p>Monografia sobre a volatilidade do preço do petróleo (GARCH-M), laureada e continuada como
+    projeto de pesquisa no Laboratório de Estatística e GeoInformação da UFPR.
+    <a href="http://leg.ufpr.br/doku.php/projetos:ehlers:volprev">Ver o projeto </a></p>
+  </div>
+</div>
+```
+:::
+
+::: {.rh-section}
+<div class="rh-kicker">Publicações & apresentações</div>
+## Produção acadêmica selecionada
+
+### Artigos em congressos
+
+```{=html}
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</em> <span class="rh-pub-venue">Anais do LVI Simpósio Brasileiro de Pesquisa Operacional (SBPO), Fortaleza</span> <a href="https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br">anais</a></div>
+
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Predictive Maintenance Strategies in Agriculture Using Survival Analysis.</em> <span class="rh-pub-venue">XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro</span></div>
+
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.</em> <span class="rh-pub-venue">ICPR Americas 2024 — Ohio University</span></div>
+
+<div class="rh-pub"><strong>Ozon, R., de Lima, J. D., Dranka, G. (2024).</strong> <em>Enhancing Grain Portfolio Risk Management with GAMLSS and MSGARCH.</em> <span class="rh-pub-venue">XXIV Encontro Brasileiro de Finanças (EBFIN)</span> <a href="https://doity.com.br/anais/24ebfin/area/36699">anais</a></div>
+```
+
+### Apresentações & pôsteres
+
+```{=html}
+<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>PhD Finalist.</em> <span class="rh-pub-venue">XI ENPPEPRO — Encontro Nacional de Programas de Pós-Graduação em Engenharia de Produção</span></div>
+
+<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics.</em> <span class="rh-pub-venue">1st SouthStat Meeting (UFPR) — pôster</span></div>
+
+<div class="rh-pub"><strong>Ozon, R. H. (2023).</strong> <em>The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models.</em> <span class="rh-pub-venue">R Day (UFPR)</span></div>
+
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2023).</strong> <em>Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers.</em> <span class="rh-pub-venue">APREPRO / ConBRepro</span> <a href="https://aprepro.org.br/conbrepro/anais/2023/arquivos/10012023_161031_6519cd0fed1f2.pdf">artigo</a></div>
+```
+
+### Artigos em elaboração
+
+```{=html}
+<div class="rh-pub"><strong>Ozon, R., Viana, R. (2024).</strong> <em>Impact of Sentiment Analysis on the Volatility and Structural Breaks in Agricultural Commodity Prices.</em> <a href="https://github.com/pibicagrofinance/site/blob/main/Presentation_MQII___Rodrigo_Hermont_Ozon.pdf">plano de publicação</a></div>
+
+<div class="rh-pub"><strong>Ozon, R. (2024).</strong> <em>Ablation Study of a CNN+LSTM Architecture for Time Series Forecasting of Corn Price Returns.</em></div>
+
+<div class="rh-pub"><strong>Ozon, R., Guedes, R. (2024).</strong> <em>Blending Forecasting Models for Commodities Portfolio Optimization.</em></div>
+
+<div class="rh-pub"><strong>Ozon, R. (2024).</strong> <em>Impact of the Russia-Ukraine War on Corn Prices, Returns, and Volatility: A Quasi-Experimental Approach.</em></div>
+
+<div class="rh-pub"><strong>Ozon, R., Guedes da Silva, R. T. (2024).</strong> <em>A Commodities Portfolio Optimization Model Recommendation: Blending Time Series Forecasting Models in Pareto Front Scenarios.</em></div>
+
+<div class="rh-pub"><strong>Ozon, R., Reynoso-Meza, G. (2024).</strong> <em>Improving Risk Management in Grain Portfolios: The Role of GAMLSS and Bayesian MSGARCH Models.</em></div>
+
+<div class="rh-pub"><strong>Ozon, R., Reynoso-Meza, G. (2023).</strong> <em>Econometric Prices Forecasting Approach and Multiobjective Optimization for Commodity Portfolio Decision-Making.</em></div>
+```
+
+### Orientações
+
+```{=html}
+<div class="rh-pub"><strong>Ozon, R. H. (2024–2025).</strong> <em>Orientação de Iniciação Científica (PIBIC / PIBIC Jr., PUCPR) — concluída.</em> <span class="rh-pub-venue">Projeto de pesquisa: "Innovations in Financial Modeling: AI and Econometrics Approaches for Agricultural Commodities Portfolio Optimization"</span> <a href="https://pibicagrofinance.github.io/site/">site do projeto</a> · <a href="https://github.com/rhozon/Doutorado/blob/main/02_DeclaraC3A7C3A3o_Orientador_2024-2025_PAJR240085_rodrigo.hermont40pucpr.edu.br.pdf-assinado.pdf">declaração de orientador</a></div>
+
+<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>Declaração de Avaliação para o SEMIC/SEMITI.</em> <span class="rh-pub-venue">XXXI Seminário de Iniciação Científica da PUCPR</span> <a href="https://github.com/rhozon/Doutorado/blob/main/DeclaraC3A7C3A3o-Rodrigo20Hermont20Ozon-XXXI20SeminC3A1rio20de20IniciaC3A7C3A3o20CientC3ADfica20da20PUCPR.pdf">declaração</a></div>
+```
+:::
+
+::: {.rh-section}
+<div class="rh-kicker">Atividades editoriais</div>
+## Revisão por pares & comitês
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
+  <div class="rh-card">
+    <h3>Revisor — Applied Soft Computing</h3>
+    <p>Revisor por pares do periódico <em>Applied Soft Computing</em> (Elsevier), 2024 – presente.
+    <a href="https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf">Certificado de revisor </a></p>
+  </div>
+  <div class="rh-card">
+    <h3>Revisor — PRINCIPIA</h3>
+    <p>Revisor por pares do periódico <em>PRINCIPIA</em> (UFJF, Juiz de Fora), 2024 – presente.
+    <a href="https://periodicos.ufjf.br/index.php/principia">Site do periódico </a></p>
+  </div>
+  <div class="rh-card">
+    <h3>Comitê Científico Consultivo</h3>
+    <p>Membro do Comitê Científico Consultivo da PUCPR (2023; 2024–2025), apoiando a avaliação
+    de programas de pesquisa e de iniciação científica.</p>
+  </div>
+</div>
+
+<p style="margin-top:1.6rem;">
+  <a class="rh-btn rh-btn-ghost" href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ&amp;hl=en">Google Scholar</a>
+  <a class="rh-btn rh-btn-ghost" href="http://lattes.cnpq.br/3532649625879285">Currículo Lattes</a>
+  <a class="rh-btn rh-btn-ghost" href="https://orcid.org/0000-0001-8003-4849">ORCID</a>
+</p>
+```
+:::

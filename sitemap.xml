@@ -1,31 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
+    <loc>https://rhozon.github.io/portcv/pt/contact.html</loc>
+    <lastmod>2026-07-19T21:55:59.235Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/pt/teaching.html</loc>
+    <lastmod>2026-07-19T21:56:09.423Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/pt/experience.html</loc>
+    <lastmod>2026-07-19T21:56:30.501Z</lastmod>
+  </url>
+  <url>
     <loc>https://rhozon.github.io/portcv/cv.html</loc>
-    <lastmod>2026-07-19T21:47:56.530Z</lastmod>
+    <lastmod>2026-07-19T21:49:51.895Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/oquant.html</loc>
-    <lastmod>2026-07-19T21:29:27.976Z</lastmod>
+    <lastmod>2026-07-19T21:49:52.257Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/research.html</loc>
-    <lastmod>2026-07-19T21:29:27.834Z</lastmod>
+    <lastmod>2026-07-19T21:49:52.435Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/index.html</loc>
-    <lastmod>2026-07-19T21:48:08.396Z</lastmod>
+    <lastmod>2026-07-19T21:56:00.941Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/experience.html</loc>
-    <lastmod>2026-07-19T21:48:23.218Z</lastmod>
+    <lastmod>2026-07-19T21:49:52.082Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/teaching.html</loc>
-    <lastmod>2026-07-19T21:48:23.166Z</lastmod>
+    <lastmod>2026-07-19T21:49:52.826Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/contact.html</loc>
-    <lastmod>2026-07-19T21:29:28.043Z</lastmod>
+    <lastmod>2026-07-19T21:49:51.822Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/pt/index.html</loc>
+    <lastmod>2026-07-19T21:56:13.745Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/pt/research.html</loc>
+    <lastmod>2026-07-19T21:56:32.650Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/pt/oquant.html</loc>
+    <lastmod>2026-07-19T21:56:26.426Z</lastmod>
   </url>
 </urlset>

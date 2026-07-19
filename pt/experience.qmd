@@ -1,0 +1,219 @@
+---
+title: ""
+pagetitle: "Experiência Profissional — Rodrigo Hermont Ozon"
+description: "Experiência profissional de Rodrigo Hermont Ozon — econometrista e cientista de dados: posições atuais, trajetória completa de carreira e caixa de ferramentas técnica."
+toc: false
+---
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">ONDE TRABALHO HOJE</div>
+```
+
+## Posições atuais
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>Unimed do Estado do Paraná</h3>
+    <p><strong>Cientista de Dados</strong> · Jan 2026 – Atual</p>
+    <p>Analytics em saúde e business intelligence — monitoramento de KPIs, dashboards, modelagem estatística e análise preditiva — além de IA Generativa para processos internos: desenvolvimento de chatbots, orquestração de multiagentes e subagentes e gestão do conhecimento assistida por IA.</p>
+  </div>
+  <div class="rh-card">
+    <h3>OQuant Data Science Consulting</h3>
+    <p><strong>Fundador e Consultor Principal</strong> · Mar 2025 – Atual</p>
+    <p>Consultoria em econometria, previsão, inferência causal, análise de risco e soluções de negócio baseadas em IA, com projetos para organizações como Grupo Fleury, Aurora Alimentos e Cogna Educacional.</p>
+    <p><a href="oquant.html">Saiba mais sobre a OQuant </a></p>
+  </div>
+  <div class="rh-card">
+    <h3>FAE Business School</h3>
+    <p><strong>Professor de Graduação</strong> · Fev 2025 – Jul 2026 (concluído)</p>
+    <p>Docência em Ciência de Dados para Negócios e Mercado Financeiro: econometria, gestão de riscos, programação computacional, big data para finanças e elaboração e análise de projetos de investimento.</p>
+    <p><a href="teaching.html">Veja minha página de ensino </a></p>
+  </div>
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">MAIS DE 15 ANOS EM DADOS E ECONOMIA</div>
+```
+
+## Trajetória de carreira
+
+```{=html}
+<div class="rh-timeline">
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2026 – Atual</div>
+    <h3>Cientista de Dados</h3>
+    <div class="rh-tl-org">Unimed do Estado do Paraná – Curitiba, PR</div>
+    <p>Analytics em saúde, BI e IA Generativa: dashboards e monitoramento de KPIs, modelagem preditiva, chatbots internos e orquestração de multiagentes para apoio à decisão assistida por IA.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Mar 2025 – Atual</div>
+    <h3>Fundador e Consultor Principal — Cientista de Dados</h3>
+    <div class="rh-tl-org">OQuant Data Science Consulting – Remoto</div>
+    <p>Consultoria em ciência de dados, modelagem econométrica, previsão, inferência causal, análise de risco e apoio à decisão baseado em IA, atendendo clientes como Grupo Fleury, Aurora Alimentos e Cogna Educacional.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Fev 2025 – Jul 2026</div>
+    <h3>Professor de Graduação</h3>
+    <div class="rh-tl-org">FAE Business School – Curitiba, PR</div>
+    <p>Disciplinas de econometria, gestão de riscos, programação computacional, big data para finanças e elaboração e análise de projetos de investimento.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2025 – Abr 2025</div>
+    <h3>Data Engineer Professional</h3>
+    <div class="rh-tl-org">Volvo Group Digital &amp; IT – Curitiba, PR</div>
+    <p>Construção de pipelines de dados com SQL, Python e PySpark no Azure (ADF, Databricks), desenvolvimento de modelos preditivos com times ágeis e aplicação de práticas de MLOps para monitoramento de modelos.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Out 2024 – Dez 2024</div>
+    <h3>Coordenador da Área de Ciência de Dados</h3>
+    <div class="rh-tl-org">LAB.PR – Curitiba, PR</div>
+    <p>Coordenação do laboratório estadual de inteligência pública e ciência de dados, aplicando IA, governança de dados e integração de sistemas para tornar a administração pública mais transparente e eficiente.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Abr 2023 – Set 2024</div>
+    <h3>Consultor em Ciência de Dados</h3>
+    <div class="rh-tl-org">CNH Industrial – Curitiba, PR (Remoto)</div>
+    <p>Construção e treinamento de modelos de ML/IA (TensorFlow, Keras, Torch) sobre dados heterogêneos complexos — séries temporais e processamento de imagens — em uma stack de Data Lake (Hadoop, Spark, Kafka) no Microsoft Azure.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Mai 2021 – Mar 2023</div>
+    <h3>Cientista de Dados Sênior</h3>
+    <div class="rh-tl-org">BRF – Curitiba, PR</div>
+    <p>Gestão de produtos de BI &amp; Analytics; processamento de ~700 séries temporais econômicas para construir um modelo preditivo de precificação de milho (CBOT e B3) e um modelo bayesiano multicausal de determinantes de preço fundamentado na literatura microeconométrica.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Mai 2021 – Jul 2021</div>
+    <h3>Pesquisador / Consultor</h3>
+    <div class="rh-tl-org">PNUD Brasil – Curitiba, PR</div>
+    <p>Automatização da extração de dados de fontes públicas oficiais via APIs e construção de dashboards socioeconômicos para o projeto BRA/18/024 do PNUD, voltado à redução da violência contra crianças e adolescentes no Brasil.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2021 – Mar 2021</div>
+    <h3>Analista de BI Sênior (Cientista de Dados)</h3>
+    <div class="rh-tl-org">Tecnofit – Curitiba, PR</div>
+    <p>Implantação de uma cultura orientada a dados: estudos do mercado fitness com dados do CAGED/RAIS, extrações automatizadas das APIs do CRM Hubspot e do Google Places, dashboards alinhados a OKRs e documentação de governança de dados.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Out 2020 – Dez 2020</div>
+    <h3>Cientista de Dados Sênior</h3>
+    <div class="rh-tl-org">Deal Technologies – Curitiba, PR</div>
+    <p>Consultor exclusivo no projeto de Inteligência de Mercado e Pricing para a Rumo Logística: validação das entregas de duas consultorias internacionais, auditoria da qualidade de dados em PostgreSQL e documentação de pipelines de automação de ETL para o AWS S3.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Fev 2020 – Mar 2020</div>
+    <h3>Analista de Inteligência de Mercado</h3>
+    <div class="rh-tl-org">ALCAST do Brasil S/A – Curitiba, PR</div>
+    <p>Condução de mapeamento de mercado, segmentação e avaliação de riscos e oportunidades, propondo a migração de planilhas para dashboards em tempo real em RMarkdown e Power BI.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Nov 2019 – Out 2020</div>
+    <h3>Cientista de Dados Freelancer</h3>
+    <div class="rh-tl-org">Upwork.com – Remoto</div>
+    <p>Projetos sob demanda em ciência de dados, econometria e editoração de documentos científicos com LaTeX e R.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Out 2019 – Nov 2019</div>
+    <h3>Consultor de Business Intelligence</h3>
+    <div class="rh-tl-org">Kietec (Knowledge Information and Technology) – Curitiba, PR</div>
+    <p>Levantamento de requisitos, propostas de modelagem preditiva e análise avançada de dados para aprimorar a tomada de decisão.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Mai 2019 – Out 2019</div>
+    <h3>Analista de Estatística Sênior</h3>
+    <div class="rh-tl-org">Grupo Bitcoin Banco – Curitiba, PR</div>
+    <p>Sistematização de informações estatisticamente mensuráveis em todos os departamentos, implantação de BI em tempo real para visualização de big data e apoio às decisões executivas com relatórios estatísticos.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Out 2012 – Nov 2018</div>
+    <h3>Analista Econômico Pleno</h3>
+    <div class="rh-tl-org">FIEP – Curitiba, PR</div>
+    <p>Análise econômica das principais cadeias produtivas do Paraná para sindicatos empresariais e negociações coletivas; construção de bases de dados econômicos regionais em Power BI e avaliação de propostas de inovação do SENAI/SESI.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">2011 – 2021</div>
+    <h3>Economista — Projetos e Captação de Recursos</h3>
+    <div class="rh-tl-org">ONG Acreditar e Compartilhar – Brasil</div>
+    <p>Colaborador voluntário na elaboração e submissão de projetos do terceiro setor a editais públicos e privados, ensinando gestão de projetos baseada no PMI para ONGs e prestando consultoria a outras organizações sem fins lucrativos.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Out 2008 – Out 2013</div>
+    <h3>Economista / Coordenador de Projetos</h3>
+    <div class="rh-tl-org">IBQP – Curitiba, PR</div>
+    <p>Pesquisador em projetos de cadeias produtivas e inovação; coordenação do Índice de Desenvolvimento Municipal para Micro e Pequenas Empresas (ID-MPE) para o SEBRAE, em parceria com pesquisadores da UFPR.</p>
+  </div>
+
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">COM O QUE EU TRABALHO</div>
+```
+
+## Caixa de ferramentas
+
+Linguagens que uso diariamente para modelagem, analytics e relatórios:
+
+```{=html}
+<p>
+  <span class="rh-pill">Python</span>
+  <span class="rh-pill">R</span>
+  <span class="rh-pill">SQL</span>
+  <span class="rh-pill">PySpark</span>
+  <span class="rh-pill">Scala</span>
+  <span class="rh-pill">DAX</span>
+  <span class="rh-pill">VBA</span>
+  <span class="rh-pill">Quarto / LaTeX</span>
+</p>
+```
+
+Plataformas e ferramentas para engenharia de dados, BI e deployment:
+
+```{=html}
+<p>
+  <span class="rh-pill">Azure</span>
+  <span class="rh-pill">Databricks</span>
+  <span class="rh-pill">Azure Data Factory</span>
+  <span class="rh-pill">Spark</span>
+  <span class="rh-pill">Power BI</span>
+  <span class="rh-pill">Shiny</span>
+  <span class="rh-pill">Git</span>
+</p>
+```
+
+```{=html}
+<div style="margin-top:2rem;">
+  <a class="rh-btn rh-btn-primary" href="oquant.html">Contrate minha consultoria</a>
+  <a class="rh-btn rh-btn-ghost" href="contact.html">Entre em contato</a>
+</div>
+```
+
+:::
