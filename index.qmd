@@ -15,7 +15,7 @@ toc: false
     <h1>Rodrigo <span class="rh-grad">Hermont Ozon</span></h1>
     <p class="rh-hero-tagline">
       Data Scientist at <strong>Unimed do Estado do Paraná</strong>, PhD researcher in Industrial &amp; Systems
-      Engineering (PUCPR), founder of <strong>OQuant</strong> consulting and professor at FAE Business School.
+      Engineering (PUCPR), founder of <strong>OQuant</strong> consulting and former professor at FAE Business School (2025–2026).
       Fifteen years applying GARCH-family models, Bayesian econometrics, multi-objective optimization
       and, more recently, multi-agent AI systems to problems in healthcare, agribusiness and industry.
     </p>
@@ -58,7 +58,7 @@ toc: false
   </div>
   <div class="rh-card">
     <h3>Teaching &amp; Research</h3>
-    <p>Professor of Data Science for Business and Financial Markets (FAE). PhD researcher at
+    <p>Taught Data Science for Business and Financial Markets at FAE (2025–2026). PhD researcher at
     PUCPR. Reviewer for <em>Applied Soft Computing</em> and <em>PRINCIPIA</em>.</p>
   </div>
 </div>

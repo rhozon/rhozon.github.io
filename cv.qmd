@@ -790,11 +790,11 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 </style>
 
 <div class="teaching-item">
-  <div class="teaching-dates">Feb 2025 – Present</div>
+  <div class="teaching-dates">Feb 2025 – Jul 2026</div>
   <div class="teaching-main">
     <h3>Undergraduate Professor</h3>
     <div class="location">FAE Business School – Curitiba, PR</div>
-    <p>Teaching undergraduate courses in Data Science for Business and Financial Markets at FAE University. Responsibilities include:
+    <p>Taught undergraduate courses in Data Science for Business and Financial Markets at FAE University. Responsibilities included:
       <ul>
         <li><strong>Big Data for Finance Project</strong> – Applying data science and big data techniques to financial decision-making.</li>
         <li><strong>Computational Programming</strong> – Fundamentals and applications in data analytics and business intelligence.</li>

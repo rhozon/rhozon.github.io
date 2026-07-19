@@ -1,13 +1,13 @@
 ---
 title: ""
 pagetitle: "Teaching — Rodrigo Hermont Ozon"
-description: "Teaching activities of Rodrigo Hermont Ozon: current courses at FAE Business School, teaching history, certifications and open teaching materials."
+description: "Teaching activities of Rodrigo Hermont Ozon: courses at FAE Business School, teaching history, certifications and open teaching materials."
 toc: false
 ---
 
 ::: {.rh-section}
 ```{=html}
-<div class="rh-kicker">NOW TEACHING</div>
+<div class="rh-kicker">MOST RECENT APPOINTMENT</div>
 ```
 
 ## FAE Business School
@@ -15,8 +15,8 @@ toc: false
 ```{=html}
 <div class="rh-card">
   <h3>Undergraduate Professor — FAE Business School</h3>
-  <p><strong>Feb 2025 – Present · Curitiba, PR</strong></p>
-  <p>Teaching undergraduate courses in Data Science for Business and Financial Markets:</p>
+  <p><strong>Feb 2025 – Jul 2026 · Curitiba, PR</strong></p>
+  <p>Taught undergraduate courses in Data Science for Business and Financial Markets:</p>
   <ul>
     <li><strong>Big Data for Finance Project</strong> — data science and big data techniques applied to financial decision-making.</li>
     <li><strong>Computational Programming</strong> — fundamentals and applications in data analytics and business intelligence.</li>
