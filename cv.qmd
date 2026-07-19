@@ -504,13 +504,14 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 **Ozon, R., H. (2024).** *Evaluation Declaration for SEMIC/SEMITI.* In XXXI Scientific Initiation Seminar at PUCPR.\
 [Link](https://github.com/rhozon/Doutorado/blob/main/DeclaraC3A7C3A3o-Rodrigo20Hermont20Ozon-XXXI20SeminC3A1rio20de20IniciaC3A7C3A3o20CientC3ADfica20da20PUCPR.pdf)
 
-**Ozon, R., H. (2024–2025).** *Scientific Initiation Advisorship (PUCPR).*\
-[Link](https://pibicagrofinance.github.io/site/)
+**Ozon, R., H. (2024–2025).** *Scientific Initiation Advisorship (PIBIC/PIBIC Jr., PUCPR) — concluded.* Research project: "Innovations in Financial Modeling: AI and Econometrics Approaches for Agricultural Commodities Portfolio Optimization".\
+[Project site](https://pibicagrofinance.github.io/site/) | [Advisor declaration](https://github.com/rhozon/Doutorado/blob/main/02_DeclaraC3A7C3A3o_Orientador_2024-2025_PAJR240085_rodrigo.hermont40pucpr.edu.br.pdf-assinado.pdf)
 
-**Ozon, R., H., Reynoso-Meza, G. (2024). In SBPO.\
-\[Material: paper_6925.pdf\]
+**Ozon, R. H., Reynoso-Meza, G. (2024).** *Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.* In: Anais do LVI Simpósio Brasileiro de Pesquisa Operacional (SBPO), Fortaleza. Galoá, 2024. [Available here](https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br)
 
-OZON, Rodrigo Hermont; MEZA, Gilberto Reynoso. **Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.**. _In_: ANAIS DO LVI SIMPóSIO BRASILEIRO DE PESQUISA OPERACIONAL, 2024, Fortaleza. Anais eletrônicos, Galoá, 2024. Avaiable in: <https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br> 
+**Ozon, R. H., Reynoso-Meza, G. (2024).** *Predictive Maintenance Strategies in Agriculture Using Survival Analysis.* In: XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro, 2024.
+
+**XI ENPPEPRO (2024).** *PhD Finalist* — Encontro Nacional de Programas de Pós-Graduação em Engenharia de Produção.
 
 
 **Ozon, R., H., Reynoso-Meza, G. (2024).** *Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.* In ICPR Americas 2024 (Ohio University). \[Material: Optimization\_\_Paper_ID.pdf\]
@@ -543,7 +544,9 @@ OZON, Rodrigo Hermont; MEZA, Gilberto Reynoso. **Comparative Analysis of Fuzzy R
 ### Periodic Reviewer
 
 ::: {style="font-size: 12px;"}
--   **Reviewer** for *Soft Computing* Journal. In <https://link.springer.com/journal/500>, Link for certification: https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf
+-   **Reviewer** for *Applied Soft Computing* Journal (2024 – present). In <https://www.sciencedirect.com/journal/applied-soft-computing>. [Reviewer certificate](https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf)
+-   **Reviewer** for *PRINCIPIA* Journal — Juiz de Fora (2024 – present). In <https://periodicos.ufjf.br/index.php/principia>
+-   **Scientific Advisory Committee Member** — PUCPR (2023; 2024–2025)
 :::
 ::::
 
