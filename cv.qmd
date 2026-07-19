@@ -507,10 +507,11 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 **Ozon, R., H. (2024–2025).** *Scientific Initiation Advisorship (PUCPR).*\
 [Link](https://pibicagrofinance.github.io/site/)
 
-**Ozon, R., H., Reynoso-Meza, G. (2024).** *Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.* In SBPO.\
+**Ozon, R., H., Reynoso-Meza, G. (2024). In SBPO.\
 \[Material: paper_6925.pdf\]
 
-**Ozon, R., H., Reynoso-Meza, G. (2024).** *Predictive Maintenance Strategies in Agriculture Using Survival Analysis.* In SBA. \[Material: galoa-proceedings--sbpo-2024--193764.pdf\]
+OZON, Rodrigo Hermont; MEZA, Gilberto Reynoso. **Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.**. _In_: ANAIS DO LVI SIMPóSIO BRASILEIRO DE PESQUISA OPERACIONAL, 2024, Fortaleza. Anais eletrônicos, Galoá, 2024. Avaiable in: <https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br> 
+
 
 **Ozon, R., H., Reynoso-Meza, G. (2024).** *Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.* In ICPR Americas 2024 (Ohio University). \[Material: Optimization\_\_Paper_ID.pdf\]
 
@@ -542,7 +543,7 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 ### Periodic Reviewer
 
 ::: {style="font-size: 12px;"}
--   **Reviewer** for *Soft Computing* Journal. In <https://link.springer.com/journal/500>
+-   **Reviewer** for *Soft Computing* Journal. In <https://link.springer.com/journal/500>, Link for certification: https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf
 :::
 ::::
 
@@ -786,15 +787,17 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 </style>
 
 <div class="teaching-item">
-  <div class="teaching-dates">Jan 2025 – Present</div>
+  <div class="teaching-dates">Feb 2025 – Present</div>
   <div class="teaching-main">
     <h3>Undergraduate Professor</h3>
     <div class="location">FAE Business School – Curitiba, PR</div>
     <p>Teaching undergraduate courses in Data Science for Business and Financial Markets at FAE University. Responsibilities include:
       <ul>
-        <li><strong>Big Data for Finance Project</strong> – Applying data science to financial decisions.</li>
-        <li><strong>Computational Programming</strong> – Fundamentals and analytics.</li>
-        <li><strong>Risk Management</strong> – Quantitative methods and tools.</li>
+        <li><strong>Big Data for Finance Project</strong> – Applying data science and big data techniques to financial decision-making.</li>
+        <li><strong>Computational Programming</strong> – Fundamentals and applications in data analytics and business intelligence.</li>
+        <li><strong>Risk Management</strong> – Quantitative methods and practical tools for financial risk assessment and mitigation.</li>
+        <li><strong>Econometrics</strong> – Regression diagnostics, causal inference, panel and time-series methods, and policy/market applications.</li>
+        <li><strong>Project Appraisal and Investment Analysis</strong> – DCF modeling, NPV/IRR, sensitivity and scenario analysis, Monte Carlo simulation, and real options.</li>
       </ul>
     </p>
   </div>
@@ -929,6 +932,52 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 </style>
 
 <div class="professional-experiences">
+  <!-- Experience Item: Unimed -->
+  <div class="experience-item">
+    <div class="exp-dates">Jan 2026 – Present</div>
+    <div class="exp-main">
+      <h3 title="Healthcare analytics, business intelligence and Generative AI initiatives supporting data-driven decision-making.">Data Scientist</h3>
+      <div class="location">Unimed do Estado do Paraná – Curitiba, PR</div>
+      <p>Working with Data Science, Analytics, Business Intelligence, and Generative AI initiatives in the healthcare sector, supporting data-driven and AI-assisted decision-making. My responsibilities include:</p>
+      <ul style="color: #ccc; font-size: 0.95em; line-height: 1.4;">
+        <li>Healthcare analytics and business intelligence (KPI monitoring, dashboards and performance analysis);</li>
+        <li>Generative AI applications for internal business processes;</li>
+        <li>Internal chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management;</li>
+        <li>Data preparation, integration, analysis, and visualization;</li>
+        <li>Statistical modeling and predictive analytics;</li>
+        <li>Automation of analytical routines and communication of insights to technical and non-technical stakeholders.</li>
+      </ul>
+    </div>
+    <div class="exp-logo">
+      <a href="https://www.unimed.coop.br/site/web/parana" title="Unimed do Estado do Paraná">
+        <img src="assets/unimed_logo.png" alt="Unimed Logo">
+      </a>
+    </div>
+  </div>
+
+  <!-- Experience Item: OQuant -->
+  <div class="experience-item">
+    <div class="exp-dates">Mar 2025 – Present</div>
+    <div class="exp-main">
+      <h3 title="Consulting company specialized in Data Science, Econometrics, Forecasting, Causal Inference, Risk Analytics, and AI-driven business solutions.">Founder &amp; Principal Consultant — Data Scientist</h3>
+      <div class="location">OQuant Data Science Consulting – Remote</div>
+      <p>Founder and Principal Consultant at OQuant, a consulting company specialized in Data Science, Econometrics, Forecasting, Causal Inference, Risk Analytics, and AI-driven business solutions. Consulting experience includes projects for leading organizations such as Grupo Fleury, Aurora Alimentos, and Cogna Educacional. Main areas of work include:</p>
+      <ul style="color: #ccc; font-size: 0.95em; line-height: 1.4;">
+        <li>Data Science and Advanced Analytics;</li>
+        <li>Econometric Modeling and Causal Inference;</li>
+        <li>Forecasting and Time Series Analysis;</li>
+        <li>Machine Learning and Predictive Modeling;</li>
+        <li>Risk Analytics and Simulation;</li>
+        <li>Business Intelligence, Decision Support and AI-based solutions for business problems.</li>
+      </ul>
+    </div>
+    <div class="exp-logo">
+      <a href="https://www.linkedin.com/in/rodrigohermontozon/" title="OQuant Data Science Consulting">
+        <img src="assets/oquant_logo.png" alt="OQuant Logo">
+      </a>
+    </div>
+  </div>
+
   <!-- Experience Item 1 -->
   <div class="experience-item">
     <div class="exp-dates">Jan 2025 – Apr 2025</div>

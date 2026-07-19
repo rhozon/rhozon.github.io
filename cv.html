@@ -2,12 +2,12 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.5.57">
+<meta name="generator" content="quarto-1.8.25">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="Rodrigo Hermont Ozon">
-<meta name="dcterms.date" content="2025-04-17">
+<meta name="dcterms.date" content="2026-07-19">
 
 <title>Welcome to my CV Page</title>
 <style>
@@ -32,15 +32,17 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/axe/axe-check.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-707d8167ce6003fca903bfe2be84ab7f.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="dark">
+<link href="site_libs/bootstrap/bootstrap-c997e2d8699c6753b6fed50eb1a874fd.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -410,7 +412,7 @@ const typesetMath = (el) => {
     var macros = [];
     for (var i = 0; i < mathElements.length; i++) {
       var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN") {
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
         window.katex.render(texText.data, mathElements[i], {
           displayMode: mathElements[i].classList.contains('display'),
           throwOnError: false,
@@ -429,12 +431,16 @@ window.Quarto = {
 <link rel="stylesheet" href="styles.css">
 </head>
 
-<body class="floating nav-fixed">
+<body class="floating nav-fixed quarto-light">
 
 <div id="quarto-search-results"></div>
   <header id="quarto-header" class="headroom fixed-top">
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a href="./index.html" class="navbar-brand navbar-brand-logo">
+    </a>
+  </div>
             <div id="quarto-search" class="" title="Search"></div>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
@@ -501,7 +507,7 @@ window.Quarto = {
     <div>
     <div class="quarto-title-meta-heading">Updated</div>
     <div class="quarto-title-meta-contents">
-      <p class="date">April 17, 2025</p>
+      <p class="date">July 19, 2026</p>
     </div>
   </div>
   
@@ -528,7 +534,7 @@ MSc in Economic Development from UFPR, with over 15 years of experience in data 
 <section id="academics" class="level1" style="font-size:14pt;">
 <h1 style="font-size:14pt;">Academics</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true">Background</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false">Certifications</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false">Teaching Experience</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-1-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-1" role="tab" aria-controls="tabset-1-1" aria-selected="true" href="">Background</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-2" role="tab" aria-controls="tabset-1-2" aria-selected="false" href="">Certifications</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-1-3-tab" data-bs-toggle="tab" data-bs-target="#tabset-1-3" role="tab" aria-controls="tabset-1-3" aria-selected="false" href="">Teaching Experience</a></li></ul>
 <div class="tab-content">
 <div id="tabset-1-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-1-1-tab">
 <div id="highlights" class="callout callout-style-default callout-note callout-titled">
@@ -537,7 +543,7 @@ MSc in Economic Development from UFPR, with over 15 years of experience in data 
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Highlights
+<span class="screen-reader-only">Note</span>Highlights
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -648,12 +654,12 @@ function toggleDetails(block) {
 </div>
 </div>
 <div id="publications" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-2-contents" aria-controls="callout-2" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Last publications
+<span class="screen-reader-only">Note</span>Last publications
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -665,9 +671,9 @@ Last publications
 <a href="https://github.com/rhozon/Doutorado/blob/main/DeclaraC3A7C3A3o-Rodrigo20Hermont20Ozon-XXXI20SeminC3A1rio20de20IniciaC3A7C3A3o20CientC3ADfica20da20PUCPR.pdf">Link</a></p>
 <p><strong>Ozon, R., H. (2024–2025).</strong> <em>Scientific Initiation Advisorship (PUCPR).</em><br>
 <a href="https://pibicagrofinance.github.io/site/">Link</a></p>
-<p><strong>Ozon, R., H., Reynoso-Meza, G. (2024).</strong> <em>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</em> In SBPO.<br>
+<p>**Ozon, R., H., Reynoso-Meza, G. (2024). In SBPO.<br>
 [Material: paper_6925.pdf]</p>
-<p><strong>Ozon, R., H., Reynoso-Meza, G. (2024).</strong> <em>Predictive Maintenance Strategies in Agriculture Using Survival Analysis.</em> In SBA. [Material: galoa-proceedings–sbpo-2024–193764.pdf]</p>
+<p>OZON, Rodrigo Hermont; MEZA, Gilberto Reynoso. <strong>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</strong>. <em>In</em>: ANAIS DO LVI SIMPóSIO BRASILEIRO DE PESQUISA OPERACIONAL, 2024, Fortaleza. Anais eletrônicos, Galoá, 2024. Avaiable in: <a href="https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br" class="uri">https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br</a></p>
 <p><strong>Ozon, R., H., Reynoso-Meza, G. (2024).</strong> <em>Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.</em> In ICPR Americas 2024 (Ohio University). [Material: Optimization__Paper_ID.pdf]</p>
 <p><strong>Ozon, R., H., (2024).</strong> <em>Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics.</em> In 1st SouthStat Meeting (UFPR). [Material: _poster Rodrigo Hermont Ozon.pdf]</p>
 <p><strong>Ozon, R., H. (2023).</strong> <em>The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models.</em> In R Day (UFPR). [Material: _Presentation__Desagragação_de_Séries_Temporais_<em>R_Day</em>]</p>
@@ -685,12 +691,12 @@ Last publications
 </div>
 </div>
 <div id="publications" class="callout callout-style-default callout-note callout-titled">
-<div class="callout-header d-flex align-content-center" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
+<div class="callout-header d-flex align-content-center collapsed" data-bs-toggle="collapse" data-bs-target=".callout-3-contents" aria-controls="callout-3" aria-expanded="false" aria-label="Toggle callout">
 <div class="callout-icon-container">
 <i class="callout-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-Periodic Reviewer
+<span class="screen-reader-only">Note</span>Periodic Reviewer
 </div>
 <div class="callout-btn-toggle d-inline-block border-0 py-1 ps-1 pe-0 float-end"><i class="callout-toggle"></i></div>
 </div>
@@ -698,7 +704,7 @@ Periodic Reviewer
 <div class="callout-body-container callout-body">
 <div style="font-size: 12px;">
 <ul>
-<li><strong>Reviewer</strong> for <em>Soft Computing</em> Journal. In <a href="https://link.springer.com/journal/500" class="uri">https://link.springer.com/journal/500</a></li>
+<li><strong>Reviewer</strong> for <em>Soft Computing</em> Journal. In <a href="https://link.springer.com/journal/500" class="uri">https://link.springer.com/journal/500</a>, Link for certification: https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf</li>
 </ul>
 </div>
 </div>
@@ -940,15 +946,17 @@ Periodic Reviewer
 </style>
 
 <div class="teaching-item">
-  <div class="teaching-dates">Jan 2025 – Present</div>
+  <div class="teaching-dates">Feb 2025 – Present</div>
   <div class="teaching-main">
     <h3 class="anchored">Undergraduate Professor</h3>
     <div class="location">FAE Business School – Curitiba, PR</div>
     <p>Teaching undergraduate courses in Data Science for Business and Financial Markets at FAE University. Responsibilities include:
       </p><ul>
-        <li><strong>Big Data for Finance Project</strong> – Applying data science to financial decisions.</li>
-        <li><strong>Computational Programming</strong> – Fundamentals and analytics.</li>
-        <li><strong>Risk Management</strong> – Quantitative methods and tools.</li>
+        <li><strong>Big Data for Finance Project</strong> – Applying data science and big data techniques to financial decision-making.</li>
+        <li><strong>Computational Programming</strong> – Fundamentals and applications in data analytics and business intelligence.</li>
+        <li><strong>Risk Management</strong> – Quantitative methods and practical tools for financial risk assessment and mitigation.</li>
+        <li><strong>Econometrics</strong> – Regression diagnostics, causal inference, panel and time-series methods, and policy/market applications.</li>
+        <li><strong>Project Appraisal and Investment Analysis</strong> – DCF modeling, NPV/IRR, sensitivity and scenario analysis, Monte Carlo simulation, and real options.</li>
       </ul>
     <p></p>
   </div>
@@ -1021,7 +1029,7 @@ Periodic Reviewer
 <section id="professional-exp." class="level1" style="font-size:14pt;">
 <h1 style="font-size:14pt;">Professional Exp.</h1>
 <div class="tabset-margin-container"></div><div class="panel-tabset">
-<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true">Professional Last Experiences</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false">Prog. Languages</a></li></ul>
+<ul class="nav nav-tabs" role="tablist"><li class="nav-item" role="presentation"><a class="nav-link active" id="tabset-2-1-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-1" role="tab" aria-controls="tabset-2-1" aria-selected="true" href="">Professional Last Experiences</a></li><li class="nav-item" role="presentation"><a class="nav-link" id="tabset-2-2-tab" data-bs-toggle="tab" data-bs-target="#tabset-2-2" role="tab" aria-controls="tabset-2-2" aria-selected="false" href="">Prog. Languages</a></li></ul>
 <div class="tab-content">
 <div id="tabset-2-1" class="tab-pane active" role="tabpanel" aria-labelledby="tabset-2-1-tab">
 
@@ -1084,11 +1092,57 @@ Periodic Reviewer
 </style>
 
 <div class="professional-experiences">
+  <!-- Experience Item: Unimed -->
+  <div class="experience-item">
+    <div class="exp-dates">Jan 2026 – Present</div>
+    <div class="exp-main">
+      <h3 title="Healthcare analytics, business intelligence and Generative AI initiatives supporting data-driven decision-making." class="anchored" data-anchor-id="professional-exp.">Data Scientist</h3>
+      <div class="location">Unimed do Estado do Paraná – Curitiba, PR</div>
+      <p>Working with Data Science, Analytics, Business Intelligence, and Generative AI initiatives in the healthcare sector, supporting data-driven and AI-assisted decision-making. My responsibilities include:</p>
+      <ul style="color: #ccc; font-size: 0.95em; line-height: 1.4;">
+        <li>Healthcare analytics and business intelligence (KPI monitoring, dashboards and performance analysis);</li>
+        <li>Generative AI applications for internal business processes;</li>
+        <li>Internal chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management;</li>
+        <li>Data preparation, integration, analysis, and visualization;</li>
+        <li>Statistical modeling and predictive analytics;</li>
+        <li>Automation of analytical routines and communication of insights to technical and non-technical stakeholders.</li>
+      </ul>
+    </div>
+    <div class="exp-logo">
+      <a href="https://www.unimed.coop.br/site/web/parana" title="Unimed do Estado do Paraná">
+        <img src="assets/unimed_logo.png" alt="Unimed Logo">
+      </a>
+    </div>
+  </div>
+
+  <!-- Experience Item: OQuant -->
+  <div class="experience-item">
+    <div class="exp-dates">Mar 2025 – Present</div>
+    <div class="exp-main">
+      <h3 title="Consulting company specialized in Data Science, Econometrics, Forecasting, Causal Inference, Risk Analytics, and AI-driven business solutions." class="anchored">Founder &amp; Principal Consultant — Data Scientist</h3>
+      <div class="location">OQuant Data Science Consulting – Remote</div>
+      <p>Founder and Principal Consultant at OQuant, a consulting company specialized in Data Science, Econometrics, Forecasting, Causal Inference, Risk Analytics, and AI-driven business solutions. Consulting experience includes projects for leading organizations such as Grupo Fleury, Aurora Alimentos, and Cogna Educacional. Main areas of work include:</p>
+      <ul style="color: #ccc; font-size: 0.95em; line-height: 1.4;">
+        <li>Data Science and Advanced Analytics;</li>
+        <li>Econometric Modeling and Causal Inference;</li>
+        <li>Forecasting and Time Series Analysis;</li>
+        <li>Machine Learning and Predictive Modeling;</li>
+        <li>Risk Analytics and Simulation;</li>
+        <li>Business Intelligence, Decision Support and AI-based solutions for business problems.</li>
+      </ul>
+    </div>
+    <div class="exp-logo">
+      <a href="https://www.linkedin.com/in/rodrigohermontozon/" title="OQuant Data Science Consulting">
+        <img src="assets/oquant_logo.png" alt="OQuant Logo">
+      </a>
+    </div>
+  </div>
+
   <!-- Experience Item 1 -->
   <div class="experience-item">
     <div class="exp-dates">Jan 2025 – Apr 2025</div>
     <div class="exp-main">
-      <h3 title="Creating business value with digital data solutions, including cloud platforms, data pipelines, and advanced analytics." class="anchored" data-anchor-id="professional-exp.">Data Engineer Professional</h3>
+      <h3 title="Creating business value with digital data solutions, including cloud platforms, data pipelines, and advanced analytics." class="anchored">Data Engineer Professional</h3>
       <div class="location">Volvo Group Digital &amp; IT – Curitiba, PR</div>
       <p>I work as a data engineer/scientist, integrating agile teams to create digital solutions focused on delivering business value. My responsibilities include:</p>
       <ul style="color: #ccc; font-size: 0.95em; line-height: 1.4;">
@@ -1375,8 +1429,8 @@ Periodic Reviewer
 </div>
 <div class="cell">
 <div class="cell-output-display">
-<div class="plotly html-widget html-fill-item" id="htmlwidget-820301222c2d7ec645c0" style="width:100%;height:464px;"></div>
-<script type="application/json" data-for="htmlwidget-820301222c2d7ec645c0">{"x":{"visdat":{"a6044d2a28bb":["function () ","plotlyVisDat"]},"cur_data":"a6044d2a28bb","attrs":{"a6044d2a28bb":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":70,"y":"Python","name":"Python","marker":{"color":"#4A1486"},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Python: 70%<br />Using since 2021","inherit":true},"a6044d2a28bb.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":80,"y":"R","name":"R","marker":{"color":"#6A51A3"},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => R: 80%<br />Using since 2008","inherit":true},"a6044d2a28bb.2":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":70,"y":"SQL","name":"SQL","marker":{"color":"#807DBA"},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => SQL: 70%<br />Using since 2020","inherit":true},"a6044d2a28bb.3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":80,"y":"Quarto","name":"Quarto","marker":{"color":"#9E9AC8"},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Quarto: 80%<br />Using since 2022","inherit":true},"a6044d2a28bb.4":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":60,"y":"HTML5/CSS","name":"HTML5/CSS","marker":{"color":"#BCBDDC"},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => HTML5/CSS: 60%<br />Using since 2022","inherit":true},"a6044d2a28bb.5":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":50,"y":"DAX","name":"DAX","marker":{"color":"#DADAEB"},"text":"50%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => DAX: 50%<br />Using since 2016","inherit":true},"a6044d2a28bb.6":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":60,"y":"VBA","name":"VBA","marker":{"color":"#F2F0F7"},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => VBA: 60%<br />Using since 2003","inherit":true}},"layout":{"margin":{"b":60,"l":180,"t":60,"r":50},"barmode":"stack","title":{"text":"","x":0.5},"xaxis":{"domain":[0,1],"automargin":true,"range":[0,100],"showgrid":false,"zeroline":false,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"autorange":"reversed","title":[],"type":"category","categoryorder":"array","categoryarray":["Python","R","SQL","Quarto","HTML5/CSS","DAX","VBA"]},"plot_bgcolor":"#333333","paper_bgcolor":"#333333","font":{"color":"white"},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"type":"bar","orientation":"h","x":[70],"y":["Python"],"name":"Python","marker":{"color":"#4A1486","line":{"color":"rgba(31,119,180,1)"}},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Python: 70%<br />Using since 2021","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[80],"y":["R"],"name":"R","marker":{"color":"#6A51A3","line":{"color":"rgba(255,127,14,1)"}},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => R: 80%<br />Using since 2008","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[70],"y":["SQL"],"name":"SQL","marker":{"color":"#807DBA","line":{"color":"rgba(44,160,44,1)"}},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => SQL: 70%<br />Using since 2020","error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[80],"y":["Quarto"],"name":"Quarto","marker":{"color":"#9E9AC8","line":{"color":"rgba(214,39,40,1)"}},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Quarto: 80%<br />Using since 2022","error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[60],"y":["HTML5/CSS"],"name":"HTML5/CSS","marker":{"color":"#BCBDDC","line":{"color":"rgba(148,103,189,1)"}},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => HTML5/CSS: 60%<br />Using since 2022","error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[50],"y":["DAX"],"name":"DAX","marker":{"color":"#DADAEB","line":{"color":"rgba(140,86,75,1)"}},"text":"50%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => DAX: 50%<br />Using since 2016","error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[60],"y":["VBA"],"name":"VBA","marker":{"color":"#F2F0F7","line":{"color":"rgba(227,119,194,1)"}},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => VBA: 60%<br />Using since 2003","error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
+<div class="plotly html-widget html-fill-item" id="htmlwidget-6ae9e9f7a35d85b5fa52" style="width:100%;height:464px;"></div>
+<script type="application/json" data-for="htmlwidget-6ae9e9f7a35d85b5fa52">{"x":{"visdat":{"a1c23c06181":["function () ","plotlyVisDat"]},"cur_data":"a1c23c06181","attrs":{"a1c23c06181":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":70,"y":"Python","name":"Python","marker":{"color":"#4A1486"},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Python: 70%<br />Using since 2021","inherit":true},"a1c23c06181.1":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":80,"y":"R","name":"R","marker":{"color":"#6A51A3"},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => R: 80%<br />Using since 2008","inherit":true},"a1c23c06181.2":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":70,"y":"SQL","name":"SQL","marker":{"color":"#807DBA"},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => SQL: 70%<br />Using since 2020","inherit":true},"a1c23c06181.3":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":80,"y":"Quarto","name":"Quarto","marker":{"color":"#9E9AC8"},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Quarto: 80%<br />Using since 2022","inherit":true},"a1c23c06181.4":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":60,"y":"HTML5/CSS","name":"HTML5/CSS","marker":{"color":"#BCBDDC"},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => HTML5/CSS: 60%<br />Using since 2022","inherit":true},"a1c23c06181.5":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":50,"y":"DAX","name":"DAX","marker":{"color":"#DADAEB"},"text":"50%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => DAX: 50%<br />Using since 2016","inherit":true},"a1c23c06181.6":{"alpha_stroke":1,"sizes":[10,100],"spans":[1,20],"type":"bar","orientation":"h","x":60,"y":"VBA","name":"VBA","marker":{"color":"#F2F0F7"},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => VBA: 60%<br />Using since 2003","inherit":true}},"layout":{"margin":{"b":60,"l":180,"t":60,"r":50},"barmode":"stack","title":{"text":"","x":0.5},"xaxis":{"domain":[0,1],"automargin":true,"range":[0,100],"showgrid":false,"zeroline":false,"title":[]},"yaxis":{"domain":[0,1],"automargin":true,"autorange":"reversed","title":[],"type":"category","categoryorder":"array","categoryarray":["Python","R","SQL","Quarto","HTML5/CSS","DAX","VBA"]},"plot_bgcolor":"#333333","paper_bgcolor":"#333333","font":{"color":"white"},"showlegend":false,"hovermode":"closest"},"source":"A","config":{"modeBarButtonsToAdd":["hoverclosest","hovercompare"],"showSendToCloud":false,"displayModeBar":false},"data":[{"type":"bar","orientation":"h","x":[70],"y":["Python"],"name":"Python","marker":{"color":"#4A1486","line":{"color":"rgba(31,119,180,1)"}},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Python: 70%<br />Using since 2021","error_y":{"color":"rgba(31,119,180,1)"},"error_x":{"color":"rgba(31,119,180,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[80],"y":["R"],"name":"R","marker":{"color":"#6A51A3","line":{"color":"rgba(255,127,14,1)"}},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => R: 80%<br />Using since 2008","error_y":{"color":"rgba(255,127,14,1)"},"error_x":{"color":"rgba(255,127,14,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[70],"y":["SQL"],"name":"SQL","marker":{"color":"#807DBA","line":{"color":"rgba(44,160,44,1)"}},"text":"70%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => SQL: 70%<br />Using since 2020","error_y":{"color":"rgba(44,160,44,1)"},"error_x":{"color":"rgba(44,160,44,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[80],"y":["Quarto"],"name":"Quarto","marker":{"color":"#9E9AC8","line":{"color":"rgba(214,39,40,1)"}},"text":"80%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => Quarto: 80%<br />Using since 2022","error_y":{"color":"rgba(214,39,40,1)"},"error_x":{"color":"rgba(214,39,40,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[60],"y":["HTML5/CSS"],"name":"HTML5/CSS","marker":{"color":"#BCBDDC","line":{"color":"rgba(148,103,189,1)"}},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => HTML5/CSS: 60%<br />Using since 2022","error_y":{"color":"rgba(148,103,189,1)"},"error_x":{"color":"rgba(148,103,189,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[50],"y":["DAX"],"name":"DAX","marker":{"color":"#DADAEB","line":{"color":"rgba(140,86,75,1)"}},"text":"50%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => DAX: 50%<br />Using since 2016","error_y":{"color":"rgba(140,86,75,1)"},"error_x":{"color":"rgba(140,86,75,1)"},"xaxis":"x","yaxis":"y","frame":null},{"type":"bar","orientation":"h","x":[60],"y":["VBA"],"name":"VBA","marker":{"color":"#F2F0F7","line":{"color":"rgba(227,119,194,1)"}},"text":"60%","textposition":"inside","insidetextfont":{"color":"white","size":14},"hoverinfo":"text","hovertext":"Knowledge considered => VBA: 60%<br />Using since 2003","error_y":{"color":"rgba(227,119,194,1)"},"error_x":{"color":"rgba(227,119,194,1)"},"xaxis":"x","yaxis":"y","frame":null}],"highlight":{"on":"plotly_click","persistent":false,"dynamic":false,"selectize":false,"opacityDim":0.20000000000000001,"selected":{"opacity":1},"debounce":0},"shinyEvents":["plotly_hover","plotly_click","plotly_selected","plotly_relayout","plotly_brushed","plotly_brushing","plotly_clickannotation","plotly_doubleclick","plotly_deselect","plotly_afterplot","plotly_sunburstclick"],"base_url":"https://plot.ly"},"evals":[],"jsHooks":[]}</script>
 </div>
 </div>
 </div>
@@ -1398,306 +1452,287 @@ Hermont Ozon, Rodrigo. n.d. <span>“Rodrigo Hermont Ozon -- Curriculum
 Vitae.”</span> <a href="https://rhozon.github.io/portcv/cv.html">https://rhozon.github.io/portcv/cv.html</a>.
 </div></div></section></div></main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
-window.document.addEventListener("DOMContentLoaded", function (event) {
-  const toggleBodyColorMode = (bsSheetEl) => {
-    const mode = bsSheetEl.getAttribute("data-mode");
-    const bodyEl = window.document.querySelector("body");
-    if (mode === "dark") {
-      bodyEl.classList.add("quarto-dark");
-      bodyEl.classList.remove("quarto-light");
-    } else {
-      bodyEl.classList.add("quarto-light");
-      bodyEl.classList.remove("quarto-dark");
-    }
-  }
-  const toggleBodyColorPrimary = () => {
-    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
-    if (bsSheetEl) {
-      toggleBodyColorMode(bsSheetEl);
-    }
-  }
-  toggleBodyColorPrimary();  
-  const icon = "";
-  const anchorJS = new window.AnchorJS();
-  anchorJS.options = {
-    placement: 'right',
-    icon: icon
-  };
-  anchorJS.add('.anchored');
-  const isCodeAnnotation = (el) => {
-    for (const clz of el.classList) {
-      if (clz.startsWith('code-annotation-')) {                     
-        return true;
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
       }
+      return false;
     }
-    return false;
-  }
-  const onCopySuccess = function(e) {
-    // button target
-    const button = e.trigger;
-    // don't keep focus
-    button.blur();
-    // flash "checked"
-    button.classList.add('code-copy-button-checked');
-    var currentTitle = button.getAttribute("title");
-    button.setAttribute("title", "Copied!");
-    let tooltip;
-    if (window.bootstrap) {
-      button.setAttribute("data-bs-toggle", "tooltip");
-      button.setAttribute("data-bs-placement", "left");
-      button.setAttribute("data-bs-title", "Copied!");
-      tooltip = new bootstrap.Tooltip(button, 
-        { trigger: "manual", 
-          customClass: "code-copy-button-tooltip",
-          offset: [0, -8]});
-      tooltip.show();    
-    }
-    setTimeout(function() {
-      if (tooltip) {
-        tooltip.hide();
-        button.removeAttribute("data-bs-title");
-        button.removeAttribute("data-bs-toggle");
-        button.removeAttribute("data-bs-placement");
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
       }
-      button.setAttribute("title", currentTitle);
-      button.classList.remove('code-copy-button-checked');
-    }, 1000);
-    // clear code selection
-    e.clearSelection();
-  }
-  const getTextToCopy = function(trigger) {
-      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
       for (const childEl of codeEl.children) {
         if (isCodeAnnotation(childEl)) {
           childEl.remove();
         }
       }
       return codeEl.innerText;
-  }
-  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-    text: getTextToCopy
-  });
-  clipboard.on('success', onCopySuccess);
-  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-    // For code content inside modals, clipBoardJS needs to be initialized with a container option
-    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-      text: getTextToCopy,
-      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
     });
-    clipboardModal.on('success', onCopySuccess);
-  }
-    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-    var mailtoRegex = new RegExp(/^mailto:/);
-      var filterRegex = new RegExp('/' + window.location.host + '/');
-    var isInternal = (href) => {
-        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
     }
-    // Inspect non-navigation links and adorn them if external
- 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-    for (var i=0; i<links.length; i++) {
-      const link = links[i];
-      if (!isInternal(link.href)) {
-        // undo the damage that might have been done by quarto-nav.js in the case of
-        // links that we want to consider external
-        if (link.dataset.originalHref !== undefined) {
-          link.href = link.dataset.originalHref;
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
         }
       }
-    }
-  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
-    const config = {
-      allowHTML: true,
-      maxWidth: 500,
-      delay: 100,
-      arrow: false,
-      appendTo: function(el) {
-          return el.parentElement;
-      },
-      interactive: true,
-      interactiveBorder: 10,
-      theme: 'quarto',
-      placement: 'bottom-start',
-    };
-    if (contentFn) {
-      config.content = contentFn;
-    }
-    if (onTriggerFn) {
-      config.onTrigger = onTriggerFn;
-    }
-    if (onUntriggerFn) {
-      config.onUntrigger = onUntriggerFn;
-    }
-    window.tippy(el, config); 
-  }
-  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
-  for (var i=0; i<noterefs.length; i++) {
-    const ref = noterefs[i];
-    tippyHover(ref, function() {
-      // use id or data attribute instead here
-      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
-      try { href = new URL(href).hash; } catch {}
-      const id = href.replace(/^#\/?/, "");
-      const note = window.document.getElementById(id);
-      if (note) {
-        return note.innerHTML;
-      } else {
-        return "";
-      }
-    });
-  }
-      let selectedAnnoteEl;
-      const selectorForAnnotation = ( cell, annotation) => {
-        let cellAttr = 'data-code-cell="' + cell + '"';
-        let lineAttr = 'data-code-annotation="' +  annotation + '"';
-        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
-        return selector;
-      }
-      const selectCodeLines = (annoteEl) => {
-        const doc = window.document;
-        const targetCell = annoteEl.getAttribute("data-target-cell");
-        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
-        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
-        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
-        const lineIds = lines.map((line) => {
-          return targetCell + "-" + line;
-        })
-        let top = null;
-        let height = null;
-        let parent = null;
-        if (lineIds.length > 0) {
-            //compute the position of the single el (top and bottom and make a div)
-            const el = window.document.getElementById(lineIds[0]);
-            top = el.offsetTop;
-            height = el.offsetHeight;
-            parent = el.parentElement.parentElement;
-          if (lineIds.length > 1) {
-            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
-            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
-            height = bottom - top;
-          }
-          if (top !== null && height !== null && parent !== null) {
-            // cook up a div (if necessary) and position it 
-            let div = window.document.getElementById("code-annotation-line-highlight");
-            if (div === null) {
-              div = window.document.createElement("div");
-              div.setAttribute("id", "code-annotation-line-highlight");
-              div.style.position = 'absolute';
-              parent.appendChild(div);
-            }
-            div.style.top = top - 2 + "px";
-            div.style.height = height + 4 + "px";
-            div.style.left = 0;
-            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
-            if (gutterDiv === null) {
-              gutterDiv = window.document.createElement("div");
-              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
-              gutterDiv.style.position = 'absolute';
-              const codeCell = window.document.getElementById(targetCell);
-              const gutter = codeCell.querySelector('.code-annotation-gutter');
-              gutter.appendChild(gutterDiv);
-            }
-            gutterDiv.style.top = top - 2 + "px";
-            gutterDiv.style.height = height + 4 + "px";
-          }
-          selectedAnnoteEl = annoteEl;
-        }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
       };
-      const unselectCodeLines = () => {
-        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
-        elementsIds.forEach((elId) => {
-          const div = window.document.getElementById(elId);
-          if (div) {
-            div.remove();
-          }
-        });
-        selectedAnnoteEl = undefined;
-      };
-        // Handle positioning of the toggle
-    window.addEventListener(
-      "resize",
-      throttle(() => {
-        elRect = undefined;
-        if (selectedAnnoteEl) {
-          selectCodeLines(selectedAnnoteEl);
-        }
-      }, 10)
-    );
-    function throttle(fn, ms) {
-    let throttle = false;
-    let timer;
-      return (...args) => {
-        if(!throttle) { // first call gets through
-            fn.apply(this, args);
-            throttle = true;
-        } else { // all the others get throttled
-            if(timer) clearTimeout(timer); // cancel #2
-            timer = setTimeout(() => {
-              fn.apply(this, args);
-              timer = throttle = false;
-            }, ms);
-        }
-      };
-    }
-      // Attach click handler to the DT
-      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
-      for (const annoteDlNode of annoteDls) {
-        annoteDlNode.addEventListener('click', (event) => {
-          const clickedEl = event.target;
-          if (clickedEl !== selectedAnnoteEl) {
-            unselectCodeLines();
-            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
-            if (activeEl) {
-              activeEl.classList.remove('code-annotation-active');
-            }
-            selectCodeLines(clickedEl);
-            clickedEl.classList.add('code-annotation-active');
-          } else {
-            // Unselect the line
-            unselectCodeLines();
-            clickedEl.classList.remove('code-annotation-active');
-          }
-        });
+      if (contentFn) {
+        config.content = contentFn;
       }
-  const findCites = (el) => {
-    const parentEl = el.parentElement;
-    if (parentEl) {
-      const cites = parentEl.dataset.cites;
-      if (cites) {
-        return {
-          el,
-          cites: cites.split(' ')
-        };
-      } else {
-        return findCites(el.parentElement)
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
       }
-    } else {
-      return undefined;
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
     }
-  };
-  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
-  for (var i=0; i<bibliorefs.length; i++) {
-    const ref = bibliorefs[i];
-    const citeInfo = findCites(ref);
-    if (citeInfo) {
-      tippyHover(citeInfo.el, function() {
-        var popup = window.document.createElement('div');
-        citeInfo.cites.forEach(function(cite) {
-          var citeDiv = window.document.createElement('div');
-          citeDiv.classList.add('hanging-indent');
-          citeDiv.classList.add('csl-entry');
-          var biblioDiv = window.document.getElementById('ref-' + cite);
-          if (biblioDiv) {
-            citeDiv.innerHTML = biblioDiv.innerHTML;
-          }
-          popup.appendChild(citeDiv);
-        });
-        return popup.innerHTML;
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
       });
     }
-  }
-});
-</script>
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
 </div> <!-- /content -->
 
 
