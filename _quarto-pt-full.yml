@@ -29,13 +29,13 @@ website:
         text: Ensino
       - href: pt/oquant.qmd
         text: Consultoria
-      - href: cv.qmd
+      - href: cv.html
         text: CV Completo
     right:
       - href: pt/contact.qmd
         text: Contato
       - text: "EN"
-        href: index.qmd
+        href: index.html
       - icon: linkedin
         href: https://www.linkedin.com/in/rodrigohermontozon/
       - icon: github
