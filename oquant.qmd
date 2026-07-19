@@ -35,27 +35,27 @@ OQuant is an independent data science consultancy founded in March 2025 by Rodri
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
   <div class="rh-card">
-    <h3>📈 Forecasting &amp; Time Series</h3>
+    <h3>Forecasting &amp; Time Series</h3>
     <p>Demand, price, and volatility forecasting with classical econometrics (ARIMA, GARCH-family, GAMLSS, Bayesian MSGARCH) and machine learning hybrids — with honest out-of-sample validation, not curve-fitting.</p>
   </div>
   <div class="rh-card">
-    <h3>🔬 Econometric Modeling &amp; Causal Inference</h3>
+    <h3>Econometric Modeling &amp; Causal Inference</h3>
     <p>Answering "what actually drives this?" — regression diagnostics, panel and instrumental-variable methods, quasi-experimental designs, and Bayesian multicausal models grounded in economic theory.</p>
   </div>
   <div class="rh-card">
-    <h3>🎲 Risk Analytics &amp; Simulation</h3>
+    <h3>Risk Analytics &amp; Simulation</h3>
     <p>Quantitative risk measurement and scenario analysis: Monte Carlo simulation, extreme value modeling, portfolio and multi-objective optimization for pricing, sourcing, and investment decisions.</p>
   </div>
   <div class="rh-card">
-    <h3>🤖 Machine Learning &amp; Predictive Modeling</h3>
+    <h3>Machine Learning &amp; Predictive Modeling</h3>
     <p>Supervised and deep learning models (including CNN+LSTM architectures and survival analysis for predictive maintenance) built with proper feature engineering, ablation testing, and MLOps discipline.</p>
   </div>
   <div class="rh-card">
-    <h3>📊 Business Intelligence &amp; Decision Support</h3>
+    <h3>Business Intelligence &amp; Decision Support</h3>
     <p>KPI frameworks, dashboards, and analytical pipelines that turn scattered data into a single, trusted view — from data modeling and governance documentation to executive-ready reporting.</p>
   </div>
   <div class="rh-card">
-    <h3>💬 Generative AI for Business</h3>
+    <h3>Generative AI for Business</h3>
     <p>Practical LLM applications: internal chatbots, multi-agent and sub-agent workflow orchestration, and AI-assisted knowledge management — designed around your processes, with measurable value.</p>
   </div>
 </div>
@@ -74,15 +74,15 @@ OQuant is an independent data science consultancy founded in March 2025 by Rodri
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
   <div class="rh-card">
-    <h3>🩺 Grupo Fleury</h3>
+    <h3>Grupo Fleury</h3>
     <p>Consulting work for one of Brazil's leading healthcare and diagnostic medicine groups.</p>
   </div>
   <div class="rh-card">
-    <h3>🌾 Aurora Alimentos</h3>
+    <h3>Aurora Alimentos</h3>
     <p>Consulting work for one of Brazil's largest food industry cooperatives.</p>
   </div>
   <div class="rh-card">
-    <h3>🎓 Cogna Educacional</h3>
+    <h3>Cogna Educacional</h3>
     <p>Consulting work for one of Brazil's largest education companies.</p>
   </div>
 </div>
@@ -142,15 +142,15 @@ Client engagements are confidential; sector references are shared with permissio
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
   <div class="rh-card">
-    <h3>🎓 PhD-level rigor</h3>
+    <h3>PhD-level rigor</h3>
     <p>Active doctoral research in multi-objective optimization, Bayesian econometrics, and time series at PUCPR, an MSc in Economic Development (UFPR), peer-reviewed publications, and reviewer roles for journals such as <em>Applied Soft Computing</em>. The methods behind your project are the ones surviving academic scrutiny.</p>
   </div>
   <div class="rh-card">
-    <h3>🏭 15+ years of industry track record</h3>
+    <h3>15+ years of industry track record</h3>
     <p>Hands-on delivery inside large organizations — Volvo Group, BRF, CNH Industrial, Unimed — plus UNDP/UN research work and years of economic analysis for industry federations. I know how corporate data, politics, and deadlines actually behave.</p>
   </div>
   <div class="rh-card">
-    <h3>⚙️ End-to-end capability</h3>
+    <h3>End-to-end capability</h3>
     <p>From statistical theory to production code: econometric specification, Python/R/SQL implementation, cloud data pipelines (Azure, Databricks, PySpark), and MLOps. One consultant covers the full path from hypothesis to deployed system.</p>
   </div>
 </div>

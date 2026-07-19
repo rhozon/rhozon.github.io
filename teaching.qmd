@@ -14,7 +14,7 @@ toc: false
 
 ```{=html}
 <div class="rh-card">
-  <h3>🎓 Undergraduate Professor — FAE Business School</h3>
+  <h3>Undergraduate Professor — FAE Business School</h3>
   <p><strong>Feb 2025 – Present · Curitiba, PR</strong></p>
   <p>Teaching undergraduate courses in Data Science for Business and Financial Markets:</p>
   <ul>
@@ -106,7 +106,7 @@ Continuous training in econometrics, finance, and data science from leading inst
 
 ```{=html}
 <div class="rh-card">
-  <h3>📚 Public tutorials in econometrics, ML and data science</h3>
+  <h3>Public tutorials in econometrics, ML and data science</h3>
   <p>More than 30 open-access tutorials and applied classes covering econometrics, machine learning, time series forecasting, and data science — written in R and Python and freely available online.</p>
   <p>
     <a class="rh-btn rh-btn-primary" href="https://rhozon.github.io/selecaodeprodutosnor/index.html" target="_blank">Browse the tutorials</a>

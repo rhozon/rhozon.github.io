@@ -16,21 +16,21 @@ toc: false
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
   <div class="rh-card">
-    <h3>🏥 Unimed do Estado do Paraná</h3>
+    <h3>Unimed do Estado do Paraná</h3>
     <p><strong>Data Scientist</strong> · Jan 2026 – Present</p>
     <p>Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.</p>
   </div>
   <div class="rh-card">
-    <h3>📈 OQuant Data Science Consulting</h3>
+    <h3>OQuant Data Science Consulting</h3>
     <p><strong>Founder &amp; Principal Consultant</strong> · Mar 2025 – Present</p>
     <p>Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.</p>
-    <p><a href="oquant.html">Learn more about OQuant →</a></p>
+    <p><a href="oquant.html">Learn more about OQuant </a></p>
   </div>
   <div class="rh-card">
-    <h3>🎓 FAE Business School</h3>
+    <h3>FAE Business School</h3>
     <p><strong>Undergraduate Professor</strong> · Feb 2025 – Present</p>
     <p>Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.</p>
-    <p><a href="teaching.html">See my teaching page →</a></p>
+    <p><a href="teaching.html">See my teaching page </a></p>
   </div>
 </div>
 ```

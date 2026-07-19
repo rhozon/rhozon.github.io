@@ -11,7 +11,7 @@ toc: false
 
 ```{=html}
 <div class="rh-card">
-  <h3>🎓 PhD in Industrial &amp; Systems Engineering</h3>
+  <h3>PhD in Industrial &amp; Systems Engineering</h3>
   <p><strong>Pontifical Catholic University of Paraná (PUCPR)</strong> — 2022 to 2027 (expected).
   Advisor: <strong>Gilberto Reynoso-Meza</strong>.</p>
   <p>Research on econometric forecasting and multi-objective decision-making for agricultural
@@ -25,7 +25,7 @@ toc: false
     <span class="rh-pill">Forecasting</span>
   </p>
   <p style="margin-top:1rem;">
-    <a class="rh-btn rh-btn-primary" href="https://pibicagrofinance.github.io/site/">PIBIC AgroFinance project site →</a>
+    <a class="rh-btn rh-btn-primary" href="https://pibicagrofinance.github.io/site/">PIBIC AgroFinance project site </a>
   </p>
 </div>
 ```
@@ -49,7 +49,7 @@ toc: false
     <h3>MSc in Economic Development</h3>
     <div class="rh-tl-org">UFPR – Curitiba, PR</div>
     <p>Emphasis on big data, multivariate analysis and econometrics.
-    <a href="https://acervodigital.ufpr.br/xmlui/bitstream/handle/1884/25651/Disserta_v12.pdf?sequence=1&amp;isAllowed=y">Read the thesis →</a></p>
+    <a href="https://acervodigital.ufpr.br/xmlui/bitstream/handle/1884/25651/Disserta_v12.pdf?sequence=1&amp;isAllowed=y">Read the thesis </a></p>
   </div>
   <div class="rh-tl-item">
     <div class="rh-tl-date">2007</div>
@@ -57,7 +57,7 @@ toc: false
     <div class="rh-tl-org">UFPR – Curitiba, PR</div>
     <p>Undergraduate thesis on oil price volatility (GARCH-M), honored and continued as a research
     project at the UFPR Laboratory of Statistics and GeoInformation.
-    <a href="http://leg.ufpr.br/doku.php/projetos:ehlers:volprev">View the project →</a></p>
+    <a href="http://leg.ufpr.br/doku.php/projetos:ehlers:volprev">View the project </a></p>
   </div>
 </div>
 ```
@@ -125,17 +125,17 @@ toc: false
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
   <div class="rh-card">
-    <h3>🔍 Reviewer — Applied Soft Computing</h3>
+    <h3>Reviewer — Applied Soft Computing</h3>
     <p>Peer reviewer for the <em>Applied Soft Computing</em> journal (Elsevier), 2024 – present.
-    <a href="https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf">Reviewer certificate →</a></p>
+    <a href="https://github.com/rhozon/Doutorado/blob/main/Certificate_ASOC_Recognised.pdf">Reviewer certificate </a></p>
   </div>
   <div class="rh-card">
-    <h3>📝 Reviewer — PRINCIPIA</h3>
+    <h3>Reviewer — PRINCIPIA</h3>
     <p>Peer reviewer for the <em>PRINCIPIA</em> journal (UFJF, Juiz de Fora), 2024 – present.
-    <a href="https://periodicos.ufjf.br/index.php/principia">Journal website →</a></p>
+    <a href="https://periodicos.ufjf.br/index.php/principia">Journal website </a></p>
   </div>
   <div class="rh-card">
-    <h3>🏛️ Scientific Advisory Committee</h3>
+    <h3>Scientific Advisory Committee</h3>
     <p>Scientific Advisory Committee member at PUCPR (2023; 2024–2025), supporting the evaluation
     of research and scientific initiation programs.</p>
   </div>

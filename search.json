@@ -25,14 +25,14 @@
     "href": "oquant.html#what-oquant-does",
     "title": "Rodrigo Hermont Ozon",
     "section": "What OQuant does",
-    "text": "What OQuant does\n\n  \n    📈 Forecasting & Time Series\n    Demand, price, and volatility forecasting with classical econometrics (ARIMA, GARCH-family, GAMLSS, Bayesian MSGARCH) and machine learning hybrids — with honest out-of-sample validation, not curve-fitting.\n  \n  \n    🔬 Econometric Modeling & Causal Inference\n    Answering \"what actually drives this?\" — regression diagnostics, panel and instrumental-variable methods, quasi-experimental designs, and Bayesian multicausal models grounded in economic theory.\n  \n  \n    🎲 Risk Analytics & Simulation\n    Quantitative risk measurement and scenario analysis: Monte Carlo simulation, extreme value modeling, portfolio and multi-objective optimization for pricing, sourcing, and investment decisions.\n  \n  \n    🤖 Machine Learning & Predictive Modeling\n    Supervised and deep learning models (including CNN+LSTM architectures and survival analysis for predictive maintenance) built with proper feature engineering, ablation testing, and MLOps discipline.\n  \n  \n    📊 Business Intelligence & Decision Support\n    KPI frameworks, dashboards, and analytical pipelines that turn scattered data into a single, trusted view — from data modeling and governance documentation to executive-ready reporting.\n  \n  \n    💬 Generative AI for Business\n    Practical LLM applications: internal chatbots, multi-agent and sub-agent workflow orchestration, and AI-assisted knowledge management — designed around your processes, with measurable value."
+    "text": "What OQuant does\n\n  \n    Forecasting & Time Series\n    Demand, price, and volatility forecasting with classical econometrics (ARIMA, GARCH-family, GAMLSS, Bayesian MSGARCH) and machine learning hybrids — with honest out-of-sample validation, not curve-fitting.\n  \n  \n    Econometric Modeling & Causal Inference\n    Answering \"what actually drives this?\" — regression diagnostics, panel and instrumental-variable methods, quasi-experimental designs, and Bayesian multicausal models grounded in economic theory.\n  \n  \n    Risk Analytics & Simulation\n    Quantitative risk measurement and scenario analysis: Monte Carlo simulation, extreme value modeling, portfolio and multi-objective optimization for pricing, sourcing, and investment decisions.\n  \n  \n    Machine Learning & Predictive Modeling\n    Supervised and deep learning models (including CNN+LSTM architectures and survival analysis for predictive maintenance) built with proper feature engineering, ablation testing, and MLOps discipline.\n  \n  \n    Business Intelligence & Decision Support\n    KPI frameworks, dashboards, and analytical pipelines that turn scattered data into a single, trusted view — from data modeling and governance documentation to executive-ready reporting.\n  \n  \n    Generative AI for Business\n    Practical LLM applications: internal chatbots, multi-agent and sub-agent workflow orchestration, and AI-assisted knowledge management — designed around your processes, with measurable value."
   },
   {
     "objectID": "oquant.html#organizations-oquant-has-served",
     "href": "oquant.html#organizations-oquant-has-served",
     "title": "Rodrigo Hermont Ozon",
     "section": "Organizations OQuant has served",
-    "text": "Organizations OQuant has served\n\n  \n    🩺 Grupo Fleury\n    Consulting work for one of Brazil's leading healthcare and diagnostic medicine groups.\n  \n  \n    🌾 Aurora Alimentos\n    Consulting work for one of Brazil's largest food industry cooperatives.\n  \n  \n    🎓 Cogna Educacional\n    Consulting work for one of Brazil's largest education companies.\n  \n\nClient engagements are confidential; sector references are shared with permission and project details remain under NDA."
+    "text": "Organizations OQuant has served\n\n  \n    Grupo Fleury\n    Consulting work for one of Brazil's leading healthcare and diagnostic medicine groups.\n  \n  \n    Aurora Alimentos\n    Consulting work for one of Brazil's largest food industry cooperatives.\n  \n  \n    Cogna Educacional\n    Consulting work for one of Brazil's largest education companies.\n  \n\nClient engagements are confidential; sector references are shared with permission and project details remain under NDA."
   },
   {
     "objectID": "oquant.html#a-disciplined-engagement-model",
@@ -46,7 +46,7 @@
     "href": "oquant.html#what-you-are-actually-buying",
     "title": "Rodrigo Hermont Ozon",
     "section": "What you are actually buying",
-    "text": "What you are actually buying\n\n  \n    🎓 PhD-level rigor\n    Active doctoral research in multi-objective optimization, Bayesian econometrics, and time series at PUCPR, an MSc in Economic Development (UFPR), peer-reviewed publications, and reviewer roles for journals such as Applied Soft Computing. The methods behind your project are the ones surviving academic scrutiny.\n  \n  \n    🏭 15+ years of industry track record\n    Hands-on delivery inside large organizations — Volvo Group, BRF, CNH Industrial, Unimed — plus UNDP/UN research work and years of economic analysis for industry federations. I know how corporate data, politics, and deadlines actually behave.\n  \n  \n    ⚙️ End-to-end capability\n    From statistical theory to production code: econometric specification, Python/R/SQL implementation, cloud data pipelines (Azure, Databricks, PySpark), and MLOps. One consultant covers the full path from hypothesis to deployed system."
+    "text": "What you are actually buying\n\n  \n    PhD-level rigor\n    Active doctoral research in multi-objective optimization, Bayesian econometrics, and time series at PUCPR, an MSc in Economic Development (UFPR), peer-reviewed publications, and reviewer roles for journals such as Applied Soft Computing. The methods behind your project are the ones surviving academic scrutiny.\n  \n  \n    15+ years of industry track record\n    Hands-on delivery inside large organizations — Volvo Group, BRF, CNH Industrial, Unimed — plus UNDP/UN research work and years of economic analysis for industry federations. I know how corporate data, politics, and deadlines actually behave.\n  \n  \n    End-to-end capability\n    From statistical theory to production code: econometric specification, Python/R/SQL implementation, cloud data pipelines (Azure, Databricks, PySpark), and MLOps. One consultant covers the full path from hypothesis to deployed system."
   },
   {
     "objectID": "oquant.html#lets-talk-about-your-problem",
@@ -60,21 +60,21 @@
     "href": "research.html",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "PhD research\n\n\n\n\n  \n  Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site →"
+    "text": "PhD research\n\n\n\n\n  \n  Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site"
   },
   {
     "objectID": "research.html#doctoral-research-at-pucpr",
     "href": "research.html#doctoral-research-at-pucpr",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site →"
+    "text": "Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site"
   },
   {
     "objectID": "research.html#academic-background",
     "href": "research.html#academic-background",
     "title": "Rodrigo Hermont Ozon",
     "section": "Academic background",
-    "text": "Academic background\n\n  \n    2022 – 2027 (expected)\n    PhD Candidate, Industrial & Systems Engineering\n    PUCPR – Curitiba, PR\n    Applied time series analysis, financial and Bayesian econometrics, multi-objective\n    portfolio optimization and modelling of extremal events. Advisor: Gilberto Reynoso-Meza.\n  \n  \n    2011\n    MSc in Economic Development\n    UFPR – Curitiba, PR\n    Emphasis on big data, multivariate analysis and econometrics.\n    Read the thesis →\n  \n  \n    2007\n    BSc in Economics\n    UFPR – Curitiba, PR\n    Undergraduate thesis on oil price volatility (GARCH-M), honored and continued as a research\n    project at the UFPR Laboratory of Statistics and GeoInformation.\n    View the project →"
+    "text": "Academic background\n\n  \n    2022 – 2027 (expected)\n    PhD Candidate, Industrial & Systems Engineering\n    PUCPR – Curitiba, PR\n    Applied time series analysis, financial and Bayesian econometrics, multi-objective\n    portfolio optimization and modelling of extremal events. Advisor: Gilberto Reynoso-Meza.\n  \n  \n    2011\n    MSc in Economic Development\n    UFPR – Curitiba, PR\n    Emphasis on big data, multivariate analysis and econometrics.\n    Read the thesis \n  \n  \n    2007\n    BSc in Economics\n    UFPR – Curitiba, PR\n    Undergraduate thesis on oil price volatility (GARCH-M), honored and continued as a research\n    project at the UFPR Laboratory of Statistics and GeoInformation.\n    View the project"
   },
   {
     "objectID": "research.html#selected-academic-output",
@@ -88,49 +88,49 @@
     "href": "research.html#peer-review-committees",
     "title": "Rodrigo Hermont Ozon",
     "section": "Peer review & committees",
-    "text": "Peer review & committees\n\n  \n    🔍 Reviewer — Applied Soft Computing\n    Peer reviewer for the Applied Soft Computing journal (Elsevier), 2024 – present.\n    Reviewer certificate →\n  \n  \n    📝 Reviewer — PRINCIPIA\n    Peer reviewer for the PRINCIPIA journal (UFJF, Juiz de Fora), 2024 – present.\n    Journal website →\n  \n  \n    🏛️ Scientific Advisory Committee\n    Scientific Advisory Committee member at PUCPR (2023; 2024–2025), supporting the evaluation\n    of research and scientific initiation programs.\n  \n\n\n\n  Google Scholar\n  Lattes CV\n  ORCID"
+    "text": "Peer review & committees\n\n  \n    Reviewer — Applied Soft Computing\n    Peer reviewer for the Applied Soft Computing journal (Elsevier), 2024 – present.\n    Reviewer certificate \n  \n  \n    Reviewer — PRINCIPIA\n    Peer reviewer for the PRINCIPIA journal (UFJF, Juiz de Fora), 2024 – present.\n    Journal website \n  \n  \n    Scientific Advisory Committee\n    Scientific Advisory Committee member at PUCPR (2023; 2024–2025), supporting the evaluation\n    of research and scientific initiation programs.\n  \n\n\n\n  Google Scholar\n  Lattes CV\n  ORCID"
   },
   {
     "objectID": "index.html",
     "href": "index.html",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "Econometrician · The original data science\n    \n    \n      Data Scientist at Unimed do Estado do Paraná, PhD researcher in Industrial & Systems\n      Engineering (PUCPR), founder of OQuant consulting and professor at FAE Business School.\n      15+ years turning data into decisions with econometrics, forecasting, risk analytics and AI.\n    \n    \n      Work with me\n      Full CV\n      WhatsApp"
+    "text": "Econometrician · The original data science\n    \n    \n      Data Scientist at Unimed do Estado do Paraná, PhD researcher in Industrial & Systems\n      Engineering (PUCPR), founder of OQuant consulting and professor at FAE Business School.\n      Fifteen years applying GARCH-family models, Bayesian econometrics, multi-objective optimization\n      and, more recently, multi-agent AI systems to problems in healthcare, agribusiness and industry.\n    \n    \n      Consulting\n      Full CV\n      WhatsApp"
   },
   {
-    "objectID": "index.html#from-economic-theory-to-production-grade-analytics",
-    "href": "index.html#from-economic-theory-to-production-grade-analytics",
+    "objectID": "index.html#four-fronts-one-discipline",
+    "href": "index.html#four-fronts-one-discipline",
     "title": "Rodrigo Hermont Ozon",
-    "section": "From economic theory to production-grade analytics",
-    "text": "From economic theory to production-grade analytics\n\n  \n    📈 Econometrics & Forecasting\n    Time series, Bayesian methods, GARCH-family volatility models, causal inference and\n    multi-objective portfolio optimization — applied to commodities, healthcare and industry.\n  \n  \n    🤖 Data Science & AI\n    Machine learning, MLOps and Generative AI: internal chatbots, multi-agent orchestration\n    and AI-assisted decision-making in production environments.\n  \n  \n    💼 Consulting (OQuant)\n    Founder & principal consultant. Projects for Grupo Fleury, Aurora Alimentos and Cogna\n    Educacional in forecasting, risk analytics and decision support.\n  \n  \n    🎓 Teaching & Research\n    Professor of Data Science for Business and Financial Markets (FAE). PhD researcher at\n    PUCPR. Reviewer for Applied Soft Computing and PRINCIPIA."
+    "section": "Four fronts, one discipline",
+    "text": "Four fronts, one discipline\n\n  \n    Econometrics & Forecasting\n    Time series, Bayesian methods, GARCH-family volatility models, causal inference and\n    multi-objective portfolio optimization — applied to commodities, healthcare and industry.\n  \n  \n    Data Science & AI\n    Machine learning, MLOps and Generative AI: internal chatbots, multi-agent orchestration\n    and AI-assisted decision-making in production environments.\n  \n  \n    Consulting (OQuant)\n    Founder & principal consultant. Projects for Grupo Fleury, Aurora Alimentos and Cogna\n    Educacional in forecasting, risk analytics and decision support.\n  \n  \n    Teaching & Research\n    Professor of Data Science for Business and Financial Markets (FAE). PhD researcher at\n    PUCPR. Reviewer for Applied Soft Computing and PRINCIPIA."
   },
   {
     "objectID": "index.html#where-ive-made-an-impact",
     "href": "index.html#where-ive-made-an-impact",
     "title": "Rodrigo Hermont Ozon",
     "section": "Where I’ve made an impact",
-    "text": "Where I’ve made an impact\n\n  \n  \n  \n  \n  \n  \n  \n  \n\nSee full experience →"
+    "text": "Where I’ve made an impact\n\n  \n  \n  \n  \n  \n  \n  \n  \n\nSee full experience"
   },
   {
     "objectID": "index.html#recent-work-recognition",
     "href": "index.html#recent-work-recognition",
     "title": "Rodrigo Hermont Ozon",
     "section": "Recent work & recognition",
-    "text": "Recent work & recognition\n2026 — Data Scientist at Unimed do Estado do Paraná: healthcare analytics and Generative AI (chatbots, multi-agent orchestration). Curitiba, PR\n2024 — Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios. LVI SBPO, Fortaleza\n2024 — Predictive Maintenance Strategies in Agriculture Using Survival Analysis. XXV Congresso Brasileiro de Automática\n2024 — PhD Finalist. XI ENPPEPRO — National Meeting of Industrial Engineering Graduate Programs\nAll research →"
+    "text": "Recent work & recognition\n2026 — Data Scientist at Unimed do Estado do Paraná: healthcare analytics and Generative AI (chatbots, multi-agent orchestration). Curitiba, PR\n2024 — Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios. LVI SBPO, Fortaleza\n2024 — Predictive Maintenance Strategies in Agriculture Using Survival Analysis. XXV Congresso Brasileiro de Automática\n2024 — PhD Finalist. XI ENPPEPRO — National Meeting of Industrial Engineering Graduate Programs\nAll research"
   },
   {
     "objectID": "experience.html",
     "href": "experience.html",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "WHERE I WORK NOW\n\n\n\n  \n    \n    Data Scientist · Jan 2026 – Present\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.\n    Learn more about OQuant →\n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Present\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page →"
+    "text": "WHERE I WORK NOW\n\n\n\n  \n    \n    Data Scientist · Jan 2026 – Present\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.\n    Learn more about OQuant \n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Present\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page"
   },
   {
     "objectID": "experience.html#current-roles",
     "href": "experience.html#current-roles",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "Data Scientist · Jan 2026 – Present\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.\n    Learn more about OQuant →\n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Present\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page →"
+    "text": "Data Scientist · Jan 2026 – Present\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.\n    Learn more about OQuant \n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Present\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page"
   },
   {
     "objectID": "experience.html#career-timeline",
@@ -179,7 +179,7 @@
     "href": "teaching.html#free-tutorials-and-classes",
     "title": "Rodrigo Hermont Ozon",
     "section": "Free tutorials and classes",
-    "text": "Free tutorials and classes\n\n  📚 Public tutorials in econometrics, ML and data science\n  More than 30 open-access tutorials and applied classes covering econometrics, machine learning, time series forecasting, and data science — written in R and Python and freely available online.\n  \n    Browse the tutorials"
+    "text": "Free tutorials and classes\n\n  Public tutorials in econometrics, ML and data science\n  More than 30 open-access tutorials and applied classes covering econometrics, machine learning, time series forecasting, and data science — written in R and Python and freely available online.\n  \n    Browse the tutorials"
   },
   {
     "objectID": "contact.html",

@@ -16,10 +16,11 @@ toc: false
     <p class="rh-hero-tagline">
       Data Scientist at <strong>Unimed do Estado do Paraná</strong>, PhD researcher in Industrial &amp; Systems
       Engineering (PUCPR), founder of <strong>OQuant</strong> consulting and professor at FAE Business School.
-      15+ years turning data into decisions with econometrics, forecasting, risk analytics and AI.
+      Fifteen years applying GARCH-family models, Bayesian econometrics, multi-objective optimization
+      and, more recently, multi-agent AI systems to problems in healthcare, agribusiness and industry.
     </p>
     <div style="margin-top: 1.2rem;">
-      <a class="rh-btn rh-btn-primary" href="oquant.html">Work with me</a>
+      <a class="rh-btn rh-btn-primary" href="oquant.html">Consulting</a>
       <a class="rh-btn rh-btn-ghost" href="cv.html">Full CV</a>
       <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">WhatsApp</a>
     </div>
@@ -36,27 +37,27 @@ toc: false
 
 ::: {.rh-section}
 <div class="rh-kicker">What I do</div>
-## From economic theory to production-grade analytics
+## Four fronts, one discipline
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
   <div class="rh-card">
-    <h3>📈 Econometrics &amp; Forecasting</h3>
+    <h3>Econometrics &amp; Forecasting</h3>
     <p>Time series, Bayesian methods, GARCH-family volatility models, causal inference and
     multi-objective portfolio optimization — applied to commodities, healthcare and industry.</p>
   </div>
   <div class="rh-card">
-    <h3>🤖 Data Science &amp; AI</h3>
+    <h3>Data Science &amp; AI</h3>
     <p>Machine learning, MLOps and Generative AI: internal chatbots, multi-agent orchestration
     and AI-assisted decision-making in production environments.</p>
   </div>
   <div class="rh-card">
-    <h3>💼 Consulting (OQuant)</h3>
+    <h3>Consulting (OQuant)</h3>
     <p>Founder &amp; principal consultant. Projects for Grupo Fleury, Aurora Alimentos and Cogna
     Educacional in forecasting, risk analytics and decision support.</p>
   </div>
   <div class="rh-card">
-    <h3>🎓 Teaching &amp; Research</h3>
+    <h3>Teaching &amp; Research</h3>
     <p>Professor of Data Science for Business and Financial Markets (FAE). PhD researcher at
     PUCPR. Reviewer for <em>Applied Soft Computing</em> and <em>PRINCIPIA</em>.</p>
   </div>
@@ -79,7 +80,7 @@ toc: false
   <a href="teaching.html" title="FAE Business School"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/fae_logo.jpg" alt="FAE"></a>
   <a href="research.html" title="PUCPR"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/pucpr_logo.jpg" alt="PUCPR"></a>
 </div>
-<p><a class="rh-btn rh-btn-ghost" href="experience.html">See full experience →</a></p>
+<p><a class="rh-btn rh-btn-ghost" href="experience.html">See full experience </a></p>
 ```
 :::
 
@@ -92,6 +93,6 @@ toc: false
 <div class="rh-pub"><strong>2024 —</strong> <em>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</em> <span class="rh-pub-venue">LVI SBPO, Fortaleza</span></div>
 <div class="rh-pub"><strong>2024 —</strong> <em>Predictive Maintenance Strategies in Agriculture Using Survival Analysis.</em> <span class="rh-pub-venue">XXV Congresso Brasileiro de Automática</span></div>
 <div class="rh-pub"><strong>2024 —</strong> PhD Finalist. <span class="rh-pub-venue">XI ENPPEPRO — National Meeting of Industrial Engineering Graduate Programs</span></div>
-<p style="margin-top:1rem;"><a class="rh-btn rh-btn-ghost" href="research.html">All research →</a></p>
+<p style="margin-top:1rem;"><a class="rh-btn rh-btn-ghost" href="research.html">All research </a></p>
 ```
 :::
