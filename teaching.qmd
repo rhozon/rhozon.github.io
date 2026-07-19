@@ -1,0 +1,116 @@
+---
+title: ""
+pagetitle: "Teaching — Rodrigo Hermont Ozon"
+description: "Teaching activities of Rodrigo Hermont Ozon: current courses at FAE Business School, teaching history, certifications and open teaching materials."
+toc: false
+---
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">NOW TEACHING</div>
+```
+
+## FAE Business School
+
+```{=html}
+<div class="rh-card">
+  <h3>🎓 Undergraduate Professor — FAE Business School</h3>
+  <p><strong>Feb 2025 – Present · Curitiba, PR</strong></p>
+  <p>Teaching undergraduate courses in Data Science for Business and Financial Markets:</p>
+  <ul>
+    <li><strong>Big Data for Finance Project</strong> — data science and big data techniques applied to financial decision-making.</li>
+    <li><strong>Computational Programming</strong> — fundamentals and applications in data analytics and business intelligence.</li>
+    <li><strong>Risk Management</strong> — quantitative methods and practical tools for financial risk assessment and mitigation.</li>
+    <li><strong>Econometrics</strong> — regression diagnostics, causal inference, panel and time-series methods, and policy/market applications.</li>
+    <li><strong>Project Appraisal and Investment Analysis</strong> — DCF modeling, NPV/IRR, sensitivity and scenario analysis, Monte Carlo simulation, and real options.</li>
+  </ul>
+  <p>
+    <a class="rh-btn rh-btn-primary" href="https://profrhozon.github.io/site/" target="_blank">Visit the class site</a>
+  </p>
+</div>
+```
+:::
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">TEACHING HISTORY</div>
+```
+
+## Earlier appointments
+
+```{=html}
+<div class="rh-timeline">
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Aug 2024</div>
+    <h3>Postgraduate Professor — Executive MBA</h3>
+    <div class="rh-tl-org">ESIC International – Curitiba, PR</div>
+    <p>Taught a 12-hour module on Investments in the Executive MBA: evaluation criteria, risk, inflation impact, fiscal environment, and strategic investments.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan – Dec 2011</div>
+    <h3>Graduate Professor</h3>
+    <div class="rh-tl-org">FESP/PR – Curitiba, PR</div>
+    <p>Taught the Project Integration course in the Graduate Program in Project Management, based on PMBOK practices.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2009 – Dec 2011</div>
+    <h3>Undergraduate Professor</h3>
+    <div class="rh-tl-org">INESUL – Araucária, PR</div>
+    <p>Taught Financial Mathematics, Financial Management, SPC, Business Informatics, and Industry Performance Indicators. Coordinated Research and Graduate Studies from Jul 2009 to Mar 2010.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2009 – Dec 2010</div>
+    <h3>Undergraduate Professor</h3>
+    <div class="rh-tl-org">Universidade Positivo – Curitiba, PR</div>
+    <p>Taught Financial Markets, Monetary and Financial Economics, and Quantitative Methods for Business students.</p>
+  </div>
+
+</div>
+```
+:::
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">CERTIFICATIONS &amp; CONTINUED EDUCATION</div>
+```
+
+## Always learning
+
+Continuous training in econometrics, finance, and data science from leading institutions and platforms. Highlights:
+
+```{=html}
+<div style="display:flex; flex-wrap:wrap; gap:.5rem; margin:1rem 0;">
+  <span class="rh-pill">IBM Data Science Professional Certificate (144h)</span>
+  <span class="rh-pill">Econometrics: Methods &amp; Applications — Erasmus Rotterdam (56h)</span>
+  <span class="rh-pill">Financial Markets — Yale University (38h)</span>
+  <span class="rh-pill">The R Programming Environment — Johns Hopkins (16h)</span>
+  <span class="rh-pill">ETL and ELT in Python — DataCamp (2025)</span>
+  <span class="rh-pill">~40 DataCamp / Dataquest courses in R, Python, SQL &amp; ML</span>
+</div>
+<p>
+  <a class="rh-btn rh-btn-ghost" href="cv.html#certifications">See the full list on the CV</a>
+</p>
+```
+:::
+
+::: {.rh-section}
+```{=html}
+<div class="rh-kicker">OPEN TEACHING MATERIALS</div>
+```
+
+## Free tutorials and classes
+
+```{=html}
+<div class="rh-card">
+  <h3>📚 Public tutorials in econometrics, ML and data science</h3>
+  <p>More than 30 open-access tutorials and applied classes covering econometrics, machine learning, time series forecasting, and data science — written in R and Python and freely available online.</p>
+  <p>
+    <a class="rh-btn rh-btn-primary" href="https://rhozon.github.io/selecaodeprodutosnor/index.html" target="_blank">Browse the tutorials</a>
+  </p>
+</div>
+```
+:::

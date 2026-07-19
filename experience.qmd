@@ -1,0 +1,219 @@
+---
+title: ""
+pagetitle: "Professional Experience — Rodrigo Hermont Ozon"
+description: "Professional experience of Rodrigo Hermont Ozon — econometrician and data scientist: current roles, full career timeline, and technical toolbox."
+toc: false
+---
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">WHERE I WORK NOW</div>
+```
+
+## Current roles
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>🏥 Unimed do Estado do Paraná</h3>
+    <p><strong>Data Scientist</strong> · Jan 2026 – Present</p>
+    <p>Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.</p>
+  </div>
+  <div class="rh-card">
+    <h3>📈 OQuant Data Science Consulting</h3>
+    <p><strong>Founder &amp; Principal Consultant</strong> · Mar 2025 – Present</p>
+    <p>Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.</p>
+    <p><a href="oquant.html">Learn more about OQuant →</a></p>
+  </div>
+  <div class="rh-card">
+    <h3>🎓 FAE Business School</h3>
+    <p><strong>Undergraduate Professor</strong> · Feb 2025 – Present</p>
+    <p>Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.</p>
+    <p><a href="teaching.html">See my teaching page →</a></p>
+  </div>
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">15+ YEARS IN DATA & ECONOMICS</div>
+```
+
+## Career timeline
+
+```{=html}
+<div class="rh-timeline">
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2026 – Present</div>
+    <h3>Data Scientist</h3>
+    <div class="rh-tl-org">Unimed do Estado do Paraná – Curitiba, PR</div>
+    <p>Healthcare analytics, BI and Generative AI: dashboards and KPI monitoring, predictive modeling, internal chatbots and multi-agent orchestration supporting AI-assisted decision-making.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Mar 2025 – Present</div>
+    <h3>Founder &amp; Principal Consultant — Data Scientist</h3>
+    <div class="rh-tl-org">OQuant Data Science Consulting – Remote</div>
+    <p>Consulting in data science, econometric modeling, forecasting, causal inference, risk analytics and AI-based decision support, serving clients such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Feb 2025 – Present</div>
+    <h3>Undergraduate Professor</h3>
+    <div class="rh-tl-org">FAE Business School – Curitiba, PR</div>
+    <p>Courses in econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2025 – Apr 2025</div>
+    <h3>Data Engineer Professional</h3>
+    <div class="rh-tl-org">Volvo Group Digital &amp; IT – Curitiba, PR</div>
+    <p>Built data pipelines with SQL, Python and PySpark on Azure (ADF, Databricks), developed predictive models with agile teams, and applied MLOps practices for model monitoring.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Oct 2024 – Dec 2024</div>
+    <h3>Data Scientist Area Coordinator</h3>
+    <div class="rh-tl-org">LAB.PR – Curitiba, PR</div>
+    <p>Coordinated the state public-intelligence and data science laboratory, applying AI, data governance and systems integration to make public administration more transparent and efficient.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Apr 2023 – Sep 2024</div>
+    <h3>Data Science Consultant</h3>
+    <div class="rh-tl-org">CNH Industrial – Curitiba, PR (Remote)</div>
+    <p>Built and trained ML/AI models (TensorFlow, Keras, Torch) on complex heterogeneous data — time series and image processing — over a Data Lake stack (Hadoop, Spark, Kafka) on Microsoft Azure.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">May 2021 – Mar 2023</div>
+    <h3>Senior Data Scientist</h3>
+    <div class="rh-tl-org">BRF – Curitiba, PR</div>
+    <p>Managed BI &amp; Analytics products; processed ~700 economic time series to build a predictive corn pricing model (CBOT and B3) and a Bayesian multicausal model of price drivers grounded in microeconometric literature.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">May 2021 – Jul 2021</div>
+    <h3>Researcher / Consultant</h3>
+    <div class="rh-tl-org">UNDP Brazil – Curitiba, PR</div>
+    <p>Automated data extraction from official public sources via APIs and built socio-economic dashboards for the UNDP BRA/18/024 project on reducing violence against children and adolescents in Brazil.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Jan 2021 – Mar 2021</div>
+    <h3>Sr. BI Analyst (Data Scientist)</h3>
+    <div class="rh-tl-org">Tecnofit – Curitiba, PR</div>
+    <p>Implemented a data-driven culture: fitness-market studies with CAGED/RAIS data, automated extractions from the Hubspot CRM and Google Places APIs, OKR-aligned dashboards and data governance documentation.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Oct 2020 – Dec 2020</div>
+    <h3>Sr. Data Scientist</h3>
+    <div class="rh-tl-org">Deal Technologies – Curitiba, PR</div>
+    <p>Exclusive consultant on the Market Intelligence and Pricing project for Rumo Logística: validated deliverables from two international consultancies, audited PostgreSQL data quality, and documented ETL automation pipelines to AWS S3.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Feb 2020 – Mar 2020</div>
+    <h3>Market Intelligence Analyst</h3>
+    <div class="rh-tl-org">ALCAST do Brasil S/A – Curitiba, PR</div>
+    <p>Led market mapping, segmentation and risk/opportunity assessment, proposing the migration from spreadsheets to real-time dashboards in RMarkdown and Power BI.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Nov 2019 – Oct 2020</div>
+    <h3>Freelance Data Scientist</h3>
+    <div class="rh-tl-org">Upwork.com – Remote</div>
+    <p>On-demand projects in data science, econometrics and scientific document editing with LaTeX and R.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Oct 2019 – Nov 2019</div>
+    <h3>Business Intelligence Consultant</h3>
+    <div class="rh-tl-org">Kietec (Knowledge Information and Technology) – Curitiba, PR</div>
+    <p>Requirements gathering, predictive modeling proposals and advanced data analysis to improve decision-making.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">May 2019 – Oct 2019</div>
+    <h3>Sr. Statistics Analyst</h3>
+    <div class="rh-tl-org">Grupo Bitcoin Banco – Curitiba, PR</div>
+    <p>Systematized statistically measurable information across all departments, implemented real-time BI for big data visualization, and supported executive decisions with statistical reporting.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Oct 2012 – Nov 2018</div>
+    <h3>Mid-Level Economic Analyst</h3>
+    <div class="rh-tl-org">FIEP – Curitiba, PR</div>
+    <p>Economic analysis of Paraná's main productive chains for business unions and collective bargaining; built Power BI databases of regional economic data and reviewed SENAI/SESI innovation proposals.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">2011 – 2021</div>
+    <h3>Economist — Projects &amp; Fundraising</h3>
+    <div class="rh-tl-org">ONG Acreditar e Compartilhar – Brazil</div>
+    <p>Volunteer collaborator designing and submitting third-sector projects to public and private bids, teaching PMI-based project management for NGOs, and consulting for other nonprofits.</p>
+  </div>
+
+  <div class="rh-tl-item">
+    <div class="rh-tl-date">Oct 2008 – Oct 2013</div>
+    <h3>Economist / Project Coordinator</h3>
+    <div class="rh-tl-org">IBQP – Curitiba, PR</div>
+    <p>Researcher on productive chains and innovation projects; coordinated the Municipal Development Index for Micro and Small Enterprises (ID-MPE) for SEBRAE in partnership with UFPR researchers.</p>
+  </div>
+
+</div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">WHAT I WORK WITH</div>
+```
+
+## Toolbox
+
+Languages I use daily for modeling, analytics and reporting:
+
+```{=html}
+<p>
+  <span class="rh-pill">Python</span>
+  <span class="rh-pill">R</span>
+  <span class="rh-pill">SQL</span>
+  <span class="rh-pill">PySpark</span>
+  <span class="rh-pill">Scala</span>
+  <span class="rh-pill">DAX</span>
+  <span class="rh-pill">VBA</span>
+  <span class="rh-pill">Quarto / LaTeX</span>
+</p>
+```
+
+Platforms and tools for data engineering, BI and deployment:
+
+```{=html}
+<p>
+  <span class="rh-pill">Azure</span>
+  <span class="rh-pill">Databricks</span>
+  <span class="rh-pill">Azure Data Factory</span>
+  <span class="rh-pill">Spark</span>
+  <span class="rh-pill">Power BI</span>
+  <span class="rh-pill">Shiny</span>
+  <span class="rh-pill">Git</span>
+</p>
+```
+
+```{=html}
+<div style="margin-top:2rem;">
+  <a class="rh-btn rh-btn-primary" href="oquant.html">Hire me for consulting</a>
+  <a class="rh-btn rh-btn-ghost" href="contact.html">Get in touch</a>
+</div>
+```
+
+:::

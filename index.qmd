@@ -1,0 +1,97 @@
+---
+title: ""
+pagetitle: "Rodrigo Hermont Ozon — Econometrician & Data Scientist"
+description: "Econometrician, PhD researcher and data scientist. 15+ years turning data into decisions with econometrics, forecasting, risk analytics and AI."
+toc: false
+---
+
+```{=html}
+<div class="rh-hero">
+  <div class="rh-hero-photo">
+    <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/Me_Ohio_Univ.jpeg" alt="Rodrigo Hermont Ozon">
+  </div>
+  <div class="rh-hero-main">
+    <div class="rh-kicker">Econometrician · The original data science</div>
+    <h1>Rodrigo <span class="rh-grad">Hermont Ozon</span></h1>
+    <p class="rh-hero-tagline">
+      Data Scientist at <strong>Unimed do Estado do Paraná</strong>, PhD researcher in Industrial &amp; Systems
+      Engineering (PUCPR), founder of <strong>OQuant</strong> consulting and professor at FAE Business School.
+      15+ years turning data into decisions with econometrics, forecasting, risk analytics and AI.
+    </p>
+    <div style="margin-top: 1.2rem;">
+      <a class="rh-btn rh-btn-primary" href="oquant.html">Work with me</a>
+      <a class="rh-btn rh-btn-ghost" href="cv.html">Full CV</a>
+      <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">WhatsApp</a>
+    </div>
+  </div>
+</div>
+
+<div class="rh-stats">
+  <div class="rh-stat"><span class="num" data-target="15">15+</span><span class="lbl">Years in data</span></div>
+  <div class="rh-stat"><span class="num" data-target="20">20+</span><span class="lbl">Organizations served</span></div>
+  <div class="rh-stat"><span class="num" data-target="15">15+</span><span class="lbl">Papers & talks</span></div>
+  <div class="rh-stat"><span class="num" data-target="6">6</span><span class="lbl">Institutions taught at</span></div>
+</div>
+```
+
+::: {.rh-section}
+<div class="rh-kicker">What I do</div>
+## From economic theory to production-grade analytics
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
+  <div class="rh-card">
+    <h3>📈 Econometrics &amp; Forecasting</h3>
+    <p>Time series, Bayesian methods, GARCH-family volatility models, causal inference and
+    multi-objective portfolio optimization — applied to commodities, healthcare and industry.</p>
+  </div>
+  <div class="rh-card">
+    <h3>🤖 Data Science &amp; AI</h3>
+    <p>Machine learning, MLOps and Generative AI: internal chatbots, multi-agent orchestration
+    and AI-assisted decision-making in production environments.</p>
+  </div>
+  <div class="rh-card">
+    <h3>💼 Consulting (OQuant)</h3>
+    <p>Founder &amp; principal consultant. Projects for Grupo Fleury, Aurora Alimentos and Cogna
+    Educacional in forecasting, risk analytics and decision support.</p>
+  </div>
+  <div class="rh-card">
+    <h3>🎓 Teaching &amp; Research</h3>
+    <p>Professor of Data Science for Business and Financial Markets (FAE). PhD researcher at
+    PUCPR. Reviewer for <em>Applied Soft Computing</em> and <em>PRINCIPIA</em>.</p>
+  </div>
+</div>
+```
+:::
+
+::: {.rh-section}
+<div class="rh-kicker">Trajectory</div>
+## Where I've made an impact
+
+```{=html}
+<div class="rh-logos">
+  <a href="experience.html" title="Unimed do Estado do Paraná"><img src="assets/unimed_logo.png" alt="Unimed"></a>
+  <a href="oquant.html" title="OQuant Data Science Consulting"><img src="assets/oquant_logo.png" alt="OQuant"></a>
+  <a href="experience.html" title="Volvo Group"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/volvo_logo.jpg" alt="Volvo"></a>
+  <a href="experience.html" title="CNH Industrial"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/cnh_logo.jpg" alt="CNH Industrial"></a>
+  <a href="experience.html" title="BRF"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/brf_logo.jpg" alt="BRF"></a>
+  <a href="experience.html" title="PNUD / ONU"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/pnud_logo.jpg" alt="PNUD"></a>
+  <a href="teaching.html" title="FAE Business School"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/fae_logo.jpg" alt="FAE"></a>
+  <a href="research.html" title="PUCPR"><img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/pucpr_logo.jpg" alt="PUCPR"></a>
+</div>
+<p><a class="rh-btn rh-btn-ghost" href="experience.html">See full experience →</a></p>
+```
+:::
+
+::: {.rh-section}
+<div class="rh-kicker">Latest highlights</div>
+## Recent work & recognition
+
+```{=html}
+<div class="rh-pub"><strong>2026 —</strong> Data Scientist at Unimed do Estado do Paraná: healthcare analytics and Generative AI (chatbots, multi-agent orchestration). <span class="rh-pub-venue">Curitiba, PR</span></div>
+<div class="rh-pub"><strong>2024 —</strong> <em>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</em> <span class="rh-pub-venue">LVI SBPO, Fortaleza</span></div>
+<div class="rh-pub"><strong>2024 —</strong> <em>Predictive Maintenance Strategies in Agriculture Using Survival Analysis.</em> <span class="rh-pub-venue">XXV Congresso Brasileiro de Automática</span></div>
+<div class="rh-pub"><strong>2024 —</strong> PhD Finalist. <span class="rh-pub-venue">XI ENPPEPRO — National Meeting of Industrial Engineering Graduate Programs</span></div>
+<p style="margin-top:1rem;"><a class="rh-btn rh-btn-ghost" href="research.html">All research →</a></p>
+```
+:::

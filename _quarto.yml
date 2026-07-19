@@ -1,18 +1,59 @@
 project:
   type: website
   output-dir: "."
+  render:
+    - index.qmd
+    - experience.qmd
+    - research.qmd
+    - teaching.qmd
+    - oquant.qmd
+    - contact.qmd
+    - cv.qmd
 
 website:
-#  title: ""
+  title: "Rodrigo Hermont Ozon"
+  description: "Econometrician & Data Scientist — PhD researcher, consultant and professor. Econometrics, forecasting, risk analytics and AI-driven business solutions."
+  site-url: "https://rhozon.github.io/portcv/"
+  favicon: assets/favicon.png
+  open-graph: true
   navbar:
+    pinned: true
     left:
+      - href: index.qmd
+        text: Home
+      - href: experience.qmd
+        text: Experience
+      - href: research.qmd
+        text: Research
+      - href: teaching.qmd
+        text: Teaching
+      - href: oquant.qmd
+        text: Consulting
       - href: cv.qmd
+        text: Full CV
+    right:
+      - href: contact.qmd
+        text: Contact
+      - icon: linkedin
+        href: https://www.linkedin.com/in/rodrigohermontozon/
+      - icon: github
+        href: https://github.com/rhozon
+  page-footer:
+    center: |
+      © 2026 Rodrigo Hermont Ozon · Econometrician & Data Scientist ·
+      [LinkedIn](https://www.linkedin.com/in/rodrigohermontozon/) · [GitHub](https://github.com/rhozon) · [Google Scholar](https://scholar.google.com/citations?user=hPcIR9oAAAAJ) · [Lattes](http://lattes.cnpq.br/3532649625879285)
 
 format:
   html:
-    theme: cyborg
+    theme: [cyborg, theme.scss]
     css: styles.css
-    toc: true
+    toc: false
+    smooth-scroll: true
+    link-external-newwindow: true
+    include-in-header:
+      text: |
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 editor: visual
-

@@ -1,0 +1,227 @@
+/*-- scss:defaults --*/
+
+// ===== Design tokens =====
+$purple-900: #1a1030;
+$purple-800: #241645;
+$purple-700: #3b2a6d;
+$purple-500: #7c5cff;
+$purple-400: #9d85ff;
+$purple-300: #bda9ff;
+$ink-900:   #0e0a1a;
+$ink-800:   #171226;
+$ink-700:   #1f1933;
+$ink-600:   #2a2342;
+$text-100:  #f4f2fb;
+$text-300:  #cfc9e6;
+$text-500:  #9d95bd;
+$accent:    #ffb454;
+
+$body-bg: $ink-900;
+$body-color: $text-300;
+$link-color: $purple-400;
+$link-hover-color: $purple-300;
+
+$font-family-sans-serif: "Inter", -apple-system, "Segoe UI", Roboto, sans-serif;
+$headings-font-family: "Fraunces", Georgia, serif;
+$headings-color: $text-100;
+$headings-font-weight: 600;
+
+$navbar-bg: rgba(14, 10, 26, 0.85);
+$navbar-fg: $text-300;
+$navbar-hl: $purple-300;
+
+$footer-bg: $ink-800;
+$footer-fg: $text-500;
+
+$border-radius: 14px;
+
+/*-- scss:rules --*/
+
+// ===== Base =====
+body {
+  background:
+    radial-gradient(1200px 600px at 80% -10%, rgba(124, 92, 255, 0.14), transparent 60%),
+    radial-gradient(900px 500px at -10% 30%, rgba(124, 92, 255, 0.08), transparent 55%),
+    $ink-900;
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.navbar {
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(124, 92, 255, 0.18);
+  .navbar-brand { font-family: $headings-font-family; font-weight: 700; letter-spacing: 0.2px; }
+  .nav-link { font-weight: 500; font-size: 0.92rem; }
+}
+
+h1, h2, h3 { letter-spacing: 0.2px; }
+h2 { margin-top: 2.2rem; }
+
+// ===== Shared components =====
+.rh-section { padding: 3.2rem 0 1rem 0; }
+
+.rh-kicker {
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: $purple-400;
+  margin-bottom: 0.4rem;
+}
+
+.rh-card {
+  background: linear-gradient(180deg, rgba(124, 92, 255, 0.07), rgba(124, 92, 255, 0.02)), $ink-700;
+  border: 1px solid rgba(124, 92, 255, 0.16);
+  border-radius: $border-radius;
+  padding: 1.5rem 1.6rem;
+  margin-bottom: 1.2rem;
+  transition: transform 0.25s ease, border-color 0.25s ease, box-shadow 0.25s ease;
+}
+.rh-card:hover {
+  transform: translateY(-3px);
+  border-color: rgba(124, 92, 255, 0.45);
+  box-shadow: 0 12px 34px rgba(0, 0, 0, 0.35);
+}
+
+.rh-pill {
+  display: inline-block;
+  padding: 0.28rem 0.75rem;
+  margin: 0.15rem 0.25rem 0.15rem 0;
+  border-radius: 999px;
+  border: 1px solid rgba(124, 92, 255, 0.35);
+  background: rgba(124, 92, 255, 0.10);
+  color: $text-300;
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+.rh-btn {
+  display: inline-block;
+  padding: 0.7rem 1.4rem;
+  margin: 0.3rem 0.5rem 0.3rem 0;
+  border-radius: 999px;
+  font-weight: 600;
+  font-size: 0.95rem;
+  text-decoration: none !important;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+}
+.rh-btn-primary {
+  background: linear-gradient(135deg, $purple-500, #5b3df0);
+  color: #fff !important;
+  box-shadow: 0 8px 24px rgba(124, 92, 255, 0.35);
+}
+.rh-btn-primary:hover { transform: translateY(-2px); box-shadow: 0 12px 30px rgba(124, 92, 255, 0.5); }
+.rh-btn-ghost {
+  border: 1px solid rgba(124, 92, 255, 0.5);
+  color: $text-100 !important;
+  background: transparent;
+}
+.rh-btn-ghost:hover { background: rgba(124, 92, 255, 0.12); transform: translateY(-2px); }
+
+// ===== Hero =====
+.rh-hero {
+  display: flex;
+  align-items: center;
+  gap: 2.8rem;
+  padding: 4rem 0 2.5rem 0;
+  flex-wrap: wrap;
+}
+.rh-hero-photo img {
+  width: 240px;
+  height: 240px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid rgba(124, 92, 255, 0.55);
+  box-shadow: 0 0 0 8px rgba(124, 92, 255, 0.10), 0 18px 50px rgba(0, 0, 0, 0.5);
+}
+.rh-hero-main { flex: 1; min-width: 300px; }
+.rh-hero-main h1 {
+  font-size: clamp(2.1rem, 4.5vw, 3.3rem);
+  line-height: 1.12;
+  margin-bottom: 0.6rem;
+}
+.rh-hero-main h1 .rh-grad {
+  background: linear-gradient(90deg, $purple-300, $purple-500);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.rh-hero-tagline { font-size: 1.12rem; color: $text-300; max-width: 620px; }
+
+// ===== Stats =====
+.rh-stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+.rh-stat {
+  text-align: center;
+  padding: 1.2rem 0.8rem;
+  border-radius: $border-radius;
+  background: $ink-700;
+  border: 1px solid rgba(124, 92, 255, 0.16);
+}
+.rh-stat .num {
+  font-family: $headings-font-family;
+  font-size: 2rem;
+  font-weight: 700;
+  color: $text-100;
+  display: block;
+}
+.rh-stat .lbl { font-size: 0.8rem; color: $text-500; text-transform: uppercase; letter-spacing: 0.08em; }
+
+// ===== Timeline =====
+.rh-timeline { position: relative; margin: 1.5rem 0; padding-left: 1.6rem; border-left: 2px solid rgba(124, 92, 255, 0.3); }
+.rh-tl-item { position: relative; margin-bottom: 1.6rem; }
+.rh-tl-item::before {
+  content: "";
+  position: absolute;
+  left: -2.22rem;
+  top: 0.4rem;
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: $purple-500;
+  box-shadow: 0 0 0 4px rgba(124, 92, 255, 0.22);
+}
+.rh-tl-date { font-size: 0.82rem; font-weight: 600; color: $purple-400; text-transform: uppercase; letter-spacing: 0.06em; }
+.rh-tl-item h3 { font-size: 1.15rem; margin: 0.15rem 0 0.1rem 0; }
+.rh-tl-org { color: $text-500; font-weight: 500; font-size: 0.92rem; margin-bottom: 0.35rem; }
+
+// ===== Logo strip =====
+.rh-logos {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+  align-items: center;
+  margin: 1.4rem 0;
+}
+.rh-logos img {
+  width: 62px;
+  height: 62px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(124, 92, 255, 0.25);
+  background: #fff;
+  transition: transform 0.25s ease;
+}
+.rh-logos img:hover { transform: scale(1.12); }
+
+// ===== Publications =====
+.rh-pub {
+  padding: 0.9rem 1.1rem;
+  border-radius: 10px;
+  border-left: 3px solid $purple-500;
+  background: $ink-700;
+  margin-bottom: 0.8rem;
+  font-size: 0.95rem;
+}
+.rh-pub .rh-pub-venue { color: $text-500; font-size: 0.85rem; }
+
+// ===== Responsive =====
+@media (max-width: 768px) {
+  .rh-hero { padding-top: 2.2rem; gap: 1.6rem; justify-content: center; text-align: center; }
+  .rh-hero-photo img { width: 170px; height: 170px; }
+  .rh-timeline { padding-left: 1.2rem; }
+}
