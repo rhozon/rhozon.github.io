@@ -16,6 +16,7 @@ website:
   site-url: "https://rhozon.github.io/portcv/"
   favicon: assets/favicon.png
   open-graph: true
+  google-analytics: "G-0H8KEXEMKH"
   navbar:
     pinned: true
     left:
