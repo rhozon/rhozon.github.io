@@ -283,19 +283,59 @@ p code, li code { background: $paper-soft; color: $accent; padding: 0.08rem 0.3r
 }
 .rh-terminal .green { color: #7dc4a0; }
 
-// ===== Legado cv.html (blocos escuros internos ficam como está — contraste proposital) =====
-#right-sidebar { background: $charcoal; border-radius: 4px; padding: 1.2rem; }
+// ===== Legado cv.html — blocos escuros convertidos pra cards claros no tom do papel =====
+$card-bg: #fdfcf7;
+
+#right-sidebar {
+  background: $card-bg !important;
+  border: 1px solid $rule;
+  border-radius: 4px;
+  padding: 1.2rem;
+  box-shadow: 0 2px 10px rgba(28, 27, 24, 0.06) !important;
+  color: $ink-soft !important;
+  strong { color: $ink !important; }
+  a, #icon-list a, i { color: $ink-soft !important; }
+  a:hover { color: $accent !important; }
+  img { border-color: $rule !important; }
+  hr { border-color: $rule; }
+}
 
 .panel-tabset .nav-tabs .nav-link { color: $ink-soft; font-family: $font-family-monospace; font-size: 0.85rem; }
 .panel-tabset .nav-tabs .nav-link.active { color: $ink; font-weight: 600; border-color: $rule $rule $paper; background: transparent; }
 
 .zigzag-timeline .content,
-.timeline-block .content {
-  background: $charcoal !important;
-  h3, h4 { color: #f0ede6 !important; }
-  p, li { color: #c9cfd6 !important; }
+.timeline-block .content,
+.timeline-content {
+  background: $card-bg !important;
+  border: 1px solid $rule;
+  box-shadow: 0 2px 8px rgba(28, 27, 24, 0.07) !important;
+  color: $ink-soft !important;
+  h3 { color: $ink !important; }
+  h4 { color: $accent !important; }
+  p, li { color: $ink-soft !important; }
 }
+.zigzag-timeline::before, .timeline::before { background: $rule !important; }
+.timeline-block .marker, .timeline-item::before { background: $accent !important; border-color: $paper !important; }
+
+.experience-item, .teaching-item, .certification-item {
+  background: $card-bg !important;
+  border: 1px solid $rule;
+  box-shadow: 0 2px 8px rgba(28, 27, 24, 0.06);
+  h3, strong { color: $ink !important; }
+  .location, .exp-dates, .teaching-dates { color: $ink-faint !important; }
+  p, li, .cert-info, ul { color: $ink-soft !important; }
+  a { color: $accent !important; }
+}
+.experience-item:hover, .teaching-item:hover, .certification-item:hover { background: #f3f0e8 !important; }
+.experience-item ul[style], .experience-item li, .teaching-item li { color: $ink-soft !important; }
+.cert-logo { border-color: $rule !important; }
+
 .callout { border-radius: 4px; }
+.callout.callout-note {
+  border-left-color: $accent !important;
+  .callout-header, .callout-title-container { background: $paper-soft !important; color: $ink !important; }
+  .callout-icon::before { filter: grayscale(1) brightness(0.4); }
+}
 
 // ===== Responsive =====
 @media (max-width: 768px) {

@@ -1324,7 +1324,7 @@ for (i in seq_len(nrow(df))) {
     marker = list(color = bar_colors[i]),
     text = paste0(df$knowledge[i], "%"),
     textposition = "inside",
-    insidetextfont = list(color = "white", size = 14),
+    insidetextfont = list(color = "white", size = 13),
     hoverinfo = "text",
     hovertext = paste0("Knowledge considered => ", df$language[i], ": ", df$knowledge[i], "%\nUsing since ", df$since[i])
   )
@@ -1343,9 +1343,9 @@ fig <- fig |> layout(
     autorange = "reversed",
     title = NULL
   ),
-  plot_bgcolor = "#333333",
-  paper_bgcolor = "#333333",
-  font = list(color = "white"),
+  plot_bgcolor = "#f7f5f0",
+  paper_bgcolor = "#f7f5f0",
+  font = list(color = "#1c1b18"),
   showlegend = FALSE,
   margin = list(l = 180, r = 50, t = 60, b = 60)
 ) |> config(displayModeBar = FALSE)
