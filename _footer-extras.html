@@ -1,0 +1,24 @@
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">&#8593;</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>

@@ -9,7 +9,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ```{=html}
 <div class="rh-hero">
   <div class="rh-hero-photo">
-    <img src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/Me_Ohio_Univ.jpeg" alt="Rodrigo Hermont Ozon">
+    <img src="../assets/hero_photo.jpg" alt="Rodrigo Hermont Ozon" width="420" height="420" fetchpriority="high">
   </div>
   <div class="rh-hero-main">
     <div class="rh-kicker">Econometrista · A ciência de dados original</div>

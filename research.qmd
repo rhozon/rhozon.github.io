@@ -2,7 +2,10 @@
 title: ""
 pagetitle: "Research & Publications — Rodrigo Hermont Ozon"
 description: "PhD research in Industrial & Systems Engineering (PUCPR): time series, financial and Bayesian econometrics, multi-objective portfolio optimization, extremal events and forecasting. Publications, talks and academic service."
-toc: false
+toc: true
+toc-location: right
+toc-title: "On this page"
+toc-depth: 3
 image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 

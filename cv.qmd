@@ -367,7 +367,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 
 ::::: {#right-sidebar}
-![](https://raw.githubusercontent.com/rhozon/site/refs/heads/master/Me_Ohio_Univ.jpeg)
+![](assets/hero_photo.jpg)
 
 ::: {style="font-size: 12px;"}
 <strong>Resumé</strong>
