@@ -3,6 +3,7 @@ title: ""
 pagetitle: "Professional Experience — Rodrigo Hermont Ozon"
 description: "Professional experience of Rodrigo Hermont Ozon — econometrician and data scientist: current roles, full career timeline, and technical toolbox."
 toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
 ---
 
 ::: {.rh-section}

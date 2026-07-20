@@ -3,6 +3,7 @@ title: ""
 pagetitle: "Rodrigo Hermont Ozon — Econometrista & Cientista de Dados"
 description: "Econometrista, pesquisador de doutorado e cientista de dados. Mais de 15 anos transformando dados em decisões com econometria, forecasting, análise de risco e IA."
 toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
 ---
 
 ```{=html}

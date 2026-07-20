@@ -3,6 +3,7 @@ title: ""
 pagetitle: "Contato — Rodrigo Hermont Ozon"
 description: "Entre em contato: consultoria, colaboração em pesquisa, aulas e palestras."
 toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
 ---
 
 ::: {.rh-section}

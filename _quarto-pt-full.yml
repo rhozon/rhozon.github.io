@@ -15,7 +15,9 @@ website:
   description: "Econometrista e Cientista de Dados — pesquisador de doutorado, consultor e professor. Econometria, forecasting, análise de risco e soluções de IA para negócios."
   site-url: "https://rhozon.github.io/portcv/"
   favicon: assets/favicon.png
+  image: "assets/profile_square.jpg"
   open-graph: true
+  twitter-card: true
   google-analytics: "G-0H8KEXEMKH"
   navbar:
     pinned: true

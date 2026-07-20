@@ -363,6 +363,7 @@ header-includes:
         }
       }
       </style>
+image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
 ---
 
 ::::: {#right-sidebar}

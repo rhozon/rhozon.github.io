@@ -15,7 +15,9 @@ website:
   description: "Econometrician & Data Scientist — PhD researcher, consultant and professor. Econometrics, forecasting, risk analytics and AI-driven business solutions."
   site-url: "https://rhozon.github.io/portcv/"
   favicon: assets/favicon.png
+  image: "assets/profile_square.jpg"
   open-graph: true
+  twitter-card: true
   google-analytics: "G-0H8KEXEMKH"
   navbar:
     pinned: true

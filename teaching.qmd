@@ -3,6 +3,7 @@ title: ""
 pagetitle: "Teaching — Rodrigo Hermont Ozon"
 description: "Teaching activities of Rodrigo Hermont Ozon: courses at FAE Business School, teaching history, certifications and open teaching materials."
 toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
 ---
 
 ::: {.rh-section}
