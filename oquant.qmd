@@ -3,7 +3,7 @@ title: ""
 pagetitle: "OQuant Data Science Consulting — Rodrigo Hermont Ozon"
 description: "OQuant Data Science Consulting: econometrics, forecasting, risk analytics, machine learning and generative AI applied to business decisions. Founded by Rodrigo Hermont Ozon."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Pesquisa & Publicações — Rodrigo Hermont Ozon"
 description: "Pesquisa de doutorado em Engenharia de Produção e Sistemas (PUCPR): séries temporais, econometria financeira e bayesiana, otimização multiobjetivo de portfólios, eventos extremos e previsão. Publicações, apresentações e atividades acadêmicas."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

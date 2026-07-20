@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Rodrigo Hermont Ozon — Econometrician & Data Scientist"
 description: "Econometrician, PhD researcher and data scientist. 15+ years turning data into decisions with econometrics, forecasting, risk analytics and AI."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 
 ```{=html}

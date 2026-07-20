@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Ensino — Rodrigo Hermont Ozon"
 description: "Atividades de ensino de Rodrigo Hermont Ozon: disciplinas na FAE Business School, histórico docente, certificações e materiais didáticos abertos."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

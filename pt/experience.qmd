@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Experiência Profissional — Rodrigo Hermont Ozon"
 description: "Experiência profissional de Rodrigo Hermont Ozon — econometrista e cientista de dados: posições atuais, trajetória completa de carreira e caixa de ferramentas técnica."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_square.jpg"
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
