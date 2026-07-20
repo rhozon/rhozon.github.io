@@ -91,22 +91,34 @@ toc: false
 <div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2023).</strong> <em>Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers.</em> <span class="rh-pub-venue">APREPRO / ConBRepro</span> <a href="https://aprepro.org.br/conbrepro/anais/2023/arquivos/10012023_161031_6519cd0fed1f2.pdf">paper</a></div>
 ```
 
-### Working papers
+### Working papers (2025–2026)
+
+Doctoral research pipeline: sixteen manuscripts in preparation and submission. Titles subject to change; drafts available on request.
 
 ```{=html}
-<div class="rh-pub"><strong>Ozon, R., Viana, R. (2024).</strong> <em>Impact of Sentiment Analysis on the Volatility and Structural Breaks in Agricultural Commodity Prices.</em> <a href="https://github.com/pibicagrofinance/site/blob/main/Presentation_MQII___Rodrigo_Hermont_Ozon.pdf">publishing plan</a></div>
+<p style="margin-top:1rem;"><strong>Portfolio optimization &amp; decision-making</strong></p>
+<div class="rh-pub"><em>An Integration Framework for Multi-Objective Commodity Portfolio Decision-Making</em> <span class="rh-pub-venue">thesis synthesis — flagship paper</span></div>
+<div class="rh-pub"><em>A Many-Objective Evolutionary Benchmark for Multi-Period Commodity Portfolios</em></div>
+<div class="rh-pub"><em>Many-Objective Optimization of Technical Trading Strategies</em> <span class="rh-pub-venue">with R. Vianna</span></div>
+<div class="rh-pub"><em>Regime-Conditional Dynamic Programming for Portfolio Refinement</em></div>
+<div class="rh-pub"><em>Distribution-Free Robust Control of Commodity Portfolios Under Regime Uncertainty</em></div>
+<div class="rh-pub"><em>Capacity Constraints and Multi-Asset Generalisation of Commodity Portfolio Strategies</em></div>
+<div class="rh-pub"><em>Pareto-Optimal Reinforcement Learning Portfolios for Commodity Trading</em></div>
 
-<div class="rh-pub"><strong>Ozon, R. (2024).</strong> <em>Ablation Study of a CNN+LSTM Architecture for Time Series Forecasting of Corn Price Returns.</em></div>
+<p style="margin-top:1.4rem;"><strong>Forecasting &amp; volatility modeling</strong></p>
+<div class="rh-pub"><em>MSGARCH Against Competing Models for Commodity Price Returns</em></div>
+<div class="rh-pub"><em>Time-Varying Higher Moments in Agricultural Commodities via GAMLSS</em></div>
+<div class="rh-pub"><em>Chaos and Complexity in Economic and Financial Time Series</em></div>
 
-<div class="rh-pub"><strong>Ozon, R., Guedes, R. (2024).</strong> <em>Blending Forecasting Models for Commodities Portfolio Optimization.</em></div>
+<p style="margin-top:1.4rem;"><strong>Market structure, breaks &amp; early warnings</strong></p>
+<div class="rh-pub"><em>Causal Inference for Structural Breaks in Time Series</em></div>
+<div class="rh-pub"><em>Commodity Price Breaks: Detection versus Prediction</em></div>
+<div class="rh-pub"><em>Price Transmission in Four Brazilian Agricultural Commodities</em></div>
+<div class="rh-pub"><em>Regime-Aware Hybrid Anomaly Detection for Early Warnings in Food Security</em></div>
 
-<div class="rh-pub"><strong>Ozon, R. (2024).</strong> <em>Impact of the Russia-Ukraine War on Corn Prices, Returns, and Volatility: A Quasi-Experimental Approach.</em></div>
-
-<div class="rh-pub"><strong>Ozon, R., Guedes da Silva, R. T. (2024).</strong> <em>A Commodities Portfolio Optimization Model Recommendation: Blending Time Series Forecasting Models in Pareto Front Scenarios.</em></div>
-
-<div class="rh-pub"><strong>Ozon, R., Reynoso-Meza, G. (2024).</strong> <em>Improving Risk Management in Grain Portfolios: The Role of GAMLSS and Bayesian MSGARCH Models.</em></div>
-
-<div class="rh-pub"><strong>Ozon, R., Reynoso-Meza, G. (2023).</strong> <em>Econometric Prices Forecasting Approach and Multiobjective Optimization for Commodity Portfolio Decision-Making.</em></div>
+<p style="margin-top:1.4rem;"><strong>Foundations &amp; applications</strong></p>
+<div class="rh-pub"><em>AI and Econometric Methods for Commodity Portfolio Optimization: A Systematic Literature Review</em></div>
+<div class="rh-pub"><em>Real Options Valuation via Bayesian MCMC</em></div>
 ```
 
 ### Advising
