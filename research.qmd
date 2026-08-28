@@ -74,25 +74,41 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ### Conference papers
 
 ```{=html}
-<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</em> <span class="rh-pub-venue">Anais do LVI Simpósio Brasileiro de Pesquisa Operacional (SBPO), Fortaleza</span> <a href="https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br">proceedings</a></div>
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios.</em> <span class="rh-pub-venue">Anais do LVI Simpósio Brasileiro de Pesquisa Operacional (SBPO), Fortaleza</span> <a href="https://proceedings.science/sbpo/sbpo-2024/papers/comparative-analysis-of-fuzzy-regression-models-and-multicriteria-decision-makin?lang=pt-br">proceedings</a>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A commodity price forecast is usually delivered as one number, which hides how uncertain it is. Fuzzy regression carries that imprecision explicitly instead of discarding it, and multi-criteria decision methods then compare whole scenarios rather than forcing a single answer.</p>
+</div>
 
-<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Predictive Maintenance Strategies in Agriculture Using Survival Analysis.</em> <span class="rh-pub-venue">XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro</span></div>
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Predictive Maintenance Strategies in Agriculture Using Survival Analysis.</em> <span class="rh-pub-venue">XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">When is a machine about to fail, and what does waiting cost? Survival analysis — the statistics of time-to-event, borrowed from medicine — is applied to agricultural equipment so maintenance is scheduled by risk rather than by calendar.</p>
+</div>
 
-<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.</em> <span class="rh-pub-venue">ICPR Americas 2024 — Ohio University</span></div>
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2024).</strong> <em>Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization.</em> <span class="rh-pub-venue">ICPR Americas 2024 — Ohio University</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Two evolutionary algorithms are routinely used to trade risk against return in portfolios, and practitioners tend to pick one by habit. This puts them on the same problem and measures both the quality of the solutions and the computational cost of reaching them.</p>
+</div>
 
-<div class="rh-pub"><strong>Ozon, R., de Lima, J. D., Dranka, G. (2024).</strong> <em>Enhancing Grain Portfolio Risk Management with GAMLSS and MSGARCH.</em> <span class="rh-pub-venue">XXIV Encontro Brasileiro de Finanças (EBFIN)</span> <a href="https://doity.com.br/anais/24ebfin/area/36699">proceedings</a></div>
+<div class="rh-pub"><strong>Ozon, R., de Lima, J. D., Dranka, G. (2024).</strong> <em>Enhancing Grain Portfolio Risk Management with GAMLSS and MSGARCH.</em> <span class="rh-pub-venue">XXIV Encontro Brasileiro de Finanças (EBFIN)</span> <a href="https://doity.com.br/anais/24ebfin/area/36699">proceedings</a>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Grain prices do not only get more or less volatile — the whole shape of their distribution moves, including skew and fat tails. GAMLSS tracks those moments over time and MSGARCH captures shifts between calm and turbulent regimes, both put to work on portfolio risk. <a href="case-studies/multiagent-commodities.html">See the case study </a></p>
+</div>
 ```
 
 ### Talks & posters
 
 ```{=html}
-<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>PhD Finalist.</em> <span class="rh-pub-venue">XI ENPPEPRO — Encontro Nacional de Programas de Pós-Graduação em Engenharia de Produção</span></div>
+<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>PhD Finalist.</em> <span class="rh-pub-venue">XI ENPPEPRO — Encontro Nacional de Programas de Pós-Graduação em Engenharia de Produção</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Doctoral research selected as a finalist at the national meeting of Brazilian graduate programmes in industrial engineering.</p>
+</div>
 
-<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics.</em> <span class="rh-pub-venue">1st SouthStat Meeting (UFPR) — poster</span></div>
+<div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics.</em> <span class="rh-pub-venue">1st SouthStat Meeting (UFPR) — poster</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">The poster version of the grain-portfolio work: combining a time-varying distribution shape with Bayesian regime-switching volatility to forecast commodity returns. <a href="case-studies/multiagent-commodities.html">See the case study </a></p>
+</div>
 
-<div class="rh-pub"><strong>Ozon, R. H. (2023).</strong> <em>The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models.</em> <span class="rh-pub-venue">R Day (UFPR)</span></div>
+<div class="rh-pub"><strong>Ozon, R. H. (2023).</strong> <em>The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models.</em> <span class="rh-pub-venue">R Day (UFPR)</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Economic series often arrive yearly when the decision needs monthly numbers. This shows how temporal disaggregation in R rebuilds the higher-frequency series without inventing movement the data cannot support.</p>
+</div>
 
-<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2023).</strong> <em>Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers.</em> <span class="rh-pub-venue">APREPRO / ConBRepro</span> <a href="https://aprepro.org.br/conbrepro/anais/2023/arquivos/10012023_161031_6519cd0fed1f2.pdf">paper</a></div>
+<div class="rh-pub"><strong>Ozon, R. H., Reynoso-Meza, G. (2023).</strong> <em>Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers.</em> <span class="rh-pub-venue">APREPRO / ConBRepro</span> <a href="https://aprepro.org.br/conbrepro/anais/2023/arquivos/10012023_161031_6519cd0fed1f2.pdf">paper</a>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A risk–return frontier estimated on a single window can be an artefact of that window. Building frontiers across several windows shows which trade-offs survive and which were an accident of the sample.</p>
+</div>
 ```
 
 ### Working papers (2025–2026)
@@ -101,28 +117,60 @@ Doctoral research pipeline: sixteen manuscripts in preparation and submission. T
 
 ```{=html}
 <p style="margin-top:1rem;"><strong>Portfolio optimization &amp; decision-making</strong></p>
-<div class="rh-pub"><em>An Integration Framework for Multi-Objective Commodity Portfolio Decision-Making</em> <span class="rh-pub-venue">thesis synthesis — flagship paper</span></div>
-<div class="rh-pub"><em>A Many-Objective Evolutionary Benchmark for Multi-Period Commodity Portfolios</em></div>
-<div class="rh-pub"><em>Many-Objective Optimization of Technical Trading Strategies</em> <span class="rh-pub-venue">with R. Vianna</span></div>
-<div class="rh-pub"><em>Regime-Conditional Dynamic Programming for Portfolio Refinement</em></div>
-<div class="rh-pub"><em>Distribution-Free Robust Control of Commodity Portfolios Under Regime Uncertainty</em></div>
-<div class="rh-pub"><em>Capacity Constraints and Multi-Asset Generalisation of Commodity Portfolio Strategies</em></div>
-<div class="rh-pub"><em>Pareto-Optimal Reinforcement Learning Portfolios for Commodity Trading</em></div>
+<div class="rh-pub"><em>An Integration Framework for Multi-Objective Commodity Portfolio Decision-Making</em> <span class="rh-pub-venue">thesis synthesis — flagship paper</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">The thesis synthesis: how forecasting, risk modelling and multi-objective optimisation fit together into one decision process instead of three disconnected steps.</p>
+</div>
+<div class="rh-pub"><em>A Many-Objective Evolutionary Benchmark for Multi-Period Commodity Portfolios</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Real portfolio decisions weigh more than two goals at once. A benchmark for algorithms that handle many objectives over multiple periods.</p>
+</div>
+<div class="rh-pub"><em>Many-Objective Optimization of Technical Trading Strategies</em> <span class="rh-pub-venue">with R. Vianna</span>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Trading rules are usually tuned for return alone. Here they are optimised against several competing criteria at the same time.</p>
+</div>
+<div class="rh-pub"><em>Regime-Conditional Dynamic Programming for Portfolio Refinement</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A portfolio built for a calm market is the wrong portfolio for a turbulent one. This conditions the decision on the regime the market is actually in.</p>
+</div>
+<div class="rh-pub"><em>Distribution-Free Robust Control of Commodity Portfolios Under Regime Uncertainty</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Methods that assume a specific probability distribution fail when the assumption breaks. This asks what can still be guaranteed without making that assumption.</p>
+</div>
+<div class="rh-pub"><em>Capacity Constraints and Multi-Asset Generalisation of Commodity Portfolio Strategies</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A strategy that works on paper can be impossible to execute at scale. This adds real capacity limits and extends the approach across several assets.</p>
+</div>
+<div class="rh-pub"><em>Pareto-Optimal Reinforcement Learning Portfolios for Commodity Trading</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Reinforcement learning normally optimises one reward. This asks it to hold the risk–return trade-off open instead of collapsing it into a single score.</p>
+</div>
 
 <p style="margin-top:1.4rem;"><strong>Forecasting &amp; volatility modeling</strong></p>
-<div class="rh-pub"><em>MSGARCH Against Competing Models for Commodity Price Returns</em></div>
-<div class="rh-pub"><em>Time-Varying Higher Moments in Agricultural Commodities via GAMLSS</em></div>
-<div class="rh-pub"><em>Chaos and Complexity in Economic and Financial Time Series</em></div>
+<div class="rh-pub"><em>MSGARCH Against Competing Models for Commodity Price Returns</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Does regime-switching volatility actually beat the simpler alternatives on grain prices, or only look more sophisticated? A direct comparison. <a href="case-studies/multiagent-commodities.html">See the case study </a></p>
+</div>
+<div class="rh-pub"><em>Time-Varying Higher Moments in Agricultural Commodities via GAMLSS</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Skew and kurtosis in crop prices are not constant, yet most models treat them as if they were. GAMLSS lets them move with time.</p>
+</div>
+<div class="rh-pub"><em>Chaos and Complexity in Economic and Financial Time Series</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Some of what looks like random noise in economic data is deterministic structure. This examines which is which, and what follows for forecasting.</p>
+</div>
 
 <p style="margin-top:1.4rem;"><strong>Market structure, breaks &amp; early warnings</strong></p>
-<div class="rh-pub"><em>Causal Inference for Structural Breaks in Time Series</em></div>
-<div class="rh-pub"><em>Commodity Price Breaks: Detection versus Prediction</em></div>
-<div class="rh-pub"><em>Price Transmission in Four Brazilian Agricultural Commodities</em></div>
-<div class="rh-pub"><em>Regime-Aware Hybrid Anomaly Detection for Early Warnings in Food Security</em></div>
+<div class="rh-pub"><em>Causal Inference for Structural Breaks in Time Series</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A series changes course — but was it caused by the event everyone blames, or did it merely coincide with it? Causal methods applied to break detection.</p>
+</div>
+<div class="rh-pub"><em>Commodity Price Breaks: Detection versus Prediction</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Spotting a break after it happens is a different problem from anticipating one. This separates the two and asks how much of the second is achievable.</p>
+</div>
+<div class="rh-pub"><em>Price Transmission in Four Brazilian Agricultural Commodities</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">When an international price moves, how much of it reaches the Brazilian producer, and how long does it take? Measured across four commodities.</p>
+</div>
+<div class="rh-pub"><em>Regime-Aware Hybrid Anomaly Detection for Early Warnings in Food Security</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">An early-warning system that mistakes a normal seasonal swing for a crisis is worse than none. This makes anomaly detection aware of the regime, for food-security warnings.</p>
+</div>
 
 <p style="margin-top:1.4rem;"><strong>Foundations &amp; applications</strong></p>
-<div class="rh-pub"><em>AI and Econometric Methods for Commodity Portfolio Optimization: A Systematic Literature Review</em></div>
-<div class="rh-pub"><em>Real Options Valuation via Bayesian MCMC</em></div>
+<div class="rh-pub"><em>AI and Econometric Methods for Commodity Portfolio Optimization: A Systematic Literature Review</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A systematic review mapping what machine learning and classical econometrics have each contributed to commodity portfolio work, and where they have not yet met.</p>
+</div>
+<div class="rh-pub"><em>Real Options Valuation via Bayesian MCMC</em>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">The value of being able to wait, expand or abandon an investment, estimated with Bayesian methods that carry the uncertainty through instead of hiding it in a point estimate.</p>
+</div>
 ```
 
 ### Advising
