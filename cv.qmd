@@ -39,7 +39,6 @@ comments:
   hypothesis: true
 format:
   html:
-    theme: cyborg
     toc-depth: 5
     toc: true
     toc-location: left
@@ -229,7 +228,7 @@ header-includes:
         transform: translateX(-50%);
         width: 4px;
         height: 100%;
-        background: #555;
+        background: #d9d4c8;
         z-index: 1;
       }
       .timeline-block {
@@ -241,16 +240,17 @@ header-includes:
       .timeline-block .marker {
         width: 20px;
         height: 20px;
-        background: #31BAE9;
-        border: 3px solid #fff;
+        background: #7d2e2e;
+        border: 3px solid #f7f5f0;
         border-radius: 50%;
         position: absolute;
         top: 20px;
         z-index: 2;
       }
       .timeline-block .content {
-        background: #222;
-        color: #fff;
+        background: #efece4;
+        color: #1c1b18;
+        border: 1px solid #d9d4c8;
         padding: 20px;
         border-radius: 8px;
         position: relative;
@@ -263,7 +263,7 @@ header-includes:
       .timeline-block .content h4 {
         margin-bottom: 10px;
         font-size: 1rem;
-        color: #31BAE9;
+        color: #7d2e2e;
       }
       
       .uni-logo {
@@ -1268,90 +1268,47 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 </div>
 ```
 
-## Prog. Languages
+## Languages & Tools
 
 ::: {style="font-size: 12px;"}
-Knowledge Levels and Expertise in Programming Languages
+Where each one has been used in production or in research
 :::
 
-```{r}
-#| echo: false
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(280px,1fr)); gap:1.6rem; margin-top:1.2rem;">
 
-knitr::opts_chunk$set(echo = TRUE, message = FALSE, warning = FALSE, comment = NA)
+  <div>
+    <div class="rh-kicker">Core</div>
+    <ul style="list-style:none; padding-left:0; line-height:1.9;">
+      <li><strong>R</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">BRF · CNH · Upwork · UFPR</span></li>
+      <li><strong>Python</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Volvo · CNH · FAE</span></li>
+      <li><strong>SQL</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Volvo · CNH</span></li>
+      <li><strong>Econometrics and time series</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">BRF · CNH · PUCPR · UFPR</span></li>
+      <li><strong>Forecasting and predictive modeling</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">BRF · CNH · Volvo</span></li>
+      <li><strong>Generative AI and LLMs</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Unimed · OQuant — chatbots and agents</span></li>
+      <li><strong>Causal inference</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">OQuant · FAE · PUCPR</span></li>
+      <li><strong>Agentic AI and marketing analytics</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">OQuant · Unimed</span></li>
+      <li><strong>Power BI</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">FIEP · BRF · Tecnofit</span></li>
+    </ul>
+  </div>
 
+  <div>
+    <div class="rh-kicker">Working knowledge</div>
+    <ul style="list-style:none; padding-left:0; line-height:1.9;">
+      <li><strong>PySpark</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Volvo</span></li>
+      <li><strong>Agent and sub-agent orchestration</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Unimed — multi-agent architecture</span></li>
+      <li><strong>GARCH, GAMLSS and MSGARCH</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">PUCPR — volatility and portfolio risk</span></li>
+      <li><strong>Multi-objective optimization (NSGA-II)</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">PUCPR — commodity portfolios</span></li>
+      <li><strong>CNN+LSTM and survival analysis</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">PUCPR — forecasting and predictive maintenance</span></li>
+      <li><strong>Bayesian modeling</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">BRF — price drivers</span></li>
+      <li><strong>AWS and Azure</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">cloud — production pipelines</span></li>
+      <li><strong>Databricks and Snowflake</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">data platforms</span></li>
+      <li><strong>MLOps</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Volvo</span></li>
+      <li><strong>LaTeX and Quarto</strong> <span style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; opacity:.72;">Upwork · UFPR · publications</span></li>
+    </ul>
+  </div>
+
+</div>
 ```
 
-```{r}
-#| echo: false
-
-library(plotly)
-
-# Dados
-df <- data.frame(
-  language = factor(
-    c("Python", "R", "SQL", "Quarto", "HTML5/CSS", "DAX", "VBA"),
-    levels = c("Python", "R", "SQL", "Quarto", "HTML5/CSS", "DAX", "VBA")
-  ),
-  since = c(2021, 2008, 2020, 2022, 2022, 2016, 2003),
-  knowledge = c(7, 8, 7, 8, 6, 5, 6)
-)
-df$knowledge <- df$knowledge * 10
-
-# Logos
-logos <- list(
-  "Python"    = "https://raw.githubusercontent.com/github/explore/main/topics/python/python.png",
-  "R"         = "https://raw.githubusercontent.com/github/explore/main/topics/r/r.png",
-  "SQL"       = "https://raw.githubusercontent.com/github/explore/main/topics/sql/sql.png",
-  "Quarto"    = "https://raw.githubusercontent.com/github/explore/main/topics/quarto/quarto.png",
-  "LaTeX"     = "https://raw.githubusercontent.com/github/explore/main/topics/latex/latex.png",
-  "VBA"       = "https://raw.githubusercontent.com/microsoft/PowerBI-Icons/main/Icons/Product/excel.png",
-  "DAX"       = "https://raw.githubusercontent.com/microsoft/PowerBI-Icons/main/Icons/Product/dax%20(DB).svg",
-  "HTML5/CSS" = "https://raw.githubusercontent.com/devicons/devicon/master/icons/html5/html5-original.svg"
-)
-
-# Cores baseadas em escala de roxo
-base_colors <- RColorBrewer::brewer.pal(n = 7, name = "Purples")
-bar_colors <- rev(colorRampPalette(base_colors)(7))
-
-fig <- plot_ly()
-
-for (i in seq_len(nrow(df))) {
-  fig <- fig |> add_trace(
-    type = "bar",
-    orientation = "h",
-    x = df$knowledge[i],
-    y = df$language[i],
-    name = df$language[i],
-    marker = list(color = bar_colors[i]),
-    text = paste0(df$knowledge[i], "%"),
-    textposition = "inside",
-    insidetextfont = list(color = "white", size = 13),
-    hoverinfo = "text",
-    hovertext = paste0("Knowledge considered => ", df$language[i], ": ", df$knowledge[i], "%\nUsing since ", df$since[i])
-  )
-}
-
-fig <- fig |> layout(
-  barmode = "stack",
-  title = list(text = "", x = 0.5),
-  xaxis = list(
-    range = c(0, 100),
-    showgrid = FALSE,
-    zeroline = FALSE,
-    title = NULL
-  ),
-  yaxis = list(
-    autorange = "reversed",
-    title = NULL
-  ),
-  plot_bgcolor = "#f7f5f0",
-  paper_bgcolor = "#f7f5f0",
-  font = list(color = "#1c1b18"),
-  showlegend = FALSE,
-  margin = list(l = 180, r = 50, t = 60, b = 60)
-) |> config(displayModeBar = FALSE)
-
-fig
-
-```
 ::::

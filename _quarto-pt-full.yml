@@ -6,6 +6,8 @@ project:
     - pt/index.qmd
     - pt/experience.qmd
     - pt/research.qmd
+    - pt/case-studies.qmd
+    - pt/case-studies/multiagent-commodities.qmd
     - pt/teaching.qmd
     - pt/oquant.qmd
     - pt/contact.qmd
@@ -28,6 +30,8 @@ website:
         text: Experiência
       - href: pt/research.qmd
         text: Pesquisa
+      - href: pt/case-studies.qmd
+        text: "Estudos de Caso"
       - href: pt/teaching.qmd
         text: Ensino
       - href: pt/oquant.qmd

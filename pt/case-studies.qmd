@@ -1,0 +1,62 @@
+---
+title: ""
+pagetitle: "Estudos de Caso — Rodrigo Hermont Ozon"
+description: "Trabalho aplicado que dá para abrir, ler e rodar: IA multiagente, previsão econométrica, otimização de portfólio e inferência causal."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudos de Caso</div>
+## Problemas, métodos e código que roda
+
+Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e
+por que esse, o resultado e o código. O primeiro está no ar — repositório, relatórios
+de exemplo e tudo. Os outros estão sendo escritos a partir do trabalho de doutorado.
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
+
+  <div class="rh-card">
+    <h3><a href="case-studies/multiagent-commodities.html">Analista de Commodities Multiagente</a></h3>
+    <p>Quatro agentes de LLM decidem; um núcleo econométrico determinístico em R calcula.
+    Uma trava impede o sistema de escrever qualquer número que os modelos não produziram.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Agentes de LLM · MSGARCH · Python + R
+    </p>
+    <p><a href="case-studies/multiagent-commodities.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3>Previsão de Preço de Commodities</h3>
+    <p>Volatilidade com mudança de regime e momentos superiores variantes no tempo
+    aplicados a preços de grãos, comparados com os modelos que uma mesa de fato usa.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      GAMLSS · MSGARCH bayesiano · Backtesting
+    </p>
+    <p style="opacity:.65;">Em preparação</p>
+  </div>
+
+  <div class="rh-card">
+    <h3>Otimização Multiobjetivo de Portfólio</h3>
+    <p>Algoritmos evolutivos na fronteira risco–retorno de portfólios de commodities,
+    comparados de frente, não presumidos.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      NSGA-II · Evolução Diferencial · Pareto
+    </p>
+    <p style="opacity:.65;">Em preparação</p>
+  </div>
+
+  <div class="rh-card">
+    <h3>Modelagem Causal do NPS</h3>
+    <p>O que de fato move a satisfação do cliente, separado do que apenas se
+    correlaciona com ela — para uma grande corporação.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Inferência causal · Dados de pesquisa · R
+    </p>
+    <p style="opacity:.65;">Em preparação</p>
+  </div>
+
+</div>
+```
+:::

@@ -2,11 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rhozon.github.io/portcv/cv.html</loc>
-    <lastmod>2026-07-20T23:51:15.709Z</lastmod>
+    <lastmod>2026-08-28T12:45:30.565Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/oquant.html</loc>
-    <lastmod>2026-07-20T22:58:44.322Z</lastmod>
+    <lastmod>2026-08-28T12:24:55.850Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/case-studies/multiagent-commodities.html</loc>
+    <lastmod>2026-08-28T12:38:41.332Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/research.html</loc>
@@ -14,11 +18,15 @@
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/index.html</loc>
-    <lastmod>2026-07-20T23:51:15.581Z</lastmod>
+    <lastmod>2026-08-28T12:22:46.035Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/experience.html</loc>
-    <lastmod>2026-07-20T22:58:44.387Z</lastmod>
+    <lastmod>2026-08-28T12:24:22.018Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portcv/case-studies.html</loc>
+    <lastmod>2026-08-28T12:37:45.261Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portcv/teaching.html</loc>

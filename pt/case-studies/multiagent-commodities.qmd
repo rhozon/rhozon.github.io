@@ -1,0 +1,105 @@
+---
+title: ""
+pagetitle: "Analista de Commodities Multiagente — Estudo de Caso"
+description: "Quatro agentes de LLM sobre um núcleo econométrico determinístico em R. O crítico reprova modelos com motivo escrito, e uma trava barra qualquer número que os modelos não produziram."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/case-multiagent-milho.png"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 01 · No ar</div>
+# Analista de Commodities Multiagente
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Agentes de LLM · MSGARCH / GARCH / ARIMA · Python orquestra, R modela · 167 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+O que a volatilidade do preço do milho e da soja está dizendo — e um modelo de linguagem
+consegue escrever essa análise sem inventar um único número?
+
+A segunda metade é a difícil. Um modelo que alucina um número plausível num relatório de
+commodities é pior que relatório nenhum, porque o número parece certo.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Preços diários de fechamento do CBOT via Yahoo Finance: milho (`ZC=F`), **2.007 observações**,
+e soja (`ZS=F`), **2.009 observações**, ambas de 2 de janeiro de 2018 a 30 de dezembro de 2025.
+O câmbio USD/BRL (`BRL=X`) entra junto, porque analisar preço doméstico de grão no Brasil sem
+o câmbio está simplesmente errado.
+
+Tudo congelado num cache em parquet, com um arquivo de metadados registrando a origem de cada
+série. Duas consequências: o gráfico publicado não muda sozinho quando o mercado mexe, e o
+teste de ponta a ponta roda sem rede.
+
+A série doméstica do CEPEA **não** está implementada nesta versão. Em vez de esconder isso, o
+Coletor cai para a série internacional e o relatório imprime a troca de fonte acima do gráfico.
+Um sistema que declara o que não conseguiu obter vale mais do que um que substitui em silêncio.
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Os agentes não sabem econometria.** Os quatro — Coletor, Econometrista, Crítico, Redator —
+decidem *qual função do núcleo chamar e com quais argumentos*. O núcleo é Python e R comum,
+determinístico e testável. Quando o framework de agentes envelhecer, troca-se a casca e o que
+importa fica.
+
+**Python orquestra, R modela.** A escada de modelos é MSGARCH → GARCH → ARIMA, chamada por
+subprocess com contrato JSON. Sem `rpy2`, deliberadamente: é a fonte número um de dor de
+instalação em projeto R+Python, e o objetivo era que qualquer um clonasse e rodasse. De brinde,
+o script em R roda sozinho no RStudio quando é preciso depurar um modelo.
+
+**O Crítico reprova, com motivo escrito.** Ele roda Ljung-Box e ARCH-LM nos resíduos. Falhar
+não é uma nova tentativa silenciosa — é reprovação com causa declarada, com teto de três
+tentativas, recuando de família de modelo a cada uma.
+
+**A trava.** O Redator não pode colocar no texto nenhum número que não exista no objeto de
+resultados. Número inventado derruba a execução. As limitações da trava também estão
+documentadas no repositório — ela confere proveniência de dígito, não sentido semântico —
+porque um estudo de caso que exagera a própria rede de proteção perde o propósito.
+:::
+
+::: {.rh-section}
+## O resultado
+
+O resultado interessante não é a previsão. É que **o laço de crítica disparou em produção, não
+em teste**: nas duas commodities o Crítico reprovou o MSGARCH — o modelo-assinatura do meu
+doutorado — e aprovou o GARCH na segunda tentativa.
+
+No milho, o ARCH-LM devolveu **p = 0,0405**; na soja, **p = 0,0242**. Ambos abaixo de 0,05,
+ambos significando heterocedasticidade que o modelo não capturou. O relatório diz isso, nomeia
+a família e dá o motivo.
+
+![Milho (`ZC=F`), 2018–2025. O sistema produziu este gráfico e o relatório ao lado dele, a partir do cache congelado, sem rede e sem chave de API.](../../assets/case-multiagent-milho.png)
+
+No backtest, honestidade importa mais que número bonito: num horizonte de 20 passos o modelo
+marcou MAPE de 1,75% no milho — **idêntico ao passeio aleatório**. Não é falha, é aritmética.
+Modelos de volatilidade fixam a média em zero por construção, então a previsão pontual empata
+com o passeio aleatório por definição. A contribuição deles vive na largura do intervalo e nos
+diagnósticos de resíduo, e o próprio relatório do sistema explica isso sem que ninguém peça.
+:::
+
+::: {.rh-section}
+## O código
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
+```
+
+Clone, `pip install -r requirements.txt`, instale o R 4.x com os pacotes listados no README, e
+então:
+
+```bash
+python run.py --commodity milho --fake-llm
+```
+
+Roda do cache congelado — sem chave de API, sem rede. A suíte tem **167 testes** por
+`pytest -q`. A pasta `examples/` traz os relatórios das duas commodities, gerados pelo próprio
+sistema.
+:::
