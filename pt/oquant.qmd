@@ -147,7 +147,7 @@ Os projetos com clientes são confidenciais; as referências de setor são compa
     <p>Pesquisa doutoral ativa em otimização multiobjetivo, econometria bayesiana e séries temporais na PUCPR, mestrado em Desenvolvimento Econômico (UFPR), publicações revisadas por pares e atuação como revisor de periódicos como <em>Applied Soft Computing</em>. Os métodos por trás do seu projeto são os que sobrevivem ao escrutínio acadêmico.</p>
   </div>
   <div class="rh-card">
-    <h3>Mais de 15 anos de histórico na indústria</h3>
+    <h3>Mais de 18 anos de histórico na indústria</h3>
     <p>Entrega prática dentro de grandes organizações — Volvo Group, BRF, CNH Industrial, Unimed — além de pesquisa para o PNUD/ONU e anos de análise econômica para federações da indústria. Eu sei como dados corporativos, política interna e prazos se comportam de verdade.</p>
   </div>
   <div class="rh-card">

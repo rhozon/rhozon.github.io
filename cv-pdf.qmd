@@ -13,11 +13,11 @@ format:
 
 **Contact:** rodrigoozon@yahoo.com.br · +55 41 98838-2904 · [linkedin.com/in/rodrigohermontozon](https://www.linkedin.com/in/rodrigohermontozon/) · [rhozon.github.io/portcv](https://rhozon.github.io/portcv/) · Lattes: 3532649625879285
 
-Economist and econometrician with 15+ years applying time series analysis, Bayesian econometrics, GARCH-family models, multi-objective optimization and, more recently, Generative AI to problems in healthcare, agribusiness, logistics and industry. PhD researcher in Industrial & Systems Engineering (PUCPR).
+Economist and econometrician with 18+ years applying time series analysis, Bayesian econometrics, GARCH-family models, multi-objective optimization and, more recently, Generative AI to problems in healthcare, agribusiness, logistics and industry. PhD researcher in Industrial & Systems Engineering (PUCPR).
 
 ## Professional Experience
 
-**Data Scientist — Unimed do Estado do Paraná**, Curitiba (Jan 2026 – Present)\
+**Data Scientist — Unimed do Estado do Paraná**, Curitiba (Jan 2026 – Aug 2026)\
 Healthcare analytics, BI and Generative AI: dashboards and KPI monitoring, statistical and predictive modeling, internal chatbots, multi-agent orchestration, AI-assisted decision-making.
 
 **Founder & Principal Consultant — OQuant Data Science Consulting**, Remote (Mar 2025 – Present)\

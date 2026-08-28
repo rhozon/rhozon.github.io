@@ -12,20 +12,20 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 <div class="rh-kicker">ONDE TRABALHO HOJE</div>
 ```
 
-## Posições atuais
+## Posições atuais e recentes
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
   <div class="rh-card">
-    <h3>Unimed do Estado do Paraná</h3>
-    <p><strong>Cientista de Dados</strong> · Jan 2026 – Atual</p>
-    <p>Analytics em saúde e business intelligence — monitoramento de KPIs, dashboards, modelagem estatística e análise preditiva — além de IA Generativa para processos internos: desenvolvimento de chatbots, orquestração de multiagentes e subagentes e gestão do conhecimento assistida por IA.</p>
-  </div>
-  <div class="rh-card">
     <h3>OQuant Data Science Consulting</h3>
     <p><strong>Fundador e Consultor Principal</strong> · Mar 2025 – Atual</p>
-    <p>Consultoria em econometria, previsão, inferência causal, análise de risco e soluções de negócio baseadas em IA, com projetos para organizações como Grupo Fleury, Aurora Alimentos e Cogna Educacional.</p>
+    <p>Consultoria em econometria, previsão, inferência causal, análise de risco e soluções de negócio baseadas em IA, com projetos para organizações como Grupo Fleury, Aurora Alimentos e Cogna Educacional. CNPJ ativo, aberto a contratos PJ no Brasil e no exterior.</p>
     <p><a href="oquant.html">Saiba mais sobre a OQuant </a></p>
+  </div>
+  <div class="rh-card">
+    <h3>Unimed do Estado do Paraná</h3>
+    <p><strong>Cientista de Dados</strong> · Jan 2026 – Ago 2026 (concluído)</p>
+    <p>Analytics em saúde e business intelligence — monitoramento de KPIs, dashboards, modelagem estatística e análise preditiva — além de IA Generativa para processos internos: desenvolvimento de chatbots, orquestração de multiagentes e subagentes e gestão do conhecimento assistida por IA.</p>
   </div>
   <div class="rh-card">
     <h3>FAE Business School</h3>
@@ -41,7 +41,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ::: {.rh-section}
 
 ```{=html}
-<div class="rh-kicker">MAIS DE 15 ANOS EM DADOS E ECONOMIA</div>
+<div class="rh-kicker">MAIS DE 18 ANOS EM DADOS E ECONOMIA</div>
 ```
 
 ## Trajetória de carreira
@@ -50,7 +50,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 <div class="rh-timeline">
 
   <div class="rh-tl-item">
-    <div class="rh-tl-date">Jan 2026 – Atual</div>
+    <div class="rh-tl-date">Jan 2026 – Ago 2026</div>
     <h3>Cientista de Dados</h3>
     <div class="rh-tl-org">Unimed do Estado do Paraná – Curitiba, PR</div>
     <p>Analytics em saúde, BI e IA Generativa: dashboards e monitoramento de KPIs, modelagem preditiva, chatbots internos e orquestração de multiagentes para apoio à decisão assistida por IA.</p>

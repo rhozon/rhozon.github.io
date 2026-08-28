@@ -147,7 +147,7 @@ Client engagements are confidential; sector references are shared with permissio
     <p>Active doctoral research in multi-objective optimization, Bayesian econometrics, and time series at PUCPR, an MSc in Economic Development (UFPR), peer-reviewed publications, and reviewer roles for journals such as <em>Applied Soft Computing</em>. The methods behind your project are the ones surviving academic scrutiny.</p>
   </div>
   <div class="rh-card">
-    <h3>15+ years of industry track record</h3>
+    <h3>18+ years of industry track record</h3>
     <p>Hands-on delivery inside large organizations — Volvo Group, BRF, CNH Industrial, Unimed — plus UNDP/UN research work and years of economic analysis for industry federations. I know how corporate data, politics, and deadlines actually behave.</p>
   </div>
   <div class="rh-card">

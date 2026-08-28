@@ -12,20 +12,20 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 <div class="rh-kicker">WHERE I WORK NOW</div>
 ```
 
-## Current roles
+## Current &amp; recent roles
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
   <div class="rh-card">
-    <h3>Unimed do Estado do Paraná</h3>
-    <p><strong>Data Scientist</strong> · Jan 2026 – Present</p>
-    <p>Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.</p>
-  </div>
-  <div class="rh-card">
     <h3>OQuant Data Science Consulting</h3>
     <p><strong>Founder &amp; Principal Consultant</strong> · Mar 2025 – Present</p>
-    <p>Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.</p>
+    <p>Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional. Active company (CNPJ), available for contract engagements in Brazil and abroad.</p>
     <p><a href="oquant.html">Learn more about OQuant </a></p>
+  </div>
+  <div class="rh-card">
+    <h3>Unimed do Estado do Paraná</h3>
+    <p><strong>Data Scientist</strong> · Jan 2026 – Aug 2026 (concluded)</p>
+    <p>Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.</p>
   </div>
   <div class="rh-card">
     <h3>FAE Business School</h3>
@@ -41,7 +41,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 ::: {.rh-section}
 
 ```{=html}
-<div class="rh-kicker">15+ YEARS IN DATA & ECONOMICS</div>
+<div class="rh-kicker">18+ YEARS IN DATA & ECONOMICS</div>
 ```
 
 ## Career timeline
@@ -50,7 +50,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 <div class="rh-timeline">
 
   <div class="rh-tl-item">
-    <div class="rh-tl-date">Jan 2026 – Present</div>
+    <div class="rh-tl-date">Jan 2026 – Aug 2026</div>
     <h3>Data Scientist</h3>
     <div class="rh-tl-org">Unimed do Estado do Paraná – Curitiba, PR</div>
     <p>Healthcare analytics, BI and Generative AI: dashboards and KPI monitoring, predictive modeling, internal chatbots and multi-agent orchestration supporting AI-assisted decision-making.</p>
