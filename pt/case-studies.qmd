@@ -10,11 +10,12 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 <div class="rh-kicker">Estudos de Caso</div>
 ## Problemas, métodos e código que roda
 
-Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e
-por que esse, o resultado e o código. O primeiro está no ar, com repositório público que
-você pode clonar e rodar. Os dois seguintes descrevem pesquisa de doutorado cujos
-manuscritos estão em avaliação por pares — método e abordagem estão aqui, resultados
-ficam retidos até os periódicos se pronunciarem.
+Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. O primeiro é
+totalmente público — repositório, testes, relatórios de exemplo. Dois descrevem pesquisa
+de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
+retidos até os periódicos se pronunciarem. O último roda sobre dados sintéticos, porque o
+projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no topo.
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
@@ -50,13 +51,13 @@ ficam retidos até os periódicos se pronunciarem.
   </div>
 
   <div class="rh-card">
-    <h3>Modelagem Causal do NPS</h3>
+    <h3><a href="case-studies/causal-nps.html">Modelagem Causal do NPS</a></h3>
     <p>O que de fato move a satisfação do cliente, separado do que apenas se
     correlaciona com ela — para uma grande corporação.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
-      Inferência causal · Dados de pesquisa · R
+      Inferência causal · IPW · Dados sintéticos
     </p>
-    <p style="opacity:.65;">Em preparação</p>
+    <p><a href="case-studies/causal-nps.html">Ler o caso </a></p>
   </div>
 
 </div>

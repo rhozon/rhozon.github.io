@@ -9,6 +9,7 @@ project:
     - case-studies/multiagent-commodities.qmd
     - case-studies/commodity-forecasting.qmd
     - case-studies/portfolio-optimization.qmd
+    - case-studies/causal-nps.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

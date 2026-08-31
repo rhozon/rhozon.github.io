@@ -10,11 +10,12 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 <div class="rh-kicker">Case Studies</div>
 ## Problems, methods, and code you can run
 
-Each case follows the same five blocks: the business question, the data, the method
-and why that one, the result, and the code. The first is live, with a public repository
-you can clone and run. The next two describe doctoral research whose manuscripts are
-under peer review — method and approach are here, results are withheld until the
-journals have ruled.
+Each case follows the same five blocks: the business question, the data, the method and
+why that one, the result, and the code. What differs is what can be shown. The first is
+fully public — repository, tests, example reports. Two describe doctoral research under
+peer review, so method is here and results are withheld until the journals rule. The last
+runs on synthetic data, because the engagement behind it is under NDA. Each page says
+which it is, at the top.
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
@@ -50,13 +51,13 @@ journals have ruled.
   </div>
 
   <div class="rh-card">
-    <h3>Causal Modeling of NPS</h3>
+    <h3><a href="case-studies/causal-nps.html">Causal Modeling of NPS</a></h3>
     <p>What actually moves customer satisfaction, separated from what merely correlates
     with it — for a large corporation.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
-      Causal inference · Survey data · R
+      Causal inference · IPW · Synthetic data
     </p>
-    <p style="opacity:.65;">In preparation</p>
+    <p><a href="case-studies/causal-nps.html">Read the case </a></p>
   </div>
 
 </div>
