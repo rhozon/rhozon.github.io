@@ -1,0 +1,89 @@
+---
+title: ""
+pagetitle: "Multi-Objective Portfolio Optimization — Case Study"
+description: "Commodity portfolio decisions weigh more than risk against return. Evolutionary many-objective optimisation keeps the trade-off visible instead of collapsing it into one score."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 03 · Doctoral research</div>
+# Multi-Objective Portfolio Optimization
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+NSGA-II · Differential Evolution · Pareto frontiers · Multi-period
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+Which basket of commodity positions should a desk hold, when the decision has to satisfy
+several goals at once that genuinely conflict — and when the answer has to hold up over
+successive periods, not just today?
+
+The convenient move is to blend the goals into a single score and optimise that. It
+produces one number and hides the judgement inside the weights, which is exactly the
+judgement the decision-maker was supposed to make.
+:::
+
+::: {.rh-section}
+## The data
+
+Public agricultural commodity price series, multi-period, plus the volatility and
+scenario structures produced by the forecasting stage. No client data, no proprietary
+feeds.
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**Keep the trade-off open.** Rather than one optimum, evolutionary multi-objective
+algorithms return a Pareto frontier: the set of portfolios where improving one objective
+necessarily costs another. The decision-maker chooses a point on that frontier knowing
+what the choice costs, instead of inheriting a weighting someone else picked.
+
+**More than two objectives.** With three or more competing criteria the problem becomes
+many-objective, where the usual algorithms degrade in ways that are easy to miss. That
+makes the choice of algorithm a research question rather than a default — NSGA-II and
+differential evolution do not behave the same way, and comparing them properly needs a
+benchmark designed for the multi-period commodity setting rather than borrowed from
+elsewhere.
+
+**Regimes change the answer.** A frontier estimated in a calm market is the wrong frontier
+for a turbulent one. Conditioning the decision on the estimated market regime, and
+refining it with dynamic programming across periods, ties the optimisation back to the
+volatility modelling upstream instead of treating it as a separate exercise.
+
+**What survives contact with reality.** A strategy that is optimal on paper can be
+impossible to execute at size. Capacity limits, turnover and generalisation across
+several assets are part of the problem statement here, not an afterthought.
+:::
+
+::: {.rh-section}
+## Result
+
+**Deliberately not published here.** These manuscripts are under peer review or being
+prepared for submission. Publishing their results on a personal site ahead of the
+journals would be poor practice, so the frontiers, benchmark tables and comparisons stay
+out of this page until the papers are out.
+
+The one exception is work that is already public: a conference paper comparing NSGA-II and
+differential evolution on multi-objective portfolio optimisation was presented at ICPR
+Americas 2024, and a second on Pareto frontiers built across multiple time windows is in
+the ConBRepro proceedings.
+:::
+
+::: {.rh-section}
+## Code
+
+Not yet public. The implementation belongs to manuscripts under review, and releasing it
+before they are decided would carry the same problem as publishing the results.
+
+```{=html}
+<p><a class="rh-btn rh-btn-ghost" href="../research.html">Published papers on this line </a></p>
+```
+
+For running code in the same domain, the [multi-agent commodity
+analyst](multiagent-commodities.html) is public, tested and reproducible.
+:::

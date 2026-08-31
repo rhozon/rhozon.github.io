@@ -8,6 +8,8 @@ project:
     - pt/research.qmd
     - pt/case-studies.qmd
     - pt/case-studies/multiagent-commodities.qmd
+    - pt/case-studies/commodity-forecasting.qmd
+    - pt/case-studies/portfolio-optimization.qmd
     - pt/teaching.qmd
     - pt/oquant.qmd
     - pt/contact.qmd

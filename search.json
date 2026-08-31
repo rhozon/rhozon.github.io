@@ -56,6 +56,48 @@
     "text": "Let’s talk about your problem\nA first conversation costs nothing and usually clarifies whether quantitative modeling can move your decision — and whether I am the right person to build it.\n\n  Book a conversation\n  LinkedIn\n  Email"
   },
   {
+    "objectID": "case-studies/portfolio-optimization.html",
+    "href": "case-studies/portfolio-optimization.html",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "",
+    "text": "Case Study 03 · Doctoral research\n\n\n\n\nNSGA-II · Differential Evolution · Pareto frontiers · Multi-period"
+  },
+  {
+    "objectID": "case-studies/portfolio-optimization.html#the-business-question",
+    "href": "case-studies/portfolio-optimization.html#the-business-question",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "The business question",
+    "text": "The business question\nWhich basket of commodity positions should a desk hold, when the decision has to satisfy several goals at once that genuinely conflict — and when the answer has to hold up over successive periods, not just today?\nThe convenient move is to blend the goals into a single score and optimise that. It produces one number and hides the judgement inside the weights, which is exactly the judgement the decision-maker was supposed to make."
+  },
+  {
+    "objectID": "case-studies/portfolio-optimization.html#the-data",
+    "href": "case-studies/portfolio-optimization.html#the-data",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "The data",
+    "text": "The data\nPublic agricultural commodity price series, multi-period, plus the volatility and scenario structures produced by the forecasting stage. No client data, no proprietary feeds."
+  },
+  {
+    "objectID": "case-studies/portfolio-optimization.html#method-and-why-this-one",
+    "href": "case-studies/portfolio-optimization.html#method-and-why-this-one",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nKeep the trade-off open. Rather than one optimum, evolutionary multi-objective algorithms return a Pareto frontier: the set of portfolios where improving one objective necessarily costs another. The decision-maker chooses a point on that frontier knowing what the choice costs, instead of inheriting a weighting someone else picked.\nMore than two objectives. With three or more competing criteria the problem becomes many-objective, where the usual algorithms degrade in ways that are easy to miss. That makes the choice of algorithm a research question rather than a default — NSGA-II and differential evolution do not behave the same way, and comparing them properly needs a benchmark designed for the multi-period commodity setting rather than borrowed from elsewhere.\nRegimes change the answer. A frontier estimated in a calm market is the wrong frontier for a turbulent one. Conditioning the decision on the estimated market regime, and refining it with dynamic programming across periods, ties the optimisation back to the volatility modelling upstream instead of treating it as a separate exercise.\nWhat survives contact with reality. A strategy that is optimal on paper can be impossible to execute at size. Capacity limits, turnover and generalisation across several assets are part of the problem statement here, not an afterthought."
+  },
+  {
+    "objectID": "case-studies/portfolio-optimization.html#result",
+    "href": "case-studies/portfolio-optimization.html#result",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Result",
+    "text": "Result\nDeliberately not published here. These manuscripts are under peer review or being prepared for submission. Publishing their results on a personal site ahead of the journals would be poor practice, so the frontiers, benchmark tables and comparisons stay out of this page until the papers are out.\nThe one exception is work that is already public: a conference paper comparing NSGA-II and differential evolution on multi-objective portfolio optimisation was presented at ICPR Americas 2024, and a second on Pareto frontiers built across multiple time windows is in the ConBRepro proceedings."
+  },
+  {
+    "objectID": "case-studies/portfolio-optimization.html#code",
+    "href": "case-studies/portfolio-optimization.html#code",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Code",
+    "text": "Code\nNot yet public. The implementation belongs to manuscripts under review, and releasing it before they are decided would carry the same problem as publishing the results.\nPublished papers on this line \nFor running code in the same domain, the multi-agent commodity analyst is public, tested and reproducible."
+  },
+  {
     "objectID": "case-studies/multiagent-commodities.html",
     "href": "case-studies/multiagent-commodities.html",
     "title": "Multi-Agent Commodity Analyst",
@@ -193,14 +235,56 @@
     "href": "case-studies.html",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "Case Studies\n\n\n\nEach case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. The first is live — repository, example reports and all. The others are being written up from doctoral work.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    In preparation\n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    In preparation\n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · Survey data · R\n    \n    In preparation"
+    "text": "Case Studies\n\n\n\nEach case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. The first is live, with a public repository you can clone and run. The next two describe doctoral research whose manuscripts are under peer review — method and approach are here, results are withheld until the journals have ruled.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    Read the case \n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    Read the case \n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · Survey data · R\n    \n    In preparation"
   },
   {
     "objectID": "case-studies.html#problems-methods-and-code-you-can-run",
     "href": "case-studies.html#problems-methods-and-code-you-can-run",
     "title": "Rodrigo Hermont Ozon",
     "section": "",
-    "text": "Each case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. The first is live — repository, example reports and all. The others are being written up from doctoral work.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    In preparation\n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    In preparation\n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · Survey data · R\n    \n    In preparation"
+    "text": "Each case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. The first is live, with a public repository you can clone and run. The next two describe doctoral research whose manuscripts are under peer review — method and approach are here, results are withheld until the journals have ruled.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    Read the case \n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    Read the case \n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · Survey data · R\n    \n    In preparation"
+  },
+  {
+    "objectID": "case-studies/commodity-forecasting.html",
+    "href": "case-studies/commodity-forecasting.html",
+    "title": "Commodity Price Forecasting",
+    "section": "",
+    "text": "Case Study 02 · Doctoral research\n\n\n\n\nGAMLSS · Bayesian MSGARCH · Rolling-origin validation · R"
+  },
+  {
+    "objectID": "case-studies/commodity-forecasting.html#the-business-question",
+    "href": "case-studies/commodity-forecasting.html#the-business-question",
+    "title": "Commodity Price Forecasting",
+    "section": "The business question",
+    "text": "The business question\nA grain buyer does not only need to know where the price is heading. They need to know how wrong that number could be, and whether being wrong costs the same in both directions.\nMost forecasting stops at the first question. A cooperative deciding when to sell, or a processor deciding how much to hedge, is really asking the second one."
+  },
+  {
+    "objectID": "case-studies/commodity-forecasting.html#the-data",
+    "href": "case-studies/commodity-forecasting.html#the-data",
+    "title": "Commodity Price Forecasting",
+    "section": "The data",
+    "text": "The data\nPublic series only: agricultural commodity prices from international exchanges and Brazilian domestic markets, daily, over several years, with the exchange rate as the bridge between them. No client data is involved at any point."
+  },
+  {
+    "objectID": "case-studies/commodity-forecasting.html#method-and-why-this-one",
+    "href": "case-studies/commodity-forecasting.html#method-and-why-this-one",
+    "title": "Commodity Price Forecasting",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nThe usual simplification. Standard volatility models let the spread of returns move over time but hold everything else fixed — the asymmetry and the tail weight are treated as constants. In agricultural markets that assumption is uncomfortable: a drought does not widen the distribution symmetrically.\nLetting the whole distribution move. GAMLSS gives each parameter of the distribution — location, scale, skewness, kurtosis — its own model with its own covariates. The shape of the distribution becomes something estimated over time rather than assumed.\nRegimes, not gradual drift. Grain markets do not slide smoothly from calm to turbulent; they switch. Markov-switching GARCH estimates the states and the transition probabilities between them, and a Bayesian treatment carries the parameter uncertainty forward instead of collapsing it into a point estimate.\nValidation that respects time. A model tuned on the full sample will always look good. Rolling-origin evaluation refits at each step using only what was knowable at that moment, and every added layer has to earn its place against simpler benchmarks — a plain GARCH, an ARIMA, a random walk. A more elaborate model that does not beat the simple one is a finding, not a failure."
+  },
+  {
+    "objectID": "case-studies/commodity-forecasting.html#result",
+    "href": "case-studies/commodity-forecasting.html#result",
+    "title": "Commodity Price Forecasting",
+    "section": "Result",
+    "text": "Result\nDeliberately not published here. The manuscripts behind this work are under peer review, and putting their results on a personal website before the journals have ruled on them would be poor practice — and unfair to the reviewers reading them.\nWhat can be said is the shape of the work: this is one stage of a doctoral thesis on multi-period, multi-objective portfolio optimisation in agricultural commodity markets, where distributional modelling feeds regime-switching volatility, which feeds scenario simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.\nResults will be linked here as the papers appear. In the meantime, the case below is the part that is already public and running."
+  },
+  {
+    "objectID": "case-studies/commodity-forecasting.html#code",
+    "href": "case-studies/commodity-forecasting.html#code",
+    "title": "Commodity Price Forecasting",
+    "section": "Code",
+    "text": "Code\nThe model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA when the residual diagnostics reject it — is implemented and running in the multi-agent case study, with public data and a frozen cache so anyone can reproduce it:\nMulti-Agent Commodity Analyst \nRepository\nPublished work along this line is listed on the research page, where four conference papers carry links to their proceedings."
   },
   {
     "objectID": "teaching.html",

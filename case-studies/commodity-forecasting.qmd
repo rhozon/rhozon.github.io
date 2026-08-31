@@ -1,0 +1,91 @@
+---
+title: ""
+pagetitle: "Commodity Price Forecasting — Case Study"
+description: "Modelling the whole shape of a price distribution over time, not just its volatility: GAMLSS for time-varying higher moments and regime-switching volatility, validated on rolling origins."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 02 · Doctoral research</div>
+# Commodity Price Forecasting
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A grain buyer does not only need to know where the price is heading. They need to know
+how wrong that number could be, and whether being wrong costs the same in both
+directions.
+
+Most forecasting stops at the first question. A cooperative deciding when to sell, or a
+processor deciding how much to hedge, is really asking the second one.
+:::
+
+::: {.rh-section}
+## The data
+
+Public series only: agricultural commodity prices from international exchanges and
+Brazilian domestic markets, daily, over several years, with the exchange rate as the
+bridge between them. No client data is involved at any point.
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**The usual simplification.** Standard volatility models let the spread of returns move
+over time but hold everything else fixed — the asymmetry and the tail weight are treated
+as constants. In agricultural markets that assumption is uncomfortable: a drought does
+not widen the distribution symmetrically.
+
+**Letting the whole distribution move.** GAMLSS gives each parameter of the distribution
+— location, scale, skewness, kurtosis — its own model with its own covariates. The shape
+of the distribution becomes something estimated over time rather than assumed.
+
+**Regimes, not gradual drift.** Grain markets do not slide smoothly from calm to
+turbulent; they switch. Markov-switching GARCH estimates the states and the transition
+probabilities between them, and a Bayesian treatment carries the parameter uncertainty
+forward instead of collapsing it into a point estimate.
+
+**Validation that respects time.** A model tuned on the full sample will always look
+good. Rolling-origin evaluation refits at each step using only what was knowable at that
+moment, and every added layer has to earn its place against simpler benchmarks — a plain
+GARCH, an ARIMA, a random walk. A more elaborate model that does not beat the simple one
+is a finding, not a failure.
+:::
+
+::: {.rh-section}
+## Result
+
+**Deliberately not published here.** The manuscripts behind this work are under peer
+review, and putting their results on a personal website before the journals have ruled on
+them would be poor practice — and unfair to the reviewers reading them.
+
+What can be said is the shape of the work: this is one stage of a doctoral thesis on
+multi-period, multi-objective portfolio optimisation in agricultural commodity markets,
+where distributional modelling feeds regime-switching volatility, which feeds scenario
+simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.
+
+Results will be linked here as the papers appear. In the meantime, the case below is the
+part that is already public and running.
+:::
+
+::: {.rh-section}
+## Code
+
+The model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA
+when the residual diagnostics reject it — is implemented and running in the multi-agent
+case study, with public data and a frozen cache so anyone can reproduce it:
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="multiagent-commodities.html">Multi-Agent Commodity Analyst </a>
+<a class="rh-btn rh-btn-ghost" href="https://github.com/rhozon/commodity-agents">Repository</a></p>
+```
+
+Published work along this line is listed on the [research page](../research.html), where
+four conference papers carry links to their proceedings.
+:::

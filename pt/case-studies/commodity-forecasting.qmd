@@ -1,0 +1,92 @@
+---
+title: ""
+pagetitle: "Previsão de Preço de Commodities — Estudo de Caso"
+description: "Modelar a forma inteira da distribuição de preço ao longo do tempo, não só a volatilidade: GAMLSS para momentos superiores variantes no tempo e volatilidade com mudança de regime, validados em origem móvel."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 02 · Pesquisa de doutorado</div>
+# Previsão de Preço de Commodities
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Quem compra grão não precisa saber apenas para onde o preço vai. Precisa saber o quanto
+esse número pode estar errado, e se errar custa o mesmo nas duas direções.
+
+A maior parte da previsão para na primeira pergunta. Uma cooperativa decidindo quando
+vender, ou uma indústria decidindo quanto travar, está de fato fazendo a segunda.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Apenas séries públicas: preços de commodities agrícolas em bolsas internacionais e no
+mercado doméstico brasileiro, diários, ao longo de vários anos, com o câmbio como ponte
+entre eles. Nenhum dado de cliente é usado em momento algum.
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**A simplificação de sempre.** Modelos padrão de volatilidade deixam a dispersão dos
+retornos variar no tempo, mas mantêm o resto fixo — assimetria e peso de cauda são
+tratados como constantes. Em mercado agrícola essa premissa é desconfortável: uma seca não
+alarga a distribuição de forma simétrica.
+
+**Deixar a distribuição inteira se mover.** O GAMLSS dá a cada parâmetro da distribuição —
+posição, escala, assimetria, curtose — o seu próprio modelo, com suas próprias
+covariáveis. A forma da distribuição passa a ser estimada ao longo do tempo, em vez de
+presumida.
+
+**Regimes, não deriva gradual.** Mercado de grão não desliza suavemente de calmo para
+turbulento; ele troca. O GARCH com mudança markoviana estima os estados e as
+probabilidades de transição entre eles, e o tratamento bayesiano carrega a incerteza dos
+parâmetros adiante, em vez de colapsá-la numa estimativa pontual.
+
+**Validação que respeita o tempo.** Um modelo calibrado na amostra inteira sempre parece
+bom. A avaliação em origem móvel reestima a cada passo usando só o que era conhecível
+naquele momento, e cada camada acrescentada tem de justificar sua existência contra
+alternativas mais simples — um GARCH comum, um ARIMA, um passeio aleatório. Um modelo mais
+elaborado que não supera o simples é um achado, não um fracasso.
+:::
+
+::: {.rh-section}
+## O resultado
+
+**Deliberadamente não publicado aqui.** Os manuscritos por trás deste trabalho estão em
+avaliação por pares, e colocar os resultados num site pessoal antes de os periódicos se
+pronunciarem seria má prática — e injusto com quem os está revisando.
+
+O que dá para dizer é o formato do trabalho: esta é uma etapa de uma tese de doutorado
+sobre otimização multiobjetivo e multiperíodo de portfólio em mercados de commodities
+agrícolas, na qual a modelagem distribucional alimenta a volatilidade com mudança de
+regime, que alimenta a simulação de cenários, que alimenta a camada de otimização. Cada
+etapa se sustenta como manuscrito próprio.
+
+Os resultados serão linkados aqui conforme os artigos saírem. Enquanto isso, o caso abaixo
+é a parte que já é pública e roda.
+:::
+
+::: {.rh-section}
+## O código
+
+A escada de modelos descrita aqui — MSGARCH primeiro, recuando para GARCH e depois ARIMA
+quando os diagnósticos de resíduo reprovam — está implementada e rodando no estudo de caso
+multiagente, com dado público e cache congelado para que qualquer um reproduza:
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="multiagent-commodities.html">Analista de Commodities Multiagente </a>
+<a class="rh-btn rh-btn-ghost" href="https://github.com/rhozon/commodity-agents">Repositório</a></p>
+```
+
+O trabalho já publicado nesta linha está na [página de pesquisa](../research.html), onde
+quatro artigos de congresso trazem link para os anais.
+:::

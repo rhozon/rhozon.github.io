@@ -7,6 +7,8 @@ project:
     - research.qmd
     - case-studies.qmd
     - case-studies/multiagent-commodities.qmd
+    - case-studies/commodity-forecasting.qmd
+    - case-studies/portfolio-optimization.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

@@ -1,0 +1,88 @@
+---
+title: ""
+pagetitle: "Otimização Multiobjetivo de Portfólio — Estudo de Caso"
+description: "Decisão de portfólio de commodities pesa mais que risco contra retorno. Otimização evolutiva many-objective mantém o trade-off visível, em vez de colapsá-lo num único escore."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 03 · Pesquisa de doutorado</div>
+# Otimização Multiobjetivo de Portfólio
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+NSGA-II · Evolução Diferencial · Fronteiras de Pareto · Multiperíodo
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Qual cesta de posições em commodities uma mesa deve carregar, quando a decisão precisa
+satisfazer vários objetivos que genuinamente conflitam — e quando a resposta tem de se
+sustentar ao longo de períodos sucessivos, não só hoje?
+
+A saída cômoda é misturar os objetivos num escore único e otimizar aquilo. Produz um
+número e esconde o julgamento dentro dos pesos, que é exatamente o julgamento que cabia a
+quem decide.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Séries públicas de preço de commodities agrícolas, multiperíodo, mais as estruturas de
+volatilidade e de cenário produzidas pela etapa de previsão. Nenhum dado de cliente,
+nenhuma fonte proprietária.
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Manter o trade-off aberto.** Em vez de um ótimo, algoritmos evolutivos multiobjetivo
+devolvem uma fronteira de Pareto: o conjunto de portfólios em que melhorar um objetivo
+necessariamente custa outro. Quem decide escolhe um ponto da fronteira sabendo o preço da
+escolha, em vez de herdar uma ponderação que outra pessoa arbitrou.
+
+**Mais de dois objetivos.** Com três ou mais critérios concorrentes o problema vira
+many-objective, e ali os algoritmos usuais degradam de formas fáceis de não perceber. Isso
+transforma a escolha do algoritmo em questão de pesquisa, não em padrão — NSGA-II e
+evolução diferencial não se comportam igual, e compará-los direito exige um benchmark
+desenhado para o cenário multiperíodo de commodities, não emprestado de outro domínio.
+
+**Regime muda a resposta.** Uma fronteira estimada em mercado calmo é a fronteira errada
+para mercado turbulento. Condicionar a decisão ao regime estimado, e refiná-la com
+programação dinâmica ao longo dos períodos, amarra a otimização de volta à modelagem de
+volatilidade a montante, em vez de tratá-la como exercício separado.
+
+**O que sobrevive ao contato com a realidade.** Uma estratégia ótima no papel pode ser
+impossível de executar em tamanho. Limites de capacidade, giro e generalização para vários
+ativos fazem parte do enunciado do problema aqui, não são um apêndice.
+:::
+
+::: {.rh-section}
+## O resultado
+
+**Deliberadamente não publicado aqui.** Estes manuscritos estão em avaliação por pares ou
+em preparação para submissão. Publicar seus resultados num site pessoal antes dos
+periódicos seria má prática, então as fronteiras, tabelas de benchmark e comparações ficam
+fora desta página até os artigos saírem.
+
+A exceção é o que já é público: um artigo comparando NSGA-II e evolução diferencial em
+otimização multiobjetivo de portfólio foi apresentado no ICPR Americas 2024, e um segundo
+sobre fronteiras de Pareto construídas em múltiplas janelas de tempo está nos anais do
+ConBRepro.
+:::
+
+::: {.rh-section}
+## O código
+
+Ainda não é público. A implementação pertence a manuscritos em avaliação, e liberá-la
+antes da decisão dos periódicos carregaria o mesmo problema de publicar os resultados.
+
+```{=html}
+<p><a class="rh-btn rh-btn-ghost" href="../research.html">Artigos publicados nesta linha </a></p>
+```
+
+Para código rodando no mesmo domínio, o [analista de commodities
+multiagente](multiagent-commodities.html) é público, testado e reproduzível.
+:::
