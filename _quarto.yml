@@ -10,6 +10,7 @@ project:
     - case-studies/commodity-forecasting.qmd
     - case-studies/portfolio-optimization.qmd
     - case-studies/causal-nps.qmd
+    - case-studies/langgraph-parity.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

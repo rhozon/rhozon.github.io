@@ -1,0 +1,124 @@
+---
+title: ""
+pagetitle: "Framework ou feito à mão? — Estudo de Caso"
+description: "O mesmo sistema multiagente, duas vezes: um laço escrito à mão e um StateGraph do LangGraph. Os dois produzem relatório idêntico byte a byte, e a diferença entre eles é medida, não discutida."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 05 · No ar</div>
+# Framework ou feito à mão?
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+LangGraph · StateGraph · Teste de paridade · 173 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Um time vai construir um sistema agêntico. Alguém pergunta se adota um framework de
+agentes ou escreve a orquestração à mão. A resposta honesta é *depende* — o que não ajuda
+ninguém.
+
+Então: pegar um sistema multiagente que já funciona sem framework, reconstruir a
+orquestração em LangGraph, e **medir** a diferença em vez de discuti-la.
+:::
+
+::: {.rh-section}
+## O arranjo
+
+O objeto é o [analista de commodities multiagente](multiagent-commodities.html) do estudo
+de caso 01 — quatro agentes sobre um núcleo econométrico determinístico em R, com laço de
+crítica e trava anti-alucinação.
+
+A regra que dá sentido à comparação: **só a orquestração muda.** Os quatro agentes e todo
+o núcleo em `agro/` são importados, não reescritos. A versão à mão é um laço `for` com
+`break`; a versão LangGraph é um `StateGraph` com cinco nós e duas arestas condicionais.
+
+Trocar entre os dois é uma flag:
+
+```bash
+python run.py --commodity milho --pergunta "..." --fake-llm --engine manual
+python run.py --commodity milho --pergunta "..." --fake-llm --engine langgraph
+```
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Paridade primeiro, opinião depois.** Seis testes rodam os dois motores com a mesma
+entrada e comparam campo a campo: família escolhida, número de tentativas, histórico de
+reprovações, diagnósticos de resíduo, backtest, o conjunto de números que a trava autoriza
+— e o markdown final.
+
+Sem isso, "reimplementei em LangGraph" é uma afirmação. Com isso, é uma propriedade. E uma
+reimplementação que se comporta *quase* igual é pior que nenhuma: parece uma alternativa e
+é uma armadilha.
+
+**Os agentes não viraram tools.** O LangGraph oferece `ToolNode` e o padrão ReAct, em que o
+modelo decide qual ferramenta chamar. Não é o que este sistema faz. A ordem — coletar,
+ajustar, criticar, redigir — é fixa de propósito, e o LLM escolhe *parâmetros*, nunca a
+próxima etapa. Transformar `fit_model` numa tool seria uma mudança de semântica disfarçada
+de mudança de framework, e a comparação só vale se os dois lados fizerem a mesma coisa.
+:::
+
+::: {.rh-section}
+## O resultado
+
+**Os relatórios são idênticos byte a byte.** Mesmo SHA-256, ponta a ponta, do cache
+congelado:
+
+```
+manual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0
+langgraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0
+```
+
+**O que o framework cobrou.** O `MemorySaver` — o checkpointer, e a principal razão para
+adotar LangGraph — serializa o estado a cada nó com msgpack. Um `pandas.Series` não é
+serializável, então a primeira versão do grafo simplesmente quebrou:
+
+```
+TypeError: Type is not msgpack serializable: Series
+```
+
+O laço escrito à mão nunca encontra isso, porque lá a série é uma variável local lida uma
+vez. Para manter o checkpointing, o estado passou a carregar só o bundle de dados — um
+dataclass de primitivos com o caminho do arquivo — e cada nó que precisa da série a relê do
+disco.
+
+Medido em execução: **1 leitura de parquet no motor manual, 3 no grafo.** O tempo total
+quase não mudou, porque o gargalo é o subprocess do R, não o disco. Nessa escala o custo é
+real e irrelevante. Numa série grande deixaria de ser irrelevante, e a escolha passaria a
+ser abrir mão do checkpointer ou escrever um serializador próprio.
+
+**O que o framework comprou.** O estado do pipeline deixa de ser implícito em variáveis
+locais e vira um `TypedDict` declarado. O laço de reprovação vira uma aresta condicional
+que se lê sem rastrear o fluxo de cabeça. E o checkpointer permite inspecionar e retomar
+uma execução no meio — coisa que o laço à mão não oferece.
+
+**O preço em código:** 54 linhas de código à mão contra 120 no grafo, para comportamento
+idêntico.
+
+**Então qual?** Para este sistema, o laço à mão ganha: o pipeline é curto, o fluxo de
+controle cabe numa tela, e nada aqui precisa de retomada. O framework começaria a se pagar
+com mais ramificações, pausas com humano no meio, ou execuções longas o bastante para
+retomar importar. Isso é conclusão tirada de medição, não de gosto — e, de qualquer forma,
+os testes de paridade fazem a troca custar uma flag.
+:::
+
+::: {.rh-section}
+## O código
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
+```
+
+Os dois motores vivem no mesmo repositório: `agents/orchestrator.py` e
+`agents_langgraph/graph.py`, com `tests/test_paridade.py` prendendo os dois ao mesmo
+resultado. A suíte tem **173 testes**, e roda sem chave de API e sem rede.
+
+`langgraph` e `langchain-core` estão no `requirements.txt`, mas só o motor do grafo e o
+teste de paridade os importam — o import é adiado, então o motor padrão não precisa deles.
+:::

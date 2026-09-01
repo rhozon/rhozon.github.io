@@ -60,6 +60,17 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
     <p><a href="case-studies/causal-nps.html">Ler o caso </a></p>
   </div>
 
+
+  <div class="rh-card">
+    <h3><a href="case-studies/langgraph-parity.html">Framework ou feito à mão?</a></h3>
+    <p>O mesmo sistema multiagente duas vezes — um laço escrito à mão e um
+    StateGraph do LangGraph. Os dois emitem relatório idêntico; a diferença é medida.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      LangGraph &middot; StateGraph &middot; Teste de paridade
+    </p>
+    <p><a href="case-studies/langgraph-parity.html">Ler o caso </a></p>
+  </div>
+
 </div>
 ```
 :::

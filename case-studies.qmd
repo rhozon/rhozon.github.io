@@ -60,6 +60,17 @@ which it is, at the top.
     <p><a href="case-studies/causal-nps.html">Read the case </a></p>
   </div>
 
+
+  <div class="rh-card">
+    <h3><a href="case-studies/langgraph-parity.html">Framework or Hand-Rolled?</a></h3>
+    <p>The same multi-agent system twice — a hand-written loop and a LangGraph
+    StateGraph. Both emit a byte-identical report; the difference is measured.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      LangGraph &middot; StateGraph &middot; Parity testing
+    </p>
+    <p><a href="case-studies/langgraph-parity.html">Read the case </a></p>
+  </div>
+
 </div>
 ```
 :::

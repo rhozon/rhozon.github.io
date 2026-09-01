@@ -1,0 +1,125 @@
+---
+title: ""
+pagetitle: "Framework or Hand-Rolled? — Case Study"
+description: "The same multi-agent system, twice: a hand-written loop and a LangGraph StateGraph. Both produce a byte-identical report, and the difference between them is measured rather than argued."
+toc: false
+image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 05 · Live</div>
+# Framework or Hand-Rolled?
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+LangGraph · StateGraph · Parity testing · 173 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A team is about to build an agentic system. Someone asks whether to adopt an agent
+framework or write the orchestration by hand. The honest answer is *it depends* — which
+helps nobody.
+
+So: take a multi-agent system that already works without a framework, rebuild its
+orchestration on LangGraph, and measure the difference instead of arguing about it.
+:::
+
+::: {.rh-section}
+## The setup
+
+The subject is the [multi-agent commodity analyst](multiagent-commodities.html) from case
+study 01 — four agents over a deterministic econometric core in R, with a critique loop
+and an anti-hallucination guard.
+
+The rule that makes the comparison mean anything: **only the orchestration changes.** The
+four agents and the whole `agro/` core are imported, not rewritten. The hand-rolled
+version is a `for` loop with a `break`; the LangGraph version is a `StateGraph` with five
+nodes and two conditional edges.
+
+Switching between them is a flag:
+
+```bash
+python run.py --commodity milho --pergunta "..." --fake-llm --engine manual
+python run.py --commodity milho --pergunta "..." --fake-llm --engine langgraph
+```
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**Parity first, opinions later.** Six tests run both engines on the same input and compare
+the results field by field: chosen model family, number of attempts, the rejection history,
+the residual diagnostics, the backtest, the set of numbers the guard authorises — and the
+final markdown.
+
+Without that, "I reimplemented it in LangGraph" is a claim. With it, it is a property. And
+a reimplementation that behaves *almost* the same is worse than none at all: it looks like
+an alternative and is actually a trap.
+
+**The agents did not become tools.** LangGraph offers `ToolNode` and the ReAct pattern,
+where the model decides which tool to call next. That is not what this system does. The
+order — collect, fit, critique, write — is fixed on purpose, and the LLM chooses
+*parameters*, never the next step. Turning `fit_model` into a tool would have been a change
+of semantics disguised as a change of framework, and the comparison only holds if both
+sides do the same thing.
+:::
+
+::: {.rh-section}
+## Result
+
+**The reports are byte-identical.** Same SHA-256, end to end, from the frozen cache:
+
+```
+manual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0
+langgraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0
+```
+
+**What the framework charged.** `MemorySaver` — the checkpointer, and the main reason to
+adopt LangGraph at all — serialises the state at every node with msgpack. A
+`pandas.Series` is not serialisable, so the first version of the graph failed outright:
+
+```
+TypeError: Type is not msgpack serializable: Series
+```
+
+The hand-written loop never meets this, because there the series is a local variable read
+once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of
+primitives holding a file path — and every node that needs the series re-reads it from
+disk.
+
+Measured at runtime: **1 parquet read in the manual engine, 3 in the graph.** Total time
+barely moved, because the bottleneck is the R subprocess, not the disk. At this data size
+the cost is real and irrelevant. On a large series it would stop being irrelevant, and the
+choice would be to drop the checkpointer or write a custom serialiser.
+
+**What the framework bought.** Pipeline state stops being implicit in local variables and
+becomes a declared `TypedDict`. The rejection loop becomes a conditional edge you can read
+without tracing control flow in your head. And the checkpointer lets you inspect and resume
+a run mid-execution — something the hand-rolled loop does not offer.
+
+**The price in code:** 54 lines of code hand-rolled against 120 in the graph, for
+identical behaviour.
+
+**So which one?** For this system, the hand-written loop wins: the pipeline is short, the
+control flow fits on one screen, and nothing here needs resumability. The framework would
+start paying for itself with more branches, human-in-the-loop pauses, or runs long enough
+that resuming matters. That is a conclusion drawn from a measurement, not from taste — and
+either way, the parity tests mean switching costs a flag.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
+```
+
+Both engines live in the same repository: `agents/orchestrator.py` and
+`agents_langgraph/graph.py`, with `tests/test_paridade.py` holding them to the same result.
+The suite is **173 tests**, and it runs with no API key and no network.
+
+`langgraph` and `langchain-core` are in `requirements.txt`, but only the graph engine and
+the parity test import them — the import is deferred, so the default engine needs neither.
+:::
