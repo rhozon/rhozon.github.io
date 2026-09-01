@@ -70,8 +70,9 @@ multi-period, multi-objective portfolio optimisation in agricultural commodity m
 where distributional modelling feeds regime-switching volatility, which feeds scenario
 simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.
 
-Results will be linked here as the papers appear. In the meantime, the case below is the
-part that is already public and running.
+Whatever of this line reaches print is listed on the [research page](../research.html),
+alongside the conference papers that already carry proceedings links. The case below is
+the part that is public and running today.
 :::
 
 ::: {.rh-section}

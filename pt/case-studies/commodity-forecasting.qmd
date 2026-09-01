@@ -71,8 +71,9 @@ agrícolas, na qual a modelagem distribucional alimenta a volatilidade com mudan
 regime, que alimenta a simulação de cenários, que alimenta a camada de otimização. Cada
 etapa se sustenta como manuscrito próprio.
 
-Os resultados serão linkados aqui conforme os artigos saírem. Enquanto isso, o caso abaixo
-é a parte que já é pública e roda.
+O que desta linha chegar a sair está listado na [página de pesquisa](../research.html),
+ao lado dos artigos de congresso que já trazem link para os anais. O caso abaixo é a parte
+que hoje é pública e roda.
 :::
 
 ::: {.rh-section}
