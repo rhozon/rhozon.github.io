@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Multi-Objective Portfolio Optimization — Case Study"
 description: "Commodity portfolio decisions weigh more than risk against return. Evolutionary many-objective optimisation keeps the trade-off visible instead of collapsing it into one score."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

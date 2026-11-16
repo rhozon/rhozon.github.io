@@ -6,7 +6,7 @@ toc: true
 toc-location: right
 toc-title: "Nesta página"
 toc-depth: 3
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
@@ -88,7 +88,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 </div>
 
 <div class="rh-pub"><strong>Ozon, R., de Lima, J. D., Dranka, G. (2024).</strong> <em>Enhancing Grain Portfolio Risk Management with GAMLSS and MSGARCH.</em> <span class="rh-pub-venue">XXIV Encontro Brasileiro de Finanças (EBFIN)</span> <a href="https://doity.com.br/anais/24ebfin/area/36699">anais</a>
-  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Preço de grão não fica apenas mais ou menos volátil — a forma inteira da distribuição se move, incluindo assimetria e caudas pesadas. O GAMLSS acompanha esses momentos ao longo do tempo e o MSGARCH captura as trocas entre regimes calmos e turbulentos, ambos aplicados a risco de portfólio. <a href="case-studies/multiagent-commodities.html">Ver o estudo de caso </a></p>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Preço de grão não fica apenas mais ou menos volátil — a forma inteira da distribuição se move, incluindo assimetria e caudas pesadas. O GAMLSS acompanha esses momentos ao longo do tempo e o MSGARCH captura as trocas entre regimes calmos e turbulentos, ambos aplicados a risco de portfólio. <a href="portfolio/multiagent-commodities.html">Ver o estudo de caso </a></p>
 </div>
 ```
 
@@ -100,7 +100,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
 </div>
 
 <div class="rh-pub"><strong>Ozon, R. H. (2024).</strong> <em>Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics.</em> <span class="rh-pub-venue">1st SouthStat Meeting (UFPR) — pôster</span>
-  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A versão em pôster do trabalho de portfólio de grãos: combinar forma de distribuição variante no tempo com volatilidade bayesiana de mudança de regime para prever retornos de commodities. <a href="case-studies/multiagent-commodities.html">Ver o estudo de caso </a></p>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">A versão em pôster do trabalho de portfólio de grãos: combinar forma de distribuição variante no tempo com volatilidade bayesiana de mudança de regime para prever retornos de commodities. <a href="portfolio/multiagent-commodities.html">Ver o estudo de caso </a></p>
 </div>
 
 <div class="rh-pub"><strong>Ozon, R. H. (2023).</strong> <em>The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models.</em> <span class="rh-pub-venue">R Day (UFPR)</span>
@@ -142,7 +142,7 @@ Pipeline de pesquisa do doutorado: dezesseis manuscritos em preparação e submi
 
 <p style="margin-top:1.4rem;"><strong>Forecasting e modelagem de volatilidade</strong></p>
 <div class="rh-pub"><em>MSGARCH Against Competing Models for Commodity Price Returns</em>
-  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Volatilidade com mudança de regime realmente supera as alternativas mais simples em preço de grão, ou apenas parece mais sofisticada? Uma comparação direta. <a href="case-studies/multiagent-commodities.html">Ver o estudo de caso </a></p>
+  <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Volatilidade com mudança de regime realmente supera as alternativas mais simples em preço de grão, ou apenas parece mais sofisticada? Uma comparação direta. <a href="portfolio/multiagent-commodities.html">Ver o estudo de caso </a></p>
 </div>
 <div class="rh-pub"><em>Time-Varying Higher Moments in Agricultural Commodities via GAMLSS</em>
   <p style="margin:.35rem 0 0; font-size:.92rem; opacity:.78;">Assimetria e curtose em preços agrícolas não são constantes, mas a maioria dos modelos as trata como se fossem. O GAMLSS deixa que se movam com o tempo.</p>

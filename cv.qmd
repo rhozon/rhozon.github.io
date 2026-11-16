@@ -23,7 +23,7 @@ citation:
     - family: "Hermont Ozon"
       given: "Rodrigo"
   issued: last-modified
-  url: "https://rhozon.github.io/portcv/cv.html"
+  url: "https://rhozon.github.io/cv.html"
 copyright:
   holder: "Rodrigo Hermont Ozon"
   year: 2025
@@ -363,7 +363,7 @@ header-includes:
         }
       }
       </style>
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::::: {#right-sidebar}

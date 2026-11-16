@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="What actually moves customer satisfaction, separated from what merely correlates with it. Demonstrated end to end on synthetic data, because the real engagement is under NDA.">
+<meta name="description" content="Decisão de portfólio de commodities pesa mais que risco contra retorno. Otimização evolutiva many-objective mantém o trade-off visível, em vez de colapsá-lo num único escore.">
 
-<title>Causal Modeling of NPS — Case Study – Rodrigo Hermont Ozon</title>
+<title>Otimização Multiobjetivo de Portfólio — Estudo de Caso – Rodrigo Hermont Ozon</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,61 +27,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../assets/favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9f174a3d94ac7326965624cb3d70f93e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -96,17 +61,17 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
@@ -124,14 +89,14 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Causal Modeling of NPS — Case Study">
-<meta property="og:description" content="What actually moves customer satisfaction, separated from what merely correlates with it. Demonstrated end to end on synthetic data, because the real engagement is under NDA.">
-<meta property="og:image" content="https://rhozon.github.io/portcv/assets/case-nps-causal.png">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Otimização Multiobjetivo de Portfólio — Estudo de Caso">
+<meta property="og:description" content="Decisão de portfólio de commodities pesa mais que risco contra retorno. Otimização evolutiva many-objective mantém o trade-off visível, em vez de colapsá-lo num único escore.">
+<meta property="og:image" content="https://rhozon.github.io/assets/profile_card.jpg">
 <meta property="og:site_name" content="Rodrigo Hermont Ozon">
-<meta name="twitter:title" content="Causal Modeling of NPS — Case Study">
-<meta name="twitter:description" content="What actually moves customer satisfaction, separated from what merely correlates with it. Demonstrated end to end on synthetic data, because the real engagement is under NDA.">
-<meta name="twitter:image" content="https://rhozon.github.io/portcv/assets/case-nps-causal.png">
+<meta name="twitter:title" content="Otimização Multiobjetivo de Portfólio — Estudo de Caso">
+<meta name="twitter:description" content="Decisão de portfólio de commodities pesa mais que risco contra retorno. Otimização evolutiva many-objective mantém o trade-off visível, em vez de colapsá-lo num único escore.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/profile_card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -142,53 +107,53 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rodrigo Hermont Ozon</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../pt/index.html"> 
+<span class="menu-text">Início</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../experience.html"> 
-<span class="menu-text">Experience</span></a>
+    <a class="nav-link" href="../../pt/experience.html"> 
+<span class="menu-text">Experiência</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
-<span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../pt/research.html"> 
+<span class="menu-text">Pesquisa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../case-studies.html"> 
-<span class="menu-text">Case Studies</span></a>
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="../../pt/teaching.html"> 
+<span class="menu-text">Ensino</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../oquant.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="../../pt/oquant.html"> 
+<span class="menu-text">Consultoria</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html"> 
-<span class="menu-text">Full CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV Completo</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> 
-<span class="menu-text">Contact</span></a>
+    <a class="nav-link" href="../../pt/contact.html"> 
+<span class="menu-text">Contato</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pt/index.html"> 
-<span class="menu-text">PT</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
@@ -220,59 +185,41 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Case Study 04 · Synthetic data
+Estudo de Caso 03 · Pesquisa de doutorado
 </div>
-<section id="causal-modeling-of-nps" class="level1">
-<h1>Causal Modeling of NPS</h1>
+<section id="otimização-multiobjetivo-de-portfólio" class="level1">
+<h1>Otimização Multiobjetivo de Portfólio</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Causal inference · Backdoor adjustment · Propensity weighting · Python
+NSGA-II · Evolução Diferencial · Fronteiras de Pareto · Multiperíodo
 </p>
-<div class="rh-card" style="border-left:3px solid #7d2e2e;">
-  <p style="margin:0;"><strong>Every number and every chart on this page comes from
-  simulated data.</strong> The real engagement behind this method is covered by a
-  non-disclosure agreement: the client is not named, and none of its data, figures or
-  findings appear here or anywhere else on this site. What is shown is the method,
-  running on data generated by the script at the bottom of the page.</p>
-</div>
 </section>
 </div>
-<section id="the-business-question" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="the-business-question">The business question</h2>
-<p>A company runs a customer-success programme — a proactive call to accounts that look like they need help. Six months in, the accounts that got the call have a visibly better Net Promoter Score. Leadership wants to expand the programme.</p>
-<p>Should they? The dashboard shows a gap. It does not show whether the programme <em>caused</em> the gap, or whether the team simply called the accounts that were already going to be happy — the big ones, the long-tenured ones, the ones with few complaints. Expanding a programme on the strength of that gap can burn a budget on something that does nothing.</p>
+<section id="a-pergunta-de-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
+<p>Qual cesta de posições em commodities uma mesa deve carregar, quando a decisão precisa satisfazer vários objetivos que genuinamente conflitam — e quando a resposta tem de se sustentar ao longo de períodos sucessivos, não só hoje?</p>
+<p>A saída cômoda é misturar os objetivos num escore único e otimizar aquilo. Produz um número e esconde o julgamento dentro dos pesos, que é exatamente o julgamento que cabia a quem decide.</p>
 </section>
-<section id="the-data" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
-<p>Simulated: 6,000 accounts, each with a size, a tenure, a support-ticket count, whether it received the intervention, and an NPS score.</p>
-<p>The confounding is deliberate, and it is the whole point. In the simulator, bigger and longer-tenured accounts are <strong>both</strong> more likely to receive the call <strong>and</strong> happier to begin with. That is exactly the structure that makes a raw comparison misleading, and it is what real customer-success data looks like.</p>
-<p><strong>Why synthetic is the right choice here, not a compromise.</strong> With client data nobody reading this page could check whether the causal estimate is correct — the true effect is unobservable, which is the whole difficulty of the field. Here the true effect is a constant written in the code. That makes the estimator gradeable: you can see whether it recovers the answer, and by how much it misses.</p>
+<section id="os-dados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
+<p>Séries públicas de preço de commodities agrícolas, multiperíodo, mais as estruturas de volatilidade e de cenário produzidas pela etapa de previsão. Nenhum dado de cliente, nenhuma fonte proprietária.</p>
 </section>
-<section id="method-and-why-this-one" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="method-and-why-this-one">Method, and why this one</h2>
-<p><strong>The naive comparison, for reference.</strong> Difference in mean NPS between treated and untreated accounts. This is what a dashboard reports, and it is the number the decision would otherwise rest on.</p>
-<p><strong>Backdoor adjustment.</strong> Regress NPS on the intervention while conditioning on the variables that drive both the intervention and the outcome — size, tenure, ticket count. Blocking those paths leaves the causal effect.</p>
-<p><strong>Propensity weighting.</strong> Model the probability of receiving the call given the same covariates, then weight each account by the inverse of that probability. This rebuilds a population in which treatment is as good as randomly assigned, and it makes a different set of assumptions than the regression — so agreement between the two is informative, and disagreement would be a warning.</p>
-<p>Two estimators rather than one, on purpose. A single causal estimate is a claim; two that rest on different assumptions and land in the same place is evidence.</p>
+<section id="o-método-e-por-que-esse" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-método-e-por-que-esse">O método, e por que esse</h2>
+<p><strong>Manter o trade-off aberto.</strong> Em vez de um ótimo, algoritmos evolutivos multiobjetivo devolvem uma fronteira de Pareto: o conjunto de portfólios em que melhorar um objetivo necessariamente custa outro. Quem decide escolhe um ponto da fronteira sabendo o preço da escolha, em vez de herdar uma ponderação que outra pessoa arbitrou.</p>
+<p><strong>Mais de dois objetivos.</strong> Com três ou mais critérios concorrentes o problema vira many-objective, e ali os algoritmos usuais degradam de formas fáceis de não perceber. Isso transforma a escolha do algoritmo em questão de pesquisa, não em padrão — NSGA-II e evolução diferencial não se comportam igual, e compará-los direito exige um benchmark desenhado para o cenário multiperíodo de commodities, não emprestado de outro domínio.</p>
+<p><strong>Regime muda a resposta.</strong> Uma fronteira estimada em mercado calmo é a fronteira errada para mercado turbulento. Condicionar a decisão ao regime estimado, e refiná-la com programação dinâmica ao longo dos períodos, amarra a otimização de volta à modelagem de volatilidade a montante, em vez de tratá-la como exercício separado.</p>
+<p><strong>O que sobrevive ao contato com a realidade.</strong> Uma estratégia ótima no papel pode ser impossível de executar em tamanho. Limites de capacidade, giro e generalização para vários ativos fazem parte do enunciado do problema aqui, não são um apêndice.</p>
 </section>
-<section id="result" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="result">Result</h2>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="../assets/case-nps-causal.png" class="img-fluid figure-img"></p>
-<figcaption>Effect of the intervention on NPS, three ways. The dashed line is the true effect, which is known here because the data was generated. Synthetic data — not client results.</figcaption>
-</figure>
-</div>
-<p>The true effect written into the simulator is <strong>0.80 NPS points</strong>.</p>
-<p>The raw comparison reports <strong>1.41</strong> — it overstates the programme by roughly three quarters, because it is crediting the intervention with the head start of the accounts that received it. A team that expanded the programme on that number would find the returns quietly failing to materialise.</p>
-<p>Both causal estimators land at <strong>0.84</strong>, within their confidence intervals of the truth, and they agree with each other despite resting on different assumptions.</p>
-<p>The point is not the decimals. It is that the gap between 1.41 and 0.80 is the difference between a programme that justifies its budget and one that mostly re-labels customers who were already loyal — and no amount of extra dashboard filtering would have revealed it.</p>
+<section id="o-resultado" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-resultado">O resultado</h2>
+<p><strong>Deliberadamente não publicado aqui.</strong> Estes manuscritos estão em avaliação por pares ou em preparação para submissão. Publicar seus resultados num site pessoal antes dos periódicos seria má prática, então as fronteiras, tabelas de benchmark e comparações ficam fora desta página até os artigos saírem.</p>
+<p>A exceção é o que já é público: um artigo comparando NSGA-II e evolução diferencial em otimização multiobjetivo de portfólio foi apresentado no ICPR Americas 2024, e um segundo sobre fronteiras de Pareto construídas em múltiplas janelas de tempo está nos anais do ConBRepro.</p>
 </section>
-<section id="code" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<p>The script generates the data, runs all three estimators and produces the chart above. It is self-contained and deterministic — same seed, same numbers:</p>
-<p><a class="rh-btn rh-btn-primary" href="nps-causal-demo.py">nps-causal-demo.py</a></p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> nps-causal-demo.py</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Requires <code>numpy</code>, <code>pandas</code>, <code>statsmodels</code> and <code>matplotlib</code>. Change <code>EFEITO_VERDADEIRO</code> at the top and rerun: the naive estimate moves with the confounding, the adjusted ones follow the truth.</p>
+<section id="o-código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-código">O código</h2>
+<p>Ainda não é público. A implementação pertence a manuscritos em avaliação, e liberá-la antes da decisão dos periódicos carregaria o mesmo problema de publicar os resultados.</p>
+<p><a class="rh-btn rh-btn-ghost" href="../research.html">Artigos publicados nesta linha </a></p>
+<p>Para código rodando no mesmo domínio, o <a href="multiagent-commodities.html">analista de commodities multiagente</a> é público, testado e reproduzível.</p>
 </section>
 
 
@@ -327,12 +274,12 @@ Causal inference · Backdoor adjustment · Propensity weighting · Python
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiada");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiada");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -375,7 +322,7 @@ Causal inference · Backdoor adjustment · Propensity weighting · Python
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/portcv\/");
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -714,7 +661,7 @@ Causal inference · Backdoor adjustment · Propensity weighting · Python
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2026 Rodrigo Hermont Ozon · Econometrician &amp; Data Scientist · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
@@ -725,5 +672,5 @@ Causal inference · Backdoor adjustment · Propensity weighting · Python
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

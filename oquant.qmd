@@ -3,7 +3,7 @@ title: ""
 pagetitle: "OQuant Data Science Consulting — Rodrigo Hermont Ozon"
 description: "OQuant Data Science Consulting: econometrics, forecasting, risk analytics, machine learning and generative AI applied to business decisions. Founded by Rodrigo Hermont Ozon."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
@@ -60,6 +60,80 @@ OQuant is an independent data science consultancy founded in March 2025 by Rodri
     <p>Practical LLM applications: internal chatbots, multi-agent and sub-agent workflow orchestration, and AI-assisted knowledge management — designed around your processes, with measurable value.</p>
   </div>
 </div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">How to start</div>
+```
+
+## Engagement packages
+
+Fixed scope, fixed timeline and a fixed fee agreed before any work starts. The fee depends on your data and your context, so every proposal is quoted individually.
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>Data &amp; AI Diagnostic</h3>
+    <p>The best first step: find out where data and AI can actually move your numbers.</p>
+    <ul>
+      <li>Interviews with up to 4 people from leadership and operations</li>
+      <li>Inventory of the data you already have, and how far it can be trusted</li>
+      <li>3 prioritized opportunities, each with estimated gain and effort</li>
+      <li>A 90-day plan and a 1-hour presentation to leadership</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Timeline: 2 weeks</p>
+  </div>
+  <div class="rh-card">
+    <h3>AI &amp; Data Workshop for Managers</h3>
+    <p>For leaders who need to decide where AI fits in the company, and where it does not.</p>
+    <ul>
+      <li>Up to 25 participants</li>
+      <li>Hands-on exercise with your own data, anonymized</li>
+      <li>Material that stays with your team</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Duration: 8 hours, over two mornings</p>
+  </div>
+  <div class="rh-card">
+    <h3>Custom Forecasting</h3>
+    <p>Demand, price, claims or default forecasts your planning can rely on.</p>
+    <ul>
+      <li>One target variable and up to 3 data sources</li>
+      <li>Models compared against a simple benchmark, with out-of-sample testing</li>
+      <li>Uncertainty bands, not just a single number</li>
+      <li>Executive report, documented code and a simple dashboard</li>
+      <li>2-hour handover training and 30 days of support</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Timeline: 6 weeks</p>
+  </div>
+  <div class="rh-card">
+    <h3>Reliable AI Assistant (pilot)</h3>
+    <p>An assistant that answers questions about your documents or data, and never invents a number.</p>
+    <ul>
+      <li>One use case and one data source (documents or tables)</li>
+      <li>20 test questions you approve as the acceptance criterion</li>
+      <li>Every figure checked against the source before it is shown</li>
+      <li>Runs in your environment, under your control</li>
+    </ul>
+    <p>Same method as the <a href="portfolio/multiagent-commodities.html">multi-agent commodity analyst</a>.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Timeline: 6 weeks</p>
+  </div>
+  <div class="rh-card">
+    <h3>Fractional Head of Data</h3>
+    <p>Senior data leadership one day a week, without a full-time hire.</p>
+    <ul>
+      <li>Priorities and roadmap for data and AI</li>
+      <li>Monitoring and recalibration of models in production</li>
+      <li>Mentoring for your analysts</li>
+      <li>Support on new questions as they come up</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Monthly, minimum of 3 months</p>
+  </div>
+</div>
+<p style="margin-top:1.2rem;"><a class="rh-btn rh-btn-primary" href="#quote">Request a quote for your project</a></p>
 ```
 
 :::
@@ -170,22 +244,24 @@ Client engagements are confidential; sector references are shared with permissio
 
 :::
 
-::: {.rh-section}
+::: {#quote .rh-section}
 
 ```{=html}
 <div class="rh-kicker">Next step</div>
 ```
 
-## Let's talk about your problem
+## Request a quote for your project
 
-A first conversation costs nothing and usually clarifies whether quantitative modeling can move your decision — and whether I am the right person to build it.
+Tell me in a few lines what decision you need to make, what data you have and when you need it. You will receive a proposal with scope, timeline and a fixed fee. The first conversation costs nothing, and it usually clarifies whether quantitative modeling can move your decision.
 
 ```{=html}
 <div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem;">
-  <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904">Book a conversation</a>
+  <a class="rh-btn rh-btn-primary" href="https://calendly.com/rhozon/30min">Book a 30-min call</a>
+  <a class="rh-btn rh-btn-ghost" href="mailto:contato.oquant@gmail.com?subject=Quote%20request">Email</a>
+  <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">WhatsApp</a>
   <a class="rh-btn rh-btn-ghost" href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a>
-  <a class="rh-btn rh-btn-ghost" href="mailto:rodrigoozon@yahoo.com.br">Email</a>
 </div>
+<p style="margin-top:.8rem; font-size:.92rem;">contato.oquant@gmail.com</p>
 ```
 
 :::

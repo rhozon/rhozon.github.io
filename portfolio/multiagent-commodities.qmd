@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Multi-Agent Commodity Analyst — Case Study"
 description: "Four LLM agents over a deterministic econometric core in R. The critic rejects models with a written reason, and a guard blocks any number the models did not produce."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/case-multiagent-milho.png"
+image: "https://rhozon.github.io/assets/case-multiagent-milho.png"
 ---
 
 ::: {.rh-section}

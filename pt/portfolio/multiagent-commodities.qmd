@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Analista de Commodities Multiagente — Estudo de Caso"
 description: "Quatro agentes de LLM sobre um núcleo econométrico determinístico em R. O crítico reprova modelos com motivo escrito, e uma trava barra qualquer número que os modelos não produziram."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/case-multiagent-milho.png"
+image: "https://rhozon.github.io/assets/case-multiagent-milho.png"
 ---
 
 ::: {.rh-section}

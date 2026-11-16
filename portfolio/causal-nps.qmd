@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Causal Modeling of NPS — Case Study"
 description: "What actually moves customer satisfaction, separated from what merely correlates with it. Demonstrated end to end on synthetic data, because the real engagement is under NDA."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/case-nps-causal.png"
+image: "https://rhozon.github.io/assets/case-nps-causal.png"
 ---
 
 ::: {.rh-section}

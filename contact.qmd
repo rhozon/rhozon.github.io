@@ -3,21 +3,26 @@ title: ""
 pagetitle: "Contact — Rodrigo Hermont Ozon"
 description: "Get in touch: consulting, research collaboration, teaching and speaking."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
 <div class="rh-kicker">Contact</div>
 ## Let's talk
 
-Whether it's a consulting engagement, research collaboration, a class or a talk — the fastest way to reach me is WhatsApp or LinkedIn.
+Whether it's a consulting engagement, research collaboration, a class or a talk — the fastest way to reach me is a 30-minute call, email or WhatsApp. For a project, <a href="oquant.html#quote">request a quote</a>.
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.1rem; margin-top:1.6rem;">
   <div class="rh-card">
+    <h3>Book a call</h3>
+    <p>Pick a 30-minute slot that suits you. Times are shown in your time zone.</p>
+    <a class="rh-btn rh-btn-primary" href="https://calendly.com/rhozon/30min">Book a 30-min call</a>
+  </div>
+  <div class="rh-card">
     <h3>WhatsApp</h3>
     <p>Fastest response for consulting inquiries.</p>
-    <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904">Message me</a>
+    <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">Message me</a>
   </div>
   <div class="rh-card">
     <h3>LinkedIn</h3>
@@ -26,10 +31,10 @@ Whether it's a consulting engagement, research collaboration, a class or a talk 
   </div>
   <div class="rh-card">
     <h3>E-mail</h3>
-    <p>rodrigoozon@yahoo.com.br<br>
+    <p>contato.oquant@gmail.com<br>
     Academic: rodrigo.hermont@pucpr.edu.br<br>
     FAE: rodrigo.ozon@fae.edu</p>
-    <a class="rh-btn rh-btn-ghost" href="mailto:rodrigoozon@yahoo.com.br">Write me</a>
+    <a class="rh-btn rh-btn-ghost" href="mailto:contato.oquant@gmail.com">Write me</a>
   </div>
   <div class="rh-card">
     <h3>Academic profiles</h3>

@@ -168,6 +168,14 @@ h3 { font-size: 1.18rem; font-weight: 600; }
   margin-bottom: 0.7rem;
 }
 .rh-hero-main h1 .rh-grad { color: $ink; background: none; }
+.rh-hero-lead {
+  font-family: $headings-font-family;
+  font-size: 1.45rem;
+  line-height: 1.35;
+  color: $ink;
+  max-width: 640px;
+  margin: 0.2rem 0 0.9rem 0;
+}
 .rh-hero-tagline {
   font-size: 1.08rem;
   color: $ink-soft;

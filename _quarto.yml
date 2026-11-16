@@ -5,12 +5,12 @@ project:
     - index.qmd
     - experience.qmd
     - research.qmd
-    - case-studies.qmd
-    - case-studies/multiagent-commodities.qmd
-    - case-studies/commodity-forecasting.qmd
-    - case-studies/portfolio-optimization.qmd
-    - case-studies/causal-nps.qmd
-    - case-studies/langgraph-parity.qmd
+    - portfolio/index.qmd
+    - portfolio/multiagent-commodities.qmd
+    - portfolio/commodity-forecasting.qmd
+    - portfolio/portfolio-optimization.qmd
+    - portfolio/causal-nps.qmd
+    - portfolio/langgraph-parity.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd
@@ -19,7 +19,7 @@ project:
 website:
   title: "Rodrigo Hermont Ozon"
   description: "Econometrician & Data Scientist — PhD researcher, consultant and professor. Econometrics, forecasting, risk analytics and AI-driven business solutions."
-  site-url: "https://rhozon.github.io/portcv/"
+  site-url: "https://rhozon.github.io/"
   favicon: assets/favicon.png
   image: "assets/profile_square.jpg"
   open-graph: true
@@ -34,8 +34,8 @@ website:
         text: Experience
       - href: research.qmd
         text: Research
-      - href: case-studies.qmd
-        text: "Case Studies"
+      - href: portfolio/index.qmd
+        text: "Portfolio"
       - href: teaching.qmd
         text: Teaching
       - href: oquant.qmd

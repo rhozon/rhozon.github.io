@@ -3,14 +3,14 @@ title: ""
 pagetitle: "Contato — Rodrigo Hermont Ozon"
 description: "Entre em contato: consultoria, colaboração em pesquisa, aulas e palestras."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
 <div class="rh-kicker">Contato</div>
 ## Vamos conversar
 
-Seja um projeto de consultoria, uma colaboração em pesquisa, uma aula ou uma palestra — o caminho mais rápido para falar comigo é o WhatsApp ou o LinkedIn.
+Seja um projeto de consultoria, uma colaboração em pesquisa, uma aula ou uma palestra — o caminho mais rápido para falar comigo é o WhatsApp, o e-mail ou uma conversa agendada. Para um projeto, <a href="oquant.html#orcamento">solicite um orçamento</a>.
 
 ```{=html}
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:1.1rem; margin-top:1.6rem;">
@@ -20,16 +20,21 @@ Seja um projeto de consultoria, uma colaboração em pesquisa, uma aula ou uma p
     <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904">Envie uma mensagem</a>
   </div>
   <div class="rh-card">
+    <h3>Agende uma conversa</h3>
+    <p>Escolha um horário de 30 minutos que funcione para você.</p>
+    <a class="rh-btn rh-btn-ghost" href="https://calendly.com/rhozon/30min">Agendar conversa</a>
+  </div>
+  <div class="rh-card">
     <h3>LinkedIn</h3>
     <p>Rede profissional e atualizações.</p>
     <a class="rh-btn rh-btn-ghost" href="https://www.linkedin.com/in/rodrigohermontozon/">Conectar</a>
   </div>
   <div class="rh-card">
     <h3>E-mail</h3>
-    <p>rodrigoozon@yahoo.com.br<br>
+    <p>contato.oquant@gmail.com<br>
     Acadêmico: rodrigo.hermont@pucpr.edu.br<br>
     FAE: rodrigo.ozon@fae.edu</p>
-    <a class="rh-btn rh-btn-ghost" href="mailto:rodrigoozon@yahoo.com.br">Escreva para mim</a>
+    <a class="rh-btn rh-btn-ghost" href="mailto:contato.oquant@gmail.com">Escreva para mim</a>
   </div>
   <div class="rh-card">
     <h3>Perfis acadêmicos</h3>

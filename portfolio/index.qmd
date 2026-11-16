@@ -1,13 +1,13 @@
 ---
 title: ""
-pagetitle: "Case Studies — Rodrigo Hermont Ozon"
+pagetitle: "Portfolio — Rodrigo Hermont Ozon"
 description: "Applied work you can open, read and run: multi-agent AI, econometric forecasting, portfolio optimization and causal inference."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Case Studies</div>
+<div class="rh-kicker">Portfolio</div>
 ## Problems, methods, and code you can run
 
 Each case follows the same five blocks: the business question, the data, the method and
@@ -21,54 +21,54 @@ which it is, at the top.
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
 
   <div class="rh-card">
-    <h3><a href="case-studies/multiagent-commodities.html">Multi-Agent Commodity Analyst</a></h3>
+    <h3><a href="multiagent-commodities.html">Multi-Agent Commodity Analyst</a></h3>
     <p>Four LLM agents decide; a deterministic econometric core in R computes. A guard
     stops the system from writing any number the models did not produce.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       LLM Agents · MSGARCH · Python + R
     </p>
-    <p><a href="case-studies/multiagent-commodities.html">Read the case </a></p>
+    <p><a href="multiagent-commodities.html">Read the case </a></p>
   </div>
 
   <div class="rh-card">
-    <h3><a href="case-studies/commodity-forecasting.html">Commodity Price Forecasting</a></h3>
+    <h3><a href="commodity-forecasting.html">Commodity Price Forecasting</a></h3>
     <p>Regime-switching volatility and time-varying higher moments applied to grain
     prices, benchmarked against the models a trading desk actually uses.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       GAMLSS · Bayesian MSGARCH · Backtesting
     </p>
-    <p><a href="case-studies/commodity-forecasting.html">Read the case </a></p>
+    <p><a href="commodity-forecasting.html">Read the case </a></p>
   </div>
 
   <div class="rh-card">
-    <h3><a href="case-studies/portfolio-optimization.html">Multi-Objective Portfolio Optimization</a></h3>
+    <h3><a href="portfolio-optimization.html">Multi-Objective Portfolio Optimization</a></h3>
     <p>Evolutionary algorithms on the risk–return frontier for commodity portfolios,
     compared head to head rather than assumed.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       NSGA-II · Differential Evolution · Pareto
     </p>
-    <p><a href="case-studies/portfolio-optimization.html">Read the case </a></p>
+    <p><a href="portfolio-optimization.html">Read the case </a></p>
   </div>
 
   <div class="rh-card">
-    <h3><a href="case-studies/causal-nps.html">Causal Modeling of NPS</a></h3>
+    <h3><a href="causal-nps.html">Causal Modeling of NPS</a></h3>
     <p>What actually moves customer satisfaction, separated from what merely correlates
     with it — for a large corporation.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       Causal inference · IPW · Synthetic data
     </p>
-    <p><a href="case-studies/causal-nps.html">Read the case </a></p>
+    <p><a href="causal-nps.html">Read the case </a></p>
   </div>
 
 
   <div class="rh-card">
-    <h3><a href="case-studies/langgraph-parity.html">Framework or Hand-Rolled?</a></h3>
+    <h3><a href="langgraph-parity.html">Framework or Hand-Rolled?</a></h3>
     <p>The same multi-agent system twice — a hand-written loop and a LangGraph
     StateGraph. Both emit a byte-identical report; the difference is measured.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       LangGraph &middot; StateGraph &middot; Parity testing
     </p>
-    <p><a href="case-studies/langgraph-parity.html">Read the case </a></p>
+    <p><a href="langgraph-parity.html">Read the case </a></p>
   </div>
 
 </div>

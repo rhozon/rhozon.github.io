@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Modelling the whole shape of a price distribution over time, not just its volatility: GAMLSS for time-varying higher moments and regime-switching volatility, validated on rolling origins.">
+<meta name="description" content="O mesmo sistema multiagente, duas vezes: um laço escrito à mão e um StateGraph do LangGraph. Os dois produzem relatório idêntico byte a byte, e a diferença entre eles é medida, não discutida.">
 
-<title>Commodity Price Forecasting — Case Study – Rodrigo Hermont Ozon</title>
+<title>Framework ou feito à mão? — Estudo de Caso – Rodrigo Hermont Ozon</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +27,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../">
-<link href="../assets/favicon.png" rel="icon" type="image/png">
-<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../site_libs/quarto-html/popper.min.js"></script>
-<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9f174a3d94ac7326965624cb3d70f93e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,17 +96,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "No results",
-    "search-matching-documents-text": "matching documents",
-    "search-copy-link-title": "Copy link to search",
-    "search-hide-matches-text": "Hide additional matches",
-    "search-more-match-text": "more match in this document",
-    "search-more-matches-text": "more matches in this document",
-    "search-clear-button-title": "Clear",
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancel",
-    "search-submit-button-title": "Submit",
-    "search-label": "Search"
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
@@ -89,14 +124,14 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Commodity Price Forecasting — Case Study">
-<meta property="og:description" content="Modelling the whole shape of a price distribution over time, not just its volatility: GAMLSS for time-varying higher moments and regime-switching volatility, validated on rolling origins.">
-<meta property="og:image" content="https://rhozon.github.io/portcv/assets/profile_card.jpg">
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Framework ou feito à mão? — Estudo de Caso">
+<meta property="og:description" content="O mesmo sistema multiagente, duas vezes: um laço escrito à mão e um StateGraph do LangGraph. Os dois produzem relatório idêntico byte a byte, e a diferença entre eles é medida, não discutida.">
+<meta property="og:image" content="https://rhozon.github.io/assets/profile_card.jpg">
 <meta property="og:site_name" content="Rodrigo Hermont Ozon">
-<meta name="twitter:title" content="Commodity Price Forecasting — Case Study">
-<meta name="twitter:description" content="Modelling the whole shape of a price distribution over time, not just its volatility: GAMLSS for time-varying higher moments and regime-switching volatility, validated on rolling origins.">
-<meta name="twitter:image" content="https://rhozon.github.io/portcv/assets/profile_card.jpg">
+<meta name="twitter:title" content="Framework ou feito à mão? — Estudo de Caso">
+<meta name="twitter:description" content="O mesmo sistema multiagente, duas vezes: um laço escrito à mão e um StateGraph do LangGraph. Os dois produzem relatório idêntico byte a byte, e a diferença entre eles é medida, não discutida.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/profile_card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -107,53 +142,53 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../index.html">
+    <a class="navbar-brand" href="../../index.html">
     <span class="navbar-title">Rodrigo Hermont Ozon</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Search"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../index.html"> 
-<span class="menu-text">Home</span></a>
+    <a class="nav-link" href="../../pt/index.html"> 
+<span class="menu-text">Início</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../experience.html"> 
-<span class="menu-text">Experience</span></a>
+    <a class="nav-link" href="../../pt/experience.html"> 
+<span class="menu-text">Experiência</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../research.html"> 
-<span class="menu-text">Research</span></a>
+    <a class="nav-link" href="../../pt/research.html"> 
+<span class="menu-text">Pesquisa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../case-studies.html"> 
-<span class="menu-text">Case Studies</span></a>
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../teaching.html"> 
-<span class="menu-text">Teaching</span></a>
+    <a class="nav-link" href="../../pt/teaching.html"> 
+<span class="menu-text">Ensino</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../oquant.html"> 
-<span class="menu-text">Consulting</span></a>
+    <a class="nav-link" href="../../pt/oquant.html"> 
+<span class="menu-text">Consultoria</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../cv.html"> 
-<span class="menu-text">Full CV</span></a>
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV Completo</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../contact.html"> 
-<span class="menu-text">Contact</span></a>
+    <a class="nav-link" href="../../pt/contact.html"> 
+<span class="menu-text">Contato</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../pt/index.html"> 
-<span class="menu-text">PT</span></a>
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">EN</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
@@ -185,43 +220,52 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Case Study 02 · Doctoral research
+Estudo de Caso 05 · No ar
 </div>
-<section id="commodity-price-forecasting" class="level1">
-<h1>Commodity Price Forecasting</h1>
+<section id="framework-ou-feito-à-mão" class="level1">
+<h1>Framework ou feito à mão?</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
+LangGraph · StateGraph · Teste de paridade · 173 testes
 </p>
 </section>
 </div>
-<section id="the-business-question" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="the-business-question">The business question</h2>
-<p>A grain buyer does not only need to know where the price is heading. They need to know how wrong that number could be, and whether being wrong costs the same in both directions.</p>
-<p>Most forecasting stops at the first question. A cooperative deciding when to sell, or a processor deciding how much to hedge, is really asking the second one.</p>
+<section id="a-pergunta-de-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
+<p>Um time vai construir um sistema agêntico. Alguém pergunta se adota um framework de agentes ou escreve a orquestração à mão. A resposta honesta é <em>depende</em> — o que não ajuda ninguém.</p>
+<p>Então: pegar um sistema multiagente que já funciona sem framework, reconstruir a orquestração em LangGraph, e <strong>medir</strong> a diferença em vez de discuti-la.</p>
 </section>
-<section id="the-data" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
-<p>Public series only: agricultural commodity prices from international exchanges and Brazilian domestic markets, daily, over several years, with the exchange rate as the bridge between them. No client data is involved at any point.</p>
+<section id="o-arranjo" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-arranjo">O arranjo</h2>
+<p>O objeto é o <a href="multiagent-commodities.html">analista de commodities multiagente</a> do estudo de caso 01 — quatro agentes sobre um núcleo econométrico determinístico em R, com laço de crítica e trava anti-alucinação.</p>
+<p>A regra que dá sentido à comparação: <strong>só a orquestração muda.</strong> Os quatro agentes e todo o núcleo em <code>agro/</code> são importados, não reescritos. A versão à mão é um laço <code>for</code> com <code>break</code>; a versão LangGraph é um <code>StateGraph</code> com cinco nós e duas arestas condicionais.</p>
+<p>Trocar entre os dois é uma flag:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run.py <span class="at">--commodity</span> milho <span class="at">--pergunta</span> <span class="st">"..."</span> <span class="at">--fake-llm</span> <span class="at">--engine</span> manual</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run.py <span class="at">--commodity</span> milho <span class="at">--pergunta</span> <span class="st">"..."</span> <span class="at">--fake-llm</span> <span class="at">--engine</span> langgraph</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
-<section id="method-and-why-this-one" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="method-and-why-this-one">Method, and why this one</h2>
-<p><strong>The usual simplification.</strong> Standard volatility models let the spread of returns move over time but hold everything else fixed — the asymmetry and the tail weight are treated as constants. In agricultural markets that assumption is uncomfortable: a drought does not widen the distribution symmetrically.</p>
-<p><strong>Letting the whole distribution move.</strong> GAMLSS gives each parameter of the distribution — location, scale, skewness, kurtosis — its own model with its own covariates. The shape of the distribution becomes something estimated over time rather than assumed.</p>
-<p><strong>Regimes, not gradual drift.</strong> Grain markets do not slide smoothly from calm to turbulent; they switch. Markov-switching GARCH estimates the states and the transition probabilities between them, and a Bayesian treatment carries the parameter uncertainty forward instead of collapsing it into a point estimate.</p>
-<p><strong>Validation that respects time.</strong> A model tuned on the full sample will always look good. Rolling-origin evaluation refits at each step using only what was knowable at that moment, and every added layer has to earn its place against simpler benchmarks — a plain GARCH, an ARIMA, a random walk. A more elaborate model that does not beat the simple one is a finding, not a failure.</p>
+<section id="o-método-e-por-que-esse" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-método-e-por-que-esse">O método, e por que esse</h2>
+<p><strong>Paridade primeiro, opinião depois.</strong> Seis testes rodam os dois motores com a mesma entrada e comparam campo a campo: família escolhida, número de tentativas, histórico de reprovações, diagnósticos de resíduo, backtest, o conjunto de números que a trava autoriza — e o markdown final.</p>
+<p>Sem isso, “reimplementei em LangGraph” é uma afirmação. Com isso, é uma propriedade. E uma reimplementação que se comporta <em>quase</em> igual é pior que nenhuma: parece uma alternativa e é uma armadilha.</p>
+<p><strong>Os agentes não viraram tools.</strong> O LangGraph oferece <code>ToolNode</code> e o padrão ReAct, em que o modelo decide qual ferramenta chamar. Não é o que este sistema faz. A ordem — coletar, ajustar, criticar, redigir — é fixa de propósito, e o LLM escolhe <em>parâmetros</em>, nunca a próxima etapa. Transformar <code>fit_model</code> numa tool seria uma mudança de semântica disfarçada de mudança de framework, e a comparação só vale se os dois lados fizerem a mesma coisa.</p>
 </section>
-<section id="result" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="result">Result</h2>
-<p><strong>Deliberately not published here.</strong> The manuscripts behind this work are under peer review, and putting their results on a personal website before the journals have ruled on them would be poor practice — and unfair to the reviewers reading them.</p>
-<p>What can be said is the shape of the work: this is one stage of a doctoral thesis on multi-period, multi-objective portfolio optimisation in agricultural commodity markets, where distributional modelling feeds regime-switching volatility, which feeds scenario simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.</p>
-<p>Whatever of this line reaches print is listed on the <a href="../research.html">research page</a>, alongside the conference papers that already carry proceedings links. The case below is the part that is public and running today.</p>
+<section id="o-resultado" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-resultado">O resultado</h2>
+<p><strong>Os relatórios são idênticos byte a byte.</strong> Mesmo SHA-256, ponta a ponta, do cache congelado:</p>
+<pre><code>manual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0
+langgraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0</code></pre>
+<p><strong>O que o framework cobrou.</strong> O <code>MemorySaver</code> — o checkpointer, e a principal razão para adotar LangGraph — serializa o estado a cada nó com msgpack. Um <code>pandas.Series</code> não é serializável, então a primeira versão do grafo simplesmente quebrou:</p>
+<pre><code>TypeError: Type is not msgpack serializable: Series</code></pre>
+<p>O laço escrito à mão nunca encontra isso, porque lá a série é uma variável local lida uma vez. Para manter o checkpointing, o estado passou a carregar só o bundle de dados — um dataclass de primitivos com o caminho do arquivo — e cada nó que precisa da série a relê do disco.</p>
+<p>Medido em execução: <strong>1 leitura de parquet no motor manual, 3 no grafo.</strong> O tempo total quase não mudou, porque o gargalo é o subprocess do R, não o disco. Nessa escala o custo é real e irrelevante. Numa série grande deixaria de ser irrelevante, e a escolha passaria a ser abrir mão do checkpointer ou escrever um serializador próprio.</p>
+<p><strong>O que o framework comprou.</strong> O estado do pipeline deixa de ser implícito em variáveis locais e vira um <code>TypedDict</code> declarado. O laço de reprovação vira uma aresta condicional que se lê sem rastrear o fluxo de cabeça. E o checkpointer permite inspecionar e retomar uma execução no meio — coisa que o laço à mão não oferece.</p>
+<p><strong>O preço em código:</strong> 54 linhas de código à mão contra 120 no grafo, para comportamento idêntico.</p>
+<p><strong>Então qual?</strong> Para este sistema, o laço à mão ganha: o pipeline é curto, o fluxo de controle cabe numa tela, e nada aqui precisa de retomada. O framework começaria a se pagar com mais ramificações, pausas com humano no meio, ou execuções longas o bastante para retomar importar. Isso é conclusão tirada de medição, não de gosto — e, de qualquer forma, os testes de paridade fazem a troca custar uma flag.</p>
 </section>
-<section id="code" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
-<p>The model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA when the residual diagnostics reject it — is implemented and running in the multi-agent case study, with public data and a frozen cache so anyone can reproduce it:</p>
-<p><a class="rh-btn rh-btn-primary" href="multiagent-commodities.html">Multi-Agent Commodity Analyst </a>
-<a class="rh-btn rh-btn-ghost" href="https://github.com/rhozon/commodity-agents">Repository</a></p>
-<p>Published work along this line is listed on the <a href="../research.html">research page</a>, where four conference papers carry links to their proceedings.</p>
+<section id="o-código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-código">O código</h2>
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
+<p>Os dois motores vivem no mesmo repositório: <code>agents/orchestrator.py</code> e <code>agents_langgraph/graph.py</code>, com <code>tests/test_paridade.py</code> prendendo os dois ao mesmo resultado. A suíte tem <strong>173 testes</strong>, e roda sem chave de API e sem rede.</p>
+<p><code>langgraph</code> e <code>langchain-core</code> estão no <code>requirements.txt</code>, mas só o motor do grafo e o teste de paridade os importam — o import é adiado, então o motor padrão não precisa deles.</p>
 </section>
 
 
@@ -276,12 +320,12 @@ GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copied!");
+      button.setAttribute("title", "Copiada");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copied!");
+        button.setAttribute("data-bs-title", "Copiada");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -324,7 +368,7 @@ GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/portcv\/");
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -663,7 +707,7 @@ GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2026 Rodrigo Hermont Ozon · Econometrician &amp; Data Scientist · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
@@ -674,5 +718,5 @@ GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
 
 
 
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

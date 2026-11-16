@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
 <meta name="generator" content="quarto-1.10.18">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Modelar a forma inteira da distribuição de preço ao longo do tempo, não só a volatilidade: GAMLSS para momentos superiores variantes no tempo e volatilidade com mudança de regime, validados em origem móvel.">
+<meta name="description" content="Four LLM agents over a deterministic econometric core in R. The critic rejects models with a written reason, and a guard blocks any number the models did not produce.">
 
-<title>Previsão de Preço de Commodities — Estudo de Caso – Rodrigo Hermont Ozon</title>
+<title>Multi-Agent Commodity Analyst — Case Study – Rodrigo Hermont Ozon</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -27,26 +27,61 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
-<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
-<script src="../../site_libs/clipboard/clipboard.min.js"></script>
-<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
-<script src="../../site_libs/quarto-search/fuse.min.js"></script>
-<script src="../../site_libs/quarto-search/quarto-search.js"></script>
-<meta name="quarto:offset" content="../../">
-<link href="../../assets/favicon.png" rel="icon" type="image/png">
-<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
-<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="../../site_libs/quarto-html/popper.min.js"></script>
-<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
-<script src="../../site_libs/quarto-html/anchor.min.js"></script>
-<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
-<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9f174a3d94ac7326965624cb3d70f93e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -61,17 +96,17 @@ ul.task-list li input[type="checkbox"] {
   ],
   "show-item-context": false,
   "language": {
-    "search-no-results-text": "Nenhum resultado",
-    "search-matching-documents-text": "documentos correspondentes",
-    "search-copy-link-title": "Copiar link para a busca",
-    "search-hide-matches-text": "Esconder correspondências adicionais",
-    "search-more-match-text": "mais correspondência neste documento",
-    "search-more-matches-text": "mais correspondências neste documento",
-    "search-clear-button-title": "Limpar",
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
     "search-text-placeholder": "",
-    "search-detached-cancel-button-title": "Cancelar",
-    "search-submit-button-title": "Enviar",
-    "search-label": "Procurar"
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
   }
 }</script>
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
@@ -89,14 +124,14 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
 
 
-<link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Previsão de Preço de Commodities — Estudo de Caso">
-<meta property="og:description" content="Modelar a forma inteira da distribuição de preço ao longo do tempo, não só a volatilidade: GAMLSS para momentos superiores variantes no tempo e volatilidade com mudança de regime, validados em origem móvel.">
-<meta property="og:image" content="https://rhozon.github.io/portcv/assets/profile_card.jpg">
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Multi-Agent Commodity Analyst — Case Study">
+<meta property="og:description" content="Four LLM agents over a deterministic econometric core in R. The critic rejects models with a written reason, and a guard blocks any number the models did not produce.">
+<meta property="og:image" content="https://rhozon.github.io/assets/case-multiagent-milho.png">
 <meta property="og:site_name" content="Rodrigo Hermont Ozon">
-<meta name="twitter:title" content="Previsão de Preço de Commodities — Estudo de Caso">
-<meta name="twitter:description" content="Modelar a forma inteira da distribuição de preço ao longo do tempo, não só a volatilidade: GAMLSS para momentos superiores variantes no tempo e volatilidade com mudança de regime, validados em origem móvel.">
-<meta name="twitter:image" content="https://rhozon.github.io/portcv/assets/profile_card.jpg">
+<meta name="twitter:title" content="Multi-Agent Commodity Analyst — Case Study">
+<meta name="twitter:description" content="Four LLM agents over a deterministic econometric core in R. The critic rejects models with a written reason, and a guard blocks any number the models did not produce.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/case-multiagent-milho.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -107,53 +142,53 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
     <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
       <div class="navbar-container container-fluid">
       <div class="navbar-brand-container mx-auto">
-    <a class="navbar-brand" href="../../index.html">
+    <a class="navbar-brand" href="../index.html">
     <span class="navbar-title">Rodrigo Hermont Ozon</span>
     </a>
   </div>
-            <div id="quarto-search" class="" title="Procurar"></div>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
   <span class="navbar-toggler-icon"></span>
 </button>
           <div class="collapse navbar-collapse" id="navbarCollapse">
             <ul class="navbar-nav navbar-nav-scroll me-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/index.html"> 
-<span class="menu-text">Início</span></a>
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/experience.html"> 
-<span class="menu-text">Experiência</span></a>
+    <a class="nav-link" href="../experience.html"> 
+<span class="menu-text">Experience</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/research.html"> 
-<span class="menu-text">Pesquisa</span></a>
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/case-studies.html"> 
-<span class="menu-text">Estudos de Caso</span></a>
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/teaching.html"> 
-<span class="menu-text">Ensino</span></a>
+    <a class="nav-link" href="../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/oquant.html"> 
-<span class="menu-text">Consultoria</span></a>
+    <a class="nav-link" href="../oquant.html"> 
+<span class="menu-text">Consulting</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../cv.html"> 
-<span class="menu-text">CV Completo</span></a>
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">Full CV</span></a>
   </li>  
 </ul>
             <ul class="navbar-nav navbar-nav-scroll ms-auto">
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/contact.html"> 
-<span class="menu-text">Contato</span></a>
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../index.html"> 
-<span class="menu-text">EN</span></a>
+    <a class="nav-link" href="../pt/index.html"> 
+<span class="menu-text">PT</span></a>
   </li>  
   <li class="nav-item compact">
     <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
@@ -185,43 +220,51 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Estudo de Caso 02 · Pesquisa de doutorado
+Case Study 01 · Live
 </div>
-<section id="previsão-de-preço-de-commodities" class="level1">
-<h1>Previsão de Preço de Commodities</h1>
+<section id="multi-agent-commodity-analyst" class="level1">
+<h1>Multi-Agent Commodity Analyst</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
+LLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 167 tests
 </p>
 </section>
 </div>
-<section id="a-pergunta-de-negócio" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
-<p>Quem compra grão não precisa saber apenas para onde o preço vai. Precisa saber o quanto esse número pode estar errado, e se errar custa o mesmo nas duas direções.</p>
-<p>A maior parte da previsão para na primeira pergunta. Uma cooperativa decidindo quando vender, ou uma indústria decidindo quanto travar, está de fato fazendo a segunda.</p>
+<section id="the-business-question" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-business-question">The business question</h2>
+<p>What is corn and soybean price volatility telling us — and can a language model write that analysis without inventing a single number?</p>
+<p>The second half is the harder one. A model that hallucinates a plausible figure in a commodity report is worse than no report at all, because the figure looks right.</p>
 </section>
-<section id="os-dados" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
-<p>Apenas séries públicas: preços de commodities agrícolas em bolsas internacionais e no mercado doméstico brasileiro, diários, ao longo de vários anos, com o câmbio como ponte entre eles. Nenhum dado de cliente é usado em momento algum.</p>
+<section id="the-data" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<p>Daily settlement prices from CBOT via Yahoo Finance: corn (<code>ZC=F</code>), <strong>2,007 observations</strong>, and soybeans (<code>ZS=F</code>), <strong>2,009 observations</strong>, both from 2 January 2018 to 30 December 2025. The USD/BRL rate (<code>BRL=X</code>) comes along, because analysing Brazilian domestic grain prices without the exchange rate is simply wrong.</p>
+<p>Everything is frozen in a parquet cache with a metadata sidecar recording where each series came from. Two consequences: the published chart does not change on its own when the market moves, and the end-to-end test runs with no network.</p>
+<p>The domestic CEPEA series is <strong>not</strong> implemented in this version. Rather than hide that, the collector falls back to the international series and the report prints the source swap above the chart. A system that states what it could not get is worth more than one that quietly substitutes.</p>
 </section>
-<section id="o-método-e-por-que-esse" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="o-método-e-por-que-esse">O método, e por que esse</h2>
-<p><strong>A simplificação de sempre.</strong> Modelos padrão de volatilidade deixam a dispersão dos retornos variar no tempo, mas mantêm o resto fixo — assimetria e peso de cauda são tratados como constantes. Em mercado agrícola essa premissa é desconfortável: uma seca não alarga a distribuição de forma simétrica.</p>
-<p><strong>Deixar a distribuição inteira se mover.</strong> O GAMLSS dá a cada parâmetro da distribuição — posição, escala, assimetria, curtose — o seu próprio modelo, com suas próprias covariáveis. A forma da distribuição passa a ser estimada ao longo do tempo, em vez de presumida.</p>
-<p><strong>Regimes, não deriva gradual.</strong> Mercado de grão não desliza suavemente de calmo para turbulento; ele troca. O GARCH com mudança markoviana estima os estados e as probabilidades de transição entre eles, e o tratamento bayesiano carrega a incerteza dos parâmetros adiante, em vez de colapsá-la numa estimativa pontual.</p>
-<p><strong>Validação que respeita o tempo.</strong> Um modelo calibrado na amostra inteira sempre parece bom. A avaliação em origem móvel reestima a cada passo usando só o que era conhecível naquele momento, e cada camada acrescentada tem de justificar sua existência contra alternativas mais simples — um GARCH comum, um ARIMA, um passeio aleatório. Um modelo mais elaborado que não supera o simples é um achado, não um fracasso.</p>
+<section id="method-and-why-this-one" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="method-and-why-this-one">Method, and why this one</h2>
+<p><strong>The agents do not know econometrics.</strong> Four of them — Collector, Econometrician, Critic, Writer — decide <em>which function of the core to call and with which arguments</em>. The core is plain, deterministic, testable Python and R. When the agent framework ages, the shell gets replaced and the part that matters stays.</p>
+<p><strong>Python orchestrates, R models.</strong> The model ladder is MSGARCH → GARCH → ARIMA, called over subprocess with a JSON contract. No <code>rpy2</code>, deliberately: it is the number-one source of installation pain in R+Python projects, and the goal was that anyone can clone and run. As a bonus, the R script runs standalone in RStudio when a model needs debugging.</p>
+<p><strong>The Critic rejects, with a written reason.</strong> It runs Ljung-Box and ARCH-LM on the residuals. Failure is not a silent retry — it is a rejection with a stated cause, capped at three attempts, backing down the model family each time.</p>
+<p><strong>The guard.</strong> The Writer cannot put a number in the text that does not exist in the results object. An invented number fails the run. The guard’s limits are documented in the repository too — it verifies digit provenance, not semantic meaning — because a case study that oversells its own safety net defeats the purpose.</p>
 </section>
-<section id="o-resultado" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="o-resultado">O resultado</h2>
-<p><strong>Deliberadamente não publicado aqui.</strong> Os manuscritos por trás deste trabalho estão em avaliação por pares, e colocar os resultados num site pessoal antes de os periódicos se pronunciarem seria má prática — e injusto com quem os está revisando.</p>
-<p>O que dá para dizer é o formato do trabalho: esta é uma etapa de uma tese de doutorado sobre otimização multiobjetivo e multiperíodo de portfólio em mercados de commodities agrícolas, na qual a modelagem distribucional alimenta a volatilidade com mudança de regime, que alimenta a simulação de cenários, que alimenta a camada de otimização. Cada etapa se sustenta como manuscrito próprio.</p>
-<p>O que desta linha chegar a sair está listado na <a href="../research.html">página de pesquisa</a>, ao lado dos artigos de congresso que já trazem link para os anais. O caso abaixo é a parte que hoje é pública e roda.</p>
+<section id="result" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="result">Result</h2>
+<p>The interesting outcome is not the forecast. It is that <strong>the critique loop fired in production, not in a test</strong>: in both commodities the Critic rejected MSGARCH — the signature model of my doctoral work — and approved GARCH on the second attempt.</p>
+<p>For corn, ARCH-LM returned <strong>p = 0.0405</strong>; for soybeans, <strong>p = 0.0242</strong>. Both below 0.05, both meaning heteroskedasticity the model had not captured. The report says so, names the family, and gives the reason.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../assets/case-multiagent-milho.png" class="img-fluid figure-img"></p>
+<figcaption>Corn (<code>ZC=F</code>), 2018–2025. The system produced this chart and the report beside it, from the frozen cache, with no network and no API key.</figcaption>
+</figure>
+</div>
+<p>On the backtest, honesty matters more than a good-looking number: over a 20-step horizon the model scored MAPE 1.75% for corn — <strong>identical to the random walk</strong>. That is not a failure, it is arithmetic. Volatility models fix the mean at zero by construction, so the point forecast ties with a random walk by definition. Their contribution lives in the interval width and the residual diagnostics, and the system’s own report explains this without being asked.</p>
 </section>
-<section id="o-código" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="o-código">O código</h2>
-<p>A escada de modelos descrita aqui — MSGARCH primeiro, recuando para GARCH e depois ARIMA quando os diagnósticos de resíduo reprovam — está implementada e rodando no estudo de caso multiagente, com dado público e cache congelado para que qualquer um reproduza:</p>
-<p><a class="rh-btn rh-btn-primary" href="multiagent-commodities.html">Analista de Commodities Multiagente </a>
-<a class="rh-btn rh-btn-ghost" href="https://github.com/rhozon/commodity-agents">Repositório</a></p>
-<p>O trabalho já publicado nesta linha está na <a href="../research.html">página de pesquisa</a>, onde quatro artigos de congresso trazem link para os anais.</p>
+<section id="code" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
+<p>Clone it, <code>pip install -r requirements.txt</code>, install R 4.x with the packages listed in the README, then:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run.py <span class="at">--commodity</span> milho <span class="at">--fake-llm</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>It runs from the frozen cache — no API key, no network. The test suite is <strong>167 tests</strong> via <code>pytest -q</code>. The <code>examples/</code> folder holds the reports for both commodities, generated by the system itself.</p>
 </section>
 
 
@@ -276,12 +319,12 @@ GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
       // flash "checked"
       button.classList.add('code-copy-button-checked');
       var currentTitle = button.getAttribute("title");
-      button.setAttribute("title", "Copiada");
+      button.setAttribute("title", "Copied!");
       let tooltip;
       if (window.bootstrap) {
         button.setAttribute("data-bs-toggle", "tooltip");
         button.setAttribute("data-bs-placement", "left");
-        button.setAttribute("data-bs-title", "Copiada");
+        button.setAttribute("data-bs-title", "Copied!");
         tooltip = new bootstrap.Tooltip(button, 
           { trigger: "manual", 
             customClass: "code-copy-button-tooltip",
@@ -324,7 +367,7 @@ GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/portcv\/");
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
@@ -663,7 +706,7 @@ GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
       &nbsp;
     </div>   
     <div class="nav-footer-center">
-<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+<p>© 2026 Rodrigo Hermont Ozon · Econometrician &amp; Data Scientist · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;
@@ -674,5 +717,5 @@ GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
 
 
 
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

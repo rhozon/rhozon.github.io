@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Commodity Price Forecasting — Case Study"
 description: "Modelling the whole shape of a price distribution over time, not just its volatility: GAMLSS for time-varying higher moments and regime-switching volatility, validated on rolling origins."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

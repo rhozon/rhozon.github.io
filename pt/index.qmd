@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Rodrigo Hermont Ozon — Econometrista & Cientista de Dados"
 description: "Econometrista, pesquisador de doutorado e cientista de dados. Mais de 18 anos transformando dados em decisões com econometria, forecasting, análise de risco e IA."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ```{=html}
@@ -14,6 +14,7 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
   <div class="rh-hero-main">
     <div class="rh-kicker">Econometrista · A ciência de dados original</div>
     <h1>Rodrigo <span class="rh-grad">Hermont Ozon</span></h1>
+    <p class="rh-hero-lead">Previsão, análise de risco e IA aplicadas ao seu negócio, do diagnóstico ao sistema funcionando.</p>
     <p class="rh-hero-tagline">
       Fundador e Consultor Principal da <strong>OQuant</strong>, pesquisador de doutorado em Engenharia de
       Produção e Sistemas (PUCPR) e ex-professor da FAE Business School (2025–2026). Cientista de Dados na
@@ -22,10 +23,10 @@ image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
       e, mais recentemente, sistemas de IA multiagente a problemas de saúde, agronegócio e indústria.
     </p>
     <div style="margin-top: 1.2rem;">
-      <a class="rh-btn rh-btn-primary" href="oquant.html">Consultoria</a>
+      <a class="rh-btn rh-btn-primary" href="oquant.html#orcamento">Solicite um orçamento</a>
+      <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">WhatsApp</a>
       <a class="rh-btn rh-btn-ghost" href="../assets/Rodrigo_Hermont_Ozon_CV_PT.pdf">Baixar CV (PDF)</a>
       <a class="rh-btn rh-btn-ghost" href="../cv.html">CV completo</a>
-      <a class="rh-btn rh-btn-ghost" href="https://wa.me/5541988382904">WhatsApp</a>
     </div>
   </div>
 </div>

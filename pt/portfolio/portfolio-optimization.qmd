@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Otimização Multiobjetivo de Portfólio — Estudo de Caso"
 description: "Decisão de portfólio de commodities pesa mais que risco contra retorno. Otimização evolutiva many-objective mantém o trade-off visível, em vez de colapsá-lo num único escore."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

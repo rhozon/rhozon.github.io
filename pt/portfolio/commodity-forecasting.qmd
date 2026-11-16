@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Previsão de Preço de Commodities — Estudo de Caso"
 description: "Modelar a forma inteira da distribuição de preço ao longo do tempo, não só a volatilidade: GAMLSS para momentos superiores variantes no tempo e volatilidade com mudança de regime, validados em origem móvel."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

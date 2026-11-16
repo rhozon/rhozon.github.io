@@ -11,7 +11,7 @@ format:
     fontsize: 10pt
 ---
 
-**Contact:** rodrigoozon@yahoo.com.br · +55 41 98838-2904 · [linkedin.com/in/rodrigohermontozon](https://www.linkedin.com/in/rodrigohermontozon/) · [rhozon.github.io/portcv](https://rhozon.github.io/portcv/) · Lattes: 3532649625879285
+**Contact:** rodrigoozon@yahoo.com.br · +55 41 98838-2904 · [linkedin.com/in/rodrigohermontozon](https://www.linkedin.com/in/rodrigohermontozon/) · [rhozon.github.io](https://rhozon.github.io/) · Lattes: 3532649625879285
 
 Economist and econometrician with 18+ years applying time series analysis, Bayesian econometrics, GARCH-family models, multi-objective optimization and, more recently, Generative AI to problems in healthcare, agribusiness, logistics and industry. PhD researcher in Industrial & Systems Engineering (PUCPR).
 

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Quatro agentes de LLM sobre um núcleo econométrico determinístico em R. O crítico reprova modelos com motivo escrito, e uma trava barra qualquer número que os modelos não produziram.">
+<meta name="description" content="O que de fato move a satisfação do cliente, separado do que apenas se correlaciona com ela. Demonstrado ponta a ponta em dados sintéticos, porque o projeto real está sob NDA.">
 
-<title>Analista de Commodities Multiagente — Estudo de Caso – Rodrigo Hermont Ozon</title>
+<title>Modelagem Causal do NPS — Estudo de Caso – Rodrigo Hermont Ozon</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -81,7 +81,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../../site_libs/bootstrap/bootstrap-9f174a3d94ac7326965624cb3d70f93e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -125,13 +125,13 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../../styles.css">
-<meta property="og:title" content="Analista de Commodities Multiagente — Estudo de Caso">
-<meta property="og:description" content="Quatro agentes de LLM sobre um núcleo econométrico determinístico em R. O crítico reprova modelos com motivo escrito, e uma trava barra qualquer número que os modelos não produziram.">
-<meta property="og:image" content="https://rhozon.github.io/portcv/assets/case-multiagent-milho.png">
+<meta property="og:title" content="Modelagem Causal do NPS — Estudo de Caso">
+<meta property="og:description" content="O que de fato move a satisfação do cliente, separado do que apenas se correlaciona com ela. Demonstrado ponta a ponta em dados sintéticos, porque o projeto real está sob NDA.">
+<meta property="og:image" content="https://rhozon.github.io/assets/case-nps-causal.png">
 <meta property="og:site_name" content="Rodrigo Hermont Ozon">
-<meta name="twitter:title" content="Analista de Commodities Multiagente — Estudo de Caso">
-<meta name="twitter:description" content="Quatro agentes de LLM sobre um núcleo econométrico determinístico em R. O crítico reprova modelos com motivo escrito, e uma trava barra qualquer número que os modelos não produziram.">
-<meta name="twitter:image" content="https://rhozon.github.io/portcv/assets/case-multiagent-milho.png">
+<meta name="twitter:title" content="Modelagem Causal do NPS — Estudo de Caso">
+<meta name="twitter:description" content="O que de fato move a satisfação do cliente, separado do que apenas se correlaciona com ela. Demonstrado ponta a ponta em dados sintéticos, porque o projeto real está sob NDA.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/case-nps-causal.png">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -165,8 +165,8 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 <span class="menu-text">Pesquisa</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../../pt/case-studies.html"> 
-<span class="menu-text">Estudos de Caso</span></a>
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../../pt/teaching.html"> 
@@ -220,51 +220,59 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Estudo de Caso 01 · No ar
+Estudo de Caso 04 · Dados sintéticos
 </div>
-<section id="analista-de-commodities-multiagente" class="level1">
-<h1>Analista de Commodities Multiagente</h1>
+<section id="modelagem-causal-do-nps" class="level1">
+<h1>Modelagem Causal do NPS</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Agentes de LLM · MSGARCH / GARCH / ARIMA · Python orquestra, R modela · 167 testes
+Inferência causal · Ajuste por backdoor · Ponderação por propensão · Python
 </p>
+<div class="rh-card" style="border-left:3px solid #7d2e2e;">
+  <p style="margin:0;"><strong>Todo número e todo gráfico desta página vêm de dados
+  simulados.</strong> O projeto real por trás deste método está coberto por acordo de
+  confidencialidade: o cliente não é nomeado, e nenhum dado, número ou achado dele aparece
+  aqui nem em qualquer outro lugar deste site. O que se mostra é o método, rodando sobre
+  dados gerados pelo script no fim da página.</p>
+</div>
 </section>
 </div>
 <section id="a-pergunta-de-negócio" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
-<p>O que a volatilidade do preço do milho e da soja está dizendo — e um modelo de linguagem consegue escrever essa análise sem inventar um único número?</p>
-<p>A segunda metade é a difícil. Um modelo que alucina um número plausível num relatório de commodities é pior que relatório nenhum, porque o número parece certo.</p>
+<p>Uma empresa mantém um programa de sucesso do cliente — uma ligação proativa para contas que parecem precisar de ajuda. Seis meses depois, as contas que receberam a ligação têm NPS visivelmente melhor. A liderança quer expandir o programa.</p>
+<p>Deve? O painel mostra uma diferença. Ele não mostra se o programa <strong>causou</strong> a diferença, ou se o time simplesmente ligou para as contas que já iam ficar satisfeitas — as grandes, as de casa há mais tempo, as com poucas reclamações. Expandir um programa apoiado nessa diferença pode queimar orçamento em algo que não faz nada.</p>
 </section>
 <section id="os-dados" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
-<p>Preços diários de fechamento do CBOT via Yahoo Finance: milho (<code>ZC=F</code>), <strong>2.007 observações</strong>, e soja (<code>ZS=F</code>), <strong>2.009 observações</strong>, ambas de 2 de janeiro de 2018 a 30 de dezembro de 2025. O câmbio USD/BRL (<code>BRL=X</code>) entra junto, porque analisar preço doméstico de grão no Brasil sem o câmbio está simplesmente errado.</p>
-<p>Tudo congelado num cache em parquet, com um arquivo de metadados registrando a origem de cada série. Duas consequências: o gráfico publicado não muda sozinho quando o mercado mexe, e o teste de ponta a ponta roda sem rede.</p>
-<p>A série doméstica do CEPEA <strong>não</strong> está implementada nesta versão. Em vez de esconder isso, o Coletor cai para a série internacional e o relatório imprime a troca de fonte acima do gráfico. Um sistema que declara o que não conseguiu obter vale mais do que um que substitui em silêncio.</p>
+<p>Simulados: 6.000 contas, cada uma com porte, tempo de casa, número de chamados de suporte, se recebeu a intervenção e uma nota de NPS.</p>
+<p>O confundimento é deliberado, e é justamente o ponto. No simulador, contas maiores e mais antigas são <strong>ao mesmo tempo</strong> mais propensas a receber a ligação <strong>e</strong> mais satisfeitas de partida. É exatamente essa estrutura que torna a comparação bruta enganosa, e é a cara de um dado real de sucesso do cliente.</p>
+<p><strong>Por que sintético é a escolha certa aqui, e não um remendo.</strong> Com dado de cliente, ninguém lendo esta página conseguiria conferir se a estimativa causal está certa — o efeito verdadeiro é inobservável, que é a dificuldade central da área. Aqui o efeito verdadeiro é uma constante escrita no código. Isso torna o estimador corrigível: dá para ver se ele recupera a resposta, e por quanto erra.</p>
 </section>
 <section id="o-método-e-por-que-esse" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-método-e-por-que-esse">O método, e por que esse</h2>
-<p><strong>Os agentes não sabem econometria.</strong> Os quatro — Coletor, Econometrista, Crítico, Redator — decidem <em>qual função do núcleo chamar e com quais argumentos</em>. O núcleo é Python e R comum, determinístico e testável. Quando o framework de agentes envelhecer, troca-se a casca e o que importa fica.</p>
-<p><strong>Python orquestra, R modela.</strong> A escada de modelos é MSGARCH → GARCH → ARIMA, chamada por subprocess com contrato JSON. Sem <code>rpy2</code>, deliberadamente: é a fonte número um de dor de instalação em projeto R+Python, e o objetivo era que qualquer um clonasse e rodasse. De brinde, o script em R roda sozinho no RStudio quando é preciso depurar um modelo.</p>
-<p><strong>O Crítico reprova, com motivo escrito.</strong> Ele roda Ljung-Box e ARCH-LM nos resíduos. Falhar não é uma nova tentativa silenciosa — é reprovação com causa declarada, com teto de três tentativas, recuando de família de modelo a cada uma.</p>
-<p><strong>A trava.</strong> O Redator não pode colocar no texto nenhum número que não exista no objeto de resultados. Número inventado derruba a execução. As limitações da trava também estão documentadas no repositório — ela confere proveniência de dígito, não sentido semântico — porque um estudo de caso que exagera a própria rede de proteção perde o propósito.</p>
+<p><strong>A comparação ingênua, como referência.</strong> Diferença de NPS médio entre contas tratadas e não tratadas. É o que o painel reporta, e é o número sobre o qual a decisão se apoiaria.</p>
+<p><strong>Ajuste por backdoor.</strong> Regredir o NPS sobre a intervenção condicionando nas variáveis que dirigem tanto a intervenção quanto o desfecho — porte, tempo de casa, chamados. Bloquear esses caminhos deixa o efeito causal.</p>
+<p><strong>Ponderação por propensão.</strong> Modelar a probabilidade de receber a ligação dadas as mesmas covariáveis e ponderar cada conta pelo inverso dessa probabilidade. Isso reconstrói uma população em que o tratamento é tão bom quanto sorteado, e faz um conjunto de premissas diferente do da regressão — então concordância entre os dois é informativa, e discordância seria um alerta.</p>
+<p>Dois estimadores em vez de um, de propósito. Uma estimativa causal isolada é uma afirmação; duas que se apoiam em premissas diferentes e caem no mesmo lugar são evidência.</p>
 </section>
 <section id="o-resultado" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-resultado">O resultado</h2>
-<p>O resultado interessante não é a previsão. É que <strong>o laço de crítica disparou em produção, não em teste</strong>: nas duas commodities o Crítico reprovou o MSGARCH — o modelo-assinatura do meu doutorado — e aprovou o GARCH na segunda tentativa.</p>
-<p>No milho, o ARCH-LM devolveu <strong>p = 0,0405</strong>; na soja, <strong>p = 0,0242</strong>. Ambos abaixo de 0,05, ambos significando heterocedasticidade que o modelo não capturou. O relatório diz isso, nomeia a família e dá o motivo.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="../../assets/case-multiagent-milho.png" class="img-fluid figure-img"></p>
-<figcaption>Milho (<code>ZC=F</code>), 2018–2025. O sistema produziu este gráfico e o relatório ao lado dele, a partir do cache congelado, sem rede e sem chave de API.</figcaption>
+<p><img src="../../assets/case-nps-causal.png" class="img-fluid figure-img"></p>
+<figcaption>Efeito da intervenção no NPS, por três caminhos. A linha tracejada é o efeito verdadeiro, conhecido aqui porque o dado foi gerado. Dados sintéticos — não são resultados de cliente.</figcaption>
 </figure>
 </div>
-<p>No backtest, honestidade importa mais que número bonito: num horizonte de 20 passos o modelo marcou MAPE de 1,75% no milho — <strong>idêntico ao passeio aleatório</strong>. Não é falha, é aritmética. Modelos de volatilidade fixam a média em zero por construção, então a previsão pontual empata com o passeio aleatório por definição. A contribuição deles vive na largura do intervalo e nos diagnósticos de resíduo, e o próprio relatório do sistema explica isso sem que ninguém peça.</p>
+<p>O efeito verdadeiro escrito no simulador é de <strong>0,80 ponto de NPS</strong>.</p>
+<p>A comparação bruta reporta <strong>1,41</strong> — superestima o programa em cerca de três quartos, porque credita à intervenção a vantagem de partida das contas que a receberam. Um time que expandisse o programa com base nesse número veria o retorno silenciosamente não aparecer.</p>
+<p>Os dois estimadores causais chegam a <strong>0,84</strong>, com a verdade dentro dos intervalos de confiança, e concordam entre si apesar de partirem de premissas diferentes.</p>
+<p>O ponto não são as casas decimais. É que a distância entre 1,41 e 0,80 é a diferença entre um programa que justifica seu orçamento e um que basicamente reetiqueta clientes que já eram fiéis — e nenhum filtro adicional no painel teria revelado isso.</p>
 </section>
 <section id="o-código" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-código">O código</h2>
-<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
-<p>Clone, <code>pip install -r requirements.txt</code>, instale o R 4.x com os pacotes listados no README, e então:</p>
-<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run.py <span class="at">--commodity</span> milho <span class="at">--fake-llm</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Roda do cache congelado — sem chave de API, sem rede. A suíte tem <strong>167 testes</strong> por <code>pytest -q</code>. A pasta <code>examples/</code> traz os relatórios das duas commodities, gerados pelo próprio sistema.</p>
+<p>O script gera os dados, roda os três estimadores e produz o gráfico acima. É autocontido e determinístico — mesma semente, mesmos números:</p>
+<p><a class="rh-btn rh-btn-primary" href="../../portfolio/nps-causal-demo.py">nps-causal-demo.py</a></p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> nps-causal-demo.py</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Exige <code>numpy</code>, <code>pandas</code>, <code>statsmodels</code> e <code>matplotlib</code>. Mude <code>EFEITO_VERDADEIRO</code> no topo e rode de novo: a estimativa ingênua se move com o confundimento, as ajustadas seguem a verdade.</p>
 </section>
 
 
@@ -367,7 +375,7 @@ Agentes de LLM · MSGARCH / GARCH / ARIMA · Python orquestra, R modela · 167 t
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/portcv\/");
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }

@@ -3,7 +3,7 @@ title: ""
 pagetitle: "OQuant Data Science Consulting — Rodrigo Hermont Ozon"
 description: "OQuant Data Science Consulting: econometria, previsão, análise de risco, machine learning e IA generativa aplicados a decisões de negócio. Fundada por Rodrigo Hermont Ozon."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
@@ -60,6 +60,80 @@ A OQuant é uma consultoria independente de ciência de dados fundada em março 
     <p>Aplicações práticas de LLMs: chatbots internos, orquestração de fluxos de trabalho multiagente e com subagentes, e gestão do conhecimento assistida por IA — desenhadas em torno dos seus processos, com valor mensurável.</p>
   </div>
 </div>
+```
+
+:::
+
+::: {.rh-section}
+
+```{=html}
+<div class="rh-kicker">Como começar</div>
+```
+
+## Pacotes de trabalho
+
+Escopo, prazo e valor fechados antes de começar. O valor depende dos seus dados e do seu contexto, por isso cada proposta é orçada individualmente.
+
+```{=html}
+<div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem;">
+  <div class="rh-card">
+    <h3>Diagnóstico de Dados e IA</h3>
+    <p>O melhor primeiro passo: descobrir onde dados e IA podem mover os seus números.</p>
+    <ul>
+      <li>Entrevistas com até 4 pessoas da diretoria e da operação</li>
+      <li>Inventário dos dados que você já tem e de quanto dá para confiar neles</li>
+      <li>3 oportunidades priorizadas, cada uma com ganho e esforço estimados</li>
+      <li>Plano de 90 dias e apresentação de 1 hora para a diretoria</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Prazo: 2 semanas</p>
+  </div>
+  <div class="rh-card">
+    <h3>Workshop de IA e Dados para Gestores</h3>
+    <p>Para quem precisa decidir onde a IA cabe na empresa e onde ela não cabe.</p>
+    <ul>
+      <li>Até 25 participantes</li>
+      <li>Exercício prático com dados da própria empresa, anonimizados</li>
+      <li>Material que fica com a equipe</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Duração: 8 horas, em duas manhãs</p>
+  </div>
+  <div class="rh-card">
+    <h3>Previsão sob Medida</h3>
+    <p>Previsão de demanda, preço, sinistralidade ou inadimplência em que o planejamento pode confiar.</p>
+    <ul>
+      <li>Uma variável-alvo e até 3 fontes de dados</li>
+      <li>Modelos comparados com uma referência simples, com teste fora da amostra</li>
+      <li>Faixa de incerteza, não só um número</li>
+      <li>Relatório executivo, código documentado e painel simples</li>
+      <li>Treinamento de 2 horas e 30 dias de suporte</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Prazo: 6 semanas</p>
+  </div>
+  <div class="rh-card">
+    <h3>Assistente de IA Confiável (piloto)</h3>
+    <p>Um assistente que responde perguntas sobre seus documentos ou dados e nunca inventa um número.</p>
+    <ul>
+      <li>Um caso de uso e uma fonte de dados (documentos ou tabelas)</li>
+      <li>20 perguntas-teste aprovadas por você como critério de aceite</li>
+      <li>Todo número conferido com a fonte antes de aparecer</li>
+      <li>Roda no seu ambiente, sob o seu controle</li>
+    </ul>
+    <p>Mesmo método do <a href="portfolio/multiagent-commodities.html">analista de commodities multiagente</a>.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Prazo: 6 semanas</p>
+  </div>
+  <div class="rh-card">
+    <h3>Head de Dados Parcial</h3>
+    <p>Liderança sênior em dados um dia por semana, sem contratar alguém em tempo integral.</p>
+    <ul>
+      <li>Prioridades e roteiro de dados e IA</li>
+      <li>Monitoramento e recalibração dos modelos em produção</li>
+      <li>Mentoria para os seus analistas</li>
+      <li>Apoio nas novas perguntas que surgirem</li>
+    </ul>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Mensal, mínimo de 3 meses</p>
+  </div>
+</div>
+<p style="margin-top:1.2rem;"><a class="rh-btn rh-btn-primary" href="#orcamento">Solicite um orçamento para o seu projeto</a></p>
 ```
 
 :::
@@ -170,22 +244,24 @@ Os projetos com clientes são confidenciais; as referências de setor são compa
 
 :::
 
-::: {.rh-section}
+::: {#orcamento .rh-section}
 
 ```{=html}
 <div class="rh-kicker">Próximo passo</div>
 ```
 
-## Vamos conversar sobre o seu problema
+## Solicite um orçamento para o seu projeto
 
-Uma primeira conversa não custa nada e geralmente esclarece se a modelagem quantitativa pode mover a sua decisão — e se eu sou a pessoa certa para construí-la.
+Conte em poucas linhas qual decisão você precisa tomar, que dados tem e qual o seu prazo. Você recebe uma proposta com escopo, prazo e valor fechados. A primeira conversa não custa nada e geralmente esclarece se a modelagem quantitativa pode mover a sua decisão.
 
 ```{=html}
 <div style="display:flex; flex-wrap:wrap; gap:0.8rem; margin-top:1rem;">
-  <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904">Agende uma conversa</a>
+  <a class="rh-btn rh-btn-primary" href="https://wa.me/5541988382904?text=Ol%C3%A1%2C%20Rodrigo!%20Gostaria%20de%20um%20or%C3%A7amento.">Pedir orçamento no WhatsApp</a>
+  <a class="rh-btn rh-btn-ghost" href="https://calendly.com/rhozon/30min">Agendar conversa de 30 min</a>
+  <a class="rh-btn rh-btn-ghost" href="mailto:contato.oquant@gmail.com?subject=Pedido%20de%20or%C3%A7amento">E-mail</a>
   <a class="rh-btn rh-btn-ghost" href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a>
-  <a class="rh-btn rh-btn-ghost" href="mailto:rodrigoozon@yahoo.com.br">E-mail</a>
 </div>
+<p style="margin-top:.8rem; font-size:.92rem;">contato.oquant@gmail.com</p>
 ```
 
 :::

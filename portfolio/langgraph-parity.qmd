@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Framework or Hand-Rolled? — Case Study"
 description: "The same multi-agent system, twice: a hand-written loop and a LangGraph StateGraph. Both produce a byte-identical report, and the difference between them is measured rather than argued."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}

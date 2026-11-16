@@ -3,7 +3,7 @@ title: ""
 pagetitle: "Modelagem Causal do NPS — Estudo de Caso"
 description: "O que de fato move a satisfação do cliente, separado do que apenas se correlaciona com ela. Demonstrado ponta a ponta em dados sintéticos, porque o projeto real está sob NDA."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/case-nps-causal.png"
+image: "https://rhozon.github.io/assets/case-nps-causal.png"
 ---
 
 ::: {.rh-section}
@@ -102,7 +102,7 @@ O script gera os dados, roda os três estimadores e produz o gráfico acima. É 
 determinístico — mesma semente, mesmos números:
 
 ```{=html}
-<p><a class="rh-btn rh-btn-primary" href="../../case-studies/nps-causal-demo.py">nps-causal-demo.py</a></p>
+<p><a class="rh-btn rh-btn-primary" href="../../portfolio/nps-causal-demo.py">nps-causal-demo.py</a></p>
 ```
 
 ```bash

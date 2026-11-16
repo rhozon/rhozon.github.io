@@ -1,13 +1,13 @@
 ---
 title: ""
-pagetitle: "Estudos de Caso — Rodrigo Hermont Ozon"
+pagetitle: "Portfólio — Rodrigo Hermont Ozon"
 description: "Trabalho aplicado que dá para abrir, ler e rodar: IA multiagente, previsão econométrica, otimização de portfólio e inferência causal."
 toc: false
-image: "https://rhozon.github.io/portcv/assets/profile_card.jpg"
+image: "https://rhozon.github.io/assets/profile_card.jpg"
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Estudos de Caso</div>
+<div class="rh-kicker">Portfólio</div>
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
@@ -21,54 +21,54 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
 <div style="display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.1rem; margin-top:1.4rem;">
 
   <div class="rh-card">
-    <h3><a href="case-studies/multiagent-commodities.html">Analista de Commodities Multiagente</a></h3>
+    <h3><a href="multiagent-commodities.html">Analista de Commodities Multiagente</a></h3>
     <p>Quatro agentes de LLM decidem; um núcleo econométrico determinístico em R calcula.
     Uma trava impede o sistema de escrever qualquer número que os modelos não produziram.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       Agentes de LLM · MSGARCH · Python + R
     </p>
-    <p><a href="case-studies/multiagent-commodities.html">Ler o caso </a></p>
+    <p><a href="multiagent-commodities.html">Ler o caso </a></p>
   </div>
 
   <div class="rh-card">
-    <h3><a href="case-studies/commodity-forecasting.html">Previsão de Preço de Commodities</a></h3>
+    <h3><a href="commodity-forecasting.html">Previsão de Preço de Commodities</a></h3>
     <p>Volatilidade com mudança de regime e momentos superiores variantes no tempo
     aplicados a preços de grãos, comparados com os modelos que uma mesa de fato usa.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       GAMLSS · MSGARCH bayesiano · Backtesting
     </p>
-    <p><a href="case-studies/commodity-forecasting.html">Ler o caso </a></p>
+    <p><a href="commodity-forecasting.html">Ler o caso </a></p>
   </div>
 
   <div class="rh-card">
-    <h3><a href="case-studies/portfolio-optimization.html">Otimização Multiobjetivo de Portfólio</a></h3>
+    <h3><a href="portfolio-optimization.html">Otimização Multiobjetivo de Portfólio</a></h3>
     <p>Algoritmos evolutivos na fronteira risco–retorno de portfólios de commodities,
     comparados de frente, não presumidos.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       NSGA-II · Evolução Diferencial · Pareto
     </p>
-    <p><a href="case-studies/portfolio-optimization.html">Ler o caso </a></p>
+    <p><a href="portfolio-optimization.html">Ler o caso </a></p>
   </div>
 
   <div class="rh-card">
-    <h3><a href="case-studies/causal-nps.html">Modelagem Causal do NPS</a></h3>
+    <h3><a href="causal-nps.html">Modelagem Causal do NPS</a></h3>
     <p>O que de fato move a satisfação do cliente, separado do que apenas se
     correlaciona com ela — para uma grande corporação.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       Inferência causal · IPW · Dados sintéticos
     </p>
-    <p><a href="case-studies/causal-nps.html">Ler o caso </a></p>
+    <p><a href="causal-nps.html">Ler o caso </a></p>
   </div>
 
 
   <div class="rh-card">
-    <h3><a href="case-studies/langgraph-parity.html">Framework ou feito à mão?</a></h3>
+    <h3><a href="langgraph-parity.html">Framework ou feito à mão?</a></h3>
     <p>O mesmo sistema multiagente duas vezes — um laço escrito à mão e um
     StateGraph do LangGraph. Os dois emitem relatório idêntico; a diferença é medida.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
       LangGraph &middot; StateGraph &middot; Teste de paridade
     </p>
-    <p><a href="case-studies/langgraph-parity.html">Ler o caso </a></p>
+    <p><a href="langgraph-parity.html">Ler o caso </a></p>
   </div>
 
 </div>

@@ -6,9 +6,9 @@
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="description" content="Commodity portfolio decisions weigh more than risk against return. Evolutionary many-objective optimisation keeps the trade-off visible instead of collapsing it into one score.">
+<meta name="description" content="The same multi-agent system, twice: a hand-written loop and a LangGraph StateGraph. Both produce a byte-identical report, and the difference between them is measured rather than argued.">
 
-<title>Multi-Objective Portfolio Optimization — Case Study – Rodrigo Hermont Ozon</title>
+<title>Framework or Hand-Rolled? — Case Study – Rodrigo Hermont Ozon</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -26,6 +26,41 @@ ul.task-list li input[type="checkbox"] {
   width: 0.8em;
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
@@ -46,7 +81,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9f174a3d94ac7326965624cb3d70f93e.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -90,13 +125,13 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 
 <link rel="stylesheet" href="../styles.css">
-<meta property="og:title" content="Multi-Objective Portfolio Optimization — Case Study">
-<meta property="og:description" content="Commodity portfolio decisions weigh more than risk against return. Evolutionary many-objective optimisation keeps the trade-off visible instead of collapsing it into one score.">
-<meta property="og:image" content="https://rhozon.github.io/portcv/assets/profile_card.jpg">
+<meta property="og:title" content="Framework or Hand-Rolled? — Case Study">
+<meta property="og:description" content="The same multi-agent system, twice: a hand-written loop and a LangGraph StateGraph. Both produce a byte-identical report, and the difference between them is measured rather than argued.">
+<meta property="og:image" content="https://rhozon.github.io/assets/profile_card.jpg">
 <meta property="og:site_name" content="Rodrigo Hermont Ozon">
-<meta name="twitter:title" content="Multi-Objective Portfolio Optimization — Case Study">
-<meta name="twitter:description" content="Commodity portfolio decisions weigh more than risk against return. Evolutionary many-objective optimisation keeps the trade-off visible instead of collapsing it into one score.">
-<meta name="twitter:image" content="https://rhozon.github.io/portcv/assets/profile_card.jpg">
+<meta name="twitter:title" content="Framework or Hand-Rolled? — Case Study">
+<meta name="twitter:description" content="The same multi-agent system, twice: a hand-written loop and a LangGraph StateGraph. Both produce a byte-identical report, and the difference between them is measured rather than argued.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/profile_card.jpg">
 <meta name="twitter:card" content="summary_large_image">
 </head>
 
@@ -130,8 +165,8 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 <span class="menu-text">Research</span></a>
   </li>  
   <li class="nav-item">
-    <a class="nav-link" href="../case-studies.html"> 
-<span class="menu-text">Case Studies</span></a>
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
   </li>  
   <li class="nav-item">
     <a class="nav-link" href="../teaching.html"> 
@@ -185,41 +220,52 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Case Study 03 · Doctoral research
+Case Study 05 · Live
 </div>
-<section id="multi-objective-portfolio-optimization" class="level1">
-<h1>Multi-Objective Portfolio Optimization</h1>
+<section id="framework-or-hand-rolled" class="level1">
+<h1>Framework or Hand-Rolled?</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-NSGA-II · Differential Evolution · Pareto frontiers · Multi-period
+LangGraph · StateGraph · Parity testing · 173 tests
 </p>
 </section>
 </div>
 <section id="the-business-question" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="the-business-question">The business question</h2>
-<p>Which basket of commodity positions should a desk hold, when the decision has to satisfy several goals at once that genuinely conflict — and when the answer has to hold up over successive periods, not just today?</p>
-<p>The convenient move is to blend the goals into a single score and optimise that. It produces one number and hides the judgement inside the weights, which is exactly the judgement the decision-maker was supposed to make.</p>
+<p>A team is about to build an agentic system. Someone asks whether to adopt an agent framework or write the orchestration by hand. The honest answer is <em>it depends</em> — which helps nobody.</p>
+<p>So: take a multi-agent system that already works without a framework, rebuild its orchestration on LangGraph, and measure the difference instead of arguing about it.</p>
 </section>
-<section id="the-data" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="the-data">The data</h2>
-<p>Public agricultural commodity price series, multi-period, plus the volatility and scenario structures produced by the forecasting stage. No client data, no proprietary feeds.</p>
+<section id="the-setup" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-setup">The setup</h2>
+<p>The subject is the <a href="multiagent-commodities.html">multi-agent commodity analyst</a> from case study 01 — four agents over a deterministic econometric core in R, with a critique loop and an anti-hallucination guard.</p>
+<p>The rule that makes the comparison mean anything: <strong>only the orchestration changes.</strong> The four agents and the whole <code>agro/</code> core are imported, not rewritten. The hand-rolled version is a <code>for</code> loop with a <code>break</code>; the LangGraph version is a <code>StateGraph</code> with five nodes and two conditional edges.</p>
+<p>Switching between them is a flag:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run.py <span class="at">--commodity</span> milho <span class="at">--pergunta</span> <span class="st">"..."</span> <span class="at">--fake-llm</span> <span class="at">--engine</span> manual</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> run.py <span class="at">--commodity</span> milho <span class="at">--pergunta</span> <span class="st">"..."</span> <span class="at">--fake-llm</span> <span class="at">--engine</span> langgraph</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </section>
 <section id="method-and-why-this-one" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="method-and-why-this-one">Method, and why this one</h2>
-<p><strong>Keep the trade-off open.</strong> Rather than one optimum, evolutionary multi-objective algorithms return a Pareto frontier: the set of portfolios where improving one objective necessarily costs another. The decision-maker chooses a point on that frontier knowing what the choice costs, instead of inheriting a weighting someone else picked.</p>
-<p><strong>More than two objectives.</strong> With three or more competing criteria the problem becomes many-objective, where the usual algorithms degrade in ways that are easy to miss. That makes the choice of algorithm a research question rather than a default — NSGA-II and differential evolution do not behave the same way, and comparing them properly needs a benchmark designed for the multi-period commodity setting rather than borrowed from elsewhere.</p>
-<p><strong>Regimes change the answer.</strong> A frontier estimated in a calm market is the wrong frontier for a turbulent one. Conditioning the decision on the estimated market regime, and refining it with dynamic programming across periods, ties the optimisation back to the volatility modelling upstream instead of treating it as a separate exercise.</p>
-<p><strong>What survives contact with reality.</strong> A strategy that is optimal on paper can be impossible to execute at size. Capacity limits, turnover and generalisation across several assets are part of the problem statement here, not an afterthought.</p>
+<p><strong>Parity first, opinions later.</strong> Six tests run both engines on the same input and compare the results field by field: chosen model family, number of attempts, the rejection history, the residual diagnostics, the backtest, the set of numbers the guard authorises — and the final markdown.</p>
+<p>Without that, “I reimplemented it in LangGraph” is a claim. With it, it is a property. And a reimplementation that behaves <em>almost</em> the same is worse than none at all: it looks like an alternative and is actually a trap.</p>
+<p><strong>The agents did not become tools.</strong> LangGraph offers <code>ToolNode</code> and the ReAct pattern, where the model decides which tool to call next. That is not what this system does. The order — collect, fit, critique, write — is fixed on purpose, and the LLM chooses <em>parameters</em>, never the next step. Turning <code>fit_model</code> into a tool would have been a change of semantics disguised as a change of framework, and the comparison only holds if both sides do the same thing.</p>
 </section>
 <section id="result" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="result">Result</h2>
-<p><strong>Deliberately not published here.</strong> These manuscripts are under peer review or being prepared for submission. Publishing their results on a personal site ahead of the journals would be poor practice, so the frontiers, benchmark tables and comparisons stay out of this page until the papers are out.</p>
-<p>The one exception is work that is already public: a conference paper comparing NSGA-II and differential evolution on multi-objective portfolio optimisation was presented at ICPR Americas 2024, and a second on Pareto frontiers built across multiple time windows is in the ConBRepro proceedings.</p>
+<p><strong>The reports are byte-identical.</strong> Same SHA-256, end to end, from the frozen cache:</p>
+<pre><code>manual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0
+langgraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0</code></pre>
+<p><strong>What the framework charged.</strong> <code>MemorySaver</code> — the checkpointer, and the main reason to adopt LangGraph at all — serialises the state at every node with msgpack. A <code>pandas.Series</code> is not serialisable, so the first version of the graph failed outright:</p>
+<pre><code>TypeError: Type is not msgpack serializable: Series</code></pre>
+<p>The hand-written loop never meets this, because there the series is a local variable read once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of primitives holding a file path — and every node that needs the series re-reads it from disk.</p>
+<p>Measured at runtime: <strong>1 parquet read in the manual engine, 3 in the graph.</strong> Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.</p>
+<p><strong>What the framework bought.</strong> Pipeline state stops being implicit in local variables and becomes a declared <code>TypedDict</code>. The rejection loop becomes a conditional edge you can read without tracing control flow in your head. And the checkpointer lets you inspect and resume a run mid-execution — something the hand-rolled loop does not offer.</p>
+<p><strong>The price in code:</strong> 54 lines of code hand-rolled against 120 in the graph, for identical behaviour.</p>
+<p><strong>So which one?</strong> For this system, the hand-written loop wins: the pipeline is short, the control flow fits on one screen, and nothing here needs resumability. The framework would start paying for itself with more branches, human-in-the-loop pauses, or runs long enough that resuming matters. That is a conclusion drawn from a measurement, not from taste — and either way, the parity tests mean switching costs a flag.</p>
 </section>
 <section id="code" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
-<p>Not yet public. The implementation belongs to manuscripts under review, and releasing it before they are decided would carry the same problem as publishing the results.</p>
-<p><a class="rh-btn rh-btn-ghost" href="../research.html">Published papers on this line </a></p>
-<p>For running code in the same domain, the <a href="multiagent-commodities.html">multi-agent commodity analyst</a> is public, tested and reproducible.</p>
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>
+<p>Both engines live in the same repository: <code>agents/orchestrator.py</code> and <code>agents_langgraph/graph.py</code>, with <code>tests/test_paridade.py</code> holding them to the same result. The suite is <strong>173 tests</strong>, and it runs with no API key and no network.</p>
+<p><code>langgraph</code> and <code>langchain-core</code> are in <code>requirements.txt</code>, but only the graph engine and the parity test import them — the import is deferred, so the default engine needs neither.</p>
 </section>
 
 
@@ -322,7 +368,7 @@ NSGA-II · Differential Evolution · Pareto frontiers · Multi-period
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/portcv\/");
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
