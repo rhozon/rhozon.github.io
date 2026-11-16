@@ -110,7 +110,7 @@ Formação contínua em econometria, finanças e ciência de dados em instituiç
   <h3>Tutoriais públicos de econometria, ML e ciência de dados</h3>
   <p>Mais de 30 tutoriais de acesso aberto e aulas aplicadas cobrindo econometria, machine learning, previsão de séries temporais e ciência de dados — escritos em R e Python e disponíveis gratuitamente online.</p>
   <p>
-    <a class="rh-btn rh-btn-primary" href="https://rhozon.github.io/selecaodeprodutosnor/index.html" target="_blank">Explore os tutoriais</a>
+    <a class="rh-btn rh-btn-primary" href="https://rhozon.github.io/tutoriais/" target="_blank">Explore os tutoriais</a>
   </p>
 </div>
 ```

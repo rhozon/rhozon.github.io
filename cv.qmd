@@ -53,7 +53,7 @@ format:
     link-external-icon: false
     other-links:
       - text: "Tutorials and classes"
-        href: "https://rhozon.github.io/selecaodeprodutosnor/index.html"
+        href: "https://rhozon.github.io/tutoriais/"
       - text: "Scientific Initiation Project (PUCPR)"
         href: "https://pibicagrofinance.github.io/site/"
       - text: "Data Science and Fin. Classes (FAE Business School)"
