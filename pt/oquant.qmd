@@ -64,7 +64,7 @@ A OQuant é uma consultoria independente de ciência de dados fundada em março 
 
 :::
 
-::: {.rh-section}
+::: {#pacotes .rh-section}
 
 ```{=html}
 <div class="rh-kicker">Como começar</div>
@@ -118,7 +118,7 @@ Escopo, prazo e valor fechados antes de começar. O valor depende dos seus dados
       <li>Todo número conferido com a fonte antes de aparecer</li>
       <li>Roda no seu ambiente, sob o seu controle</li>
     </ul>
-    <p>Mesmo método do <a href="portfolio/multiagent-commodities.html">analista de commodities multiagente</a>.</p>
+    <p>Veja funcionando no <a href="portfolio/hybrid-rag.html">caso do RAG híbrido</a>, e a mesma trava no <a href="portfolio/multiagent-commodities.html">analista de commodities multiagente</a>.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Prazo: 6 semanas</p>
   </div>
   <div class="rh-card">

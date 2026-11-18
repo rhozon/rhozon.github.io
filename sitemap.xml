@@ -2,47 +2,51 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rhozon.github.io/cv.html</loc>
-    <lastmod>2026-11-16T22:24:25.758Z</lastmod>
+    <lastmod>2026-11-16T23:46:52.188Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/oquant.html</loc>
-    <lastmod>2026-11-16T22:25:52.778Z</lastmod>
+    <lastmod>2026-11-18T20:38:07.657Z</lastmod>
   </url>
   <url>
-    <loc>https://rhozon.github.io/portfolio/langgraph-parity.html</loc>
-    <lastmod>2026-11-16T22:24:26.259Z</lastmod>
+    <loc>https://rhozon.github.io/portfolio/hybrid-rag.html</loc>
+    <lastmod>2026-11-18T20:59:42.761Z</lastmod>
   </url>
   <url>
-    <loc>https://rhozon.github.io/portfolio/portfolio-optimization.html</loc>
-    <lastmod>2026-11-16T22:24:26.364Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhozon.github.io/portfolio/multiagent-commodities.html</loc>
-    <lastmod>2026-11-16T22:24:26.319Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhozon.github.io/research.html</loc>
-    <lastmod>2026-11-16T22:24:27.809Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhozon.github.io/index.html</loc>
-    <lastmod>2026-11-16T22:24:57.783Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhozon.github.io/experience.html</loc>
-    <lastmod>2026-11-16T22:24:25.833Z</lastmod>
-  </url>
-  <url>
-    <loc>https://rhozon.github.io/portfolio/index.html</loc>
-    <lastmod>2026-11-16T22:24:27.680Z</lastmod>
+    <loc>https://rhozon.github.io/portfolio/causal-nps.html</loc>
+    <lastmod>2026-11-16T22:24:26.038Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/portfolio/commodity-forecasting.html</loc>
     <lastmod>2026-11-16T22:24:26.090Z</lastmod>
   </url>
   <url>
-    <loc>https://rhozon.github.io/portfolio/causal-nps.html</loc>
-    <lastmod>2026-11-16T22:24:26.038Z</lastmod>
+    <loc>https://rhozon.github.io/portfolio/index.html</loc>
+    <lastmod>2026-11-18T20:38:06.993Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/experience.html</loc>
+    <lastmod>2026-11-16T22:24:25.833Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/index.html</loc>
+    <lastmod>2026-11-16T22:24:57.783Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/research.html</loc>
+    <lastmod>2026-11-16T22:24:27.809Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portfolio/multiagent-commodities.html</loc>
+    <lastmod>2026-11-16T22:24:26.319Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portfolio/portfolio-optimization.html</loc>
+    <lastmod>2026-11-16T22:24:26.364Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/portfolio/langgraph-parity.html</loc>
+    <lastmod>2026-11-16T22:24:26.259Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/teaching.html</loc>

@@ -11,10 +11,10 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
-que esse, o resultado e o código. O que muda é o que pode ser mostrado. O primeiro é
-totalmente público — repositório, testes, relatórios de exemplo. Dois descrevem pesquisa
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. Três são
+totalmente públicos, com repositório, testes e resultados. Dois descrevem pesquisa
 de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
-retidos até os periódicos se pronunciarem. O último roda sobre dados sintéticos, porque o
+retidos até os periódicos se pronunciarem. Um roda sobre dados sintéticos, porque o
 projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no topo.
 
 ```{=html}
@@ -69,6 +69,16 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
       LangGraph &middot; StateGraph &middot; Teste de paridade
     </p>
     <p><a href="langgraph-parity.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="hybrid-rag.html">RAG Híbrido com Trava Numérica</a></h3>
+    <p>Busca vetorial e busca textual na mesma tabela do Postgres, combinadas por
+    posição. Resposta com número que não está nas fontes é retida.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      RAG &middot; pgvector &middot; Avaliação da busca no CI
+    </p>
+    <p><a href="hybrid-rag.html">Ler o caso </a></p>
   </div>
 
 </div>

@@ -1,0 +1,132 @@
+---
+title: ""
+pagetitle: "Hybrid RAG with a Numeric Guardrail — Case Study"
+description: "Vector and full-text search in one Postgres table, fused by rank. Any answer with a number the sources do not contain is withheld. Retrieval evals run in CI against a real database."
+toc: false
+image: "https://rhozon.github.io/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 06 · Live</div>
+# Hybrid RAG with a Numeric Guardrail
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 22 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A health plan's member service answers the same questions all day. How long do I have to
+appeal a denied claim? What does the emergency room cost? How many telehealth visits are
+free? The answers are in the member handbook, and an assistant can find them in seconds.
+
+It has to get one thing right every time: the number. A wrong co-pay or a wrong deadline
+is the expensive mistake, because the member acts on it.
+
+Two things have to hold. The assistant finds the right passage even when the member uses
+different words than the handbook. And it refuses to answer when it is about to state a
+number the handbook does not contain.
+:::
+
+::: {.rh-section}
+## The data
+
+A fictional health plan handbook with **8 documents**: appeals, dental, emergency care,
+maternity, mental health, out-of-network care, prescriptions and telehealth. It is split
+into **21 passages**. It is fictional on purpose. The repository is public, and a real
+plan's documents are not mine to publish. The structure is the one that matters in a real
+handbook: limits, co-pays and deadlines.
+
+The test set has **16 questions written in different words than the handbook**: "ER" where
+the text says "emergency room", "therapy" where it says "therapist". Each question records
+which document answers it, so retrieval gets a score.
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**One Postgres table instead of a vector database.** Each passage is a row holding its
+text, its embedding (pgvector, HNSW index, cosine distance) and a full-text column with
+its own index. Re-loading a document is a delete and an insert in one transaction, so the
+two searches never see different versions of it. For most companies this means no new
+system to run, because Postgres is already there.
+
+**Two searches, combined by rank.** Vector search finds paraphrases. Full-text search
+finds exact terms, codes and names. Their scores live on different scales, so instead of
+tuning a weight on 16 questions they are combined with Reciprocal Rank Fusion, which only
+looks at each passage's position in the two lists.
+
+**The guardrail fails closed.** Before an answer goes out, every number in it is checked
+against the passages that were retrieved ($1,500.00 and 1500 count as the same number). If
+one is missing, the service returns no answer, flags it as blocked and names the number.
+For limits, co-pays and deadlines, no answer is cheaper than a wrong one.
+
+**It runs without an API key.** A simple extractive answerer, which picks the best
+sentence from the passages, lets the whole pipeline and its tests run offline. Claude is
+the real answerer when a key is set. In the same spirit, a deterministic embedder keeps the
+tests repeatable, and the evaluation then runs again with a real embedding model,
+bge-small-en-v1.5.
+:::
+
+::: {.rh-section}
+## Result
+
+Retrieval is measured in CI on every change, against a real Postgres 16 + pgvector
+database. The figure below is hit@1: the share of the 16 questions where the right
+document comes first.
+
+| Embedder | Vector | Full-text | Hybrid |
+|---|---|---|---|
+| Simple hashing (lexical) | 0.75 | 0.81 | **0.88** |
+| bge-small-en-v1.5 | 1.00 | 0.81 | **1.00** |
+
+With a weak embedder, the hybrid beats both searches, because each one fixes misses of the
+other. With a good embedder, vector search already gets all 16 right and the hybrid keeps
+that. Full-text alone misses the paraphrases. Sixteen questions make a smoke test. The CI gate
+(at least 0.8 with the top 3 passages) is there to catch regressions when the chunking,
+the indexes or the query change.
+
+The guardrail, as the tests check it. Ask *"How long do I have to appeal a denied
+claim?"* The handbook says 180 days, the answer says 180 days, and it cites the appeals
+document. Swap in a model that answers *"You have 90 days to appeal"* and the service
+withholds the answer and reports 90 as unsupported.
+
+The repository states its limits too. There is no reranker yet, the evaluation covers
+retrieval and not answer quality, the full-text search is configured for English only,
+and the guardrail does not check numbers written out as words.
+:::
+
+::: {.rh-section}
+## Applied to your documents
+
+This is the core of the
+<a href="../oquant.html#packages">Reliable AI Assistant pilot</a>: your documents or tables
+in place of the handbook, 20 test questions you approve as the acceptance criterion, and
+the same rule that no number reaches a user without being found in the source.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/rag-pgvector-hybrid">github.com/rhozon/rag-pgvector-hybrid</a></p>
+```
+
+With Docker and Python 3.12:
+
+```bash
+docker compose up -d
+pip install -e ".[dev,embed]"
+python -m rag.cli ingest data/handbook --reset
+python -m rag.cli ask "How long do I have to appeal a denied claim?"
+python -m rag.cli eval --k 1
+pytest -v
+```
+
+The defaults need no API key and no model download. The suite has **22 tests**, the
+Postgres ones included, and runs on every push together with the retrieval evaluation.
+The README lists the design decisions, from the choice of index to why the full-text
+query is an OR of terms.
+:::

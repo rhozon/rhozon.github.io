@@ -64,7 +64,7 @@ OQuant is an independent data science consultancy founded in March 2025 by Rodri
 
 :::
 
-::: {.rh-section}
+::: {#packages .rh-section}
 
 ```{=html}
 <div class="rh-kicker">How to start</div>
@@ -118,7 +118,7 @@ Fixed scope, fixed timeline and a fixed fee agreed before any work starts. The f
       <li>Every figure checked against the source before it is shown</li>
       <li>Runs in your environment, under your control</li>
     </ul>
-    <p>Same method as the <a href="portfolio/multiagent-commodities.html">multi-agent commodity analyst</a>.</p>
+    <p>See it working in the <a href="portfolio/hybrid-rag.html">hybrid RAG case</a>, and the same guardrail in the <a href="portfolio/multiagent-commodities.html">multi-agent commodity analyst</a>.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Timeline: 6 weeks</p>
   </div>
   <div class="rh-card">

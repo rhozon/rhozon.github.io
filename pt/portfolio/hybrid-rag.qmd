@@ -1,0 +1,134 @@
+---
+title: ""
+pagetitle: "RAG Híbrido com Trava Numérica — Estudo de Caso"
+description: "Busca vetorial e busca textual na mesma tabela do Postgres, combinadas por posição. Qualquer resposta com um número que não está nas fontes é retida. As avaliações de busca rodam no CI contra um banco real."
+toc: false
+image: "https://rhozon.github.io/assets/profile_card.jpg"
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 06 · No ar</div>
+# RAG Híbrido com Trava Numérica
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+RAG · Postgres + pgvector · Busca textual · Fusão por posição · FastAPI · 22 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+O atendimento de uma operadora de saúde responde às mesmas perguntas o dia inteiro.
+Quanto tempo tenho para recorrer de uma negativa? Quanto pago no pronto-socorro? Quantas
+teleconsultas são gratuitas? As respostas estão no manual do beneficiário, e um assistente
+consegue encontrá-las em segundos.
+
+Ele precisa acertar uma coisa todas as vezes: o número. Uma coparticipação ou um prazo
+errado é o erro caro, porque o beneficiário age com base nele.
+
+Duas coisas precisam valer. O assistente encontra o trecho certo mesmo quando o
+beneficiário usa palavras diferentes das do manual. E ele se recusa a responder quando
+está prestes a citar um número que o manual não contém.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Um manual fictício de plano de saúde, em inglês, com **8 documentos**: recursos, odontologia,
+urgência e emergência, maternidade, saúde mental, atendimento fora da rede, medicamentos e
+telessaúde. Ele é dividido em **21 trechos**. É fictício de propósito. O repositório é
+público, e os documentos de uma operadora real não são meus para publicar. A estrutura é a
+que importa num manual real: limites, coparticipações e prazos.
+
+O conjunto de teste tem **16 perguntas escritas com palavras diferentes das do manual**:
+"ER" onde o texto diz "emergency room", "therapy" onde diz "therapist". Cada pergunta
+registra qual documento a responde, então dá para medir a busca com um número.
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Uma tabela do Postgres em vez de um banco vetorial.** Cada trecho é uma linha com o
+texto, o embedding (pgvector, índice HNSW, distância de cosseno) e uma coluna de busca
+textual com índice próprio. Recarregar um documento é apagar e inserir numa única
+transação, então as duas buscas nunca veem versões diferentes dele. Para a maioria das
+empresas, isso significa nenhum sistema novo para manter, porque o Postgres já está lá.
+
+**Duas buscas, combinadas por posição.** A busca vetorial encontra paráfrases. A busca
+textual encontra termos exatos, códigos e nomes. As notas das duas estão em escalas
+diferentes, então, em vez de calibrar um peso com 16 perguntas, elas são combinadas por
+Reciprocal Rank Fusion, que olha só a posição de cada trecho nas duas listas.
+
+**A trava falha fechada.** Antes de uma resposta sair, cada número dela é conferido com
+os trechos recuperados ($1,500.00 e 1500 contam como o mesmo número). Se faltar algum, o
+serviço não devolve resposta, marca como bloqueada e diz qual número faltou. Para limites,
+coparticipações e prazos, ficar sem resposta custa menos do que receber uma errada.
+
+**Roda sem chave de API.** Um respondedor extrativo simples, que escolhe a melhor frase
+dos trechos, permite rodar o fluxo inteiro e os testes sem internet. O Claude é quem
+responde de verdade quando há uma chave configurada. Na mesma linha, um embedding
+determinístico deixa os testes repetíveis, e a avaliação roda de novo com um modelo de
+embedding de verdade, o bge-small-en-v1.5.
+:::
+
+::: {.rh-section}
+## Resultado
+
+A busca é medida no CI a cada mudança, contra um banco Postgres 16 + pgvector de verdade.
+O número abaixo é o hit@1: a fração das 16 perguntas em que o documento certo vem em
+primeiro lugar.
+
+| Embedding | Vetorial | Textual | Híbrida |
+|---|---|---|---|
+| Hashing simples (lexical) | 0,75 | 0,81 | **0,88** |
+| bge-small-en-v1.5 | 1,00 | 0,81 | **1,00** |
+
+Com um embedding fraco, a busca híbrida supera as duas, porque cada uma corrige erros da
+outra. Com um embedding bom, a busca vetorial já acerta as 16 e a híbrida mantém esse
+resultado. A busca textual sozinha erra as paráfrases. Dezesseis perguntas servem como
+teste de fumaça. O portão do CI (pelo menos 0,8 com os 3 primeiros trechos) está lá para
+pegar regressões quando o corte dos trechos, os índices ou a consulta mudam.
+
+A trava, do jeito que os testes conferem. Pergunte *"How long do I have to appeal a
+denied claim?"* O manual diz 180 dias, a resposta diz 180 dias e cita o documento de
+recursos. Troque por um modelo que responde *"You have 90 days to appeal"* e o serviço
+retém a resposta e aponta o 90 como número sem fonte.
+
+O repositório também declara os seus limites. Ainda não há reranker, a avaliação cobre a
+busca e não a qualidade da resposta, a busca textual está configurada só para inglês, e a
+trava não confere números escritos por extenso.
+:::
+
+::: {.rh-section}
+## Aplicado aos seus documentos
+
+Esse é o núcleo do
+<a href="../oquant.html#pacotes">piloto do Assistente de IA Confiável</a>: os seus
+documentos ou tabelas no lugar do manual, 20 perguntas-teste aprovadas por você como
+critério de aceite, e a mesma regra de que nenhum número chega ao usuário sem ter sido
+encontrado na fonte.
+:::
+
+::: {.rh-section}
+## O código
+
+```{=html}
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/rag-pgvector-hybrid">github.com/rhozon/rag-pgvector-hybrid</a></p>
+```
+
+Com Docker e Python 3.12:
+
+```bash
+docker compose up -d
+pip install -e ".[dev,embed]"
+python -m rag.cli ingest data/handbook --reset
+python -m rag.cli ask "How long do I have to appeal a denied claim?"
+python -m rag.cli eval --k 1
+pytest -v
+```
+
+A configuração padrão não precisa de chave de API nem de download de modelo. A suíte tem
+**22 testes**, incluindo os de Postgres, e roda a cada push junto com a avaliação da
+busca. O README lista as decisões de projeto, da escolha do índice ao motivo de a consulta
+textual ser um OU de termos.
+:::

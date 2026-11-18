@@ -11,6 +11,7 @@ project:
     - portfolio/portfolio-optimization.qmd
     - portfolio/causal-nps.qmd
     - portfolio/langgraph-parity.qmd
+    - portfolio/hybrid-rag.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd
