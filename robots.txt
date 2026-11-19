@@ -1,1 +1,3 @@
 Sitemap: https://rhozon.github.io/sitemap.xml
+Sitemap: https://rhozon.github.io/pt/sitemap.xml
+Sitemap: https://rhozon.github.io/tutoriais/sitemap.xml
