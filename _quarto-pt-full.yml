@@ -13,6 +13,7 @@ project:
     - pt/portfolio/causal-nps.qmd
     - pt/portfolio/langgraph-parity.qmd
     - pt/portfolio/hybrid-rag.qmd
+    - pt/portfolio/hospital-admissions.qmd
     - pt/teaching.qmd
     - pt/oquant.qmd
     - pt/contact.qmd

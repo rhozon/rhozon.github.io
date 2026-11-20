@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Previsão de 12 meses das internações do SUS nos 27 estados, com dados públicos do DATASUS. Testada em 33 datas contra a referência do mesmo mês do ano anterior, com faixas de 80% conferidas pela cobertura.">
+
+<title>Previsão de Internações Hospitalares — Estudo de Caso – Rodrigo Hermont Ozon</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Previsão de Internações Hospitalares — Estudo de Caso">
+<meta property="og:description" content="Previsão de 12 meses das internações do SUS nos 27 estados, com dados públicos do DATASUS. Testada em 33 datas contra a referência do mesmo mês do ano anterior, com faixas de 80% conferidas pela cobertura.">
+<meta property="og:image" content="https://rhozon.github.io/assets/case-admissions-forecast-pt.png">
+<meta property="og:site_name" content="Rodrigo Hermont Ozon">
+<meta name="twitter:title" content="Previsão de Internações Hospitalares — Estudo de Caso">
+<meta name="twitter:description" content="Previsão de 12 meses das internações do SUS nos 27 estados, com dados públicos do DATASUS. Testada em 33 datas contra a referência do mesmo mês do ano anterior, com faixas de 80% conferidas pela cobertura.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/case-admissions-forecast-pt.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Rodrigo Hermont Ozon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/experience.html"> 
+<span class="menu-text">Experiência</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/research.html"> 
+<span class="menu-text">Pesquisa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/teaching.html"> 
+<span class="menu-text">Ensino</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/oquant.html"> 
+<span class="menu-text">Consultoria</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV Completo</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/contact.html"> 
+<span class="menu-text">Contato</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">EN</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rhozon"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="rh-section">
+<div class="rh-kicker">
+Estudo de Caso 07 · No ar
+</div>
+<section id="previsão-de-internações-hospitalares" class="level1">
+<h1>Previsão de Internações Hospitalares</h1>
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Séries temporais · SARIMA sazonal · Backtest com origem móvel · Faixas de 80% conferidas · Python · 19 testes
+</p>
+</section>
+</div>
+<section id="a-pergunta-de-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
+<p>Leitos, escalas de enfermagem, insumos e o orçamento por trás deles são comprometidos com meses de antecedência, e tudo depende de um número: quantos pacientes vão ser internados. Secretaria de saúde, rede hospitalar e operadora de plano enfrentam a mesma pergunta.</p>
+<p>A resposta de costume é o número do mesmo mês do ano anterior, ajustado no olho. É simples e é uma referência justa. A pergunta aqui é quanto um modelo acerta a mais em meses que ele não viu, e se a faixa em volta da previsão merece confiança na hora de dimensionar uma equipe com ela.</p>
+</section>
+<section id="os-dados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
+<p>Dados públicos do DATASUS: todas as internações pagas pelo SUS, contadas por estado e por mês, de janeiro de 2008 a setembro de 2026. São 27 séries, e cerca de 1,2 milhão de internações por mês no país inteiro.</p>
+<p>As mesmas internações podem ser contadas pelo mês em que o paciente foi internado ou pelo mês em que a conta do hospital foi processada. A primeira parece a escolha óbvia. Para os meses mais recentes, ela está errada, porque os hospitais mandam os registros com atraso:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/case-admissions-lag-pt.png" class="img-fluid figure-img"></p>
+<figcaption>As mesmas internações contadas de dois jeitos, Brasil, de janeiro de 2025 a setembro de 2026. Pelo mês da internação, os três últimos meses ficam 7%, 19% e 43% abaixo, porque esses registros ainda estão chegando.</figcaption>
+</figure>
+</div>
+<p>Um modelo ajustado sobre essa linha veria a demanda despencar no terceiro trimestre de 2026. Nada despencou; a papelada atrasou. A previsão usa o mês de processamento.</p>
+<p>O mês de processamento tem a sua própria falha: de vez em quando o lote de um estado não chega. O Acre aparece com zero internações em agosto e setembro de 2026, e Roraima cai de cerca de 4.000 por mês para 517 e depois para zero. São registros que faltam, não pacientes que faltam.</p>
+</section>
+<section id="o-método-e-por-que-esse" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-método-e-por-que-esse">O método, e por que esse</h2>
+<p><strong>Dado que falta é tratado como falta.</strong> Um mês abaixo de 60% da mediana dos 12 anteriores é tratado como um lote que não chegou e fica de fora. A regra olha só para trás, então funciona no mês mais recente. Ela marca 9 meses em 3 estados.</p>
+<p><strong>A pandemia fica fora do ajuste.</strong> De março de 2020 a dezembro de 2021 as cirurgias eletivas pararam e depois foram retomadas. Esses meses descrevem um choque, não o padrão sazonal que a previsão precisa reproduzir, então o modelo os pula como se faltassem.</p>
+<p><strong>Um modelo simples, com o calendário como única informação de fora.</strong> SARIMA sazonal sobre o log das internações, a especificação conhecida como modelo airline, com o número de dias úteis de cada mês como regressor. Internação eletiva acontece em dia útil, e um fevereiro com Carnaval tem dois dias úteis a menos do que um sem. O calendário é conhecido com antecedência, então a previsão pode usá-lo de forma honesta. Incluí-lo reduz o erro dos três primeiros meses de 2,82% para 2,62% do volume.</p>
+<p><strong>Testado do jeito que seria usado.</strong> Em cada uma de 33 datas, de janeiro de 2023 a setembro de 2025, o modelo é reajustado com os dados disponíveis naquela data e prevê os 12 meses seguintes, para todos os estados. São 891 previsões de 12 meses para avaliar. A referência passa exatamente pelo mesmo teste. Cada decisão acima tem a sua variante no teste, então o efeito dela é medido, não suposto.</p>
+<p>A medida de erro é o WAPE: erro absoluto total dividido pelo total de internações. Ele se lê como “errou X% do volume”, e os estados pequenos não dominam a conta.</p>
+</section>
+<section id="o-resultado" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-resultado">O resultado</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/case-admissions-horizon-pt.png" class="img-fluid figure-img"></p>
+<figcaption>Erro por meses à frente, nos 27 estados e nas 33 datas de previsão. A referência repete o mesmo mês do ano anterior.</figcaption>
+</figure>
+</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Erro, % das internações (WAPE)</th>
+<th>1 a 3 meses</th>
+<th>4 a 6 meses</th>
+<th>7 a 12 meses</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Mesmo mês do ano anterior</td>
+<td>5,98</td>
+<td>5,69</td>
+<td>5,32</td>
+</tr>
+<tr class="even">
+<td>Modelo, com a pandemia</td>
+<td>3,08</td>
+<td>3,75</td>
+<td>4,00</td>
+</tr>
+<tr class="odd">
+<td>Modelo, sem a pandemia</td>
+<td>2,82</td>
+<td>3,35</td>
+<td>3,92</td>
+</tr>
+<tr class="even">
+<td><strong>Modelo, sem a pandemia, com dias úteis</strong></td>
+<td><strong>2,62</strong></td>
+<td><strong>3,21</strong></td>
+<td><strong>3,81</strong></td>
+</tr>
+</tbody>
+</table>
+<p>Nos três primeiros meses o erro cai a menos da metade, de 6,0% para 2,6% do volume. O modelo vence a referência <strong>nos 27 estados</strong>. No total de 12 meses, o número em que um orçamento se apoia, o erro típico é de <strong>2,7%</strong> contra <strong>4,5%</strong>, e nos 10% piores casos, <strong>7,0%</strong> contra <strong>9,1%</strong>.</p>
+<p>A diferença maior está na faixa em volta da previsão. Uma faixa de 80% deveria conter o valor real cerca de 80% das vezes. Com a pandemia nos dados, o modelo aprende que o mundo pode desabar a qualquer momento. A faixa fica com largura de 15% a 27% da previsão e contém o valor real de 87% a 96% das vezes. Um plano dimensionado por ela carrega leitos e equipe de que não vai precisar. Sem a pandemia, a faixa tem largura de <strong>10% a 16%</strong> e contém o valor real de <strong>80% a 83%</strong> das vezes, que é o que ela promete.</p>
+<p>A previsão dos próximos doze meses, com o Paraná de exemplo:</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/case-admissions-forecast-pt.png" class="img-fluid figure-img"></p>
+<figcaption>Paraná, internações por mês e a previsão de outubro de 2026 a setembro de 2027 com a faixa de 80%. Os anos sombreados ficaram fora do ajuste.</figcaption>
+</figure>
+</div>
+<p>Cerca de 1,16 milhão de internações nos doze meses, 3,8% a mais do que nos doze anteriores. O repositório tem a mesma previsão para todos os estados.</p>
+<p>Os limites fazem parte do resultado. Estados pequenos são difíceis para qualquer modelo: Roraima e Amapá ficam acima de 16% de erro. O total por estado é o nível certo para uma secretaria de saúde, enquanto um hospital precisa do mesmo processo no seu próprio recorte dos dados. E a janela da pandemia foi definida à mão. Um choque desse tamanho pediria a mesma decisão de novo.</p>
+</section>
+<section id="aplicado-aos-seus-dados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="aplicado-aos-seus-dados">Aplicado aos seus dados</h2>
+<p>Este é o <a href="../oquant.html#pacotes">pacote de Previsão sob Medida</a> com dados públicos: internações aqui e, no seu caso, demanda, sinistros, exames ou inadimplência. Os passos são os mesmos: achar o que nos dados é artefato de registro, vencer uma referência simples em meses que o modelo não viu e entregar uma faixa que cumpre o que promete.</p>
+</section>
+<section id="o-código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-código">O código</h2>
+<p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/hospital-admissions-forecast">github.com/rhozon/hospital-admissions-forecast</a></p>
+<p>Com Python 3.11 ou mais recente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">".[dev]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> admissions.cli backtest</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> admissions.cli forecast</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> admissions.cli figures</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> admissions.cli fetch    <span class="co"># atualiza os dados a partir do DATASUS</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>O repositório traz uma cópia dos dados do DATASUS, então o backtest se reproduz sem internet. A suíte tem <strong>19 testes</strong>, entre eles um teste do leitor sobre saída real do DATASUS e contagens de dias úteis conferidas à mão. O CI roda os testes a cada push, seguidos de um backtest curto. O README em inglês lista as decisões de projeto e os limites.</p>
+</section>
+
+
+
+</main> <!-- /main -->
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problems, methods, and code you can run
 
 Each case follows the same five blocks: the business question, the data, the method and
-why that one, the result, and the code. What differs is what can be shown. Three are
+why that one, the result, and the code. What differs is what can be shown. Four are
 fully public, with repository, tests and results. Two describe doctoral research under
 peer review, so method is here and results are withheld until the journals rule. One
 runs on synthetic data, because the engagement behind it is under NDA. Each page says
@@ -79,6 +79,16 @@ which it is, at the top.
       RAG &middot; pgvector &middot; Retrieval evals in CI
     </p>
     <p><a href="hybrid-rag.html">Read the case </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="hospital-admissions.html">Forecasting Hospital Admissions</a></h3>
+    <p>Twelve months of SUS admissions for all 27 Brazilian states, from public data.
+    Tested against the same month last year, with an 80% band that holds about 80% of the time.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      SARIMA &middot; Rolling-origin backtest &middot; DATASUS
+    </p>
+    <p><a href="hospital-admissions.html">Read the case </a></p>
   </div>
 
 </div>
