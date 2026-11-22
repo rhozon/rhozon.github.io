@@ -64,8 +64,8 @@ one is missing, the service returns no answer, flags it as blocked and names the
 For limits, co-pays and deadlines, no answer is cheaper than a wrong one.
 
 **It runs without an API key.** A simple extractive answerer, which picks the best
-sentence from the passages, lets the whole pipeline and its tests run offline. Claude is
-the real answerer when a key is set. In the same spirit, a deterministic embedder keeps the
+sentence from the passages, lets the whole pipeline and its tests run offline. A hosted
+language model gives the real answers when a key is set. In the same spirit, a deterministic embedder keeps the
 tests repeatable, and the evaluation then runs again with a real embedding model,
 bge-small-en-v1.5.
 :::

@@ -65,8 +65,8 @@ serviço não devolve resposta, marca como bloqueada e diz qual número faltou. 
 coparticipações e prazos, ficar sem resposta custa menos do que receber uma errada.
 
 **Roda sem chave de API.** Um respondedor extrativo simples, que escolhe a melhor frase
-dos trechos, permite rodar o fluxo inteiro e os testes sem internet. O Claude é quem
-responde de verdade quando há uma chave configurada. Na mesma linha, um embedding
+dos trechos, permite rodar o fluxo inteiro e os testes sem internet. Um modelo de
+linguagem hospedado responde de verdade quando há uma chave configurada. Na mesma linha, um embedding
 determinístico deixa os testes repetíveis, e a avaliação roda de novo com um modelo de
 embedding de verdade, o bge-small-en-v1.5.
 :::
