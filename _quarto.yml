@@ -13,6 +13,7 @@ project:
     - portfolio/langgraph-parity.qmd
     - portfolio/hybrid-rag.qmd
     - portfolio/hospital-admissions.qmd
+    - portfolio/credit-early-warning.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

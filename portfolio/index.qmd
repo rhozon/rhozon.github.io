@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problems, methods, and code you can run
 
 Each case follows the same five blocks: the business question, the data, the method and
-why that one, the result, and the code. What differs is what can be shown. Four are
+why that one, the result, and the code. What differs is what can be shown. Five are
 fully public, with repository, tests and results. Two describe doctoral research under
 peer review, so method is here and results are withheld until the journals rule. One
 runs on synthetic data, because the engagement behind it is under NDA. Each page says
@@ -91,6 +91,16 @@ which it is, at the top.
     <p><a href="hospital-admissions.html">Read the case </a></p>
   </div>
 
+  <div class="rh-card">
+    <h3><a href="credit-early-warning.html">Corporate Credit Early Warning</a></h3>
+    <p>Which Brazilian listed companies are heading for judicial recovery? Eight models on public
+    CVM filings, tested out of time, with distress signals read by language models and a credit
+    memo whose every number is checked.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Survival analysis &middot; XGBoost &middot; Pre-registered test
+    </p>
+    <p><a href="credit-early-warning.html">Read the case </a></p>
+  </div>
 </div>
 ```
 :::

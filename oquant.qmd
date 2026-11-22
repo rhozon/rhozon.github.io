@@ -107,7 +107,7 @@ Fixed scope, fixed timeline and a fixed fee agreed before any work starts. The f
       <li>Executive report, documented code and a simple dashboard</li>
       <li>2-hour handover training and 30 days of support</li>
     </ul>
-    <p>See it working in the <a href="portfolio/hospital-admissions.html">hospital admissions case</a>, tested on all 27 Brazilian states.</p>
+    <p>See it working in the <a href="portfolio/hospital-admissions.html">hospital admissions case</a>, tested on all 27 Brazilian states, and applied to default in the <a href="portfolio/credit-early-warning.html">corporate credit early-warning case</a>.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Timeline: 6 weeks</p>
   </div>
   <div class="rh-card">

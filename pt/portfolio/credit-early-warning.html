@@ -1,0 +1,736 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Quais companhias abertas brasileiras caminham para a recuperação judicial? Oito modelos, do escore de Altman às redes neurais de sobrevivência, sobre dados públicos da CVM, testados fora do tempo, com sinais de estresse lidos por modelos de linguagem e um parecer de crédito com cada número conferido.">
+
+<title>Alerta Antecipado de Risco de Crédito Corporativo — Estudo de Caso – Rodrigo Hermont Ozon</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Alerta Antecipado de Risco de Crédito Corporativo — Estudo de Caso">
+<meta property="og:description" content="Quais companhias abertas brasileiras caminham para a recuperação judicial? Oito modelos, do escore de Altman às redes neurais de sobrevivência, sobre dados públicos da CVM, testados fora do tempo, com sinais de estresse lidos por modelos de linguagem e um parecer de crédito com cada número conferido.">
+<meta property="og:image" content="https://rhozon.github.io/assets/case-credit-early-warning-pt.png">
+<meta property="og:site_name" content="Rodrigo Hermont Ozon">
+<meta name="twitter:title" content="Alerta Antecipado de Risco de Crédito Corporativo — Estudo de Caso">
+<meta name="twitter:description" content="Quais companhias abertas brasileiras caminham para a recuperação judicial? Oito modelos, do escore de Altman às redes neurais de sobrevivência, sobre dados públicos da CVM, testados fora do tempo, com sinais de estresse lidos por modelos de linguagem e um parecer de crédito com cada número conferido.">
+<meta name="twitter:image" content="https://rhozon.github.io/assets/case-credit-early-warning-pt.png">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Rodrigo Hermont Ozon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/experience.html"> 
+<span class="menu-text">Experiência</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/research.html"> 
+<span class="menu-text">Pesquisa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/teaching.html"> 
+<span class="menu-text">Ensino</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/oquant.html"> 
+<span class="menu-text">Consultoria</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV Completo</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/contact.html"> 
+<span class="menu-text">Contato</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">EN</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rhozon"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="rh-section">
+<div class="rh-kicker">
+Estudo de Caso 08 · No ar
+</div>
+<section id="alerta-antecipado-de-risco-de-crédito-corporativo" class="level1">
+<h1>Alerta Antecipado de Risco de Crédito Corporativo</h1>
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por modelos de linguagem · Agentes com trava numérica · Revisão sistemática · Python · 192 testes
+</p>
+</section>
+</div>
+<section id="a-pergunta-de-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
+<p>Quando uma grande empresa pede recuperação judicial, a perda cai sobre bancos, debenturistas, fundos de crédito e os fornecedores que venderam a prazo. A Oi pediu duas vezes, em 2016 e em 2023. A Americanas pediu em janeiro de 2023, dias depois de divulgar uma inconsistência contábil. A Light veio em maio de 2023. Depois de cada caso, o comitê de crédito faz a mesma pergunta: havia algo no registro público, um ano antes, que devia ter mudado a decisão?</p>
+<p>Desde janeiro de 2025 a pergunta tem também forma regulatória. A Resolução CMN 4.966 pede aos credores brasileiros provisão pela perda esperada: os próximos 12 meses para exposições sem problema, o prazo inteiro quando o risco de crédito aumenta de forma significativa. Isso exige uma probabilidade de default para cada horizonte, não um escore único, e exige perceber o aumento cedo.</p>
+</section>
+<section id="os-dados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
+<p>Tudo é público. As demonstrações trimestrais e anuais de todas as companhias abertas vêm do portal de dados abertos da CVM, cada uma datada pelo dia em que chegou ao regulador, então o modelo só vê o que um analista poderia ter visto na época. O parecer do auditor é lido em busca do parágrafo de continuidade operacional. Os fatos relevantes, que a empresa é obrigada a publicar quando algo importante acontece, trazem a notícia cedo: uma renegociação de dívida, um waiver de covenant, uma venda de ativo para fazer caixa, um diretor financeiro que sai. Juros, inflação, atividade, desemprego e inadimplência das empresas vêm do Banco Central.</p>
+<p>A parte difícil é o desfecho. Nenhuma tabela pública diz quando cada companhia aberta entrou em recuperação judicial ou extrajudicial; o cadastro mostra só a situação atual. A base de eventos foi reconstruída a partir de três rastros públicos (o cadastro, os documentos das empresas em recuperação e os fatos relevantes que anunciam o pedido), com um modelo de linguagem separando o pedido da própria empresa do pedido de um cliente ou de uma controlada, e depois conferida por um segundo modelo, que lê os documentos de cada evento, com uma regra fixa. São 103 eventos em 87 empresas desde 2011.</p>
+</section>
+<section id="o-método-e-por-que-este" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-método-e-por-que-este">O método, e por que este</h2>
+<p><strong>Um painel, um teste, oito modelos.</strong> Cada companhia aberta não financeira entra com uma linha por trimestre, com o que se sabia no fim daquele trimestre. Empresas que saíram da bolsa sem evento ficam nos dados até sair, então a amostra não guarda só as sobreviventes. Os modelos vão do clássico ao recente: o escore de Altman na versão para emergentes, um logit de risco em tempo discreto, um modelo de Cox, XGBoost como classificador e como modelo de sobrevivência, uma random survival forest, DeepSurv e DeepHit. Todos treinam até 2018, pulam 2019 e são testados de 2020 em diante, um período que nenhum deles viu.</p>
+<p><strong>Modelos de sobrevivência, porque a regulação pede curvas.</strong> Um modelo de sobrevivência dá a probabilidade de default em 12, 24 e 36 meses para cada empresa e trimestre, que é o que a perda esperada pelo prazo inteiro precisa. Se essas probabilidades estão calibradas, e não só se ordenam bem as empresas, é testado à parte.</p>
+<p><strong>Modelos de linguagem leem os documentos, e são testados como qualquer outra variável.</strong> Um modelo lê o assunto de cerca de 31 mil fatos relevantes e marca onze tipos de estresse, com o nome e o CNPJ da empresa escondidos, para que ele não lembre como a história terminou. Um segundo modelo lê uma amostra para medir a concordância, e 200 documentos foram lidos inteiros para ver o que o assunto sozinho perde. O teste que diz se esses sinais acrescentam algo foi escrito e registrado antes de o período de teste ser aberto.</p>
+<p><strong>Um parecer de crédito que não inventa número.</strong> Agentes montam um parecer para o comitê de crédito: um lê os documentos recentes, outro escreve. Um conferente que não é modelo de linguagem compara cada número e cada data do rascunho com os valores que as ferramentas devolveram, e bloqueia o parecer se algum não tiver fonte.</p>
+</section>
+<section id="resultado" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="resultado">Resultado</h2>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="../../assets/case-credit-early-warning-pt.png" class="img-fluid figure-img"></p>
+<figcaption>AUC da PD de 12 meses de cada modelo no teste fora do tempo, com intervalos de 95%. Os três modelos de árvores estão em vermelho; a linha tracejada marca o escore de Altman.</figcaption>
+</figure>
+</div>
+<p>Fora do tempo, de 2020 em diante, os modelos de árvores ordenam melhor as empresas. XGBoost e uma random survival forest chegam a uma AUC de cerca de 0,85 na PD de 12 meses, contra 0,78 do escore de Altman e 0,76 do logit de risco, diferença que resiste à correção de Holm para comparações múltiplas. As redes neurais não repetem o ganho num painel deste tamanho. Nenhum modelo acerta o nível do risco em todos os prazos: em 36 meses quase todos subestimam a taxa observada, então as curvas precisam de recalibração antes de virar provisão.</p>
+<p>Os sinais lidos pelos modelos de linguagem não melhoraram o teste registrado: AUC de 0,756 com eles e de 0,758 sem eles. O artigo mostra também uma falha encontrada depois da abertura do teste: o tratamento dos valores extremos apagou os cinco tipos de sinal mais raros (quebra de covenant, atraso de pagamento, dúvida sobre continuidade, rebaixamento de rating e recuperação de uma controlada). Rodado de novo com eles, o modelo com sinais chega a uma AUC de 0,783. Essa rodada veio depois da abertura, então é exploratória e precisa de um novo período de teste para valer.</p>
+<p>Pareceres de quatro casos passados, escritos com o que se sabia um ano antes de cada pedido, mostram o alcance e o limite. A Casas Bahia aparecia com PD de 12 meses de 4,3%, cerca de quatro vezes a média. A Americanas, cujo problema estava dentro dos próprios balanços, aparecia abaixo da média.</p>
+</section>
+<section id="o-que-a-literatura-fez-e-não-fez" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-que-a-literatura-fez-e-não-fez">O que a literatura fez e não fez</h2>
+<p>Uma revisão sistemática pelo protocolo PRISMA 2020 triou 4.019 estudos e incluiu 1.642. Modelos de sobrevivência aparecem em 96 deles, e só um estudo combina modelos de sobrevivência com modelos de linguagem. Dos 59 estudos com dados brasileiros, um usa modelo de sobrevivência e nenhum usa deep learning ou modelo de linguagem. A maioria dos resumos não diz como os modelos foram validados, e ler 60 estudos inteiros não muda muito o quadro: 32 deles continuam sem dizer como montaram a amostra de teste, e só 10 conferem se as probabilidades estão calibradas, que é do que a provisão depende. O artigo traz o protocolo, as contagens e as lacunas.</p>
+</section>
+<section id="aplicado-à-sua-carteira" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="aplicado-à-sua-carteira">Aplicado à sua carteira</h2>
+<p>Este é o <a href="../oquant.html#pacotes">pacote de Previsão sob Medida</a> aplicado a default, com a trava do <a href="../oquant.html#pacotes">Assistente de IA Confiável</a> por cima. Para um banco, um fundo de crédito, uma seguradora de garantia ou um fornecedor com muito a receber, ele vira um monitor das empresas da carteira: os documentos lidos todo dia, uma curva de PD por empresa todo mês, um alerta quando aparece um sinal de estresse e um parecer para o comitê de crédito em que cada número leva à sua fonte. Roda no seu ambiente, e a decisão fica com a sua equipe.</p>
+<p>Em público, o case só cita empresas que já passaram por recuperação. Os modelos dão nota a todas as companhias abertas, mas essas notas ficam privadas.</p>
+</section>
+<section id="artigo-e-código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="artigo-e-código">Artigo e código</h2>
+<p>
+<a class="rh-btn rh-btn-primary" href="../../assets/credit-early-warning-paper.pdf">Ler o artigo (PDF, em inglês)</a>
+<a class="rh-btn" href="https://github.com/rhozon/corporate-credit-early-warning">github.com/rhozon/corporate-credit-early-warning</a>
+</p>
+<p>Com Python 3.11 ou mais recente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">".[models,dev]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> distress.cli events      <span class="co"># base de eventos a partir da CVM</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> distress.cli panel       <span class="co"># painel datado pelo que se sabia</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> distress.cli test        <span class="co"># o teste fora do tempo</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Toda resposta dos modelos de linguagem fica em cache no repositório, então os rótulos se reproduzem sem chave de API. A suíte tem <strong>192 testes</strong>, entre eles um que derruba o build se algo publicado citar uma empresa sem evento ao lado de uma probabilidade ou de uma nota. O CI roda os testes a cada push. O README em inglês lista as decisões de projeto e os limites.</p>
+</section>
+
+
+
+</main> <!-- /main -->
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

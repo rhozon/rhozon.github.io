@@ -32,7 +32,7 @@
     "href": "oquant.html#engagement-packages",
     "title": "Rodrigo Hermont Ozon",
     "section": "Engagement packages",
-    "text": "Engagement packages\nFixed scope, fixed timeline and a fixed fee agreed before any work starts. The fee depends on your data and your context, so every proposal is quoted individually.\n\n  \n    Data & AI Diagnostic\n    The best first step: find out where data and AI can actually move your numbers.\n    \n      Interviews with up to 4 people from leadership and operations\n      Inventory of the data you already have, and how far it can be trusted\n      3 prioritized opportunities, each with estimated gain and effort\n      A 90-day plan and a 1-hour presentation to leadership\n    \n    Timeline: 2 weeks\n  \n  \n    AI & Data Workshop for Managers\n    For leaders who need to decide where AI fits in the company, and where it does not.\n    \n      Up to 25 participants\n      Hands-on exercise with your own data, anonymized\n      Material that stays with your team\n    \n    Duration: 8 hours, over two mornings\n  \n  \n    Custom Forecasting\n    Demand, price, claims or default forecasts your planning can rely on.\n    \n      One target variable and up to 3 data sources\n      Models compared against a simple benchmark, with out-of-sample testing\n      Uncertainty bands, not just a single number\n      Executive report, documented code and a simple dashboard\n      2-hour handover training and 30 days of support\n    \n    See it working in the hospital admissions case, tested on all 27 Brazilian states.\n    Timeline: 6 weeks\n  \n  \n    Reliable AI Assistant (pilot)\n    An assistant that answers questions about your documents or data, and never invents a number.\n    \n      One use case and one data source (documents or tables)\n      20 test questions you approve as the acceptance criterion\n      Every figure checked against the source before it is shown\n      Runs in your environment, under your control\n    \n    See it working in the hybrid RAG case, and the same guardrail in the multi-agent commodity analyst.\n    Timeline: 6 weeks\n  \n  \n    Fractional Head of Data\n    Senior data leadership one day a week, without a full-time hire.\n    \n      Priorities and roadmap for data and AI\n      Monitoring and recalibration of models in production\n      Mentoring for your analysts\n      Support on new questions as they come up\n    \n    Monthly, minimum of 3 months\n  \n\nRequest a quote for your project"
+    "text": "Engagement packages\nFixed scope, fixed timeline and a fixed fee agreed before any work starts. The fee depends on your data and your context, so every proposal is quoted individually.\n\n  \n    Data & AI Diagnostic\n    The best first step: find out where data and AI can actually move your numbers.\n    \n      Interviews with up to 4 people from leadership and operations\n      Inventory of the data you already have, and how far it can be trusted\n      3 prioritized opportunities, each with estimated gain and effort\n      A 90-day plan and a 1-hour presentation to leadership\n    \n    Timeline: 2 weeks\n  \n  \n    AI & Data Workshop for Managers\n    For leaders who need to decide where AI fits in the company, and where it does not.\n    \n      Up to 25 participants\n      Hands-on exercise with your own data, anonymized\n      Material that stays with your team\n    \n    Duration: 8 hours, over two mornings\n  \n  \n    Custom Forecasting\n    Demand, price, claims or default forecasts your planning can rely on.\n    \n      One target variable and up to 3 data sources\n      Models compared against a simple benchmark, with out-of-sample testing\n      Uncertainty bands, not just a single number\n      Executive report, documented code and a simple dashboard\n      2-hour handover training and 30 days of support\n    \n    See it working in the hospital admissions case, tested on all 27 Brazilian states, and applied to default in the corporate credit early-warning case.\n    Timeline: 6 weeks\n  \n  \n    Reliable AI Assistant (pilot)\n    An assistant that answers questions about your documents or data, and never invents a number.\n    \n      One use case and one data source (documents or tables)\n      20 test questions you approve as the acceptance criterion\n      Every figure checked against the source before it is shown\n      Runs in your environment, under your control\n    \n    See it working in the hybrid RAG case, and the same guardrail in the multi-agent commodity analyst.\n    Timeline: 6 weeks\n  \n  \n    Fractional Head of Data\n    Senior data leadership one day a week, without a full-time hire.\n    \n      Priorities and roadmap for data and AI\n      Monitoring and recalibration of models in production\n      Mentoring for your analysts\n      Support on new questions as they come up\n    \n    Monthly, minimum of 3 months\n  \n\nRequest a quote for your project"
   },
   {
     "objectID": "oquant.html#organizations-oquant-has-served",
@@ -63,368 +63,60 @@
     "text": "Request a quote for your project\nTell me in a few lines what decision you need to make, what data you have and when you need it. You will receive a proposal with scope, timeline and a fixed fee. The first conversation costs nothing, and it usually clarifies whether quantitative modeling can move your decision.\n\n  Book a 30-min call\n  Email\n  WhatsApp\n  LinkedIn\n\ncontato.oquant@gmail.com"
   },
   {
-    "objectID": "portfolio/hospital-admissions.html",
-    "href": "portfolio/hospital-admissions.html",
-    "title": "Forecasting Hospital Admissions",
+    "objectID": "portfolio/credit-early-warning.html",
+    "href": "portfolio/credit-early-warning.html",
+    "title": "Corporate Credit Early Warning",
     "section": "",
-    "text": "Case Study 07 · Live\n\n\n\n\nTime series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked for coverage · Python · 19 tests"
+    "text": "Case Study 08 · Live\n\n\n\n\nSurvival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 192 tests"
   },
   {
-    "objectID": "portfolio/hospital-admissions.html#the-business-question",
-    "href": "portfolio/hospital-admissions.html#the-business-question",
-    "title": "Forecasting Hospital Admissions",
+    "objectID": "portfolio/credit-early-warning.html#the-business-question",
+    "href": "portfolio/credit-early-warning.html#the-business-question",
+    "title": "Corporate Credit Early Warning",
     "section": "The business question",
-    "text": "The business question\nBeds, nursing shifts, supplies and the budget behind them are committed months in advance, and all of them depend on one number: how many patients will be admitted. A state health department, a hospital network and a health plan all face it.\nThe usual answer is last year’s figure for the same month, adjusted by feel. It is simple, and it is a fair benchmark. The question here is how much better a model does on months it has not seen, and whether the range around its forecast can be trusted when someone sizes a team on it."
+    "text": "The business question\nWhen a large company files for judicial recovery, the losses land on banks, bondholders, credit funds and the suppliers who sold to it on credit. Oi filed twice, in 2016 and 2023. Americanas filed in January 2023, days after it disclosed an accounting inconsistency. Light followed in May 2023. After each case a credit committee asks the same question: was there something in the public record, a year earlier, that should have changed the decision?\nSince January 2025 the question also has a regulatory form. CMN Resolution 4,966 asks Brazilian lenders to provision for expected loss: the next 12 months for exposures in good standing, the whole remaining term once credit risk has increased significantly. That needs a probability of default for each horizon, not a single score, and it needs to notice the increase early."
   },
   {
-    "objectID": "portfolio/hospital-admissions.html#the-data",
-    "href": "portfolio/hospital-admissions.html#the-data",
-    "title": "Forecasting Hospital Admissions",
+    "objectID": "portfolio/credit-early-warning.html#the-data",
+    "href": "portfolio/credit-early-warning.html#the-data",
+    "title": "Corporate Credit Early Warning",
     "section": "The data",
-    "text": "The data\nPublic data from DATASUS: every hospital admission paid by SUS, Brazil’s public health system, counted by state and month from January 2008 to September 2026. That is 27 series, and about 1.2 million admissions a month for the country as a whole.\nThe same admissions can be counted by the month the patient was admitted or by the month the hospital’s bill was processed. The first looks like the obvious choice. For the latest months it is wrong, because hospitals send their records late:\n\n\n\nThe same admissions counted two ways, Brazil, January 2025 to September 2026. By month of admission, the last three months are 7%, 19% and 43% short, because those records are still arriving.\n\n\nA model fitted on that line would see demand collapsing in the third quarter of 2026. Nothing collapsed; the paperwork was late. The forecast uses the processing month.\nThe processing month has its own flaw: now and then a state’s batch does not arrive. Acre shows zero admissions in August and September 2026, and Roraima drops from about 4,000 a month to 517 and then to zero. Those are missing records, not missing patients."
+    "text": "The data\nEverything is public. Quarterly and annual statements of every listed company come from the CVM open-data portal, each dated by the day it reached the regulator, so the model only sees what an analyst could have seen at the time. The auditor’s report is read for the going-concern paragraph. Material facts, the filings a company must publish when something relevant happens, carry the early news: a debt renegotiation, a covenant waiver, an asset sale to raise cash, a CFO who leaves. Interest rates, inflation, activity, unemployment and corporate default come from the Central Bank.\nThe hard part is the outcome. No public table lists when each listed company entered judicial or out-of-court recovery; the registry shows only the current status. The event base was rebuilt from three public traces (the registry, the filings of companies in recovery and the material facts that announce a filing), with a language model separating the company’s own filing from a customer’s or a subsidiary’s, and then checked by a second model that reads the filings of each event, under a fixed rule. It holds 103 events in 87 companies since 2011."
   },
   {
-    "objectID": "portfolio/hospital-admissions.html#method-and-why-this-one",
-    "href": "portfolio/hospital-admissions.html#method-and-why-this-one",
-    "title": "Forecasting Hospital Admissions",
+    "objectID": "portfolio/credit-early-warning.html#method-and-why-this-one",
+    "href": "portfolio/credit-early-warning.html#method-and-why-this-one",
+    "title": "Corporate Credit Early Warning",
     "section": "Method, and why this one",
-    "text": "Method, and why this one\nMissing data is called missing. A month below 60% of the median of the previous 12 is treated as a batch that never arrived and left out. The rule looks only at the past, so it works on the most recent month. It flags 9 months in 3 states.\nThe pandemic is left out of the fit. From March 2020 to December 2021 elective care stopped and then caught up. Those months describe a shock, not the seasonal pattern the forecast has to reproduce, so the model skips them as if they were missing.\nA simple model, with the calendar as its only outside input. Seasonal ARIMA on the log of admissions, the specification known as the airline model, with the number of working days in each month as a regressor. Elective admissions happen on working days, and a February with Carnival has two fewer of them than one without. The calendar is known in advance, so the forecast can use it honestly. Adding it cuts the error over the first three months from 2.82% to 2.62% of the volume.\nTested the way it would be used. At each of 33 dates, from January 2023 to September 2025, the model is refitted on the data available at that date and forecasts the next 12 months, for every state. That gives 891 twelve-month forecasts to score. The benchmark goes through exactly the same test. Each decision above has its own variant in the test, so its effect is measured rather than assumed.\nThe error measure is WAPE: total absolute error divided by total admissions. It reads as “off by X% of the volume”, and small states do not dominate it."
+    "text": "Method, and why this one\nOne panel, one test, eight models. Each listed non-financial company contributes one row per quarter, with what was known at the end of that quarter. Firms that left the market without an event stay in the data until they leave, so the sample does not keep only the survivors. The models go from the classical to the recent: the Altman score in its version for emerging markets, a discrete-time hazard logit, a Cox model, XGBoost as a classifier and as a survival model, a random survival forest, DeepSurv and DeepHit. All are trained up to 2018, skip 2019, and are tested from 2020 on, a period none of them saw.\nSurvival models, because the regulation asks for curves. A survival model gives the probability of default at 12, 24 and 36 months for every company and quarter, which is what lifetime expected loss needs. Whether those probabilities are calibrated, and not only whether they rank companies well, is tested separately.\nLanguage models read the filings, and are tested like any other variable. A model reads the subject of each of about 31,000 material facts and marks eleven kinds of distress, with the company’s name and tax number hidden so it cannot recall how the story ended. A second model reads a sample to measure agreement, and 200 documents were read in full to see what the subject line misses. The test of whether these signals add anything was written down and committed before the test period was opened.\nA credit memo that cannot invent a number. Agents assemble a memo for a credit committee: one reads the recent filings, one writes. A checker that is not a language model compares every number and date in the draft with the values the tools returned, and blocks the memo if one has no source."
   },
   {
-    "objectID": "portfolio/hospital-admissions.html#result",
-    "href": "portfolio/hospital-admissions.html#result",
-    "title": "Forecasting Hospital Admissions",
+    "objectID": "portfolio/credit-early-warning.html#result",
+    "href": "portfolio/credit-early-warning.html#result",
+    "title": "Corporate Credit Early Warning",
     "section": "Result",
-    "text": "Result\n\n\n\nError by months ahead, all 27 states and 33 forecast dates. The benchmark repeats the same month of the previous year.\n\n\n\n\n\n\n\n\n\n\n\nError, % of admissions (WAPE)\n1 to 3 months\n4 to 6 months\n7 to 12 months\n\n\n\n\nSame month last year\n5.98\n5.69\n5.32\n\n\nModel, pandemic left in\n3.08\n3.75\n4.00\n\n\nModel, pandemic left out\n2.82\n3.35\n3.92\n\n\nModel, pandemic left out, with working days\n2.62\n3.21\n3.81\n\n\n\nOver the first three months the error falls by more than half, from 6.0% to 2.6% of the volume. The model beats the benchmark in all 27 states. For the 12-month total, the figure a budget is built on, the typical error is 2.7% against 4.5%, and in the worst tenth of cases 7.0% against 9.1%.\nThe bigger difference is in the range around the forecast. A band labelled 80% should contain the actual value about 80% of the time. With the pandemic left in, the model learns that the world can fall apart at any moment. Its band ends up 15% to 27% of the forecast wide and contains the actual value 87% to 96% of the time. A plan sized on that band carries beds and staff it will not need. With the pandemic left out, the band is 10% to 16% wide and contains the actual value 80% to 83% of the time, which is what it promises.\nThe forecast for the next twelve months, Paraná as an example:\n\n\n\nParaná, monthly admissions and the forecast for October 2026 to September 2027 with its 80% band. The shaded years were left out of the fit.\n\n\nAbout 1.16 million admissions over the twelve months, 3.8% more than in the previous twelve. The repository has the same forecast for every state.\nThe limits are part of the result. Small states are hard for every model: Roraima and Amapá stay above 16% error. State totals are the right level for a health department, while a hospital needs the same pipeline on its own cut of the data. And the pandemic window was set by hand. A shock of that size would call for the same decision again."
+    "text": "Result\n\n\n\nAUC of the 12-month PD for each model on the out-of-time test, with 95% intervals. The three tree ensembles are in red; the dashed line marks the Altman score.\n\n\nOut of time, from 2020 on, the tree ensembles rank companies best. XGBoost and a random survival forest reach an AUC of about 0.85 for the 12-month PD, against 0.78 for the Altman score and 0.76 for the hazard logit, a gap that survives Holm’s correction for multiple comparisons. The neural networks do not repeat it on a panel of this size. No model gets the level of risk right at every horizon: at 36 months nearly all of them underestimate the observed rate, so the curves need recalibration before they feed a provision.\nThe signals read by the language models did not improve the registered test: an AUC of 0.756 with them and 0.758 without. The paper also reports a flaw found after the test was opened: the treatment of extreme values had erased the five rarest kinds of signal (covenant breach, missed payment, going-concern doubt, rating downgrade and a subsidiary’s recovery). Run again with them kept, the signals lift the AUC to 0.783. That run came after the opening, so it is exploratory and needs a new test period to count.\nMemos on four past cases, written with what was known a year before each filing, show the reach and the limit. Casas Bahia came out with a 12-month PD of 4.3%, about four times the average. Americanas, whose problem sat inside its own statements, came out below the average."
   },
   {
-    "objectID": "portfolio/hospital-admissions.html#applied-to-your-data",
-    "href": "portfolio/hospital-admissions.html#applied-to-your-data",
-    "title": "Forecasting Hospital Admissions",
-    "section": "Applied to your data",
-    "text": "Applied to your data\nThis is the Custom Forecasting package on public data: admissions here, and in your case demand, claims, exams or default. The steps are the same: find what in the data is a recording artifact, beat a simple benchmark on months the model has not seen, and deliver a band that holds what it promises."
+    "objectID": "portfolio/credit-early-warning.html#what-the-literature-has-and-has-not-done",
+    "href": "portfolio/credit-early-warning.html#what-the-literature-has-and-has-not-done",
+    "title": "Corporate Credit Early Warning",
+    "section": "What the literature has and has not done",
+    "text": "What the literature has and has not done\nA systematic review under the PRISMA 2020 protocol screened 4,019 studies and included 1,642. Survival models appear in 96 of them, and only one study combines survival models with language models. Of the 59 studies with Brazilian data, one uses a survival model and none uses deep learning or a language model. Most abstracts do not say how the models were validated, and reading 60 of the studies in full does not change the picture much: 32 of them still do not say how the test set was formed, and only 10 check whether their probabilities are calibrated, which is what a provision depends on. The paper sets out the protocol, the counts and the gaps."
   },
   {
-    "objectID": "portfolio/hospital-admissions.html#code",
-    "href": "portfolio/hospital-admissions.html#code",
-    "title": "Forecasting Hospital Admissions",
-    "section": "Code",
-    "text": "Code\ngithub.com/rhozon/hospital-admissions-forecast\nWith Python 3.11 or later:\npip install -e \".[dev]\"\npytest -v\npython -m admissions.cli backtest\npython -m admissions.cli forecast\npython -m admissions.cli figures\npython -m admissions.cli fetch    # refresh the data from DATASUS\nThe repository includes a snapshot of the DATASUS data, so the backtest reproduces without network access. The suite has 19 tests, among them a parser test on real DATASUS output and hand-checked working-day counts. CI runs them on every push, followed by a short backtest. The README lists the design decisions and the limits."
+    "objectID": "portfolio/credit-early-warning.html#applied-to-your-portfolio",
+    "href": "portfolio/credit-early-warning.html#applied-to-your-portfolio",
+    "title": "Corporate Credit Early Warning",
+    "section": "Applied to your portfolio",
+    "text": "Applied to your portfolio\nThis is the Custom Forecasting package applied to default, with the guardrail of the Reliable AI Assistant on top. For a bank, a credit fund, a surety insurer or a supplier with large accounts receivable, it becomes a monitor of the companies in the portfolio: the filings read every day, a PD curve per company every month, an alert when a distress signal appears, and a memo for the credit committee in which every figure traces back to its source. It runs in your environment, and the decision stays with your people.\nIn public, the case names only companies that already went through a recovery. The models score every listed company, but those scores stay private."
   },
   {
-    "objectID": "portfolio/langgraph-parity.html",
-    "href": "portfolio/langgraph-parity.html",
-    "title": "Framework or Hand-Rolled?",
-    "section": "",
-    "text": "Case Study 05 · Live\n\n\n\n\nLangGraph · StateGraph · Parity testing · 173 tests"
-  },
-  {
-    "objectID": "portfolio/langgraph-parity.html#the-business-question",
-    "href": "portfolio/langgraph-parity.html#the-business-question",
-    "title": "Framework or Hand-Rolled?",
-    "section": "The business question",
-    "text": "The business question\nA team is about to build an agentic system. Someone asks whether to adopt an agent framework or write the orchestration by hand. The honest answer is it depends — which helps nobody.\nSo: take a multi-agent system that already works without a framework, rebuild its orchestration on LangGraph, and measure the difference instead of arguing about it."
-  },
-  {
-    "objectID": "portfolio/langgraph-parity.html#the-setup",
-    "href": "portfolio/langgraph-parity.html#the-setup",
-    "title": "Framework or Hand-Rolled?",
-    "section": "The setup",
-    "text": "The setup\nThe subject is the multi-agent commodity analyst from case study 01 — four agents over a deterministic econometric core in R, with a critique loop and an anti-hallucination guard.\nThe rule that makes the comparison mean anything: only the orchestration changes. The four agents and the whole agro/ core are imported, not rewritten. The hand-rolled version is a for loop with a break; the LangGraph version is a StateGraph with five nodes and two conditional edges.\nSwitching between them is a flag:\npython run.py --commodity milho --pergunta \"...\" --fake-llm --engine manual\npython run.py --commodity milho --pergunta \"...\" --fake-llm --engine langgraph"
-  },
-  {
-    "objectID": "portfolio/langgraph-parity.html#method-and-why-this-one",
-    "href": "portfolio/langgraph-parity.html#method-and-why-this-one",
-    "title": "Framework or Hand-Rolled?",
-    "section": "Method, and why this one",
-    "text": "Method, and why this one\nParity first, opinions later. Six tests run both engines on the same input and compare the results field by field: chosen model family, number of attempts, the rejection history, the residual diagnostics, the backtest, the set of numbers the guard authorises — and the final markdown.\nWithout that, “I reimplemented it in LangGraph” is a claim. With it, it is a property. And a reimplementation that behaves almost the same is worse than none at all: it looks like an alternative and is actually a trap.\nThe agents did not become tools. LangGraph offers ToolNode and the ReAct pattern, where the model decides which tool to call next. That is not what this system does. The order — collect, fit, critique, write — is fixed on purpose, and the LLM chooses parameters, never the next step. Turning fit_model into a tool would have been a change of semantics disguised as a change of framework, and the comparison only holds if both sides do the same thing."
-  },
-  {
-    "objectID": "portfolio/langgraph-parity.html#result",
-    "href": "portfolio/langgraph-parity.html#result",
-    "title": "Framework or Hand-Rolled?",
-    "section": "Result",
-    "text": "Result\nThe reports are byte-identical. Same SHA-256, end to end, from the frozen cache:\nmanual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nlanggraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nWhat the framework charged. MemorySaver — the checkpointer, and the main reason to adopt LangGraph at all — serialises the state at every node with msgpack. A pandas.Series is not serialisable, so the first version of the graph failed outright:\nTypeError: Type is not msgpack serializable: Series\nThe hand-written loop never meets this, because there the series is a local variable read once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of primitives holding a file path — and every node that needs the series re-reads it from disk.\nMeasured at runtime: 1 parquet read in the manual engine, 3 in the graph. Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.\nWhat the framework bought. Pipeline state stops being implicit in local variables and becomes a declared TypedDict. The rejection loop becomes a conditional edge you can read without tracing control flow in your head. And the checkpointer lets you inspect and resume a run mid-execution — something the hand-rolled loop does not offer.\nThe price in code: 54 lines of code hand-rolled against 120 in the graph, for identical behaviour.\nSo which one? For this system, the hand-written loop wins: the pipeline is short, the control flow fits on one screen, and nothing here needs resumability. The framework would start paying for itself with more branches, human-in-the-loop pauses, or runs long enough that resuming matters. That is a conclusion drawn from a measurement, not from taste — and either way, the parity tests mean switching costs a flag."
-  },
-  {
-    "objectID": "portfolio/langgraph-parity.html#code",
-    "href": "portfolio/langgraph-parity.html#code",
-    "title": "Framework or Hand-Rolled?",
-    "section": "Code",
-    "text": "Code\ngithub.com/rhozon/commodity-agents\nBoth engines live in the same repository: agents/orchestrator.py and agents_langgraph/graph.py, with tests/test_paridade.py holding them to the same result. The suite is 173 tests, and it runs with no API key and no network.\nlanggraph and langchain-core are in requirements.txt, but only the graph engine and the parity test import them — the import is deferred, so the default engine needs neither."
-  },
-  {
-    "objectID": "portfolio/portfolio-optimization.html",
-    "href": "portfolio/portfolio-optimization.html",
-    "title": "Multi-Objective Portfolio Optimization",
-    "section": "",
-    "text": "Case Study 03 · Doctoral research\n\n\n\n\nNSGA-II · Differential Evolution · Pareto frontiers · Multi-period"
-  },
-  {
-    "objectID": "portfolio/portfolio-optimization.html#the-business-question",
-    "href": "portfolio/portfolio-optimization.html#the-business-question",
-    "title": "Multi-Objective Portfolio Optimization",
-    "section": "The business question",
-    "text": "The business question\nWhich basket of commodity positions should a desk hold, when the decision has to satisfy several goals at once that genuinely conflict — and when the answer has to hold up over successive periods, not just today?\nThe convenient move is to blend the goals into a single score and optimise that. It produces one number and hides the judgement inside the weights, which is exactly the judgement the decision-maker was supposed to make."
-  },
-  {
-    "objectID": "portfolio/portfolio-optimization.html#the-data",
-    "href": "portfolio/portfolio-optimization.html#the-data",
-    "title": "Multi-Objective Portfolio Optimization",
-    "section": "The data",
-    "text": "The data\nPublic agricultural commodity price series, multi-period, plus the volatility and scenario structures produced by the forecasting stage. No client data, no proprietary feeds."
-  },
-  {
-    "objectID": "portfolio/portfolio-optimization.html#method-and-why-this-one",
-    "href": "portfolio/portfolio-optimization.html#method-and-why-this-one",
-    "title": "Multi-Objective Portfolio Optimization",
-    "section": "Method, and why this one",
-    "text": "Method, and why this one\nKeep the trade-off open. Rather than one optimum, evolutionary multi-objective algorithms return a Pareto frontier: the set of portfolios where improving one objective necessarily costs another. The decision-maker chooses a point on that frontier knowing what the choice costs, instead of inheriting a weighting someone else picked.\nMore than two objectives. With three or more competing criteria the problem becomes many-objective, where the usual algorithms degrade in ways that are easy to miss. That makes the choice of algorithm a research question rather than a default — NSGA-II and differential evolution do not behave the same way, and comparing them properly needs a benchmark designed for the multi-period commodity setting rather than borrowed from elsewhere.\nRegimes change the answer. A frontier estimated in a calm market is the wrong frontier for a turbulent one. Conditioning the decision on the estimated market regime, and refining it with dynamic programming across periods, ties the optimisation back to the volatility modelling upstream instead of treating it as a separate exercise.\nWhat survives contact with reality. A strategy that is optimal on paper can be impossible to execute at size. Capacity limits, turnover and generalisation across several assets are part of the problem statement here, not an afterthought."
-  },
-  {
-    "objectID": "portfolio/portfolio-optimization.html#result",
-    "href": "portfolio/portfolio-optimization.html#result",
-    "title": "Multi-Objective Portfolio Optimization",
-    "section": "Result",
-    "text": "Result\nDeliberately not published here. These manuscripts are under peer review or being prepared for submission. Publishing their results on a personal site ahead of the journals would be poor practice, so the frontiers, benchmark tables and comparisons stay out of this page until the papers are out.\nThe one exception is work that is already public: a conference paper comparing NSGA-II and differential evolution on multi-objective portfolio optimisation was presented at ICPR Americas 2024, and a second on Pareto frontiers built across multiple time windows is in the ConBRepro proceedings."
-  },
-  {
-    "objectID": "portfolio/portfolio-optimization.html#code",
-    "href": "portfolio/portfolio-optimization.html#code",
-    "title": "Multi-Objective Portfolio Optimization",
-    "section": "Code",
-    "text": "Code\nNot yet public. The implementation belongs to manuscripts under review, and releasing it before they are decided would carry the same problem as publishing the results.\nPublished papers on this line \nFor running code in the same domain, the multi-agent commodity analyst is public, tested and reproducible."
-  },
-  {
-    "objectID": "portfolio/multiagent-commodities.html",
-    "href": "portfolio/multiagent-commodities.html",
-    "title": "Multi-Agent Commodity Analyst",
-    "section": "",
-    "text": "Case Study 01 · Live\n\n\n\n\nLLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 167 tests"
-  },
-  {
-    "objectID": "portfolio/multiagent-commodities.html#the-business-question",
-    "href": "portfolio/multiagent-commodities.html#the-business-question",
-    "title": "Multi-Agent Commodity Analyst",
-    "section": "The business question",
-    "text": "The business question\nWhat is corn and soybean price volatility telling us — and can a language model write that analysis without inventing a single number?\nThe second half is the harder one. A model that hallucinates a plausible figure in a commodity report is worse than no report at all, because the figure looks right."
-  },
-  {
-    "objectID": "portfolio/multiagent-commodities.html#the-data",
-    "href": "portfolio/multiagent-commodities.html#the-data",
-    "title": "Multi-Agent Commodity Analyst",
-    "section": "The data",
-    "text": "The data\nDaily settlement prices from CBOT via Yahoo Finance: corn (ZC=F), 2,007 observations, and soybeans (ZS=F), 2,009 observations, both from 2 January 2018 to 30 December 2025. The USD/BRL rate (BRL=X) comes along, because analysing Brazilian domestic grain prices without the exchange rate is simply wrong.\nEverything is frozen in a parquet cache with a metadata sidecar recording where each series came from. Two consequences: the published chart does not change on its own when the market moves, and the end-to-end test runs with no network.\nThe domestic CEPEA series is not implemented in this version. Rather than hide that, the collector falls back to the international series and the report prints the source swap above the chart. A system that states what it could not get is worth more than one that quietly substitutes."
-  },
-  {
-    "objectID": "portfolio/multiagent-commodities.html#method-and-why-this-one",
-    "href": "portfolio/multiagent-commodities.html#method-and-why-this-one",
-    "title": "Multi-Agent Commodity Analyst",
-    "section": "Method, and why this one",
-    "text": "Method, and why this one\nThe agents do not know econometrics. Four of them — Collector, Econometrician, Critic, Writer — decide which function of the core to call and with which arguments. The core is plain, deterministic, testable Python and R. When the agent framework ages, the shell gets replaced and the part that matters stays.\nPython orchestrates, R models. The model ladder is MSGARCH → GARCH → ARIMA, called over subprocess with a JSON contract. No rpy2, deliberately: it is the number-one source of installation pain in R+Python projects, and the goal was that anyone can clone and run. As a bonus, the R script runs standalone in RStudio when a model needs debugging.\nThe Critic rejects, with a written reason. It runs Ljung-Box and ARCH-LM on the residuals. Failure is not a silent retry — it is a rejection with a stated cause, capped at three attempts, backing down the model family each time.\nThe guard. The Writer cannot put a number in the text that does not exist in the results object. An invented number fails the run. The guard’s limits are documented in the repository too — it verifies digit provenance, not semantic meaning — because a case study that oversells its own safety net defeats the purpose."
-  },
-  {
-    "objectID": "portfolio/multiagent-commodities.html#result",
-    "href": "portfolio/multiagent-commodities.html#result",
-    "title": "Multi-Agent Commodity Analyst",
-    "section": "Result",
-    "text": "Result\nThe interesting outcome is not the forecast. It is that the critique loop fired in production, not in a test: in both commodities the Critic rejected MSGARCH — the signature model of my doctoral work — and approved GARCH on the second attempt.\nFor corn, ARCH-LM returned p = 0.0405; for soybeans, p = 0.0242. Both below 0.05, both meaning heteroskedasticity the model had not captured. The report says so, names the family, and gives the reason.\n\n\n\nCorn (ZC=F), 2018–2025. The system produced this chart and the report beside it, from the frozen cache, with no network and no API key.\n\n\nOn the backtest, honesty matters more than a good-looking number: over a 20-step horizon the model scored MAPE 1.75% for corn — identical to the random walk. That is not a failure, it is arithmetic. Volatility models fix the mean at zero by construction, so the point forecast ties with a random walk by definition. Their contribution lives in the interval width and the residual diagnostics, and the system’s own report explains this without being asked."
-  },
-  {
-    "objectID": "portfolio/multiagent-commodities.html#code",
-    "href": "portfolio/multiagent-commodities.html#code",
-    "title": "Multi-Agent Commodity Analyst",
-    "section": "Code",
-    "text": "Code\ngithub.com/rhozon/commodity-agents\nClone it, pip install -r requirements.txt, install R 4.x with the packages listed in the README, then:\npython run.py --commodity milho --fake-llm\nIt runs from the frozen cache — no API key, no network. The test suite is 167 tests via pytest -q. The examples/ folder holds the reports for both commodities, generated by the system itself."
-  },
-  {
-    "objectID": "research.html",
-    "href": "research.html",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "PhD research\n\n\n\n\n  \n  Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site"
-  },
-  {
-    "objectID": "research.html#doctoral-research-at-pucpr",
-    "href": "research.html#doctoral-research-at-pucpr",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site"
-  },
-  {
-    "objectID": "research.html#academic-background",
-    "href": "research.html#academic-background",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Academic background",
-    "text": "Academic background\n\n  \n    2022 – 2027 (expected)\n    PhD Candidate, Industrial & Systems Engineering\n    PUCPR – Curitiba, PR\n    Applied time series analysis, financial and Bayesian econometrics, multi-objective\n    portfolio optimization and modelling of extremal events. Advisor: Gilberto Reynoso-Meza.\n  \n  \n    2011\n    MSc in Economic Development\n    UFPR – Curitiba, PR\n    Emphasis on big data, multivariate analysis and econometrics.\n    Read the thesis \n  \n  \n    2007\n    BSc in Economics\n    UFPR – Curitiba, PR\n    Undergraduate thesis on oil price volatility (GARCH-M), honored and continued as a research\n    project at the UFPR Laboratory of Statistics and GeoInformation.\n    View the project"
-  },
-  {
-    "objectID": "research.html#selected-academic-output",
-    "href": "research.html#selected-academic-output",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Selected academic output",
-    "text": "Selected academic output\n\nConference papers\nOzon, R. H., Reynoso-Meza, G. (2024). Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios. Anais do LVI Simpósio Brasileiro de Pesquisa Operacional (SBPO), Fortaleza proceedings\n  A commodity price forecast is usually delivered as one number, which hides how uncertain it is. Fuzzy regression carries that imprecision explicitly instead of discarding it, and multi-criteria decision methods then compare whole scenarios rather than forcing a single answer.\n\n\nOzon, R. H., Reynoso-Meza, G. (2024). Predictive Maintenance Strategies in Agriculture Using Survival Analysis. XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro\n  When is a machine about to fail, and what does waiting cost? Survival analysis — the statistics of time-to-event, borrowed from medicine — is applied to agricultural equipment so maintenance is scheduled by risk rather than by calendar.\n\n\nOzon, R. H., Reynoso-Meza, G. (2024). Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization. ICPR Americas 2024 — Ohio University\n  Two evolutionary algorithms are routinely used to trade risk against return in portfolios, and practitioners tend to pick one by habit. This puts them on the same problem and measures both the quality of the solutions and the computational cost of reaching them.\n\n\nOzon, R., de Lima, J. D., Dranka, G. (2024). Enhancing Grain Portfolio Risk Management with GAMLSS and MSGARCH. XXIV Encontro Brasileiro de Finanças (EBFIN) proceedings\n  Grain prices do not only get more or less volatile — the whole shape of their distribution moves, including skew and fat tails. GAMLSS tracks those moments over time and MSGARCH captures shifts between calm and turbulent regimes, both put to work on portfolio risk. See the case study \n\n\n\nTalks & posters\nOzon, R. H. (2024). PhD Finalist. XI ENPPEPRO — Encontro Nacional de Programas de Pós-Graduação em Engenharia de Produção\n  Doctoral research selected as a finalist at the national meeting of Brazilian graduate programmes in industrial engineering.\n\n\nOzon, R. H. (2024). Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics. 1st SouthStat Meeting (UFPR) — poster\n  The poster version of the grain-portfolio work: combining a time-varying distribution shape with Bayesian regime-switching volatility to forecast commodity returns. See the case study \n\n\nOzon, R. H. (2023). The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models. R Day (UFPR)\n  Economic series often arrive yearly when the decision needs monthly numbers. This shows how temporal disaggregation in R rebuilds the higher-frequency series without inventing movement the data cannot support.\n\n\nOzon, R. H., Reynoso-Meza, G. (2023). Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers. APREPRO / ConBRepro paper\n  A risk–return frontier estimated on a single window can be an artefact of that window. Building frontiers across several windows shows which trade-offs survive and which were an accident of the sample.\n\n\n\nWorking papers (2025–2026)\nDoctoral research pipeline: sixteen manuscripts in preparation and submission. Titles subject to change; drafts available on request.\nPortfolio optimization & decision-making\nAn Integration Framework for Multi-Objective Commodity Portfolio Decision-Making thesis synthesis — flagship paper\n  The thesis synthesis: how forecasting, risk modelling and multi-objective optimisation fit together into one decision process instead of three disconnected steps.\n\nA Many-Objective Evolutionary Benchmark for Multi-Period Commodity Portfolios\n  Real portfolio decisions weigh more than two goals at once. A benchmark for algorithms that handle many objectives over multiple periods.\n\nMany-Objective Optimization of Technical Trading Strategies with R. Vianna\n  Trading rules are usually tuned for return alone. Here they are optimised against several competing criteria at the same time.\n\nRegime-Conditional Dynamic Programming for Portfolio Refinement\n  A portfolio built for a calm market is the wrong portfolio for a turbulent one. This conditions the decision on the regime the market is actually in.\n\nDistribution-Free Robust Control of Commodity Portfolios Under Regime Uncertainty\n  Methods that assume a specific probability distribution fail when the assumption breaks. This asks what can still be guaranteed without making that assumption.\n\nCapacity Constraints and Multi-Asset Generalisation of Commodity Portfolio Strategies\n  A strategy that works on paper can be impossible to execute at scale. This adds real capacity limits and extends the approach across several assets.\n\nPareto-Optimal Reinforcement Learning Portfolios for Commodity Trading\n  Reinforcement learning normally optimises one reward. This asks it to hold the risk–return trade-off open instead of collapsing it into a single score.\n\n\nForecasting & volatility modeling\nMSGARCH Against Competing Models for Commodity Price Returns\n  Does regime-switching volatility actually beat the simpler alternatives on grain prices, or only look more sophisticated? A direct comparison. See the case study \n\nTime-Varying Higher Moments in Agricultural Commodities via GAMLSS\n  Skew and kurtosis in crop prices are not constant, yet most models treat them as if they were. GAMLSS lets them move with time.\n\nChaos and Complexity in Economic and Financial Time Series\n  Some of what looks like random noise in economic data is deterministic structure. This examines which is which, and what follows for forecasting.\n\n\nMarket structure, breaks & early warnings\nCausal Inference for Structural Breaks in Time Series\n  A series changes course — but was it caused by the event everyone blames, or did it merely coincide with it? Causal methods applied to break detection.\n\nCommodity Price Breaks: Detection versus Prediction\n  Spotting a break after it happens is a different problem from anticipating one. This separates the two and asks how much of the second is achievable.\n\nPrice Transmission in Four Brazilian Agricultural Commodities\n  When an international price moves, how much of it reaches the Brazilian producer, and how long does it take? Measured across four commodities.\n\nRegime-Aware Hybrid Anomaly Detection for Early Warnings in Food Security\n  An early-warning system that mistakes a normal seasonal swing for a crisis is worse than none. This makes anomaly detection aware of the regime, for food-security warnings.\n\n\nFoundations & applications\nAI and Econometric Methods for Commodity Portfolio Optimization: A Systematic Literature Review\n  A systematic review mapping what machine learning and classical econometrics have each contributed to commodity portfolio work, and where they have not yet met.\n\nReal Options Valuation via Bayesian MCMC\n  The value of being able to wait, expand or abandon an investment, estimated with Bayesian methods that carry the uncertainty through instead of hiding it in a point estimate.\n\n\n\nAdvising\nOzon, R. H. (2024–2025). Scientific Initiation Advisorship (PIBIC / PIBIC Jr., PUCPR) — concluded. Research project: \"Innovations in Financial Modeling: AI and Econometrics Approaches for Agricultural Commodities Portfolio Optimization\" project site · advisor declaration\n\nOzon, R. H. (2024). Evaluation Declaration for SEMIC/SEMITI. XXXI Scientific Initiation Seminar at PUCPR declaration"
-  },
-  {
-    "objectID": "research.html#peer-review-committees",
-    "href": "research.html#peer-review-committees",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Peer review & committees",
-    "text": "Peer review & committees\n\n  \n    Reviewer — Applied Soft Computing\n    Peer reviewer for the Applied Soft Computing journal (Elsevier), 2024 – present.\n    Reviewer certificate \n  \n  \n    Reviewer — PRINCIPIA\n    Peer reviewer for the PRINCIPIA journal (UFJF, Juiz de Fora), 2024 – present.\n    Journal website \n  \n  \n    Scientific Advisory Committee\n    Scientific Advisory Committee member at PUCPR (2023; 2024–2025), supporting the evaluation\n    of research and scientific initiation programs.\n  \n\n\n\n  Google Scholar\n  Lattes CV\n  ORCID"
-  },
-  {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "Econometrician · The original data science\n    \n    Forecasting, risk analytics and AI for your business, from diagnosis to a working system.\n    \n      Founder and principal consultant at OQuant, PhD researcher in Industrial & Systems\n      Engineering (PUCPR), and former professor at FAE Business School (2025–2026). Data Scientist at\n      Unimed do Estado do Paraná until August 2026.\n      Eighteen years applying GARCH-family models, Bayesian econometrics, multi-objective optimization\n      and, more recently, multi-agent AI systems to problems in healthcare, agribusiness and industry.\n    \n    \n      Request a quote\n      Book a 30-min call\n      Download CV (PDF)\n      Full CV"
-  },
-  {
-    "objectID": "index.html#four-fronts-one-discipline",
-    "href": "index.html#four-fronts-one-discipline",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Four fronts, one discipline",
-    "text": "Four fronts, one discipline\n\n  \n    Econometrics & Forecasting\n    Time series, Bayesian methods, GARCH-family volatility models, causal inference and\n    multi-objective portfolio optimization — applied to commodities, healthcare and industry.\n  \n  \n    Data Science & AI\n    Machine learning, MLOps and Generative AI: internal chatbots, multi-agent orchestration\n    and AI-assisted decision-making in production environments.\n  \n  \n    Consulting (OQuant)\n    Founder & principal consultant. Projects for Grupo Fleury, Aurora Alimentos and Cogna\n    Educacional in forecasting, risk analytics and decision support.\n  \n  \n    Teaching & Research\n    Taught Data Science for Business and Financial Markets at FAE (2025–2026). PhD researcher at\n    PUCPR. Reviewer for Applied Soft Computing and PRINCIPIA."
-  },
-  {
-    "objectID": "index.html#where-ive-made-an-impact",
-    "href": "index.html#where-ive-made-an-impact",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Where I’ve made an impact",
-    "text": "Where I’ve made an impact\n\n  \n  \n  \n  \n  \n  \n  \n  \n\nSee full experience"
-  },
-  {
-    "objectID": "index.html#recent-work-recognition",
-    "href": "index.html#recent-work-recognition",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Recent work & recognition",
-    "text": "Recent work & recognition\n2026 — Data Scientist at Unimed do Estado do Paraná (Jan–Aug 2026): healthcare analytics and Generative AI (chatbots, multi-agent orchestration). Curitiba, PR\n2024 — Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios. LVI SBPO, Fortaleza\n2024 — Predictive Maintenance Strategies in Agriculture Using Survival Analysis. XXV Congresso Brasileiro de Automática\n2024 — PhD Finalist. XI ENPPEPRO — National Meeting of Industrial Engineering Graduate Programs\nAll research"
-  },
-  {
-    "objectID": "experience.html",
-    "href": "experience.html",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "WHERE I WORK NOW\n\n\n\n  \n    \n    Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional. Active company (CNPJ), available for contract engagements in Brazil and abroad.\n    Learn more about OQuant \n  \n  \n    \n    Data Scientist · Jan 2026 – Aug 2026 (concluded)\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Jul 2026 (concluded)\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page"
-  },
-  {
-    "objectID": "experience.html#current-recent-roles",
-    "href": "experience.html#current-recent-roles",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional. Active company (CNPJ), available for contract engagements in Brazil and abroad.\n    Learn more about OQuant \n  \n  \n    \n    Data Scientist · Jan 2026 – Aug 2026 (concluded)\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Jul 2026 (concluded)\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page"
-  },
-  {
-    "objectID": "experience.html#career-timeline",
-    "href": "experience.html#career-timeline",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Career timeline",
-    "text": "Career timeline\n\n\n  \n    Jan 2026 – Aug 2026\n    Data Scientist\n    Unimed do Estado do Paraná – Curitiba, PR\n    Healthcare analytics, BI and Generative AI: dashboards and KPI monitoring, predictive modeling, internal chatbots and multi-agent orchestration supporting AI-assisted decision-making.\n  \n\n  \n    Mar 2025 – Present\n    Founder & Principal Consultant — Data Scientist\n    OQuant Data Science Consulting – Remote\n    Consulting in data science, econometric modeling, forecasting, causal inference, risk analytics and AI-based decision support, serving clients such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.\n  \n\n  \n    Feb 2025 – Jul 2026\n    Undergraduate Professor\n    FAE Business School – Curitiba, PR\n    Courses in econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n  \n\n  \n    Jan 2025 – Apr 2025\n    Data Engineer Professional\n    Volvo Group Digital & IT – Curitiba, PR\n    Built data pipelines with SQL, Python and PySpark on Azure (ADF, Databricks), developed predictive models with agile teams, and applied MLOps practices for model monitoring.\n  \n\n  \n    Oct 2024 – Dec 2024\n    Data Scientist Area Coordinator\n    LAB.PR – Curitiba, PR\n    Coordinated the state public-intelligence and data science laboratory, applying AI, data governance and systems integration to make public administration more transparent and efficient.\n  \n\n  \n    Apr 2023 – Sep 2024\n    Data Science Consultant\n    CNH Industrial – Curitiba, PR (Remote)\n    Built and trained ML/AI models (TensorFlow, Keras, Torch) on complex heterogeneous data — time series and image processing — over a Data Lake stack (Hadoop, Spark, Kafka) on Microsoft Azure.\n  \n\n  \n    May 2021 – Mar 2023\n    Senior Data Scientist\n    BRF – Curitiba, PR\n    Managed BI & Analytics products; processed ~700 economic time series to build a predictive corn pricing model (CBOT and B3) and a Bayesian multicausal model of price drivers grounded in microeconometric literature.\n  \n\n  \n    May 2021 – Jul 2021\n    Researcher / Consultant\n    UNDP Brazil – Curitiba, PR\n    Automated data extraction from official public sources via APIs and built socio-economic dashboards for the UNDP BRA/18/024 project on reducing violence against children and adolescents in Brazil.\n  \n\n  \n    Jan 2021 – Mar 2021\n    Sr. BI Analyst (Data Scientist)\n    Tecnofit – Curitiba, PR\n    Implemented a data-driven culture: fitness-market studies with CAGED/RAIS data, automated extractions from the Hubspot CRM and Google Places APIs, OKR-aligned dashboards and data governance documentation.\n  \n\n  \n    Oct 2020 – Dec 2020\n    Sr. Data Scientist\n    Deal Technologies – Curitiba, PR\n    Exclusive consultant on the Market Intelligence and Pricing project for Rumo Logística: validated deliverables from two international consultancies, audited PostgreSQL data quality, and documented ETL automation pipelines to AWS S3.\n  \n\n  \n    Feb 2020 – Mar 2020\n    Market Intelligence Analyst\n    ALCAST do Brasil S/A – Curitiba, PR\n    Led market mapping, segmentation and risk/opportunity assessment, proposing the migration from spreadsheets to real-time dashboards in RMarkdown and Power BI.\n  \n\n  \n    Nov 2019 – Oct 2020\n    Freelance Data Scientist\n    Upwork.com – Remote\n    On-demand projects in data science, econometrics and scientific document editing with LaTeX and R.\n  \n\n  \n    Oct 2019 – Nov 2019\n    Business Intelligence Consultant\n    Kietec (Knowledge Information and Technology) – Curitiba, PR\n    Requirements gathering, predictive modeling proposals and advanced data analysis to improve decision-making.\n  \n\n  \n    May 2019 – Oct 2019\n    Sr. Statistics Analyst\n    Grupo Bitcoin Banco – Curitiba, PR\n    Systematized statistically measurable information across all departments, implemented real-time BI for big data visualization, and supported executive decisions with statistical reporting.\n  \n\n  \n    Oct 2012 – Nov 2018\n    Mid-Level Economic Analyst\n    FIEP – Curitiba, PR\n    Economic analysis of Paraná's main productive chains for business unions and collective bargaining; built Power BI databases of regional economic data and reviewed SENAI/SESI innovation proposals.\n  \n\n  \n    2011 – 2021\n    Economist — Projects & Fundraising\n    ONG Acreditar e Compartilhar – Brazil\n    Volunteer collaborator designing and submitting third-sector projects to public and private bids, teaching PMI-based project management for NGOs, and consulting for other nonprofits.\n  \n\n  \n    Oct 2008 – Oct 2013\n    Economist / Project Coordinator\n    IBQP – Curitiba, PR\n    Researcher on productive chains and innovation projects; coordinated the Municipal Development Index for Micro and Small Enterprises (ID-MPE) for SEBRAE in partnership with UFPR researchers."
-  },
-  {
-    "objectID": "experience.html#toolbox",
-    "href": "experience.html#toolbox",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "Toolbox",
-    "text": "Toolbox\nLanguages I use daily for modeling, analytics and reporting:\n\n  Python\n  R\n  SQL\n  PySpark\n  Scala\n  DAX\n  VBA\n  Quarto / LaTeX\n\nPlatforms and tools for data engineering, BI and deployment:\n\n  Azure\n  Databricks\n  Azure Data Factory\n  Spark\n  Power BI\n  Shiny\n  Git\n\n\n  Hire me for consulting\n  Get in touch"
-  },
-  {
-    "objectID": "portfolio/index.html",
-    "href": "portfolio/index.html",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "Portfolio\n\n\n\nEach case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. What differs is what can be shown. Four are fully public, with repository, tests and results. Two describe doctoral research under peer review, so method is here and results are withheld until the journals rule. One runs on synthetic data, because the engagement behind it is under NDA. Each page says which it is, at the top.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    Read the case \n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    Read the case \n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · IPW · Synthetic data\n    \n    Read the case \n  \n\n\n  \n    \n    The same multi-agent system twice — a hand-written loop and a LangGraph\n    StateGraph. Both emit a byte-identical report; the difference is measured.\n    \n      LangGraph · StateGraph · Parity testing\n    \n    Read the case \n  \n\n  \n    \n    Vector and full-text search in one Postgres table, combined by rank. Any\n    answer with a number the sources do not contain is withheld.\n    \n      RAG · pgvector · Retrieval evals in CI\n    \n    Read the case \n  \n\n  \n    \n    Twelve months of SUS admissions for all 27 Brazilian states, from public data.\n    Tested against the same month last year, with an 80% band that holds about 80% of the time.\n    \n      SARIMA · Rolling-origin backtest · DATASUS\n    \n    Read the case"
-  },
-  {
-    "objectID": "portfolio/index.html#problems-methods-and-code-you-can-run",
-    "href": "portfolio/index.html#problems-methods-and-code-you-can-run",
-    "title": "Rodrigo Hermont Ozon",
-    "section": "",
-    "text": "Each case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. What differs is what can be shown. Four are fully public, with repository, tests and results. Two describe doctoral research under peer review, so method is here and results are withheld until the journals rule. One runs on synthetic data, because the engagement behind it is under NDA. Each page says which it is, at the top.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    Read the case \n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    Read the case \n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · IPW · Synthetic data\n    \n    Read the case \n  \n\n\n  \n    \n    The same multi-agent system twice — a hand-written loop and a LangGraph\n    StateGraph. Both emit a byte-identical report; the difference is measured.\n    \n      LangGraph · StateGraph · Parity testing\n    \n    Read the case \n  \n\n  \n    \n    Vector and full-text search in one Postgres table, combined by rank. Any\n    answer with a number the sources do not contain is withheld.\n    \n      RAG · pgvector · Retrieval evals in CI\n    \n    Read the case \n  \n\n  \n    \n    Twelve months of SUS admissions for all 27 Brazilian states, from public data.\n    Tested against the same month last year, with an 80% band that holds about 80% of the time.\n    \n      SARIMA · Rolling-origin backtest · DATASUS\n    \n    Read the case"
-  },
-  {
-    "objectID": "portfolio/commodity-forecasting.html",
-    "href": "portfolio/commodity-forecasting.html",
-    "title": "Commodity Price Forecasting",
-    "section": "",
-    "text": "Case Study 02 · Doctoral research\n\n\n\n\nGAMLSS · Bayesian MSGARCH · Rolling-origin validation · R"
-  },
-  {
-    "objectID": "portfolio/commodity-forecasting.html#the-business-question",
-    "href": "portfolio/commodity-forecasting.html#the-business-question",
-    "title": "Commodity Price Forecasting",
-    "section": "The business question",
-    "text": "The business question\nA grain buyer does not only need to know where the price is heading. They need to know how wrong that number could be, and whether being wrong costs the same in both directions.\nMost forecasting stops at the first question. A cooperative deciding when to sell, or a processor deciding how much to hedge, is really asking the second one."
-  },
-  {
-    "objectID": "portfolio/commodity-forecasting.html#the-data",
-    "href": "portfolio/commodity-forecasting.html#the-data",
-    "title": "Commodity Price Forecasting",
-    "section": "The data",
-    "text": "The data\nPublic series only: agricultural commodity prices from international exchanges and Brazilian domestic markets, daily, over several years, with the exchange rate as the bridge between them. No client data is involved at any point."
-  },
-  {
-    "objectID": "portfolio/commodity-forecasting.html#method-and-why-this-one",
-    "href": "portfolio/commodity-forecasting.html#method-and-why-this-one",
-    "title": "Commodity Price Forecasting",
-    "section": "Method, and why this one",
-    "text": "Method, and why this one\nThe usual simplification. Standard volatility models let the spread of returns move over time but hold everything else fixed — the asymmetry and the tail weight are treated as constants. In agricultural markets that assumption is uncomfortable: a drought does not widen the distribution symmetrically.\nLetting the whole distribution move. GAMLSS gives each parameter of the distribution — location, scale, skewness, kurtosis — its own model with its own covariates. The shape of the distribution becomes something estimated over time rather than assumed.\nRegimes, not gradual drift. Grain markets do not slide smoothly from calm to turbulent; they switch. Markov-switching GARCH estimates the states and the transition probabilities between them, and a Bayesian treatment carries the parameter uncertainty forward instead of collapsing it into a point estimate.\nValidation that respects time. A model tuned on the full sample will always look good. Rolling-origin evaluation refits at each step using only what was knowable at that moment, and every added layer has to earn its place against simpler benchmarks — a plain GARCH, an ARIMA, a random walk. A more elaborate model that does not beat the simple one is a finding, not a failure."
-  },
-  {
-    "objectID": "portfolio/commodity-forecasting.html#result",
-    "href": "portfolio/commodity-forecasting.html#result",
-    "title": "Commodity Price Forecasting",
-    "section": "Result",
-    "text": "Result\nDeliberately not published here. The manuscripts behind this work are under peer review, and putting their results on a personal website before the journals have ruled on them would be poor practice — and unfair to the reviewers reading them.\nWhat can be said is the shape of the work: this is one stage of a doctoral thesis on multi-period, multi-objective portfolio optimisation in agricultural commodity markets, where distributional modelling feeds regime-switching volatility, which feeds scenario simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.\nWhatever of this line reaches print is listed on the research page, alongside the conference papers that already carry proceedings links. The case below is the part that is public and running today."
-  },
-  {
-    "objectID": "portfolio/commodity-forecasting.html#code",
-    "href": "portfolio/commodity-forecasting.html#code",
-    "title": "Commodity Price Forecasting",
-    "section": "Code",
-    "text": "Code\nThe model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA when the residual diagnostics reject it — is implemented and running in the multi-agent case study, with public data and a frozen cache so anyone can reproduce it:\nMulti-Agent Commodity Analyst \nRepository\nPublished work along this line is listed on the research page, where four conference papers carry links to their proceedings."
-  },
-  {
-    "objectID": "portfolio/causal-nps.html",
-    "href": "portfolio/causal-nps.html",
-    "title": "Causal Modeling of NPS",
-    "section": "",
-    "text": "Case Study 04 · Synthetic data\n\n\n\n\nCausal inference · Backdoor adjustment · Propensity weighting · Python\n\n\n  Every number and every chart on this page comes from\n  simulated data. The real engagement behind this method is covered by a\n  non-disclosure agreement: the client is not named, and none of its data, figures or\n  findings appear here or anywhere else on this site. What is shown is the method,\n  running on data generated by the script at the bottom of the page."
-  },
-  {
-    "objectID": "portfolio/causal-nps.html#the-business-question",
-    "href": "portfolio/causal-nps.html#the-business-question",
-    "title": "Causal Modeling of NPS",
-    "section": "The business question",
-    "text": "The business question\nA company runs a customer-success programme — a proactive call to accounts that look like they need help. Six months in, the accounts that got the call have a visibly better Net Promoter Score. Leadership wants to expand the programme.\nShould they? The dashboard shows a gap. It does not show whether the programme caused the gap, or whether the team simply called the accounts that were already going to be happy — the big ones, the long-tenured ones, the ones with few complaints. Expanding a programme on the strength of that gap can burn a budget on something that does nothing."
-  },
-  {
-    "objectID": "portfolio/causal-nps.html#the-data",
-    "href": "portfolio/causal-nps.html#the-data",
-    "title": "Causal Modeling of NPS",
-    "section": "The data",
-    "text": "The data\nSimulated: 6,000 accounts, each with a size, a tenure, a support-ticket count, whether it received the intervention, and an NPS score.\nThe confounding is deliberate, and it is the whole point. In the simulator, bigger and longer-tenured accounts are both more likely to receive the call and happier to begin with. That is exactly the structure that makes a raw comparison misleading, and it is what real customer-success data looks like.\nWhy synthetic is the right choice here, not a compromise. With client data nobody reading this page could check whether the causal estimate is correct — the true effect is unobservable, which is the whole difficulty of the field. Here the true effect is a constant written in the code. That makes the estimator gradeable: you can see whether it recovers the answer, and by how much it misses."
-  },
-  {
-    "objectID": "portfolio/causal-nps.html#method-and-why-this-one",
-    "href": "portfolio/causal-nps.html#method-and-why-this-one",
-    "title": "Causal Modeling of NPS",
-    "section": "Method, and why this one",
-    "text": "Method, and why this one\nThe naive comparison, for reference. Difference in mean NPS between treated and untreated accounts. This is what a dashboard reports, and it is the number the decision would otherwise rest on.\nBackdoor adjustment. Regress NPS on the intervention while conditioning on the variables that drive both the intervention and the outcome — size, tenure, ticket count. Blocking those paths leaves the causal effect.\nPropensity weighting. Model the probability of receiving the call given the same covariates, then weight each account by the inverse of that probability. This rebuilds a population in which treatment is as good as randomly assigned, and it makes a different set of assumptions than the regression — so agreement between the two is informative, and disagreement would be a warning.\nTwo estimators rather than one, on purpose. A single causal estimate is a claim; two that rest on different assumptions and land in the same place is evidence."
-  },
-  {
-    "objectID": "portfolio/causal-nps.html#result",
-    "href": "portfolio/causal-nps.html#result",
-    "title": "Causal Modeling of NPS",
-    "section": "Result",
-    "text": "Result\n\n\n\nEffect of the intervention on NPS, three ways. The dashed line is the true effect, which is known here because the data was generated. Synthetic data — not client results.\n\n\nThe true effect written into the simulator is 0.80 NPS points.\nThe raw comparison reports 1.41 — it overstates the programme by roughly three quarters, because it is crediting the intervention with the head start of the accounts that received it. A team that expanded the programme on that number would find the returns quietly failing to materialise.\nBoth causal estimators land at 0.84, within their confidence intervals of the truth, and they agree with each other despite resting on different assumptions.\nThe point is not the decimals. It is that the gap between 1.41 and 0.80 is the difference between a programme that justifies its budget and one that mostly re-labels customers who were already loyal — and no amount of extra dashboard filtering would have revealed it."
-  },
-  {
-    "objectID": "portfolio/causal-nps.html#code",
-    "href": "portfolio/causal-nps.html#code",
-    "title": "Causal Modeling of NPS",
-    "section": "Code",
-    "text": "Code\nThe script generates the data, runs all three estimators and produces the chart above. It is self-contained and deterministic — same seed, same numbers:\nnps-causal-demo.py\npython nps-causal-demo.py\nRequires numpy, pandas, statsmodels and matplotlib. Change EFEITO_VERDADEIRO at the top and rerun: the naive estimate moves with the confounding, the adjusted ones follow the truth."
+    "objectID": "portfolio/credit-early-warning.html#paper-and-code",
+    "href": "portfolio/credit-early-warning.html#paper-and-code",
+    "title": "Corporate Credit Early Warning",
+    "section": "Paper and code",
+    "text": "Paper and code\n\nRead the paper (PDF)\ngithub.com/rhozon/corporate-credit-early-warning\n\nWith Python 3.11 or later:\npip install -e \".[models,dev]\"\npytest -v\npython -m distress.cli events      # event base from CVM filings\npython -m distress.cli panel       # point-in-time panel\npython -m distress.cli test        # the out-of-time test\nEvery language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has 192 tests, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push."
   },
   {
     "objectID": "portfolio/hybrid-rag.html",
@@ -474,6 +166,370 @@
     "title": "Hybrid RAG with a Numeric Guardrail",
     "section": "Code",
     "text": "Code\ngithub.com/rhozon/rag-pgvector-hybrid\nWith Docker and Python 3.12:\ndocker compose up -d\npip install -e \".[dev,embed]\"\npython -m rag.cli ingest data/handbook --reset\npython -m rag.cli ask \"How long do I have to appeal a denied claim?\"\npython -m rag.cli eval --k 1\npytest -v\nThe defaults need no API key and no model download. The suite has 22 tests, the Postgres ones included, and runs on every push together with the retrieval evaluation. The README lists the design decisions, from the choice of index to why the full-text query is an OR of terms."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html",
+    "href": "portfolio/causal-nps.html",
+    "title": "Causal Modeling of NPS",
+    "section": "",
+    "text": "Case Study 04 · Synthetic data\n\n\n\n\nCausal inference · Backdoor adjustment · Propensity weighting · Python\n\n\n  Every number and every chart on this page comes from\n  simulated data. The real engagement behind this method is covered by a\n  non-disclosure agreement: the client is not named, and none of its data, figures or\n  findings appear here or anywhere else on this site. What is shown is the method,\n  running on data generated by the script at the bottom of the page."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html#the-business-question",
+    "href": "portfolio/causal-nps.html#the-business-question",
+    "title": "Causal Modeling of NPS",
+    "section": "The business question",
+    "text": "The business question\nA company runs a customer-success programme — a proactive call to accounts that look like they need help. Six months in, the accounts that got the call have a visibly better Net Promoter Score. Leadership wants to expand the programme.\nShould they? The dashboard shows a gap. It does not show whether the programme caused the gap, or whether the team simply called the accounts that were already going to be happy — the big ones, the long-tenured ones, the ones with few complaints. Expanding a programme on the strength of that gap can burn a budget on something that does nothing."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html#the-data",
+    "href": "portfolio/causal-nps.html#the-data",
+    "title": "Causal Modeling of NPS",
+    "section": "The data",
+    "text": "The data\nSimulated: 6,000 accounts, each with a size, a tenure, a support-ticket count, whether it received the intervention, and an NPS score.\nThe confounding is deliberate, and it is the whole point. In the simulator, bigger and longer-tenured accounts are both more likely to receive the call and happier to begin with. That is exactly the structure that makes a raw comparison misleading, and it is what real customer-success data looks like.\nWhy synthetic is the right choice here, not a compromise. With client data nobody reading this page could check whether the causal estimate is correct — the true effect is unobservable, which is the whole difficulty of the field. Here the true effect is a constant written in the code. That makes the estimator gradeable: you can see whether it recovers the answer, and by how much it misses."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html#method-and-why-this-one",
+    "href": "portfolio/causal-nps.html#method-and-why-this-one",
+    "title": "Causal Modeling of NPS",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nThe naive comparison, for reference. Difference in mean NPS between treated and untreated accounts. This is what a dashboard reports, and it is the number the decision would otherwise rest on.\nBackdoor adjustment. Regress NPS on the intervention while conditioning on the variables that drive both the intervention and the outcome — size, tenure, ticket count. Blocking those paths leaves the causal effect.\nPropensity weighting. Model the probability of receiving the call given the same covariates, then weight each account by the inverse of that probability. This rebuilds a population in which treatment is as good as randomly assigned, and it makes a different set of assumptions than the regression — so agreement between the two is informative, and disagreement would be a warning.\nTwo estimators rather than one, on purpose. A single causal estimate is a claim; two that rest on different assumptions and land in the same place is evidence."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html#result",
+    "href": "portfolio/causal-nps.html#result",
+    "title": "Causal Modeling of NPS",
+    "section": "Result",
+    "text": "Result\n\n\n\nEffect of the intervention on NPS, three ways. The dashed line is the true effect, which is known here because the data was generated. Synthetic data — not client results.\n\n\nThe true effect written into the simulator is 0.80 NPS points.\nThe raw comparison reports 1.41 — it overstates the programme by roughly three quarters, because it is crediting the intervention with the head start of the accounts that received it. A team that expanded the programme on that number would find the returns quietly failing to materialise.\nBoth causal estimators land at 0.84, within their confidence intervals of the truth, and they agree with each other despite resting on different assumptions.\nThe point is not the decimals. It is that the gap between 1.41 and 0.80 is the difference between a programme that justifies its budget and one that mostly re-labels customers who were already loyal — and no amount of extra dashboard filtering would have revealed it."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html#code",
+    "href": "portfolio/causal-nps.html#code",
+    "title": "Causal Modeling of NPS",
+    "section": "Code",
+    "text": "Code\nThe script generates the data, runs all three estimators and produces the chart above. It is self-contained and deterministic — same seed, same numbers:\nnps-causal-demo.py\npython nps-causal-demo.py\nRequires numpy, pandas, statsmodels and matplotlib. Change EFEITO_VERDADEIRO at the top and rerun: the naive estimate moves with the confounding, the adjusted ones follow the truth."
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html",
+    "href": "portfolio/commodity-forecasting.html",
+    "title": "Commodity Price Forecasting",
+    "section": "",
+    "text": "Case Study 02 · Doctoral research\n\n\n\n\nGAMLSS · Bayesian MSGARCH · Rolling-origin validation · R"
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html#the-business-question",
+    "href": "portfolio/commodity-forecasting.html#the-business-question",
+    "title": "Commodity Price Forecasting",
+    "section": "The business question",
+    "text": "The business question\nA grain buyer does not only need to know where the price is heading. They need to know how wrong that number could be, and whether being wrong costs the same in both directions.\nMost forecasting stops at the first question. A cooperative deciding when to sell, or a processor deciding how much to hedge, is really asking the second one."
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html#the-data",
+    "href": "portfolio/commodity-forecasting.html#the-data",
+    "title": "Commodity Price Forecasting",
+    "section": "The data",
+    "text": "The data\nPublic series only: agricultural commodity prices from international exchanges and Brazilian domestic markets, daily, over several years, with the exchange rate as the bridge between them. No client data is involved at any point."
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html#method-and-why-this-one",
+    "href": "portfolio/commodity-forecasting.html#method-and-why-this-one",
+    "title": "Commodity Price Forecasting",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nThe usual simplification. Standard volatility models let the spread of returns move over time but hold everything else fixed — the asymmetry and the tail weight are treated as constants. In agricultural markets that assumption is uncomfortable: a drought does not widen the distribution symmetrically.\nLetting the whole distribution move. GAMLSS gives each parameter of the distribution — location, scale, skewness, kurtosis — its own model with its own covariates. The shape of the distribution becomes something estimated over time rather than assumed.\nRegimes, not gradual drift. Grain markets do not slide smoothly from calm to turbulent; they switch. Markov-switching GARCH estimates the states and the transition probabilities between them, and a Bayesian treatment carries the parameter uncertainty forward instead of collapsing it into a point estimate.\nValidation that respects time. A model tuned on the full sample will always look good. Rolling-origin evaluation refits at each step using only what was knowable at that moment, and every added layer has to earn its place against simpler benchmarks — a plain GARCH, an ARIMA, a random walk. A more elaborate model that does not beat the simple one is a finding, not a failure."
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html#result",
+    "href": "portfolio/commodity-forecasting.html#result",
+    "title": "Commodity Price Forecasting",
+    "section": "Result",
+    "text": "Result\nDeliberately not published here. The manuscripts behind this work are under peer review, and putting their results on a personal website before the journals have ruled on them would be poor practice — and unfair to the reviewers reading them.\nWhat can be said is the shape of the work: this is one stage of a doctoral thesis on multi-period, multi-objective portfolio optimisation in agricultural commodity markets, where distributional modelling feeds regime-switching volatility, which feeds scenario simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.\nWhatever of this line reaches print is listed on the research page, alongside the conference papers that already carry proceedings links. The case below is the part that is public and running today."
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html#code",
+    "href": "portfolio/commodity-forecasting.html#code",
+    "title": "Commodity Price Forecasting",
+    "section": "Code",
+    "text": "Code\nThe model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA when the residual diagnostics reject it — is implemented and running in the multi-agent case study, with public data and a frozen cache so anyone can reproduce it:\nMulti-Agent Commodity Analyst \nRepository\nPublished work along this line is listed on the research page, where four conference papers carry links to their proceedings."
+  },
+  {
+    "objectID": "portfolio/index.html",
+    "href": "portfolio/index.html",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "Portfolio\n\n\n\nEach case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. What differs is what can be shown. Five are fully public, with repository, tests and results. Two describe doctoral research under peer review, so method is here and results are withheld until the journals rule. One runs on synthetic data, because the engagement behind it is under NDA. Each page says which it is, at the top.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    Read the case \n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    Read the case \n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · IPW · Synthetic data\n    \n    Read the case \n  \n\n\n  \n    \n    The same multi-agent system twice — a hand-written loop and a LangGraph\n    StateGraph. Both emit a byte-identical report; the difference is measured.\n    \n      LangGraph · StateGraph · Parity testing\n    \n    Read the case \n  \n\n  \n    \n    Vector and full-text search in one Postgres table, combined by rank. Any\n    answer with a number the sources do not contain is withheld.\n    \n      RAG · pgvector · Retrieval evals in CI\n    \n    Read the case \n  \n\n  \n    \n    Twelve months of SUS admissions for all 27 Brazilian states, from public data.\n    Tested against the same month last year, with an 80% band that holds about 80% of the time.\n    \n      SARIMA · Rolling-origin backtest · DATASUS\n    \n    Read the case \n  \n\n  \n    \n    Which Brazilian listed companies are heading for judicial recovery? Eight models on public\n    CVM filings, tested out of time, with distress signals read by language models and a credit\n    memo whose every number is checked.\n    \n      Survival analysis · XGBoost · Pre-registered test\n    \n    Read the case"
+  },
+  {
+    "objectID": "portfolio/index.html#problems-methods-and-code-you-can-run",
+    "href": "portfolio/index.html#problems-methods-and-code-you-can-run",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "Each case follows the same five blocks: the business question, the data, the method and why that one, the result, and the code. What differs is what can be shown. Five are fully public, with repository, tests and results. Two describe doctoral research under peer review, so method is here and results are withheld until the journals rule. One runs on synthetic data, because the engagement behind it is under NDA. Each page says which it is, at the top.\n\n\n  \n    \n    Four LLM agents decide; a deterministic econometric core in R computes. A guard\n    stops the system from writing any number the models did not produce.\n    \n      LLM Agents · MSGARCH · Python + R\n    \n    Read the case \n  \n\n  \n    \n    Regime-switching volatility and time-varying higher moments applied to grain\n    prices, benchmarked against the models a trading desk actually uses.\n    \n      GAMLSS · Bayesian MSGARCH · Backtesting\n    \n    Read the case \n  \n\n  \n    \n    Evolutionary algorithms on the risk–return frontier for commodity portfolios,\n    compared head to head rather than assumed.\n    \n      NSGA-II · Differential Evolution · Pareto\n    \n    Read the case \n  \n\n  \n    \n    What actually moves customer satisfaction, separated from what merely correlates\n    with it — for a large corporation.\n    \n      Causal inference · IPW · Synthetic data\n    \n    Read the case \n  \n\n\n  \n    \n    The same multi-agent system twice — a hand-written loop and a LangGraph\n    StateGraph. Both emit a byte-identical report; the difference is measured.\n    \n      LangGraph · StateGraph · Parity testing\n    \n    Read the case \n  \n\n  \n    \n    Vector and full-text search in one Postgres table, combined by rank. Any\n    answer with a number the sources do not contain is withheld.\n    \n      RAG · pgvector · Retrieval evals in CI\n    \n    Read the case \n  \n\n  \n    \n    Twelve months of SUS admissions for all 27 Brazilian states, from public data.\n    Tested against the same month last year, with an 80% band that holds about 80% of the time.\n    \n      SARIMA · Rolling-origin backtest · DATASUS\n    \n    Read the case \n  \n\n  \n    \n    Which Brazilian listed companies are heading for judicial recovery? Eight models on public\n    CVM filings, tested out of time, with distress signals read by language models and a credit\n    memo whose every number is checked.\n    \n      Survival analysis · XGBoost · Pre-registered test\n    \n    Read the case"
+  },
+  {
+    "objectID": "experience.html",
+    "href": "experience.html",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "WHERE I WORK NOW\n\n\n\n  \n    \n    Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional. Active company (CNPJ), available for contract engagements in Brazil and abroad.\n    Learn more about OQuant \n  \n  \n    \n    Data Scientist · Jan 2026 – Aug 2026 (concluded)\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Jul 2026 (concluded)\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page"
+  },
+  {
+    "objectID": "experience.html#current-recent-roles",
+    "href": "experience.html#current-recent-roles",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "Founder & Principal Consultant · Mar 2025 – Present\n    Consulting in econometrics, forecasting, causal inference, risk analytics and AI-driven business solutions, with projects for organizations such as Grupo Fleury, Aurora Alimentos and Cogna Educacional. Active company (CNPJ), available for contract engagements in Brazil and abroad.\n    Learn more about OQuant \n  \n  \n    \n    Data Scientist · Jan 2026 – Aug 2026 (concluded)\n    Healthcare analytics and business intelligence — KPI monitoring, dashboards, statistical modeling and predictive analytics — plus Generative AI for internal processes: chatbot development, multi-agent and sub-agent orchestration, and AI-assisted knowledge management.\n  \n  \n    \n    Undergraduate Professor · Feb 2025 – Jul 2026 (concluded)\n    Teaching Data Science for Business and Financial Markets: econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n    See my teaching page"
+  },
+  {
+    "objectID": "experience.html#career-timeline",
+    "href": "experience.html#career-timeline",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Career timeline",
+    "text": "Career timeline\n\n\n  \n    Jan 2026 – Aug 2026\n    Data Scientist\n    Unimed do Estado do Paraná – Curitiba, PR\n    Healthcare analytics, BI and Generative AI: dashboards and KPI monitoring, predictive modeling, internal chatbots and multi-agent orchestration supporting AI-assisted decision-making.\n  \n\n  \n    Mar 2025 – Present\n    Founder & Principal Consultant — Data Scientist\n    OQuant Data Science Consulting – Remote\n    Consulting in data science, econometric modeling, forecasting, causal inference, risk analytics and AI-based decision support, serving clients such as Grupo Fleury, Aurora Alimentos and Cogna Educacional.\n  \n\n  \n    Feb 2025 – Jul 2026\n    Undergraduate Professor\n    FAE Business School – Curitiba, PR\n    Courses in econometrics, risk management, computational programming, big data for finance, and project appraisal and investment analysis.\n  \n\n  \n    Jan 2025 – Apr 2025\n    Data Engineer Professional\n    Volvo Group Digital & IT – Curitiba, PR\n    Built data pipelines with SQL, Python and PySpark on Azure (ADF, Databricks), developed predictive models with agile teams, and applied MLOps practices for model monitoring.\n  \n\n  \n    Oct 2024 – Dec 2024\n    Data Scientist Area Coordinator\n    LAB.PR – Curitiba, PR\n    Coordinated the state public-intelligence and data science laboratory, applying AI, data governance and systems integration to make public administration more transparent and efficient.\n  \n\n  \n    Apr 2023 – Sep 2024\n    Data Science Consultant\n    CNH Industrial – Curitiba, PR (Remote)\n    Built and trained ML/AI models (TensorFlow, Keras, Torch) on complex heterogeneous data — time series and image processing — over a Data Lake stack (Hadoop, Spark, Kafka) on Microsoft Azure.\n  \n\n  \n    May 2021 – Mar 2023\n    Senior Data Scientist\n    BRF – Curitiba, PR\n    Managed BI & Analytics products; processed ~700 economic time series to build a predictive corn pricing model (CBOT and B3) and a Bayesian multicausal model of price drivers grounded in microeconometric literature.\n  \n\n  \n    May 2021 – Jul 2021\n    Researcher / Consultant\n    UNDP Brazil – Curitiba, PR\n    Automated data extraction from official public sources via APIs and built socio-economic dashboards for the UNDP BRA/18/024 project on reducing violence against children and adolescents in Brazil.\n  \n\n  \n    Jan 2021 – Mar 2021\n    Sr. BI Analyst (Data Scientist)\n    Tecnofit – Curitiba, PR\n    Implemented a data-driven culture: fitness-market studies with CAGED/RAIS data, automated extractions from the Hubspot CRM and Google Places APIs, OKR-aligned dashboards and data governance documentation.\n  \n\n  \n    Oct 2020 – Dec 2020\n    Sr. Data Scientist\n    Deal Technologies – Curitiba, PR\n    Exclusive consultant on the Market Intelligence and Pricing project for Rumo Logística: validated deliverables from two international consultancies, audited PostgreSQL data quality, and documented ETL automation pipelines to AWS S3.\n  \n\n  \n    Feb 2020 – Mar 2020\n    Market Intelligence Analyst\n    ALCAST do Brasil S/A – Curitiba, PR\n    Led market mapping, segmentation and risk/opportunity assessment, proposing the migration from spreadsheets to real-time dashboards in RMarkdown and Power BI.\n  \n\n  \n    Nov 2019 – Oct 2020\n    Freelance Data Scientist\n    Upwork.com – Remote\n    On-demand projects in data science, econometrics and scientific document editing with LaTeX and R.\n  \n\n  \n    Oct 2019 – Nov 2019\n    Business Intelligence Consultant\n    Kietec (Knowledge Information and Technology) – Curitiba, PR\n    Requirements gathering, predictive modeling proposals and advanced data analysis to improve decision-making.\n  \n\n  \n    May 2019 – Oct 2019\n    Sr. Statistics Analyst\n    Grupo Bitcoin Banco – Curitiba, PR\n    Systematized statistically measurable information across all departments, implemented real-time BI for big data visualization, and supported executive decisions with statistical reporting.\n  \n\n  \n    Oct 2012 – Nov 2018\n    Mid-Level Economic Analyst\n    FIEP – Curitiba, PR\n    Economic analysis of Paraná's main productive chains for business unions and collective bargaining; built Power BI databases of regional economic data and reviewed SENAI/SESI innovation proposals.\n  \n\n  \n    2011 – 2021\n    Economist — Projects & Fundraising\n    ONG Acreditar e Compartilhar – Brazil\n    Volunteer collaborator designing and submitting third-sector projects to public and private bids, teaching PMI-based project management for NGOs, and consulting for other nonprofits.\n  \n\n  \n    Oct 2008 – Oct 2013\n    Economist / Project Coordinator\n    IBQP – Curitiba, PR\n    Researcher on productive chains and innovation projects; coordinated the Municipal Development Index for Micro and Small Enterprises (ID-MPE) for SEBRAE in partnership with UFPR researchers."
+  },
+  {
+    "objectID": "experience.html#toolbox",
+    "href": "experience.html#toolbox",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Toolbox",
+    "text": "Toolbox\nLanguages I use daily for modeling, analytics and reporting:\n\n  Python\n  R\n  SQL\n  PySpark\n  Scala\n  DAX\n  VBA\n  Quarto / LaTeX\n\nPlatforms and tools for data engineering, BI and deployment:\n\n  Azure\n  Databricks\n  Azure Data Factory\n  Spark\n  Power BI\n  Shiny\n  Git\n\n\n  Hire me for consulting\n  Get in touch"
+  },
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "Econometrician · The original data science\n    \n    Forecasting, risk analytics and AI for your business, from diagnosis to a working system.\n    \n      Founder and principal consultant at OQuant, PhD researcher in Industrial & Systems\n      Engineering (PUCPR), and former professor at FAE Business School (2025–2026). Data Scientist at\n      Unimed do Estado do Paraná until August 2026.\n      Eighteen years applying GARCH-family models, Bayesian econometrics, multi-objective optimization\n      and, more recently, multi-agent AI systems to problems in healthcare, agribusiness and industry.\n    \n    \n      Request a quote\n      Book a 30-min call\n      Download CV (PDF)\n      Full CV"
+  },
+  {
+    "objectID": "index.html#four-fronts-one-discipline",
+    "href": "index.html#four-fronts-one-discipline",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Four fronts, one discipline",
+    "text": "Four fronts, one discipline\n\n  \n    Econometrics & Forecasting\n    Time series, Bayesian methods, GARCH-family volatility models, causal inference and\n    multi-objective portfolio optimization — applied to commodities, healthcare and industry.\n  \n  \n    Data Science & AI\n    Machine learning, MLOps and Generative AI: internal chatbots, multi-agent orchestration\n    and AI-assisted decision-making in production environments.\n  \n  \n    Consulting (OQuant)\n    Founder & principal consultant. Projects for Grupo Fleury, Aurora Alimentos and Cogna\n    Educacional in forecasting, risk analytics and decision support.\n  \n  \n    Teaching & Research\n    Taught Data Science for Business and Financial Markets at FAE (2025–2026). PhD researcher at\n    PUCPR. Reviewer for Applied Soft Computing and PRINCIPIA."
+  },
+  {
+    "objectID": "index.html#where-ive-made-an-impact",
+    "href": "index.html#where-ive-made-an-impact",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Where I’ve made an impact",
+    "text": "Where I’ve made an impact\n\n  \n  \n  \n  \n  \n  \n  \n  \n\nSee full experience"
+  },
+  {
+    "objectID": "index.html#recent-work-recognition",
+    "href": "index.html#recent-work-recognition",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Recent work & recognition",
+    "text": "Recent work & recognition\n2026 — Data Scientist at Unimed do Estado do Paraná (Jan–Aug 2026): healthcare analytics and Generative AI (chatbots, multi-agent orchestration). Curitiba, PR\n2024 — Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios. LVI SBPO, Fortaleza\n2024 — Predictive Maintenance Strategies in Agriculture Using Survival Analysis. XXV Congresso Brasileiro de Automática\n2024 — PhD Finalist. XI ENPPEPRO — National Meeting of Industrial Engineering Graduate Programs\nAll research"
+  },
+  {
+    "objectID": "research.html",
+    "href": "research.html",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "PhD research\n\n\n\n\n  \n  Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site"
+  },
+  {
+    "objectID": "research.html#doctoral-research-at-pucpr",
+    "href": "research.html#doctoral-research-at-pucpr",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "",
+    "text": "Pontifical Catholic University of Paraná (PUCPR) — 2022 to 2027 (expected).\n  Advisor: Gilberto Reynoso-Meza.\n  Research on econometric forecasting and multi-objective decision-making for agricultural\n  commodity portfolios: blending time series forecasting models, Bayesian and regime-switching\n  volatility modelling, and Pareto-front portfolio selection under uncertainty.\n  \n    Time Series\n    Financial & Bayesian Econometrics\n    Multi-objective Portfolio Optimization\n    Extremal Events\n    Forecasting\n  \n  \n    PIBIC AgroFinance project site"
+  },
+  {
+    "objectID": "research.html#academic-background",
+    "href": "research.html#academic-background",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Academic background",
+    "text": "Academic background\n\n  \n    2022 – 2027 (expected)\n    PhD Candidate, Industrial & Systems Engineering\n    PUCPR – Curitiba, PR\n    Applied time series analysis, financial and Bayesian econometrics, multi-objective\n    portfolio optimization and modelling of extremal events. Advisor: Gilberto Reynoso-Meza.\n  \n  \n    2011\n    MSc in Economic Development\n    UFPR – Curitiba, PR\n    Emphasis on big data, multivariate analysis and econometrics.\n    Read the thesis \n  \n  \n    2007\n    BSc in Economics\n    UFPR – Curitiba, PR\n    Undergraduate thesis on oil price volatility (GARCH-M), honored and continued as a research\n    project at the UFPR Laboratory of Statistics and GeoInformation.\n    View the project"
+  },
+  {
+    "objectID": "research.html#selected-academic-output",
+    "href": "research.html#selected-academic-output",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Selected academic output",
+    "text": "Selected academic output\n\nConference papers\nOzon, R. H., Reynoso-Meza, G. (2024). Comparative Analysis of Fuzzy Regression Models and Multicriteria Decision-Making for Commodity Market Forecasting Scenarios. Anais do LVI Simpósio Brasileiro de Pesquisa Operacional (SBPO), Fortaleza proceedings\n  A commodity price forecast is usually delivered as one number, which hides how uncertain it is. Fuzzy regression carries that imprecision explicitly instead of discarding it, and multi-criteria decision methods then compare whole scenarios rather than forcing a single answer.\n\n\nOzon, R. H., Reynoso-Meza, G. (2024). Predictive Maintenance Strategies in Agriculture Using Survival Analysis. XXV Congresso Brasileiro de Automática (CBA), Rio de Janeiro\n  When is a machine about to fail, and what does waiting cost? Survival analysis — the statistics of time-to-event, borrowed from medicine — is applied to agricultural equipment so maintenance is scheduled by risk rather than by calendar.\n\n\nOzon, R. H., Reynoso-Meza, G. (2024). Efficiency and Efficacy Comparison between NSGA-II and Differential Evolution in Multi-Objective Portfolio Optimization. ICPR Americas 2024 — Ohio University\n  Two evolutionary algorithms are routinely used to trade risk against return in portfolios, and practitioners tend to pick one by habit. This puts them on the same problem and measures both the quality of the solutions and the computational cost of reaching them.\n\n\nOzon, R., de Lima, J. D., Dranka, G. (2024). Enhancing Grain Portfolio Risk Management with GAMLSS and MSGARCH. XXIV Encontro Brasileiro de Finanças (EBFIN) proceedings\n  Grain prices do not only get more or less volatile — the whole shape of their distribution moves, including skew and fat tails. GAMLSS tracks those moments over time and MSGARCH captures shifts between calm and turbulent regimes, both put to work on portfolio risk. See the case study \n\n\n\nTalks & posters\nOzon, R. H. (2024). PhD Finalist. XI ENPPEPRO — Encontro Nacional de Programas de Pós-Graduação em Engenharia de Produção\n  Doctoral research selected as a finalist at the national meeting of Brazilian graduate programmes in industrial engineering.\n\n\nOzon, R. H. (2024). Integrating GAMLSS and Bayesian MSGARCH Models for Enhanced Forecasting of Commodity Price Returns: A Novel Approach in Financial Econometrics. 1st SouthStat Meeting (UFPR) — poster\n  The poster version of the grain-portfolio work: combining a time-varying distribution shape with Bayesian regime-switching volatility to forecast commodity returns. See the case study \n\n\nOzon, R. H. (2023). The Use of Time Series Disaggregation with the tempdisagg Package in Econometric Models. R Day (UFPR)\n  Economic series often arrive yearly when the decision needs monthly numbers. This shows how temporal disaggregation in R rebuilds the higher-frequency series without inventing movement the data cannot support.\n\n\nOzon, R. H., Reynoso-Meza, G. (2023). Portfolio Optimization with GARCH Models Using Multiple Time Windows for Pareto Frontiers. APREPRO / ConBRepro paper\n  A risk–return frontier estimated on a single window can be an artefact of that window. Building frontiers across several windows shows which trade-offs survive and which were an accident of the sample.\n\n\n\nWorking papers (2025–2026)\nDoctoral research pipeline: sixteen manuscripts in preparation and submission. Titles subject to change; drafts available on request.\nPortfolio optimization & decision-making\nAn Integration Framework for Multi-Objective Commodity Portfolio Decision-Making thesis synthesis — flagship paper\n  The thesis synthesis: how forecasting, risk modelling and multi-objective optimisation fit together into one decision process instead of three disconnected steps.\n\nA Many-Objective Evolutionary Benchmark for Multi-Period Commodity Portfolios\n  Real portfolio decisions weigh more than two goals at once. A benchmark for algorithms that handle many objectives over multiple periods.\n\nMany-Objective Optimization of Technical Trading Strategies with R. Vianna\n  Trading rules are usually tuned for return alone. Here they are optimised against several competing criteria at the same time.\n\nRegime-Conditional Dynamic Programming for Portfolio Refinement\n  A portfolio built for a calm market is the wrong portfolio for a turbulent one. This conditions the decision on the regime the market is actually in.\n\nDistribution-Free Robust Control of Commodity Portfolios Under Regime Uncertainty\n  Methods that assume a specific probability distribution fail when the assumption breaks. This asks what can still be guaranteed without making that assumption.\n\nCapacity Constraints and Multi-Asset Generalisation of Commodity Portfolio Strategies\n  A strategy that works on paper can be impossible to execute at scale. This adds real capacity limits and extends the approach across several assets.\n\nPareto-Optimal Reinforcement Learning Portfolios for Commodity Trading\n  Reinforcement learning normally optimises one reward. This asks it to hold the risk–return trade-off open instead of collapsing it into a single score.\n\n\nForecasting & volatility modeling\nMSGARCH Against Competing Models for Commodity Price Returns\n  Does regime-switching volatility actually beat the simpler alternatives on grain prices, or only look more sophisticated? A direct comparison. See the case study \n\nTime-Varying Higher Moments in Agricultural Commodities via GAMLSS\n  Skew and kurtosis in crop prices are not constant, yet most models treat them as if they were. GAMLSS lets them move with time.\n\nChaos and Complexity in Economic and Financial Time Series\n  Some of what looks like random noise in economic data is deterministic structure. This examines which is which, and what follows for forecasting.\n\n\nMarket structure, breaks & early warnings\nCausal Inference for Structural Breaks in Time Series\n  A series changes course — but was it caused by the event everyone blames, or did it merely coincide with it? Causal methods applied to break detection.\n\nCommodity Price Breaks: Detection versus Prediction\n  Spotting a break after it happens is a different problem from anticipating one. This separates the two and asks how much of the second is achievable.\n\nPrice Transmission in Four Brazilian Agricultural Commodities\n  When an international price moves, how much of it reaches the Brazilian producer, and how long does it take? Measured across four commodities.\n\nRegime-Aware Hybrid Anomaly Detection for Early Warnings in Food Security\n  An early-warning system that mistakes a normal seasonal swing for a crisis is worse than none. This makes anomaly detection aware of the regime, for food-security warnings.\n\n\nFoundations & applications\nAI and Econometric Methods for Commodity Portfolio Optimization: A Systematic Literature Review\n  A systematic review mapping what machine learning and classical econometrics have each contributed to commodity portfolio work, and where they have not yet met.\n\nReal Options Valuation via Bayesian MCMC\n  The value of being able to wait, expand or abandon an investment, estimated with Bayesian methods that carry the uncertainty through instead of hiding it in a point estimate.\n\n\n\nAdvising\nOzon, R. H. (2024–2025). Scientific Initiation Advisorship (PIBIC / PIBIC Jr., PUCPR) — concluded. Research project: \"Innovations in Financial Modeling: AI and Econometrics Approaches for Agricultural Commodities Portfolio Optimization\" project site · advisor declaration\n\nOzon, R. H. (2024). Evaluation Declaration for SEMIC/SEMITI. XXXI Scientific Initiation Seminar at PUCPR declaration"
+  },
+  {
+    "objectID": "research.html#peer-review-committees",
+    "href": "research.html#peer-review-committees",
+    "title": "Rodrigo Hermont Ozon",
+    "section": "Peer review & committees",
+    "text": "Peer review & committees\n\n  \n    Reviewer — Applied Soft Computing\n    Peer reviewer for the Applied Soft Computing journal (Elsevier), 2024 – present.\n    Reviewer certificate \n  \n  \n    Reviewer — PRINCIPIA\n    Peer reviewer for the PRINCIPIA journal (UFJF, Juiz de Fora), 2024 – present.\n    Journal website \n  \n  \n    Scientific Advisory Committee\n    Scientific Advisory Committee member at PUCPR (2023; 2024–2025), supporting the evaluation\n    of research and scientific initiation programs.\n  \n\n\n\n  Google Scholar\n  Lattes CV\n  ORCID"
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html",
+    "href": "portfolio/multiagent-commodities.html",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "",
+    "text": "Case Study 01 · Live\n\n\n\n\nLLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 167 tests"
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html#the-business-question",
+    "href": "portfolio/multiagent-commodities.html#the-business-question",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "The business question",
+    "text": "The business question\nWhat is corn and soybean price volatility telling us — and can a language model write that analysis without inventing a single number?\nThe second half is the harder one. A model that hallucinates a plausible figure in a commodity report is worse than no report at all, because the figure looks right."
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html#the-data",
+    "href": "portfolio/multiagent-commodities.html#the-data",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "The data",
+    "text": "The data\nDaily settlement prices from CBOT via Yahoo Finance: corn (ZC=F), 2,007 observations, and soybeans (ZS=F), 2,009 observations, both from 2 January 2018 to 30 December 2025. The USD/BRL rate (BRL=X) comes along, because analysing Brazilian domestic grain prices without the exchange rate is simply wrong.\nEverything is frozen in a parquet cache with a metadata sidecar recording where each series came from. Two consequences: the published chart does not change on its own when the market moves, and the end-to-end test runs with no network.\nThe domestic CEPEA series is not implemented in this version. Rather than hide that, the collector falls back to the international series and the report prints the source swap above the chart. A system that states what it could not get is worth more than one that quietly substitutes."
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html#method-and-why-this-one",
+    "href": "portfolio/multiagent-commodities.html#method-and-why-this-one",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nThe agents do not know econometrics. Four of them — Collector, Econometrician, Critic, Writer — decide which function of the core to call and with which arguments. The core is plain, deterministic, testable Python and R. When the agent framework ages, the shell gets replaced and the part that matters stays.\nPython orchestrates, R models. The model ladder is MSGARCH → GARCH → ARIMA, called over subprocess with a JSON contract. No rpy2, deliberately: it is the number-one source of installation pain in R+Python projects, and the goal was that anyone can clone and run. As a bonus, the R script runs standalone in RStudio when a model needs debugging.\nThe Critic rejects, with a written reason. It runs Ljung-Box and ARCH-LM on the residuals. Failure is not a silent retry — it is a rejection with a stated cause, capped at three attempts, backing down the model family each time.\nThe guard. The Writer cannot put a number in the text that does not exist in the results object. An invented number fails the run. The guard’s limits are documented in the repository too — it verifies digit provenance, not semantic meaning — because a case study that oversells its own safety net defeats the purpose."
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html#result",
+    "href": "portfolio/multiagent-commodities.html#result",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "Result",
+    "text": "Result\nThe interesting outcome is not the forecast. It is that the critique loop fired in production, not in a test: in both commodities the Critic rejected MSGARCH — the signature model of my doctoral work — and approved GARCH on the second attempt.\nFor corn, ARCH-LM returned p = 0.0405; for soybeans, p = 0.0242. Both below 0.05, both meaning heteroskedasticity the model had not captured. The report says so, names the family, and gives the reason.\n\n\n\nCorn (ZC=F), 2018–2025. The system produced this chart and the report beside it, from the frozen cache, with no network and no API key.\n\n\nOn the backtest, honesty matters more than a good-looking number: over a 20-step horizon the model scored MAPE 1.75% for corn — identical to the random walk. That is not a failure, it is arithmetic. Volatility models fix the mean at zero by construction, so the point forecast ties with a random walk by definition. Their contribution lives in the interval width and the residual diagnostics, and the system’s own report explains this without being asked."
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html#code",
+    "href": "portfolio/multiagent-commodities.html#code",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "Code",
+    "text": "Code\ngithub.com/rhozon/commodity-agents\nClone it, pip install -r requirements.txt, install R 4.x with the packages listed in the README, then:\npython run.py --commodity milho --fake-llm\nIt runs from the frozen cache — no API key, no network. The test suite is 167 tests via pytest -q. The examples/ folder holds the reports for both commodities, generated by the system itself."
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html",
+    "href": "portfolio/portfolio-optimization.html",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "",
+    "text": "Case Study 03 · Doctoral research\n\n\n\n\nNSGA-II · Differential Evolution · Pareto frontiers · Multi-period"
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html#the-business-question",
+    "href": "portfolio/portfolio-optimization.html#the-business-question",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "The business question",
+    "text": "The business question\nWhich basket of commodity positions should a desk hold, when the decision has to satisfy several goals at once that genuinely conflict — and when the answer has to hold up over successive periods, not just today?\nThe convenient move is to blend the goals into a single score and optimise that. It produces one number and hides the judgement inside the weights, which is exactly the judgement the decision-maker was supposed to make."
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html#the-data",
+    "href": "portfolio/portfolio-optimization.html#the-data",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "The data",
+    "text": "The data\nPublic agricultural commodity price series, multi-period, plus the volatility and scenario structures produced by the forecasting stage. No client data, no proprietary feeds."
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html#method-and-why-this-one",
+    "href": "portfolio/portfolio-optimization.html#method-and-why-this-one",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nKeep the trade-off open. Rather than one optimum, evolutionary multi-objective algorithms return a Pareto frontier: the set of portfolios where improving one objective necessarily costs another. The decision-maker chooses a point on that frontier knowing what the choice costs, instead of inheriting a weighting someone else picked.\nMore than two objectives. With three or more competing criteria the problem becomes many-objective, where the usual algorithms degrade in ways that are easy to miss. That makes the choice of algorithm a research question rather than a default — NSGA-II and differential evolution do not behave the same way, and comparing them properly needs a benchmark designed for the multi-period commodity setting rather than borrowed from elsewhere.\nRegimes change the answer. A frontier estimated in a calm market is the wrong frontier for a turbulent one. Conditioning the decision on the estimated market regime, and refining it with dynamic programming across periods, ties the optimisation back to the volatility modelling upstream instead of treating it as a separate exercise.\nWhat survives contact with reality. A strategy that is optimal on paper can be impossible to execute at size. Capacity limits, turnover and generalisation across several assets are part of the problem statement here, not an afterthought."
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html#result",
+    "href": "portfolio/portfolio-optimization.html#result",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Result",
+    "text": "Result\nDeliberately not published here. These manuscripts are under peer review or being prepared for submission. Publishing their results on a personal site ahead of the journals would be poor practice, so the frontiers, benchmark tables and comparisons stay out of this page until the papers are out.\nThe one exception is work that is already public: a conference paper comparing NSGA-II and differential evolution on multi-objective portfolio optimisation was presented at ICPR Americas 2024, and a second on Pareto frontiers built across multiple time windows is in the ConBRepro proceedings."
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html#code",
+    "href": "portfolio/portfolio-optimization.html#code",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Code",
+    "text": "Code\nNot yet public. The implementation belongs to manuscripts under review, and releasing it before they are decided would carry the same problem as publishing the results.\nPublished papers on this line \nFor running code in the same domain, the multi-agent commodity analyst is public, tested and reproducible."
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html",
+    "href": "portfolio/langgraph-parity.html",
+    "title": "Framework or Hand-Rolled?",
+    "section": "",
+    "text": "Case Study 05 · Live\n\n\n\n\nLangGraph · StateGraph · Parity testing · 173 tests"
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html#the-business-question",
+    "href": "portfolio/langgraph-parity.html#the-business-question",
+    "title": "Framework or Hand-Rolled?",
+    "section": "The business question",
+    "text": "The business question\nA team is about to build an agentic system. Someone asks whether to adopt an agent framework or write the orchestration by hand. The honest answer is it depends — which helps nobody.\nSo: take a multi-agent system that already works without a framework, rebuild its orchestration on LangGraph, and measure the difference instead of arguing about it."
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html#the-setup",
+    "href": "portfolio/langgraph-parity.html#the-setup",
+    "title": "Framework or Hand-Rolled?",
+    "section": "The setup",
+    "text": "The setup\nThe subject is the multi-agent commodity analyst from case study 01 — four agents over a deterministic econometric core in R, with a critique loop and an anti-hallucination guard.\nThe rule that makes the comparison mean anything: only the orchestration changes. The four agents and the whole agro/ core are imported, not rewritten. The hand-rolled version is a for loop with a break; the LangGraph version is a StateGraph with five nodes and two conditional edges.\nSwitching between them is a flag:\npython run.py --commodity milho --pergunta \"...\" --fake-llm --engine manual\npython run.py --commodity milho --pergunta \"...\" --fake-llm --engine langgraph"
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html#method-and-why-this-one",
+    "href": "portfolio/langgraph-parity.html#method-and-why-this-one",
+    "title": "Framework or Hand-Rolled?",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nParity first, opinions later. Six tests run both engines on the same input and compare the results field by field: chosen model family, number of attempts, the rejection history, the residual diagnostics, the backtest, the set of numbers the guard authorises — and the final markdown.\nWithout that, “I reimplemented it in LangGraph” is a claim. With it, it is a property. And a reimplementation that behaves almost the same is worse than none at all: it looks like an alternative and is actually a trap.\nThe agents did not become tools. LangGraph offers ToolNode and the ReAct pattern, where the model decides which tool to call next. That is not what this system does. The order — collect, fit, critique, write — is fixed on purpose, and the LLM chooses parameters, never the next step. Turning fit_model into a tool would have been a change of semantics disguised as a change of framework, and the comparison only holds if both sides do the same thing."
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html#result",
+    "href": "portfolio/langgraph-parity.html#result",
+    "title": "Framework or Hand-Rolled?",
+    "section": "Result",
+    "text": "Result\nThe reports are byte-identical. Same SHA-256, end to end, from the frozen cache:\nmanual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nlanggraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nWhat the framework charged. MemorySaver — the checkpointer, and the main reason to adopt LangGraph at all — serialises the state at every node with msgpack. A pandas.Series is not serialisable, so the first version of the graph failed outright:\nTypeError: Type is not msgpack serializable: Series\nThe hand-written loop never meets this, because there the series is a local variable read once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of primitives holding a file path — and every node that needs the series re-reads it from disk.\nMeasured at runtime: 1 parquet read in the manual engine, 3 in the graph. Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.\nWhat the framework bought. Pipeline state stops being implicit in local variables and becomes a declared TypedDict. The rejection loop becomes a conditional edge you can read without tracing control flow in your head. And the checkpointer lets you inspect and resume a run mid-execution — something the hand-rolled loop does not offer.\nThe price in code: 54 lines of code hand-rolled against 120 in the graph, for identical behaviour.\nSo which one? For this system, the hand-written loop wins: the pipeline is short, the control flow fits on one screen, and nothing here needs resumability. The framework would start paying for itself with more branches, human-in-the-loop pauses, or runs long enough that resuming matters. That is a conclusion drawn from a measurement, not from taste — and either way, the parity tests mean switching costs a flag."
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html#code",
+    "href": "portfolio/langgraph-parity.html#code",
+    "title": "Framework or Hand-Rolled?",
+    "section": "Code",
+    "text": "Code\ngithub.com/rhozon/commodity-agents\nBoth engines live in the same repository: agents/orchestrator.py and agents_langgraph/graph.py, with tests/test_paridade.py holding them to the same result. The suite is 173 tests, and it runs with no API key and no network.\nlanggraph and langchain-core are in requirements.txt, but only the graph engine and the parity test import them — the import is deferred, so the default engine needs neither."
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html",
+    "href": "portfolio/hospital-admissions.html",
+    "title": "Forecasting Hospital Admissions",
+    "section": "",
+    "text": "Case Study 07 · Live\n\n\n\n\nTime series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked for coverage · Python · 19 tests"
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#the-business-question",
+    "href": "portfolio/hospital-admissions.html#the-business-question",
+    "title": "Forecasting Hospital Admissions",
+    "section": "The business question",
+    "text": "The business question\nBeds, nursing shifts, supplies and the budget behind them are committed months in advance, and all of them depend on one number: how many patients will be admitted. A state health department, a hospital network and a health plan all face it.\nThe usual answer is last year’s figure for the same month, adjusted by feel. It is simple, and it is a fair benchmark. The question here is how much better a model does on months it has not seen, and whether the range around its forecast can be trusted when someone sizes a team on it."
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#the-data",
+    "href": "portfolio/hospital-admissions.html#the-data",
+    "title": "Forecasting Hospital Admissions",
+    "section": "The data",
+    "text": "The data\nPublic data from DATASUS: every hospital admission paid by SUS, Brazil’s public health system, counted by state and month from January 2008 to September 2026. That is 27 series, and about 1.2 million admissions a month for the country as a whole.\nThe same admissions can be counted by the month the patient was admitted or by the month the hospital’s bill was processed. The first looks like the obvious choice. For the latest months it is wrong, because hospitals send their records late:\n\n\n\nThe same admissions counted two ways, Brazil, January 2025 to September 2026. By month of admission, the last three months are 7%, 19% and 43% short, because those records are still arriving.\n\n\nA model fitted on that line would see demand collapsing in the third quarter of 2026. Nothing collapsed; the paperwork was late. The forecast uses the processing month.\nThe processing month has its own flaw: now and then a state’s batch does not arrive. Acre shows zero admissions in August and September 2026, and Roraima drops from about 4,000 a month to 517 and then to zero. Those are missing records, not missing patients."
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#method-and-why-this-one",
+    "href": "portfolio/hospital-admissions.html#method-and-why-this-one",
+    "title": "Forecasting Hospital Admissions",
+    "section": "Method, and why this one",
+    "text": "Method, and why this one\nMissing data is called missing. A month below 60% of the median of the previous 12 is treated as a batch that never arrived and left out. The rule looks only at the past, so it works on the most recent month. It flags 9 months in 3 states.\nThe pandemic is left out of the fit. From March 2020 to December 2021 elective care stopped and then caught up. Those months describe a shock, not the seasonal pattern the forecast has to reproduce, so the model skips them as if they were missing.\nA simple model, with the calendar as its only outside input. Seasonal ARIMA on the log of admissions, the specification known as the airline model, with the number of working days in each month as a regressor. Elective admissions happen on working days, and a February with Carnival has two fewer of them than one without. The calendar is known in advance, so the forecast can use it honestly. Adding it cuts the error over the first three months from 2.82% to 2.62% of the volume.\nTested the way it would be used. At each of 33 dates, from January 2023 to September 2025, the model is refitted on the data available at that date and forecasts the next 12 months, for every state. That gives 891 twelve-month forecasts to score. The benchmark goes through exactly the same test. Each decision above has its own variant in the test, so its effect is measured rather than assumed.\nThe error measure is WAPE: total absolute error divided by total admissions. It reads as “off by X% of the volume”, and small states do not dominate it."
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#result",
+    "href": "portfolio/hospital-admissions.html#result",
+    "title": "Forecasting Hospital Admissions",
+    "section": "Result",
+    "text": "Result\n\n\n\nError by months ahead, all 27 states and 33 forecast dates. The benchmark repeats the same month of the previous year.\n\n\n\n\n\n\n\n\n\n\n\nError, % of admissions (WAPE)\n1 to 3 months\n4 to 6 months\n7 to 12 months\n\n\n\n\nSame month last year\n5.98\n5.69\n5.32\n\n\nModel, pandemic left in\n3.08\n3.75\n4.00\n\n\nModel, pandemic left out\n2.82\n3.35\n3.92\n\n\nModel, pandemic left out, with working days\n2.62\n3.21\n3.81\n\n\n\nOver the first three months the error falls by more than half, from 6.0% to 2.6% of the volume. The model beats the benchmark in all 27 states. For the 12-month total, the figure a budget is built on, the typical error is 2.7% against 4.5%, and in the worst tenth of cases 7.0% against 9.1%.\nThe bigger difference is in the range around the forecast. A band labelled 80% should contain the actual value about 80% of the time. With the pandemic left in, the model learns that the world can fall apart at any moment. Its band ends up 15% to 27% of the forecast wide and contains the actual value 87% to 96% of the time. A plan sized on that band carries beds and staff it will not need. With the pandemic left out, the band is 10% to 16% wide and contains the actual value 80% to 83% of the time, which is what it promises.\nThe forecast for the next twelve months, Paraná as an example:\n\n\n\nParaná, monthly admissions and the forecast for October 2026 to September 2027 with its 80% band. The shaded years were left out of the fit.\n\n\nAbout 1.16 million admissions over the twelve months, 3.8% more than in the previous twelve. The repository has the same forecast for every state.\nThe limits are part of the result. Small states are hard for every model: Roraima and Amapá stay above 16% error. State totals are the right level for a health department, while a hospital needs the same pipeline on its own cut of the data. And the pandemic window was set by hand. A shock of that size would call for the same decision again."
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#applied-to-your-data",
+    "href": "portfolio/hospital-admissions.html#applied-to-your-data",
+    "title": "Forecasting Hospital Admissions",
+    "section": "Applied to your data",
+    "text": "Applied to your data\nThis is the Custom Forecasting package on public data: admissions here, and in your case demand, claims, exams or default. The steps are the same: find what in the data is a recording artifact, beat a simple benchmark on months the model has not seen, and deliver a band that holds what it promises."
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#code",
+    "href": "portfolio/hospital-admissions.html#code",
+    "title": "Forecasting Hospital Admissions",
+    "section": "Code",
+    "text": "Code\ngithub.com/rhozon/hospital-admissions-forecast\nWith Python 3.11 or later:\npip install -e \".[dev]\"\npytest -v\npython -m admissions.cli backtest\npython -m admissions.cli forecast\npython -m admissions.cli figures\npython -m admissions.cli fetch    # refresh the data from DATASUS\nThe repository includes a snapshot of the DATASUS data, so the backtest reproduces without network access. The suite has 19 tests, among them a parser test on real DATASUS output and hand-checked working-day counts. CI runs them on every push, followed by a short backtest. The README lists the design decisions and the limits."
   },
   {
     "objectID": "teaching.html",
