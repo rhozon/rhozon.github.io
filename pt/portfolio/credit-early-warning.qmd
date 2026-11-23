@@ -7,7 +7,7 @@ image: "https://rhozon.github.io/assets/case-credit-early-warning-pt.png"
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Estudo de Caso 08 · No ar</div>
+<div class="rh-kicker">Estudo de Caso 08 · Resultados em revisão</div>
 # Alerta Antecipado de Risco de Crédito Corporativo
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
@@ -85,14 +85,21 @@ devolveram, e bloqueia o parecer se algum não tiver fonte.
 ::: {.rh-section}
 ## Resultado
 
+**Resultados em revisão.** Uma revisão do código, em 23 de novembro de 2026, achou dois erros
+que mudam resultados publicados. A regra que lê o parágrafo de continuidade operacional no
+parecer do auditor também pegava uma frase-padrão que todo parecer traz desde 2017, então a
+marcação ficou errada para a maioria dos documentos desde então, inclusive no parecer sobre a
+Casas Bahia. E a conferência da calibração só guardava janelas ainda não encerradas quando
+terminavam em default, o que inflou as taxas observadas. A conclusão sobre calibração, os
+pareceres e o artigo ficam retirados até a rodada corrigida ser publicada aqui, com errata. Os
+números abaixo vêm da rodada que está sendo corrigida.
+
 ![AUC da PD de 12 meses de cada modelo no teste fora do tempo, com intervalos de 95%. Os três modelos de árvores estão em vermelho; a linha tracejada marca o escore de Altman.](../../assets/case-credit-early-warning-pt.png)
 
 Fora do tempo, de 2020 em diante, os modelos de árvores ordenam melhor as empresas. XGBoost e
 uma random survival forest chegam a uma AUC de cerca de 0,85 na PD de 12 meses, contra 0,78 do
 escore de Altman e 0,76 do logit de risco, diferença que resiste à correção de Holm para
-comparações múltiplas. As redes neurais não repetem o ganho num painel deste tamanho. Nenhum
-modelo acerta o nível do risco em todos os prazos: em 36 meses quase todos subestimam a taxa
-observada, então as curvas precisam de recalibração antes de virar provisão.
+comparações múltiplas. As redes neurais não repetem o ganho num painel deste tamanho.
 
 Os sinais lidos pelos modelos de linguagem não melhoraram o teste registrado: AUC de 0,756 com
 eles e de 0,758 sem eles. O artigo mostra também uma falha encontrada depois da abertura do
@@ -102,10 +109,8 @@ de uma controlada). Rodado de novo com eles, o modelo com sinais chega a uma AUC
 rodada veio depois da abertura, então é exploratória e precisa de um novo período de teste
 para valer.
 
-Pareceres de quatro casos passados, escritos com o que se sabia um ano antes de cada pedido,
-mostram o alcance e o limite. A Casas Bahia aparecia com PD de 12 meses de 4,3%, cerca de quatro
-vezes a média. A Americanas, cujo problema estava dentro dos próprios balanços, aparecia abaixo
-da média.
+Os pareceres de quatro casos passados, escritos com o que se sabia um ano antes de cada pedido,
+estão sendo refeitos com a regra de continuidade corrigida.
 :::
 
 ::: {.rh-section}
@@ -142,7 +147,6 @@ todas as companhias abertas, mas essas notas ficam privadas.
 
 ```{=html}
 <p>
-<a class="rh-btn rh-btn-primary" href="../../assets/credit-early-warning-paper.pdf">Ler o artigo (PDF, em inglês)</a>
 <a class="rh-btn" href="https://github.com/rhozon/corporate-credit-early-warning">github.com/rhozon/corporate-credit-early-warning</a>
 </p>
 ```
