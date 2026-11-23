@@ -161,7 +161,7 @@ python -m distress.cli test        # the out-of-time test
 ```
 
 Every language-model answer is cached in the repository, so the labels reproduce without an
-API key. The suite has **192 tests**, among them one that fails the build if anything
+API key. The suite has **211 tests**, among them one that fails the build if anything
 published names a company without an event next to a probability or a score. CI runs them
 on every push.
 :::

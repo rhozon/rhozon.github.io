@@ -116,7 +116,7 @@
     "href": "portfolio/credit-early-warning.html#paper-and-code",
     "title": "Corporate Credit Early Warning",
     "section": "Paper and code",
-    "text": "Paper and code\n\nRead the paper (PDF)\ngithub.com/rhozon/corporate-credit-early-warning\n\nWith Python 3.11 or later:\npip install -e \".[models,dev]\"\npytest -v\npython -m distress.cli events      # event base from CVM filings\npython -m distress.cli panel       # point-in-time panel\npython -m distress.cli test        # the out-of-time test\nEvery language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has 192 tests, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push."
+    "text": "Paper and code\n\nRead the paper (PDF)\ngithub.com/rhozon/corporate-credit-early-warning\n\nWith Python 3.11 or later:\npip install -e \".[models,dev]\"\npytest -v\npython -m distress.cli events      # event base from CVM filings\npython -m distress.cli panel       # point-in-time panel\npython -m distress.cli test        # the out-of-time test\nEvery language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has 211 tests, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push."
   },
   {
     "objectID": "portfolio/hybrid-rag.html",

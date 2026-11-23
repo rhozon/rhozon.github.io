@@ -167,7 +167,7 @@ python -m distress.cli test        # o teste fora do tempo
 ```
 
 Toda resposta dos modelos de linguagem fica em cache no repositório, então os rótulos se
-reproduzem sem chave de API. A suíte tem **192 testes**, entre eles um que derruba o
+reproduzem sem chave de API. A suíte tem **211 testes**, entre eles um que derruba o
 build se algo publicado citar uma empresa sem evento ao lado de uma probabilidade ou de uma
 nota. O CI roda os testes a cada push. O README em inglês lista as decisões de projeto e os
 limites.
