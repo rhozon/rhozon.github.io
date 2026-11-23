@@ -419,6 +419,28 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
   });
 })();
 </script>
+<script>
+// EN/PT no menu leva à mesma página na outra língua, quando ela existe
+(function () {
+  var links = document.querySelectorAll('.navbar a.nav-link');
+  var lang = null;
+  for (var i = 0; i < links.length; i++) {
+    var t = links[i].textContent.trim();
+    if (t === 'EN' || t === 'PT') { lang = links[i]; break; }
+  }
+  if (!lang || !window.fetch || location.protocol === 'file:') return;
+  var toPt = lang.textContent.trim() === 'PT';
+  var base = lang.href.replace(toPt ? /pt\/(index\.html)?$/ : /(index\.html)?$/, '');
+  var here = location.origin + location.pathname;
+  if (here.indexOf(base) !== 0) return;
+  var rel = here.slice(base.length);
+  if (rel === 'cv.html') return; // o CV só existe em inglês
+  var target = toPt ? base + 'pt/' + rel : base + rel.replace(/^pt\//, '');
+  fetch(target, { method: 'HEAD' }).then(function (r) {
+    if (r.ok) { lang.href = target; }
+  }).catch(function () {});
+})();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
