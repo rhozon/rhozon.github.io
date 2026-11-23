@@ -220,12 +220,12 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Estudo de Caso 08 · Resultados em revisão
+Estudo de Caso 08 · No ar, corrigido em 23 de novembro de 2026
 </div>
 <section id="alerta-antecipado-de-risco-de-crédito-corporativo" class="level1">
 <h1>Alerta Antecipado de Risco de Crédito Corporativo</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por modelos de linguagem · Agentes com trava numérica · Revisão sistemática · Python · 192 testes
+Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por modelos de linguagem · Agentes com trava numérica · Revisão sistemática · Python · 211 testes
 </p>
 </section>
 </div>
@@ -237,7 +237,7 @@ Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por
 <section id="os-dados" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
 <p>Tudo é público. As demonstrações trimestrais e anuais de todas as companhias abertas vêm do portal de dados abertos da CVM, cada uma datada pelo dia em que chegou ao regulador, então o modelo só vê o que um analista poderia ter visto na época. O parecer do auditor é lido em busca do parágrafo de continuidade operacional. Os fatos relevantes, que a empresa é obrigada a publicar quando algo importante acontece, trazem a notícia cedo: uma renegociação de dívida, um waiver de covenant, uma venda de ativo para fazer caixa, um diretor financeiro que sai. Juros, inflação, atividade, desemprego e inadimplência das empresas vêm do Banco Central.</p>
-<p>A parte difícil é o desfecho. Nenhuma tabela pública diz quando cada companhia aberta entrou em recuperação judicial ou extrajudicial; o cadastro mostra só a situação atual. A base de eventos foi reconstruída a partir de três rastros públicos (o cadastro, os documentos das empresas em recuperação e os fatos relevantes que anunciam o pedido), com um modelo de linguagem separando o pedido da própria empresa do pedido de um cliente ou de uma controlada, e depois conferida por um segundo modelo, que lê os documentos de cada evento, com uma regra fixa. São 103 eventos em 87 empresas desde 2011.</p>
+<p>A parte difícil é o desfecho. Nenhuma tabela pública diz quando cada companhia aberta entrou em recuperação judicial ou extrajudicial; o cadastro mostra só a situação atual. A base de eventos foi reconstruída a partir de três rastros públicos (o cadastro, os documentos das empresas em recuperação e os fatos relevantes que anunciam o pedido), com um modelo de linguagem separando o pedido da própria empresa do pedido de um cliente ou de uma controlada, e depois conferida por um segundo modelo, que lê os documentos de cada evento, com uma regra fixa. São 106 eventos em 89 empresas desde 2011.</p>
 </section>
 <section id="o-método-e-por-que-este" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-método-e-por-que-este">O método, e por que este</h2>
@@ -248,16 +248,16 @@ Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por
 </section>
 <section id="resultado" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="resultado">Resultado</h2>
-<p><strong>Resultados em revisão.</strong> Uma revisão do código, em 23 de novembro de 2026, achou dois erros que mudam resultados publicados. A regra que lê o parágrafo de continuidade operacional no parecer do auditor também pegava uma frase-padrão que todo parecer traz desde 2017, então a marcação ficou errada para a maioria dos documentos desde então, inclusive no parecer sobre a Casas Bahia. E a conferência da calibração só guardava janelas ainda não encerradas quando terminavam em default, o que inflou as taxas observadas. A conclusão sobre calibração, os pareceres e o artigo ficam retirados até a rodada corrigida ser publicada aqui, com errata. Os números abaixo vêm da rodada que está sendo corrigida.</p>
+<p><strong>Corrigido em 23 de novembro de 2026.</strong> Uma revisão independente do código, feita depois que a primeira versão foi ao ar, achou erros que mudaram resultados publicados. A regra que lê o parágrafo de continuidade operacional no parecer do auditor também pegava uma frase-padrão que todo parecer traz desde 2016, e o primeiro parecer sobre a Casas Bahia citou por engano um parágrafo desses. A conferência da calibração só guardava janelas ainda não encerradas quando terminavam em pedido, o que inflou as taxas observadas. O código foi corrigido, cada correção com um teste, e o teste inteiro rodou de novo; as hipóteses e o teste registrado não mudaram. O artigo abre com uma errata que lista cada correção e as conclusões que mudaram.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../../assets/case-credit-early-warning-pt.png" class="img-fluid figure-img"></p>
 <figcaption>AUC da PD de 12 meses de cada modelo no teste fora do tempo, com intervalos de 95%. Os três modelos de árvores estão em vermelho; a linha tracejada marca o escore de Altman.</figcaption>
 </figure>
 </div>
-<p>Fora do tempo, de 2020 em diante, os modelos de árvores ordenam melhor as empresas. XGBoost e uma random survival forest chegam a uma AUC de cerca de 0,85 na PD de 12 meses, contra 0,78 do escore de Altman e 0,76 do logit de risco, diferença que resiste à correção de Holm para comparações múltiplas. As redes neurais não repetem o ganho num painel deste tamanho.</p>
-<p>Os sinais lidos pelos modelos de linguagem não melhoraram o teste registrado: AUC de 0,756 com eles e de 0,758 sem eles. O artigo mostra também uma falha encontrada depois da abertura do teste: o tratamento dos valores extremos apagou os cinco tipos de sinal mais raros (quebra de covenant, atraso de pagamento, dúvida sobre continuidade, rebaixamento de rating e recuperação de uma controlada). Rodado de novo com eles, o modelo com sinais chega a uma AUC de 0,783. Essa rodada veio depois da abertura, então é exploratória e precisa de um novo período de teste para valer.</p>
-<p>Os pareceres de quatro casos passados, escritos com o que se sabia um ano antes de cada pedido, estão sendo refeitos com a regra de continuidade corrigida.</p>
+<p>Fora do tempo, de 2020 em diante, os modelos de árvores ordenam melhor as empresas: o XGBoost de sobrevivência e uma random survival forest chegam a uma AUC de cerca de 0,85 na PD de 12 meses, contra 0,79 do escore de Altman e 0,82 do logit de risco. Eles superam o Altman mesmo quando as empresas são reamostradas inteiras; a vantagem sobre o logit de risco, um ponto de comparação bem especificado, não é significativa nesse teste. No nível do risco, em 36 meses a taxa observada é de 2,9% e a maioria dos modelos a superestima; o XGBoost de sobrevivência é o que chega mais perto. As curvas precisam ser recalibradas com a inadimplência da própria carteira antes de virar provisão.</p>
+<p>Os sinais lidos pelos modelos de linguagem não melhoraram o teste registrado: AUC de 0,798 com eles e de 0,816 sem eles. O tratamento dos valores extremos tinha apagado os cinco tipos de sinal mais raros; uma rodada com eles mantidos, decidida depois da abertura do teste, chega a 0,818, também sem ganho. Lidos só no assunto dos documentos, esses sinais não acrescentam aos balanços.</p>
+<p>Pareceres de quatro casos passados, escritos com o que se sabia um ano antes de cada pedido, mostram o alcance e o limite. A Casas Bahia aparecia com PD de 12 meses de 3,3%, cerca de três vezes a média. A Americanas, cujo problema estava dentro dos próprios balanços, aparecia abaixo da média.</p>
 </section>
 <section id="o-que-a-literatura-fez-e-não-fez" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-que-a-literatura-fez-e-não-fez">O que a literatura fez e não fez</h2>
@@ -271,6 +271,7 @@ Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por
 <section id="artigo-e-código" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="artigo-e-código">Artigo e código</h2>
 <p>
+<a class="rh-btn rh-btn-primary" href="../../assets/credit-early-warning-paper.pdf">Ler o artigo (PDF, em inglês)</a>
 <a class="rh-btn" href="https://github.com/rhozon/corporate-credit-early-warning">github.com/rhozon/corporate-credit-early-warning</a>
 </p>
 <p>Com Python 3.11 ou mais recente:</p>
@@ -744,18 +745,6 @@ Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por
     </div>   
     <div class="nav-footer-center">
 <p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
-</div>
-    <div class="nav-footer-right">
-      &nbsp;
-    </div>
-  </div>
-</footer>
-
-
-
-
-<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
-</body></html>.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
 </div>
     <div class="nav-footer-right">
       &nbsp;

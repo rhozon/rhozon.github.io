@@ -7,11 +7,11 @@ image: "https://rhozon.github.io/assets/case-credit-early-warning.png"
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Case Study 08 · Results under revision</div>
+<div class="rh-kicker">Case Study 08 · Live, corrected on 23 November 2026</div>
 # Corporate Credit Early Warning
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 192 tests
+Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 211 tests
 </p>
 :::
 
@@ -48,7 +48,7 @@ judicial or out-of-court recovery; the registry shows only the current status. T
 base was rebuilt from three public traces (the registry, the filings of companies in
 recovery and the material facts that announce a filing), with a language model separating
 the company's own filing from a customer's or a subsidiary's, and then checked by a second
-model that reads the filings of each event, under a fixed rule. It holds 103 events in 87 companies since 2011.
+model that reads the filings of each event, under a fixed rule. It holds 106 events in 89 companies since 2011.
 :::
 
 ::: {.rh-section}
@@ -82,30 +82,33 @@ the memo if one has no source.
 ::: {.rh-section}
 ## Result
 
-**Results under revision.** A code review on 23 November 2026 found two errors that change
-published results. The rule that reads the auditor's going-concern paragraph also matched a
-standard sentence that every audit report carries since 2017, so the flag was wrong for most
-filings from then on, the memo on Casas Bahia included. And the calibration check kept
-unfinished windows only when they ended in a default, which overstated the observed rates.
-The calibration finding, the memos and the paper are withdrawn until the corrected run is
-published here, with an erratum. The figures below come from the run being corrected.
+**Corrected on 23 November 2026.** An independent review of the code, after the first
+version went live, found errors that changed published results. The rule that reads the
+auditor's going-concern paragraph also matched a standard sentence that every audit opinion
+carries since 2016, and the first memo on Casas Bahia wrongly cited such a paragraph. The
+calibration check kept unfinished windows only when they ended in a filing, which overstated
+the observed rates. The code was fixed, each fix with a test, and the whole test was run
+again; the hypotheses and the registered test did not change. The paper opens with an erratum
+that lists every correction and the conclusions that changed.
 
 ![AUC of the 12-month PD for each model on the out-of-time test, with 95% intervals. The three tree ensembles are in red; the dashed line marks the Altman score.](../assets/case-credit-early-warning.png)
 
-Out of time, from 2020 on, the tree ensembles rank companies best. XGBoost and a random
-survival forest reach an AUC of about 0.85 for the 12-month PD, against 0.78 for the Altman
-score and 0.76 for the hazard logit, a gap that survives Holm's correction for multiple
-comparisons. The neural networks do not repeat it on a panel of this size.
+Out of time, from 2020 on, the tree ensembles rank companies best: XGBoost survival and a
+random survival forest reach an AUC of about 0.85 for the 12-month PD, against 0.79 for the
+Altman score and 0.82 for the hazard logit. They beat the Altman score even when whole
+companies are resampled together; their edge over the hazard logit, a well-specified
+benchmark, is not significant under that test. On the level of risk, at 36 months the
+observed rate is 2.9% and most models overestimate it, with XGBoost survival closest. The
+curves need recalibration on the lender's own defaults before they feed a provision.
 
-The signals read by the language models did not improve the registered test: an AUC of 0.756
-with them and 0.758 without. The paper also reports a flaw found after the test was opened:
-the treatment of extreme values had erased the five rarest kinds of signal (covenant breach,
-missed payment, going-concern doubt, rating downgrade and a subsidiary's recovery). Run again
-with them kept, the signals lift the AUC to 0.783. That run came after the opening, so it is
-exploratory and needs a new test period to count.
+The signals read by the language models did not improve the registered test: an AUC of 0.798
+with them and 0.816 without. The treatment of extreme values had erased the five rarest kinds
+of signal; a run with them kept, decided after the test was opened, gives 0.818, no gain
+either. Read from subject lines, these signals do not add to the accounts.
 
-Memos on four past cases, written with what was known a year before each filing, are being
-regenerated with the corrected going-concern rule.
+Memos on four past cases, written with what was known a year before each filing, show the
+reach and the limit. Casas Bahia came out with a 12-month PD of 3.3%, about three times the
+average. Americanas, whose problem sat inside its own statements, came out below the average.
 :::
 
 ::: {.rh-section}
@@ -142,6 +145,7 @@ score every listed company, but those scores stay private.
 
 ```{=html}
 <p>
+<a class="rh-btn rh-btn-primary" href="../assets/credit-early-warning-paper.pdf">Read the paper (PDF)</a>
 <a class="rh-btn" href="https://github.com/rhozon/corporate-credit-early-warning">github.com/rhozon/corporate-credit-early-warning</a>
 </p>
 ```
