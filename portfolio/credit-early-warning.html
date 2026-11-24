@@ -220,12 +220,12 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Case Study 08 · Live, corrected on 23 November 2026
+Case Study 08 · Live, version 2 of 24 November 2026
 </div>
 <section id="corporate-credit-early-warning" class="level1">
 <h1>Corporate Credit Early Warning</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 211 tests
+Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 222 tests
 </p>
 </section>
 </div>
@@ -243,12 +243,13 @@ Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals ·
 <h2 class="anchored" data-anchor-id="method-and-why-this-one">Method, and why this one</h2>
 <p><strong>One panel, one test, eight models.</strong> Each listed non-financial company contributes one row per quarter, with what was known at the end of that quarter. Firms that left the market without an event stay in the data until they leave, so the sample does not keep only the survivors. The models go from the classical to the recent: the Altman score in its version for emerging markets, a discrete-time hazard logit, a Cox model, XGBoost as a classifier and as a survival model, a random survival forest, DeepSurv and DeepHit. All are trained up to 2018, skip 2019, and are tested from 2020 on, a period none of them saw.</p>
 <p><strong>Survival models, because the regulation asks for curves.</strong> A survival model gives the probability of default at 12, 24 and 36 months for every company and quarter, which is what lifetime expected loss needs. Whether those probabilities are calibrated, and not only whether they rank companies well, is tested separately.</p>
-<p><strong>Language models read the filings, and are tested like any other variable.</strong> A model reads the subject of each of about 31,000 material facts and marks eleven kinds of distress, with the company’s name and tax number hidden so it cannot recall how the story ended. A second model reads a sample to measure agreement, and 200 documents were read in full to see what the subject line misses. The test of whether these signals add anything was written down and committed before the test period was opened.</p>
+<p><strong>Language models read the filings, and are tested like any other variable.</strong> A model reads the subject of each of about 31,000 material facts and marks eleven kinds of distress, with the company’s registered name, trade name and tax number hidden so it cannot recall how the story ended. A second model reads a sample to measure agreement, and 200 documents were read in full to see what the subject line misses. The test of whether these signals add anything was written down and committed before the test period was opened.</p>
 <p><strong>A credit memo that cannot invent a number.</strong> Agents assemble a memo for a credit committee: one reads the recent filings, one writes. A checker that is not a language model compares every number and date in the draft with the values the tools returned, and blocks the memo if one has no source.</p>
 </section>
 <section id="result" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="result">Result</h2>
 <p><strong>Corrected on 23 November 2026.</strong> An independent review of the code, after the first version went live, found errors that changed published results. The rule that reads the auditor’s going-concern paragraph also matched a standard sentence that every audit opinion carries since 2016, and the first memo on Casas Bahia wrongly cited such a paragraph. The calibration check kept unfinished windows only when they ended in a filing, which overstated the observed rates. The code was fixed, each fix with a test, and the whole test was run again; the hypotheses and the registered test did not change. The paper opens with an erratum that lists every correction and the conclusions that changed.</p>
+<p><strong>Version 2, 24 November 2026.</strong> A second pass fixed limits that the corrected version declared. The masking of company names cut other words (the name Oi inside “apoio”) and let trade names such as GPA through; names are now hidden as whole words, trade names included. The 1,055 subjects affected were read again and every result that uses the signals was run again: no conclusion changed. The version also adds what the plan promised and the first run left out: a table of what drives the risk and a test of the change of audit firm.</p>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="../assets/case-credit-early-warning.png" class="img-fluid figure-img"></p>
@@ -256,7 +257,8 @@ Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals ·
 </figure>
 </div>
 <p>Out of time, from 2020 on, the tree ensembles rank companies best: XGBoost survival and a random survival forest reach an AUC of about 0.85 for the 12-month PD, against 0.79 for the Altman score and 0.82 for the hazard logit. They beat the Altman score even when whole companies are resampled together; their edge over the hazard logit, a well-specified benchmark, is not significant under that test. On the level of risk, at 36 months the observed rate is 2.9% and most models overestimate it, with XGBoost survival closest. The curves need recalibration on the lender’s own defaults before they feed a provision.</p>
-<p>The signals read by the language models did not improve the registered test: an AUC of 0.798 with them and 0.816 without. The treatment of extreme values had erased the five rarest kinds of signal; a run with them kept, decided after the test was opened, gives 0.818, no gain either. Read from subject lines, these signals do not add to the accounts.</p>
+<p>The signals read by the language models did not improve the registered test: an AUC of 0.798 with them and 0.816 without. The treatment of extreme values had erased the five rarest kinds of signal; a run with them kept, decided after the test was opened, gives 0.819, no gain either. Read from subject lines, these signals do not add to the accounts.</p>
+<p>What moves the risk is mostly in the accounts. In the XGBoost model, interest coverage, working capital over assets and recent losses weigh the most; in the Cox model, losses, a going-concern paragraph, negative equity and late filing raise the hazard, and working capital and cash lower it. A change of audit firm in the past year, tested after the test period was opened and so only as an exploration, added nothing significant to any model.</p>
 <p>Memos on four past cases, written with what was known a year before each filing, show the reach and the limit. Casas Bahia came out with a 12-month PD of 3.3%, about three times the average. Americanas, whose problem sat inside its own statements, came out below the average.</p>
 </section>
 <section id="what-the-literature-has-and-has-not-done" class="level2 rh-section">
@@ -280,7 +282,7 @@ Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals ·
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> distress.cli events      <span class="co"># event base from CVM filings</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> distress.cli panel       <span class="co"># point-in-time panel</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> distress.cli test        <span class="co"># the out-of-time test</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>Every language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has <strong>211 tests</strong>, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push.</p>
+<p>Every language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has <strong>222 tests</strong>, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push.</p>
 </section>
 
 
@@ -753,10 +755,6 @@ Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals ·
 </footer>
 
 
-
-
-<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
-</body></html>
 
 
 <script src="../site_libs/quarto-html/zenscroll-min.js"></script>

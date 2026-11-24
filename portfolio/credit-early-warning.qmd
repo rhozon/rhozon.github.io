@@ -7,11 +7,11 @@ image: "https://rhozon.github.io/assets/case-credit-early-warning.png"
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Case Study 08 · Live, corrected on 23 November 2026</div>
+<div class="rh-kicker">Case Study 08 · Live, version 2 of 24 November 2026</div>
 # Corporate Credit Early Warning
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 211 tests
+Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 222 tests
 </p>
 :::
 
@@ -69,7 +69,8 @@ whether they rank companies well, is tested separately.
 
 **Language models read the filings, and are tested like any other variable.** A model reads
 the subject of each of about 31,000 material facts and marks eleven kinds of distress, with
-the company's name and tax number hidden so it cannot recall how the story ended. A second
+the company's registered name, trade name and tax number hidden so it cannot recall how the
+story ended. A second
 model reads a sample to measure agreement, and 200 documents were read in full to see what the subject line misses. The test of whether these signals add
 anything was written down and committed before the test period was opened.
 
@@ -91,6 +92,13 @@ the observed rates. The code was fixed, each fix with a test, and the whole test
 again; the hypotheses and the registered test did not change. The paper opens with an erratum
 that lists every correction and the conclusions that changed.
 
+**Version 2, 24 November 2026.** A second pass fixed limits that the corrected version
+declared. The masking of company names cut other words (the name Oi inside "apoio") and let
+trade names such as GPA through; names are now hidden as whole words, trade names included.
+The 1,055 subjects affected were read again and every result that uses the signals was run
+again: no conclusion changed. The version also adds what the plan promised and the first run
+left out: a table of what drives the risk and a test of the change of audit firm.
+
 ![AUC of the 12-month PD for each model on the out-of-time test, with 95% intervals. The three tree ensembles are in red; the dashed line marks the Altman score.](../assets/case-credit-early-warning.png)
 
 Out of time, from 2020 on, the tree ensembles rank companies best: XGBoost survival and a
@@ -103,8 +111,14 @@ curves need recalibration on the lender's own defaults before they feed a provis
 
 The signals read by the language models did not improve the registered test: an AUC of 0.798
 with them and 0.816 without. The treatment of extreme values had erased the five rarest kinds
-of signal; a run with them kept, decided after the test was opened, gives 0.818, no gain
+of signal; a run with them kept, decided after the test was opened, gives 0.819, no gain
 either. Read from subject lines, these signals do not add to the accounts.
+
+What moves the risk is mostly in the accounts. In the XGBoost model, interest coverage,
+working capital over assets and recent losses weigh the most; in the Cox model, losses, a
+going-concern paragraph, negative equity and late filing raise the hazard, and working
+capital and cash lower it. A change of audit firm in the past year, tested after the test
+period was opened and so only as an exploration, added nothing significant to any model.
 
 Memos on four past cases, written with what was known a year before each filing, show the
 reach and the limit. Casas Bahia came out with a 12-month PD of 3.3%, about three times the
@@ -161,7 +175,7 @@ python -m distress.cli test        # the out-of-time test
 ```
 
 Every language-model answer is cached in the repository, so the labels reproduce without an
-API key. The suite has **211 tests**, among them one that fails the build if anything
+API key. The suite has **222 tests**, among them one that fails the build if anything
 published names a company without an event next to a probability or a score. CI runs them
 on every push.
 :::
