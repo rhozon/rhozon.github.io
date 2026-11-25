@@ -1,0 +1,885 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="What should a wholesaler suggest to each retailer, which products should lead each segment’s shelf, who should get a promotion, and who placed the orders that arrive without an account? Five models tested out of time on two years of public B2B transactions, with a simulator.">
+
+<title>B2B Recommendations, Assortment and Promotions: Case Study – Rodrigo Hermont Ozon</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="B2B Recommendations, Assortment and Promotions: Case Study">
+<meta property="og:description" content="What should a wholesaler suggest to each retailer, which products should lead each segment’s shelf, who should get a promotion, and who placed the orders that arrive without an account? Five models tested out of time on two years of public B2B transactions, with a simulator.">
+<meta property="og:image" content="https://rhozon.github.io/portfolio/assets/profile_square.jpg">
+<meta property="og:site_name" content="Rodrigo Hermont Ozon">
+<meta name="twitter:title" content="B2B Recommendations, Assortment and Promotions: Case Study">
+<meta name="twitter:description" content="What should a wholesaler suggest to each retailer, which products should lead each segment’s shelf, who should get a promotion, and who placed the orders that arrive without an account? Five models tested out of time on two years of public B2B transactions, with a simulator.">
+<meta name="twitter:image" content="https://rhozon.github.io/portfolio/assets/profile_square.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Rodrigo Hermont Ozon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../experience.html"> 
+<span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../oquant.html"> 
+<span class="menu-text">Consulting</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">Full CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pt/index.html"> 
+<span class="menu-text">PT</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rhozon"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="rh-section">
+<div class="rh-kicker">
+Case Study 10 · Live, 25 November 2026
+</div>
+<section id="recommendations-and-promotions-for-a-b2b-wholesaler" class="level1">
+<h1>Recommendations and Promotions for a B2B Wholesaler</h1>
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Recommendations · PyTorch · Implicit ALS · Segmentation · Imputation · Assortment optimization · Uplift modeling · PySpark · Python · 25 tests
+</p>
+</section>
+</div>
+<section id="the-business-question" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-business-question">The business question</h2>
+<p>A wholesaler that sells through an ordering platform serves thousands of small retailers. Each week it has to decide what to put in front of each one: the products it reorders, the ones it has never tried, the shelf a whole group of similar shops sees first, and which retailers get a promotion that costs money. Part of the orders also arrive without an account number, and those sales vanish from every customer history built on top of them.</p>
+<p>This case answers the five questions on one public data set, with the same rule for all of them: every model learns from the past and is scored on a period it never saw.</p>
+</section>
+<section id="the-data" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<p><a href="https://archive.ics.uci.edu/dataset/502/online+retail+ii">Online Retail II</a> (Chen, 2012, UCI Machine Learning Repository, CC BY 4.0) holds every invoice line of a UK online seller of gift-ware from 1 December 2009 to 9 December 2011: 1,067,371 lines, 39,516 sale invoices, 5,852 customers in about 40 countries and 4,707 products. The data set notes that many of its customers are wholesalers, which makes it one of the few public B2B order logs.</p>
+<p>It is also messy in the ways real order data is, and each problem is counted before anything is modeled. 19,494 lines are cancellations; 34,335 are exact duplicates, 22,844 of them because the two sheets of the workbook both contain 1 to 9 December 2010; 6,093 carry codes that are not products (postage, bank charges, manual adjustments); 6,207 have a zero or negative price; 7,881 have a price more than ten times above or below the usual price of the same product, and are kept but flagged. After cleaning, 1,003,214 sale lines remain.</p>
+<p>The largest gap is the customer: 22.6% of the sale lines, 13.1% of the revenue, have no customer number.</p>
+</section>
+<section id="method-and-why-this-one" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="method-and-why-this-one">Method, and why this one</h2>
+<p><strong>One cutoff for everything.</strong> Models learn from the orders before 9 October 2011 and are scored on the last 61 days. Their settings were chosen on the 61 days before that, so the test window was used once. 12.5% of the revenue in the test window comes from products never sold before the cutoff, which no model here can recommend.</p>
+<p><strong>Two recommendation tasks, not one.</strong> For a wholesaler, most of the next order repeats past orders. Recommending “what you already buy” and “what you have never bought” are different jobs, and they are scored separately. Five models compete: popularity in the last 90 days, “buy again”, item-to-item co-purchase, implicit ALS, and a sequential model in PyTorch that reads each customer’s orders in sequence with a GRU and scores every product for the next order. Each recommendation shows the customer’s own product it is most often bought with, so a sales rep can explain it. Scores are Recall@10 and NDCG@10 with 95% bootstrap intervals over customers.</p>
+<p><strong>Segments that a manager can name.</strong> Customers are grouped by recency, frequency, revenue, basket size and range of products, with k-means and the number of groups chosen by silhouette. The names come from the medians of each group.</p>
+<p><strong>Imputation evaluated, not assumed.</strong> To see whether orders without a customer number can be attributed, the number is hidden on orders where it is known, and each basket is matched to the purchase profiles of known customers in the same country.</p>
+<p><strong>A shelf with variety.</strong> For each segment, a mixed-integer program picks the 30 products with the highest recent segment revenue with at most 4 from any product family (families come from the product descriptions, since the data has no category). It is compared with the segment’s top sellers and the overall top sellers on what the segment bought in the test window.</p>
+<p><strong>Promotions on a semi-synthetic experiment.</strong> The data has no promotions, so a randomized voucher is simulated on the real customers: each customer’s spend without the voucher is the real spend in the test window, and the voucher’s effect is a known function of the customer’s real history (it brings back lapsed customers who used to spend, and gives away a discount to frequent buyers who would have ordered anyway). Because the true effect is known for every customer, any targeting rule can be scored exactly. This measures whether uplift models find who responds; it does not show how this wholesaler’s customers respond to real promotions.</p>
+<p><strong>Spark, with a parity test.</strong> The cleaning rules and an implicit ALS are also written in PySpark. CI runs them on a sample of the raw file and fails if Spark and pandas disagree on any sale line.</p>
+</section>
+<section id="result" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="result">Result</h2>
+<p><strong>Most of the next order is a reorder.</strong> Scored on everything customers bought in the test window, the simplest rule wins by far: offering each customer its own most frequent products (“buy again”) reaches an NDCG@10 of 0.341, against 0.260 for the sequential model, the best of the learned ones. A recommender that skips reorders leaves the easiest value of a B2B platform on the table.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model, all products (2,041 customers)</th>
+<th style="text-align: right;">Recall@10</th>
+<th style="text-align: right;">NDCG@10 (95% interval)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Buy again</td>
+<td style="text-align: right;">0.327</td>
+<td style="text-align: right;">0.341 (0.329 to 0.353)</td>
+</tr>
+<tr class="even">
+<td>Sequential GRU (PyTorch)</td>
+<td style="text-align: right;">0.243</td>
+<td style="text-align: right;">0.260 (0.249 to 0.271)</td>
+</tr>
+<tr class="odd">
+<td>Implicit ALS</td>
+<td style="text-align: right;">0.195</td>
+<td style="text-align: right;">0.196 (0.187 to 0.205)</td>
+</tr>
+<tr class="even">
+<td>Item-to-item (co-purchase)</td>
+<td style="text-align: right;">0.160</td>
+<td style="text-align: right;">0.163 (0.154 to 0.172)</td>
+</tr>
+<tr class="odd">
+<td>Popularity (last 90 days)</td>
+<td style="text-align: right;">0.100</td>
+<td style="text-align: right;">0.102 (0.096 to 0.109)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>For products the customer has never bought, the learned models earn their place.</strong> The sequential model (0.071) and implicit ALS (0.070) tie: the difference, 0.002, has an interval from -0.004 to 0.007. Both beat co-purchase (0.059) and popularity (0.045). The numbers are low because the task is hard: ten tries to find, among 4,529 products, the few a customer will buy for the first time in the next two months.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 27%">
+<col style="width: 36%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Model, products new to the customer (1,917 customers)</th>
+<th style="text-align: right;">Recall@10</th>
+<th style="text-align: right;">NDCG@10 (95% interval)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Sequential GRU (PyTorch)</td>
+<td style="text-align: right;">0.073</td>
+<td style="text-align: right;">0.071 (0.066 to 0.077)</td>
+</tr>
+<tr class="even">
+<td>Implicit ALS</td>
+<td style="text-align: right;">0.071</td>
+<td style="text-align: right;">0.070 (0.064 to 0.075)</td>
+</tr>
+<tr class="odd">
+<td>Item-to-item (co-purchase)</td>
+<td style="text-align: right;">0.063</td>
+<td style="text-align: right;">0.059 (0.054 to 0.065)</td>
+</tr>
+<tr class="even">
+<td>Popularity (last 90 days)</td>
+<td style="text-align: right;">0.048</td>
+<td style="text-align: right;">0.045 (0.041 to 0.049)</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Three segments, and one of them is the business.</strong> Silhouette picked three groups. A third of the customers, active (a median of 27 days since the last order and 9 orders), bring 83.5% of the revenue before the cutoff. Almost half had not ordered for a median of 295 days.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Segment</th>
+<th style="text-align: right;">Customers</th>
+<th style="text-align: right;">Share of revenue</th>
+<th style="text-align: right;">Median days since last order</th>
+<th style="text-align: right;">Median orders</th>
+<th style="text-align: right;">Median revenue</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Top, active</td>
+<td style="text-align: right;">1,821</td>
+<td style="text-align: right;">83.5%</td>
+<td style="text-align: right;">27</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">£3,060</td>
+</tr>
+<tr class="even">
+<td>Mid-value, lapsed</td>
+<td style="text-align: right;">2,543</td>
+<td style="text-align: right;">12.9%</td>
+<td style="text-align: right;">295</td>
+<td style="text-align: right;">2</td>
+<td style="text-align: right;">£560</td>
+</tr>
+<tr class="odd">
+<td>Low-value, lapsed</td>
+<td style="text-align: right;">1,108</td>
+<td style="text-align: right;">3.5%</td>
+<td style="text-align: right;">312</td>
+<td style="text-align: right;">1</td>
+<td style="text-align: right;">£201</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Orders without a customer number should not be attributed automatically.</strong> With the number hidden on the 4,790 orders of the test window, the basket matching puts the right customer first 22.5% of the time and in the top ten 46.3% of the time, among customers seen before, against 4.4% and 11.1% for the busiest customers of the same country. It narrows the search, but even its most confident quarter of matches is right only 24.1% of the time, and 12.2% of the orders come from customers never seen before. The orders without a number also look different: the typical one has 20 lines against 15, at a typical unit price of £3.36 against £1.97, which points to another sales channel rather than known accounts that did not log in. The pipeline keeps them out of the customer histories and turns the matches into a review queue: in the test window, 29 of the 227 orders without a number reach the confidence of the top quarter.</p>
+<p><strong>A shelf with variety holds up where it matters.</strong> For the top segment, the optimized shelf of 30 products covered 12.6% of what those customers bought in the test window and reached 76.8% of them, against 11.6% and 72.6% for the segment’s top sellers and 11.9% and 72.3% for the overall top sellers, with 12 product families instead of 7 and 9. In the two lapsed segments the cap costs a little revenue coverage (8.1% against 8.5%, and 4.5% against 4.9%). In every segment, the shelf that covers the most revenue is one built for that segment.</p>
+<p><strong>Promotion targeting: the models pay off on small budgets.</strong> In the simulated voucher test on the 5,472 customers with history (10 replications), giving the voucher to the 20% of customers the X-learner ranks highest brings £39,590 of true incremental revenue, against £21,940 for random targeting, £23,488 for the top spenders and £23,892 for the most lapsed customers; an oracle that knows every effect would reach £102,578. Learning who responds is hard because spend varies by orders of magnitude between customers. Dividing the outcome by each customer’s past monthly revenue before fitting, which keeps the estimate unbiased under random assignment, raised the X-learner’s area under the gain curve from 13% to 23% of the oracle’s.</p>
+<p>Over the whole range of budgets, the rule “most lapsed first” still covers the most area, 45% of the oracle’s, because the simulated effect was built around lapsed customers and the rule happens to match it. With an effect twice as large the X-learner reaches 41%; with four times as large, the three learners on the scaled outcome pass the rule (the X-learner reaches 61%). For a real campaign: a randomized test on about 5,500 customers already pays off when the budget is small and targeted; ranking the whole base needs a larger effect or a larger test.</p>
+</section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Pick a customer to see what the models would suggest and whether the customer bought it in the next 61 days, a segment to see its shelf, or a promotion budget to see how much incremental revenue each targeting rule brings in the simulated experiment.</p>
+<div id="c10-sim"></div>
+<script src="../assets/case10/sim.js?v=1" defer=""></script>
+</section>
+<section id="limits" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="limits">Limits</h2>
+<p>The data covers one seller of gift-ware in 2009 to 2011, mostly in the UK; the numbers are evidence about the methods, not about any other company. The promotion experiment is simulated on real customers, so it tests the targeting methods, not real price sensitivity. Products launched in the test window cannot be recommended by any of these models; a content-based model on product attributes would be the next step. The Spark job runs locally in CI on a sample; it has not run on a cluster.</p>
+</section>
+<section id="applied-to-your-business" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="applied-to-your-business">Applied to your business</h2>
+<p>For a distributor, a wholesaler or a B2B ordering platform, the same pipeline runs on your order history: suggested orders per customer, with the reason next to each item; segments with a shelf per segment; a targeting rule for each promotion, tested before the budget is spent; and a review queue for orders without an account. It starts with the <a href="../oquant.html#packages">Data &amp; AI Diagnostic</a> and runs in your environment.</p>
+</section>
+<section id="code" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/b2b-retail-recommender">github.com/rhozon/b2b-retail-recommender</a>
+</p>
+<p>With Python 3.11 or later and the workbook in <code>~/data/online-retail-ii</code>:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">".[dev]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> b2bretail.cli <span class="at">--out</span> results</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>The suite has <strong>25 tests</strong>. CI runs them on every push, and a second job with Java 17 runs the Spark parity tests and the Spark job.</p>
+</section>
+
+
+
+</main> <!-- /main -->
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>
+<script>
+// EN/PT no menu leva à mesma página na outra língua, quando ela existe
+(function () {
+  var links = document.querySelectorAll('.navbar a.nav-link');
+  var lang = null;
+  for (var i = 0; i < links.length; i++) {
+    var t = links[i].textContent.trim();
+    if (t === 'EN' || t === 'PT') { lang = links[i]; break; }
+  }
+  if (!lang || !window.fetch || location.protocol === 'file:') return;
+  var toPt = lang.textContent.trim() === 'PT';
+  var base = lang.href.replace(toPt ? /pt\/(index\.html)?$/ : /(index\.html)?$/, '');
+  var here = location.origin + location.pathname;
+  if (here.indexOf(base) !== 0) return;
+  var rel = here.slice(base.length);
+  if (rel === 'cv.html') return; // o CV só existe em inglês
+  var target = toPt ? base + 'pt/' + rel : base + rel.replace(/^pt\//, '');
+  fetch(target, { method: 'HEAD' }).then(function (r) {
+    if (r.ok) { lang.href = target; }
+  }).catch(function () {});
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Rodrigo Hermont Ozon · Econometrician &amp; Data Scientist · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

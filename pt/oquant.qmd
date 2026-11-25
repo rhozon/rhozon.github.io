@@ -86,6 +86,7 @@ Escopo, prazo e valor fechados antes de começar. O valor depende dos seus dados
       <li>Plano de 90 dias e apresentação de 1 hora para a diretoria</li>
     </ul>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Prazo: 2 semanas</p>
+    <p>Veja aonde um diagnóstico pode levar no <a href="portfolio/b2b-retail-recommender.html">caso de recomendação e promoções B2B</a>.</p>
   </div>
   <div class="rh-card">
     <h3>Workshop de IA e Dados para Gestores</h3>

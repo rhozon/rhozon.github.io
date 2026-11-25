@@ -1,0 +1,227 @@
+---
+title: ""
+pagetitle: "Recomendação, Sortimento e Promoções B2B: Estudo de Caso"
+description: "O que um atacadista deve sugerir a cada varejista, quais produtos devem abrir a vitrine de cada segmento, quem deve receber uma promoção e quem fez os pedidos que chegam sem conta? Cinco modelos testados fora do tempo em dois anos de transações B2B públicas, com simulador."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 10 · No ar, 25 de novembro de 2026</div>
+# Recomendação e Promoções para um Atacadista B2B
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Recomendação · PyTorch · ALS implícito · Segmentação · Imputação · Otimização de sortimento · Modelos de uplift · PySpark · Python · 25 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Um atacadista que vende por uma plataforma de pedidos atende milhares de pequenos varejistas.
+Toda semana ele precisa decidir o que colocar na frente de cada um: os produtos que ele
+recompra, os que ele nunca experimentou, a vitrine que um grupo inteiro de lojas parecidas vê
+primeiro e quais varejistas recebem uma promoção que custa dinheiro. Parte dos pedidos ainda
+chega sem número de conta, e essas vendas somem de todo histórico de cliente construído em cima
+deles.
+
+Este estudo de caso responde às cinco perguntas com uma única base pública e a mesma regra para todas:
+cada modelo aprende com o passado e é avaliado num período que nunca viu.
+:::
+
+::: {.rh-section}
+## Os dados
+
+A base [Online Retail II](https://archive.ics.uci.edu/dataset/502/online+retail+ii) (Chen,
+2012, UCI Machine Learning Repository, CC BY 4.0) traz cada linha de nota de um vendedor online
+britânico de artigos para presente, de 1º de dezembro de 2009 a 9 de dezembro de 2011: 1.067.371
+linhas, 39.516 notas de venda, 5.852 clientes em cerca de 40 países e 4.707 produtos. A própria
+descrição da base registra que muitos clientes são atacadistas, o que a torna um dos poucos
+registros públicos de pedidos B2B.
+
+Ela também é bagunçada do jeito que dados reais de pedido são, e cada problema é contado antes
+de qualquer modelo. São 19.494 linhas de cancelamento; 34.335 duplicatas exatas, 22.844 delas
+porque as duas abas da planilha repetem os dias 1 a 9 de dezembro de 2010; 6.093 com códigos que
+não são produto (frete, tarifa bancária, ajuste manual); 6.207 com preço zero ou negativo; e
+7.881 com preço mais de dez vezes acima ou abaixo do preço usual do mesmo produto, que ficam na
+base, marcadas. Depois da limpeza restam 1.003.214 linhas de venda.
+
+A maior lacuna é o cliente: 22,6% das linhas de venda, 13,1% da receita, não têm número de
+cliente.
+:::
+
+::: {.rh-section}
+## Método, e por que este
+
+**Um corte para tudo.** Os modelos aprendem com os pedidos anteriores a 9 de outubro de 2011 e
+são avaliados nos últimos 61 dias. As configurações foram escolhidas nos 61 dias anteriores, de
+modo que a janela de teste foi usada uma vez só. 12,5% da receita da janela de teste vem de
+produtos que nunca tinham sido vendidos antes do corte, e nenhum modelo aqui consegue
+recomendá-los.
+
+**Duas tarefas de recomendação, não uma.** Para um atacadista, a maior parte do próximo pedido
+repete pedidos passados. Recomendar "o que você já compra" e "o que você nunca comprou" são
+trabalhos diferentes, e cada um é avaliado separadamente. Cinco modelos competem: popularidade
+nos últimos 90 dias, "comprar de novo", compra conjunta item a item, ALS implícito e um modelo
+sequencial em PyTorch que lê os pedidos de cada cliente em ordem com uma GRU e pontua todos os
+produtos para o próximo pedido. Cada recomendação mostra o produto do próprio cliente com que
+ela mais é comprada junto, para que o vendedor consiga explicá-la. As métricas são Recall@10 e
+NDCG@10, com intervalos de 95% por bootstrap sobre os clientes.
+
+**Segmentos que um gestor consegue nomear.** Os clientes são agrupados por recência,
+frequência, receita, tamanho do pedido e variedade de produtos, com k-means e o número de grupos
+escolhido pela silhueta. Os nomes saem das medianas de cada grupo.
+
+**Imputação avaliada, não presumida.** Para saber se dá para atribuir os pedidos sem número de
+cliente, o número é escondido em pedidos em que ele é conhecido, e cada cesta é comparada aos
+perfis de compra dos clientes conhecidos do mesmo país.
+
+**Uma vitrine com variedade.** Para cada segmento, um programa inteiro misto escolhe os 30
+produtos de maior receita recente do segmento, com no máximo 4 de cada família de produtos (as
+famílias saem das descrições, porque a base não tem categoria). A vitrine é comparada com os
+mais vendidos do segmento e com os mais vendidos no geral, pelo que o segmento comprou na janela
+de teste.
+
+**Promoções num experimento semi-sintético.** A base não tem promoções, então um voucher
+aleatorizado é simulado sobre os clientes reais: o gasto de cada cliente sem o voucher é o gasto
+real na janela de teste, e o efeito do voucher é uma função conhecida do histórico real do
+cliente (ele traz de volta clientes inativos que costumavam gastar e dá desconto a compradores
+frequentes que comprariam de qualquer jeito). Como o efeito verdadeiro é conhecido para cada
+cliente, qualquer regra de seleção pode ser avaliada com exatidão. Isso mede se os modelos de
+uplift acham quem responde; não mostra como os clientes deste atacadista respondem a promoções
+reais.
+
+**Spark, com teste de paridade.** As regras de limpeza e um ALS implícito também estão escritos
+em PySpark. O CI roda os dois numa amostra do arquivo bruto e falha se Spark e pandas
+discordarem em qualquer linha de venda.
+:::
+
+::: {.rh-section}
+## Resultado
+
+**A maior parte do próximo pedido é recompra.** Avaliando tudo o que os clientes compraram na
+janela de teste, a regra mais simples ganha com folga: oferecer a cada cliente os produtos que
+ele mais compra ("comprar de novo") chega a um NDCG@10 de 0,341, contra 0,260 do modelo
+sequencial, o melhor entre os aprendidos. Um recomendador que ignora a recompra deixa na mesa o
+valor mais fácil de uma plataforma B2B.
+
+| Modelo, todos os produtos (2.041 clientes) | Recall@10 | NDCG@10 (IC 95%) |
+|---|---:|---:|
+| Comprar de novo | 0,327 | 0,341 (0,329 a 0,353) |
+| GRU sequencial (PyTorch) | 0,243 | 0,260 (0,249 a 0,271) |
+| ALS implícito | 0,195 | 0,196 (0,187 a 0,205) |
+| Item a item (compra conjunta) | 0,160 | 0,163 (0,154 a 0,172) |
+| Popularidade (últimos 90 dias) | 0,100 | 0,102 (0,096 a 0,109) |
+
+**Para produtos que o cliente nunca comprou, os modelos aprendidos fazem diferença.** O modelo
+sequencial (0,071) e o ALS implícito (0,070) empatam: a diferença, 0,002, tem intervalo de
+-0,004 a 0,007. Os dois superam a compra conjunta (0,059) e a popularidade (0,045). Os números
+são baixos porque a tarefa é difícil: dez tentativas para achar, entre 4.529 produtos, os poucos
+que o cliente vai comprar pela primeira vez nos próximos dois meses.
+
+| Modelo, produtos novos para o cliente (1.917 clientes) | Recall@10 | NDCG@10 (IC 95%) |
+|---|---:|---:|
+| GRU sequencial (PyTorch) | 0,073 | 0,071 (0,066 a 0,077) |
+| ALS implícito | 0,071 | 0,070 (0,064 a 0,075) |
+| Item a item (compra conjunta) | 0,063 | 0,059 (0,054 a 0,065) |
+| Popularidade (últimos 90 dias) | 0,048 | 0,045 (0,041 a 0,049) |
+
+**Três segmentos, e um deles é o negócio.** A silhueta escolheu três grupos. Um terço dos
+clientes, ativos (mediana de 27 dias desde o último pedido e 9 pedidos), traz 83,5% da receita
+antes do corte. Quase metade estava sem comprar havia uma mediana de 295 dias.
+
+| Segmento | Clientes | Parcela da receita | Dias desde o último pedido (mediana) | Pedidos (mediana) | Receita (mediana) |
+|---|---:|---:|---:|---:|---:|
+| Topo, ativo | 1.821 | 83,5% | 27 | 9 | £3.060 |
+| Valor médio, inativo | 2.543 | 12,9% | 295 | 2 | £560 |
+| Baixo valor, inativo | 1.108 | 3,5% | 312 | 1 | £201 |
+
+**Pedidos sem número de cliente não devem ser atribuídos automaticamente.** Com o número
+escondido nos 4.790 pedidos da janela de teste, a comparação de cestas acerta o cliente na
+primeira posição em 22,5% das vezes e entre os dez primeiros em 46,3%, entre clientes já vistos,
+contra 4,4% e 11,1% dos maiores compradores do mesmo país. Ela estreita a busca, mas mesmo o
+quarto mais confiante das atribuições acerta só 24,1%, e 12,2% dos pedidos vêm de clientes nunca
+vistos antes. Os pedidos sem número também são diferentes: o típico tem 20 linhas contra 15, a
+um preço unitário típico de £3,36 contra £1,97, o que aponta para outro canal de venda, não para
+contas conhecidas que não fizeram login. O pipeline deixa esses pedidos fora dos históricos e
+transforma as comparações numa fila de revisão: na janela de teste, 29 dos 227 pedidos sem
+número atingem a confiança do quarto superior.
+
+**Uma vitrine com variedade se sustenta onde importa.** No segmento do topo, a vitrine otimizada
+de 30 produtos cobriu 12,6% do que esses clientes compraram na janela de teste e alcançou 76,8%
+deles, contra 11,6% e 72,6% dos mais vendidos do segmento e 11,9% e 72,3% dos mais vendidos no
+geral, com 12 famílias de produtos em vez de 7 e 9. Nos dois segmentos inativos, o limite por
+família custa um pouco de cobertura de receita (8,1% contra 8,5%, e 4,5% contra 4,9%). Em todos
+os segmentos, a vitrine que cobre mais receita é uma feita para aquele segmento.
+
+**Seleção para promoção: os modelos compensam com orçamento pequeno.** No teste simulado de
+voucher com os 5.472 clientes com histórico (10 repetições), dar o voucher aos 20% de clientes
+que o X-learner põe no topo traz £39.590 de receita incremental verdadeira, contra £21.940 da
+seleção aleatória, £23.488 dos maiores compradores e £23.892 dos clientes mais inativos; um
+oráculo que conhece cada efeito chegaria a £102.578. Aprender quem responde é difícil porque o
+gasto varia em ordens de grandeza entre clientes. Dividir o resultado pela receita mensal
+passada de cada cliente antes do ajuste, o que mantém a estimativa sem viés sob sorteio, levou
+a área sob a curva de ganho do X-learner de 13% para 23% da área do oráculo.
+
+Considerando todos os orçamentos, a regra "mais inativos primeiro" ainda cobre a maior área,
+45% da do oráculo, porque o efeito simulado foi construído em torno dos clientes inativos e a
+regra coincide com ele. Com um efeito duas vezes maior, o X-learner chega a 41%; com um efeito
+quatro vezes maior, os três modelos ajustados no resultado em escala passam a regra (o
+X-learner chega a 61%). Para uma campanha real: um teste aleatorizado com cerca de 5.500
+clientes já compensa quando o orçamento é pequeno e direcionado; ordenar a base inteira pede um
+efeito maior ou um teste maior.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Escolha um cliente para ver o que os modelos sugeririam e se ele comprou nos 61 dias seguintes,
+um segmento para ver a vitrine dele, ou um orçamento de promoção para ver quanta receita
+incremental cada regra de seleção traz no experimento simulado.
+
+```{=html}
+<div id="c10-sim"></div>
+<script src="../../assets/case10/sim.js?v=1" defer></script>
+```
+:::
+
+::: {.rh-section}
+## Limites
+
+Os dados cobrem um único vendedor de artigos para presente entre 2009 e 2011, quase todo no
+Reino Unido; os números são evidência sobre os métodos, não sobre outra empresa. O experimento
+de promoção é simulado sobre clientes reais, então testa os métodos de seleção, não a
+sensibilidade real a preço. Produtos lançados na janela de teste não podem ser recomendados por
+nenhum destes modelos; um modelo baseado em atributos dos produtos seria o próximo passo. O job
+Spark roda localmente no CI, numa amostra; ele não rodou num cluster.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Para um distribuidor, um atacadista ou uma plataforma de pedidos B2B, o mesmo pipeline roda
+sobre o seu histórico de pedidos: pedido sugerido por cliente, com o motivo ao lado de cada item;
+segmentos com uma vitrine para cada um; uma regra de seleção para cada promoção, testada antes de
+gastar o orçamento; e uma fila de revisão para pedidos sem conta. Começa pelo
+<a href="../oquant.html#packages">Diagnóstico de Dados e IA</a> e roda no seu ambiente.
+:::
+
+::: {.rh-section}
+## Código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/b2b-retail-recommender">github.com/rhozon/b2b-retail-recommender</a>
+</p>
+```
+
+Com Python 3.11 ou mais recente e a planilha em `~/data/online-retail-ii`:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m b2bretail.cli --out results
+```
+
+A suíte tem **25 testes**. O CI roda todos a cada push, e um segundo job com Java 17 roda os
+testes de paridade do Spark e o job Spark.
+:::
