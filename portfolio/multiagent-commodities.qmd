@@ -88,6 +88,20 @@ without being asked.
 :::
 
 ::: {.rh-section}
+## Try it
+
+Replay the recorded run for corn or soybeans: the window the Collector chose, the model the Critic rejected and why, the one it approved, and the numbers of the R core. Then write a paragraph the way the Writer would and watch the guard check every number against those results.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case01/sim.css?v=1">
+<div id="agro-app" data-src="../assets/case01/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case01/guard.js?v=1"></script>
+<script src="../assets/case01/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## Code
 
 ```{=html}

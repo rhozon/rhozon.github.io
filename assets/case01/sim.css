@@ -1,0 +1,39 @@
+#agro-app { margin: 1rem 0 2rem; max-width: 100%; overflow-x: hidden; }
+#agro-app .agro-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin: .6rem 0 1rem; }
+#agro-app .agro-tabs button, #agro-app .agro-presets button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .4rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#agro-app .agro-tabs button.on, #agro-app .agro-presets button:hover { background: #0f766e; color: #fff; }
+#agro-app .agro-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 260px)); gap: .6rem 1rem; }
+#agro-app .agro-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#agro-app .agro-ctl span { font-weight: 600; }
+#agro-app .agro-steps { font-size: .86rem; padding-left: 1.3rem; margin: 0 0 1rem; }
+#agro-app .agro-steps li { margin: .25rem 0; padding-left: .2rem; }
+#agro-app .agro-steps li.bad { color: #b91c1c; }
+#agro-app .agro-steps li.good::marker { color: #0f766e; }
+#agro-app .agro-warn { font-size: .8rem; opacity: .85; }
+#agro-app .agro-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#agro-app .agro-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#agro-app .agro-card-l { font-size: .75rem; opacity: .8; }
+#agro-app .agro-card-v { font: 600 1.1rem 'IBM Plex Mono', monospace; }
+#agro-app .agro-card-s { font-size: .75rem; opacity: .8; }
+#agro-app .agro-chart { position: relative; height: 300px; margin: .5rem 0 1rem; }
+#agro-app .agro-note { font-size: .82rem; opacity: .85; }
+#agro-app .agro-presets { display: flex; flex-wrap: wrap; gap: .3rem; align-items: center; margin: .4rem 0 .6rem; font-size: .82rem; }
+#agro-app .agro-presets button { padding: .2rem .6rem; font-size: .78rem; }
+#agro-app .agro-ta { width: 100%; box-sizing: border-box; font: .9rem 'IBM Plex Mono', monospace; padding: .5rem; border: 1px solid rgba(127,127,127,.4); border-radius: 6px; background: transparent; color: inherit; }
+#agro-app .agro-out { font-size: .92rem; line-height: 1.7; padding: .6rem .8rem; border: 1px dashed rgba(127,127,127,.4); border-radius: 6px; margin: .6rem 0; }
+#agro-app mark { padding: 0 .2rem; border-radius: 3px; color: inherit; font-family: 'IBM Plex Mono', monospace; }
+#agro-app .v-ok { background: rgba(15,118,110,.22); }
+#agro-app .v-inventado { background: rgba(185,28,28,.25); }
+#agro-app .v-ambiguo { background: rgba(217,119,6,.3); }
+#agro-app .v-mascara { background: rgba(127,127,127,.2); }
+#agro-app .agro-legend span { font-size: .75rem; padding: .1rem .4rem; border-radius: 3px; margin-right: .3rem; }
+#agro-app .agro-verdict { font-weight: 600; font-size: .88rem; }
+#agro-app .agro-verdict.good { color: #0f766e; }
+#agro-app .agro-verdict.bad { color: #b91c1c; }
+#agro-app .agro-allowed { font-size: .8rem; margin: .5rem 0; }
+#agro-app .agro-allowed table { border-collapse: collapse; margin-top: .4rem; display: block; overflow-x: auto; }
+#agro-app .agro-allowed td { padding: .2rem .6rem; border-bottom: 1px solid rgba(127,127,127,.2); }
+#agro-app .agro-report { font-size: .86rem; border-left: 3px solid #0f766e; padding: .2rem 1rem; max-height: 640px; overflow-y: auto; }
+#agro-app .agro-report h4, #agro-app .agro-report h5, #agro-app .agro-report h6 { margin: .9rem 0 .3rem; font-size: .95rem; }
+#agro-app .agro-report blockquote { margin: .5rem 0; padding: .3rem .7rem; border-left: 3px solid rgba(127,127,127,.4); opacity: .9; }

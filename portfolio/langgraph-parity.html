@@ -256,10 +256,17 @@ langgraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0</cod
 <p><strong>What the framework charged.</strong> <code>MemorySaver</code> — the checkpointer, and the main reason to adopt LangGraph at all — serialises the state at every node with msgpack. A <code>pandas.Series</code> is not serialisable, so the first version of the graph failed outright:</p>
 <pre><code>TypeError: Type is not msgpack serializable: Series</code></pre>
 <p>The hand-written loop never meets this, because there the series is a local variable read once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of primitives holding a file path — and every node that needs the series re-reads it from disk.</p>
-<p>Measured at runtime: <strong>1 parquet read in the manual engine, 3 in the graph.</strong> Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.</p>
+<p>Measured at runtime: <strong>the manual engine reads the series once; the graph reads it again in every node that uses it</strong>, which in the published runs, where the first model is rejected and the loop goes round twice, makes <strong>five reads</strong>. Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.</p>
 <p><strong>What the framework bought.</strong> Pipeline state stops being implicit in local variables and becomes a declared <code>TypedDict</code>. The rejection loop becomes a conditional edge you can read without tracing control flow in your head. And the checkpointer lets you inspect and resume a run mid-execution — something the hand-rolled loop does not offer.</p>
 <p><strong>The price in code:</strong> 54 lines of code hand-rolled against 120 in the graph, for identical behaviour.</p>
 <p><strong>So which one?</strong> For this system, the hand-written loop wins: the pipeline is short, the control flow fits on one screen, and nothing here needs resumability. The framework would start paying for itself with more branches, human-in-the-loop pauses, or runs long enough that resuming matters. That is a conclusion drawn from a measurement, not from taste — and either way, the parity tests mean switching costs a flag.</p>
+</section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Step through the same run in both engines, side by side: what each one executes, when it reads the series from disk, how long it takes, and whether the two reports come out the same.</p>
+<link rel="stylesheet" href="../assets/case05/sim.css?v=1">
+<div id="lgp-app" data-src="../assets/case05/data.json?v=1"></div>
+<script src="../assets/case05/sim.js?v=1"></script>
 </section>
 <section id="code" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="code">Code</h2>

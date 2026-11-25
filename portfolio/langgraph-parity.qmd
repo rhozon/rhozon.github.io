@@ -89,8 +89,9 @@ once. To keep checkpointing, the state had to carry only the data bundle — a d
 primitives holding a file path — and every node that needs the series re-reads it from
 disk.
 
-Measured at runtime: **1 parquet read in the manual engine, 3 in the graph.** Total time
-barely moved, because the bottleneck is the R subprocess, not the disk. At this data size
+Measured at runtime: **the manual engine reads the series once; the graph reads it again in every
+node that uses it**, which in the published runs, where the first model is rejected and the
+loop goes round twice, makes **five reads**. Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size
 the cost is real and irrelevant. On a large series it would stop being irrelevant, and the
 choice would be to drop the checkpointer or write a custom serialiser.
 
@@ -107,6 +108,18 @@ control flow fits on one screen, and nothing here needs resumability. The framew
 start paying for itself with more branches, human-in-the-loop pauses, or runs long enough
 that resuming matters. That is a conclusion drawn from a measurement, not from taste — and
 either way, the parity tests mean switching costs a flag.
+:::
+
+::: {.rh-section}
+## Try it
+
+Step through the same run in both engines, side by side: what each one executes, when it reads the series from disk, how long it takes, and whether the two reports come out the same.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case05/sim.css?v=1">
+<div id="lgp-app" data-src="../assets/case05/data.json?v=1"></div>
+<script src="../assets/case05/sim.js?v=1"></script>
+```
 :::
 
 ::: {.rh-section}

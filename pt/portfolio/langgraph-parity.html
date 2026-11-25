@@ -256,10 +256,17 @@ langgraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0</cod
 <p><strong>O que o framework cobrou.</strong> O <code>MemorySaver</code> — o checkpointer, e a principal razão para adotar LangGraph — serializa o estado a cada nó com msgpack. Um <code>pandas.Series</code> não é serializável, então a primeira versão do grafo simplesmente quebrou:</p>
 <pre><code>TypeError: Type is not msgpack serializable: Series</code></pre>
 <p>O laço escrito à mão nunca encontra isso, porque lá a série é uma variável local lida uma vez. Para manter o checkpointing, o estado passou a carregar só o bundle de dados — um dataclass de primitivos com o caminho do arquivo — e cada nó que precisa da série a relê do disco.</p>
-<p>Medido em execução: <strong>1 leitura de parquet no motor manual, 3 no grafo.</strong> O tempo total quase não mudou, porque o gargalo é o subprocess do R, não o disco. Nessa escala o custo é real e irrelevante. Numa série grande deixaria de ser irrelevante, e a escolha passaria a ser abrir mão do checkpointer ou escrever um serializador próprio.</p>
+<p>Medido em execução: <strong>o motor manual lê a série uma vez; o grafo a relê em cada nó que a usa</strong>, o que, nas execuções publicadas, em que o primeiro modelo é reprovado e o laço dá duas voltas, soma <strong>cinco leituras</strong>. O tempo total quase não mudou, porque o gargalo é o subprocess do R, não o disco. Nessa escala o custo é real e irrelevante. Numa série grande deixaria de ser irrelevante, e a escolha passaria a ser abrir mão do checkpointer ou escrever um serializador próprio.</p>
 <p><strong>O que o framework comprou.</strong> O estado do pipeline deixa de ser implícito em variáveis locais e vira um <code>TypedDict</code> declarado. O laço de reprovação vira uma aresta condicional que se lê sem rastrear o fluxo de cabeça. E o checkpointer permite inspecionar e retomar uma execução no meio — coisa que o laço à mão não oferece.</p>
 <p><strong>O preço em código:</strong> 54 linhas de código à mão contra 120 no grafo, para comportamento idêntico.</p>
 <p><strong>Então qual?</strong> Para este sistema, o laço à mão ganha: o pipeline é curto, o fluxo de controle cabe numa tela, e nada aqui precisa de retomada. O framework começaria a se pagar com mais ramificações, pausas com humano no meio, ou execuções longas o bastante para retomar importar. Isso é conclusão tirada de medição, não de gosto — e, de qualquer forma, os testes de paridade fazem a troca custar uma flag.</p>
+</section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Avance passo a passo pela mesma execução nos dois motores, lado a lado: o que cada um executa, quando lê a série do disco, quanto tempo leva e se os dois relatórios saem iguais.</p>
+<link rel="stylesheet" href="../../assets/case05/sim.css?v=1">
+<div id="lgp-app" data-src="../../assets/case05/data.json?v=1"></div>
+<script src="../../assets/case05/sim.js?v=1"></script>
 </section>
 <section id="o-código" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-código">O código</h2>

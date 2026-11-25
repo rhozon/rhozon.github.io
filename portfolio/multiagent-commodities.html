@@ -259,6 +259,15 @@ LLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 167 te
 </div>
 <p>On the backtest, honesty matters more than a good-looking number: over a 20-step horizon the model scored MAPE 1.75% for corn — <strong>identical to the random walk</strong>. That is not a failure, it is arithmetic. Volatility models fix the mean at zero by construction, so the point forecast ties with a random walk by definition. Their contribution lives in the interval width and the residual diagnostics, and the system’s own report explains this without being asked.</p>
 </section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Replay the recorded run for corn or soybeans: the window the Collector chose, the model the Critic rejected and why, the one it approved, and the numbers of the R core. Then write a paragraph the way the Writer would and watch the guard check every number against those results.</p>
+<link rel="stylesheet" href="../assets/case01/sim.css?v=1">
+<div id="agro-app" data-src="../assets/case01/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case01/guard.js?v=1"></script>
+<script src="../assets/case01/sim.js?v=1"></script>
+</section>
 <section id="code" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
 <p><a class="rh-btn rh-btn-primary" href="https://github.com/rhozon/commodity-agents">github.com/rhozon/commodity-agents</a></p>

@@ -86,6 +86,20 @@ diagnósticos de resíduo, e o próprio relatório do sistema explica isso sem q
 :::
 
 ::: {.rh-section}
+## Experimente
+
+Refaça a execução gravada de milho ou soja: a janela que o Coletor escolheu, o modelo que o Crítico reprovou e por quê, o que ele aprovou e os números do núcleo em R. Depois escreva um parágrafo como o Redator escreveria e veja a trava conferir cada número contra esses resultados.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case01/sim.css?v=1">
+<div id="agro-app" data-src="../../assets/case01/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case01/guard.js?v=1"></script>
+<script src="../../assets/case01/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## O código
 
 ```{=html}

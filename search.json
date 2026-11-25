@@ -473,7 +473,7 @@
     "href": "portfolio/langgraph-parity.html#result",
     "title": "Framework or Hand-Rolled?",
     "section": "Result",
-    "text": "Result\nThe reports are byte-identical. Same SHA-256, end to end, from the frozen cache:\nmanual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nlanggraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nWhat the framework charged. MemorySaver — the checkpointer, and the main reason to adopt LangGraph at all — serialises the state at every node with msgpack. A pandas.Series is not serialisable, so the first version of the graph failed outright:\nTypeError: Type is not msgpack serializable: Series\nThe hand-written loop never meets this, because there the series is a local variable read once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of primitives holding a file path — and every node that needs the series re-reads it from disk.\nMeasured at runtime: 1 parquet read in the manual engine, 3 in the graph. Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.\nWhat the framework bought. Pipeline state stops being implicit in local variables and becomes a declared TypedDict. The rejection loop becomes a conditional edge you can read without tracing control flow in your head. And the checkpointer lets you inspect and resume a run mid-execution — something the hand-rolled loop does not offer.\nThe price in code: 54 lines of code hand-rolled against 120 in the graph, for identical behaviour.\nSo which one? For this system, the hand-written loop wins: the pipeline is short, the control flow fits on one screen, and nothing here needs resumability. The framework would start paying for itself with more branches, human-in-the-loop pauses, or runs long enough that resuming matters. That is a conclusion drawn from a measurement, not from taste — and either way, the parity tests mean switching costs a flag."
+    "text": "Result\nThe reports are byte-identical. Same SHA-256, end to end, from the frozen cache:\nmanual   : 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nlanggraph: 94488AF71916321F4CE51258547E01F8BB4F9E43D43FBCE8238C20BF0543DCF0\nWhat the framework charged. MemorySaver — the checkpointer, and the main reason to adopt LangGraph at all — serialises the state at every node with msgpack. A pandas.Series is not serialisable, so the first version of the graph failed outright:\nTypeError: Type is not msgpack serializable: Series\nThe hand-written loop never meets this, because there the series is a local variable read once. To keep checkpointing, the state had to carry only the data bundle — a dataclass of primitives holding a file path — and every node that needs the series re-reads it from disk.\nMeasured at runtime: the manual engine reads the series once; the graph reads it again in every node that uses it, which in the published runs, where the first model is rejected and the loop goes round twice, makes five reads. Total time barely moved, because the bottleneck is the R subprocess, not the disk. At this data size the cost is real and irrelevant. On a large series it would stop being irrelevant, and the choice would be to drop the checkpointer or write a custom serialiser.\nWhat the framework bought. Pipeline state stops being implicit in local variables and becomes a declared TypedDict. The rejection loop becomes a conditional edge you can read without tracing control flow in your head. And the checkpointer lets you inspect and resume a run mid-execution — something the hand-rolled loop does not offer.\nThe price in code: 54 lines of code hand-rolled against 120 in the graph, for identical behaviour.\nSo which one? For this system, the hand-written loop wins: the pipeline is short, the control flow fits on one screen, and nothing here needs resumability. The framework would start paying for itself with more branches, human-in-the-loop pauses, or runs long enough that resuming matters. That is a conclusion drawn from a measurement, not from taste — and either way, the parity tests mean switching costs a flag."
   },
   {
     "objectID": "portfolio/langgraph-parity.html#code",
@@ -1013,5 +1013,19 @@
     "title": "Causal Modeling of NPS",
     "section": "Try it",
     "text": "Try it\nChange the true effect, the strength of the confounding and the sample size, or leave a variable out of the adjustment. The data are generated again in your browser and the three estimates are recomputed."
+  },
+  {
+    "objectID": "portfolio/multiagent-commodities.html#try-it",
+    "href": "portfolio/multiagent-commodities.html#try-it",
+    "title": "Multi-Agent Commodity Analyst",
+    "section": "Try it",
+    "text": "Try it\nReplay the recorded run for corn or soybeans: the window the Collector chose, the model the Critic rejected and why, the one it approved, and the numbers of the R core. Then write a paragraph the way the Writer would and watch the guard check every number against those results."
+  },
+  {
+    "objectID": "portfolio/langgraph-parity.html#try-it",
+    "href": "portfolio/langgraph-parity.html#try-it",
+    "title": "Framework or Hand-Rolled?",
+    "section": "Try it",
+    "text": "Try it\nStep through the same run in both engines, side by side: what each one executes, when it reads the series from disk, how long it takes, and whether the two reports come out the same."
   }
 ]
