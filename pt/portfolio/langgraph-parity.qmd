@@ -122,3 +122,13 @@ resultado. A suíte tem **173 testes**, e roda sem chave de API e sem rede.
 `langgraph` e `langchain-core` estão no `requirements.txt`, mas só o motor do grafo e o
 teste de paridade os importam — o import é adiado, então o motor padrão não precisa deles.
 :::
+
+::: {.rh-section}
+## Referências
+
+- Barr, E. T., Harman, M., McMinn, P., Shahbaz, M. and Yoo, S. (2015). The Oracle Problem in Software Testing: A Survey. *IEEE Transactions on Software Engineering*, 41(5), 507-525. [doi:10.1109/TSE.2014.2372785](https://doi.org/10.1109/TSE.2014.2372785)
+- Schick, T., Dwivedi-Yu, J., Dessì, R., Raileanu, R., Lomeli, M., Zettlemoyer, L. et al. (2023). Toolformer: Language Models Can Teach Themselves to Use Tools. *arXiv*. [doi:10.48550/arXiv.2302.04761](https://doi.org/10.48550/arXiv.2302.04761)
+- Wu, Q., Bansal, G., Zhang, J., Wu, Y., Li, B., Zhu, E. et al. (2023). AutoGen: Enabling Next-Gen LLM Applications via Multi-Agent Conversation. *arXiv*. [doi:10.48550/arXiv.2308.08155](https://doi.org/10.48550/arXiv.2308.08155)
+- Xi, Z., Chen, W., Guo, X., He, W., Ding, Y., Hong, B. et al. (2023). The Rise and Potential of Large Language Model Based Agents: A Survey. *arXiv*. [doi:10.48550/arXiv.2309.07864](https://doi.org/10.48550/arXiv.2309.07864)
+- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K. et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. *arXiv*. [doi:10.48550/arXiv.2210.03629](https://doi.org/10.48550/arXiv.2210.03629)
+:::

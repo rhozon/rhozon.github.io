@@ -179,9 +179,17 @@ python -m bac.cli load       # arquivos de tarifa e estatísticas de tráfego
 python -m bac.cli analyse    # eventos, demanda, equilíbrio, fusões
 ```
 
-Referências: ANAC, microdados de tarifas aéreas domésticas comercializadas e estatísticas do
-transporte aéreo; Berry (1994), *Estimating Discrete-Choice Models of Product
-Differentiation*, RAND Journal of Economics; Nevo (2001), *Measuring Market Power in the
-Ready-to-Eat Cereal Industry*, Econometrica; Peters (2006), *Evaluating the Performance of
-Merger Simulation: Evidence from the U.S. Airline Industry*, Journal of Law and Economics.
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: ANAC, microdados de tarifas aéreas domésticas comercializadas e estatísticas do transporte aéreo; Banco Central do Brasil (IPCA, câmbio); Ipeadata (Brent).
+
+- Berry, S. T. (1994). Estimating Discrete-Choice Models of Product Differentiation. *The RAND Journal of Economics*, 25(2), 242-262. [doi:10.2307/2555829](https://doi.org/10.2307/2555829)
+- Berry, S., Levinsohn, J. and Pakes, A. (1995). Automobile Prices in Market Equilibrium. *Econometrica*, 63(4), 841-890. [doi:10.2307/2171802](https://doi.org/10.2307/2171802)
+- Borenstein, S. and Rose, N. L. (1994). Competition and Price Dispersion in the U.S. Airline Industry. *Journal of Political Economy*, 102(4), 653-683. [doi:10.1086/261950](https://doi.org/10.1086/261950)
+- Goolsbee, A. and Syverson, C. (2008). How do Incumbents Respond to the Threat of Entry? Evidence from the Major Airlines. *Quarterly Journal of Economics*, 123(4), 1611-1633. [doi:10.1162/qjec.2008.123.4.1611](https://doi.org/10.1162/qjec.2008.123.4.1611)
+- Nevo, A. (2001). Measuring Market Power in the Ready-to-Eat Cereal Industry. *Econometrica*, 69(2), 307-342. [doi:10.1111/1468-0262.00194](https://doi.org/10.1111/1468-0262.00194)
+- Peters, C. (2006). Evaluating the Performance of Merger Simulation: Evidence from the U.S. Airline Industry. *The Journal of Law and Economics*, 49(2), 627-649. [doi:10.1086/505369](https://doi.org/10.1086/505369)
 :::

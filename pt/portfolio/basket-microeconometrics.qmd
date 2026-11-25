@@ -151,9 +151,17 @@ pytest -v
 python -m bmx.cli analyse                     # todas as tabelas em results/
 ```
 
-Referências: 84.51°, The Complete Journey 2.0, no pacote completejourney do R (Boehmke e
-Mortimer); Gentzkow (2007), *Valuing New Goods in a Model with Complementarity: Online
-Newspapers*, American Economic Review; Benjamini e Hochberg (1995), *Controlling the False
-Discovery Rate*, Journal of the Royal Statistical Society B; Agrawal e Srikant (1994), *Fast
-Algorithms for Mining Association Rules*, VLDB.
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: 84.51°, The Complete Journey 2.0, no pacote completejourney do R (Boehmke e Mortimer, CC0).
+
+- Agrawal, R., Imieliński, T. and Swami, A. (1993). Mining association rules between sets of items in large databases. *Proceedings of the 1993 ACM SIGMOD international conference on Management of data*, 207-216. [doi:10.1145/170035.170072](https://doi.org/10.1145/170035.170072)
+- Benjamini, Y. and Hochberg, Y. (1995). Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. *Journal of the Royal Statistical Society Series B: Statistical Methodology*, 57(1), 289-300. [doi:10.1111/j.2517-6161.1995.tb02031.x](https://doi.org/10.1111/j.2517-6161.1995.tb02031.x)
+- Gentzkow, M. (2007). Valuing New Goods in a Model with Complementarity: Online Newspapers. *American Economic Review*, 97(3), 713-744. [doi:10.1257/aer.97.3.713](https://doi.org/10.1257/aer.97.3.713)
+- Manchanda, P., Ansari, A. and Gupta, S. (1999). The “Shopping Basket”: A Model for Multicategory Purchase Incidence Decisions. *Marketing Science*, 18(2), 95-114. [doi:10.1287/mksc.18.2.95](https://doi.org/10.1287/mksc.18.2.95)
+- Ruiz, F. J. R., Athey, S. and Blei, D. M. (2020). SHOPPER: A probabilistic model of consumer choice with substitutes and complements. *The Annals of Applied Statistics*, 14(1), 1-27. [doi:10.1214/19-AOAS1265](https://doi.org/10.1214/19-AOAS1265)
+- Russell, G. J. and Petersen, A. (2000). Analysis of cross category dependence in market basket selection. *Journal of Retailing*, 76(3), 367-392. [doi:10.1016/S0022-4359(00)00030-0](https://doi.org/10.1016/S0022-4359(00)00030-0)
 :::

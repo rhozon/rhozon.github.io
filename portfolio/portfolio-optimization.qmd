@@ -87,3 +87,14 @@ before they are decided would carry the same problem as publishing the results.
 For running code in the same domain, the [multi-agent commodity
 analyst](multiagent-commodities.html) is public, tested and reproducible.
 :::
+
+::: {.rh-section}
+## References
+
+- Deb, K., Pratap, A., Agarwal, S. and Meyarivan, T. (2002). A fast and elitist multiobjective genetic algorithm: NSGA-II. *IEEE Transactions on Evolutionary Computation*, 6(2), 182-197. [doi:10.1109/4235.996017](https://doi.org/10.1109/4235.996017)
+- Hamilton, J. D. (1989). A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle. *Econometrica*, 57(2), 357-384. [doi:10.2307/1912559](https://doi.org/10.2307/1912559)
+- Ishibuchi, H., Tsukamoto, N. and Nojima, Y. (2008). Evolutionary many-objective optimization: A short review. *2008 IEEE Congress on Evolutionary Computation (IEEE World Congress on Computational Intelligence)*, 2419-2426. [doi:10.1109/CEC.2008.4631121](https://doi.org/10.1109/CEC.2008.4631121)
+- Markowitz, H. (1952). Portfolio Selection. *The Journal of Finance*, 7(1), 77-91. [doi:10.1111/j.1540-6261.1952.tb01525.x](https://doi.org/10.1111/j.1540-6261.1952.tb01525.x)
+- Merton, R. C. (1969). Lifetime Portfolio Selection under Uncertainty: The Continuous-Time Case. *The Review of Economics and Statistics*, 51(3), 247-257. [doi:10.2307/1926560](https://doi.org/10.2307/1926560)
+- Storn, R. and Price, K. (1997). Differential Evolution - A Simple and Efficient Heuristic for global Optimization over Continuous Spaces. *Journal of Global Optimization*, 11(4), 341-359. [doi:10.1023/A:1008202821328](https://doi.org/10.1023/A:1008202821328)
+:::

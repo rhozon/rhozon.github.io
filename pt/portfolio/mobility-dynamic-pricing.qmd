@@ -203,9 +203,19 @@ python -m mdp.cli drift        # relatório mensal de deriva
 docker build -t mdp-api . && docker run -p 8000:8000 mdp-api   # POST /quote, POST /multiplier
 ```
 
-Referências: NYC Taxi and Limousine Commission, trip record data; Lyft, termos do crédito
-"NYC congestion fee"; Cohen, Hahn, Hall, Levitt e Metcalfe (2016), *Using Big Data to
-Estimate Consumer Surplus: The Case of Uber*, NBER Working Paper 22627; Sandholm (2010),
-*Population Games and Evolutionary Dynamics*, MIT Press; Bojinov, Simchi-Levi e Zhao (2023),
-*Design and Analysis of Switchback Experiments*, Management Science.
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: NYC Taxi and Limousine Commission, registros de viagens; Lyft, termos do crédito da taxa de congestionamento de NYC.
+
+- Bojinov, I., Simchi-Levi, D. and Zhao, J. (2023). Design and Analysis of Switchback Experiments. *Management Science*, 69(7), 3759-3777. [doi:10.1287/mnsc.2022.4583](https://doi.org/10.1287/mnsc.2022.4583)
+- Castillo, J. C., Knoepfle, D. and Weyl, G. (2017). Surge Pricing Solves the Wild Goose Chase. *Proceedings of the 2017 ACM Conference on Economics and Computation*, 241-242. [doi:10.1145/3033274.3085098](https://doi.org/10.1145/3033274.3085098)
+- Cohen, P., Hahn, R., Hall, J., Levitt, S. and Metcalfe, R. (2016). Using Big Data to Estimate Consumer Surplus: The Case of Uber. *NBER Working Paper* 22627. [doi:10.3386/w22627](https://doi.org/10.3386/w22627)
+- Diebold, F. X. and Mariano, R. S. (1995). Comparing Predictive Accuracy. *Journal of Business & Economic Statistics*, 13(3), 253-263. [doi:10.1080/07350015.1995.10524599](https://doi.org/10.1080/07350015.1995.10524599)
+- Fudenberg, D. and Levine, D. (1998). Learning in games. *European Economic Review*, 42(3-5), 631-639. [doi:10.1016/s0014-2921(98)00011-7](https://doi.org/10.1016/s0014-2921(98)00011-7)
+- Garg, N. and Nazerzadeh, H. (2022). Driver Surge Pricing. *Management Science*, 68(5), 3219-3235. [doi:10.1287/mnsc.2021.4058](https://doi.org/10.1287/mnsc.2021.4058)
+- Hofbauer, J. and Sandholm, W. H. (2002). On the Global Convergence of Stochastic Fictitious Play. *Econometrica*, 70(6), 2265-2294. [doi:10.1111/1468-0262.00376](https://doi.org/10.1111/1468-0262.00376)
+- Sandholm, W. H. (2015). Population Games and Deterministic Evolutionary Dynamics. *Handbook of Game Theory with Economic Applications*, 703-778. [doi:10.1016/b978-0-444-53766-9.00013-6](https://doi.org/10.1016/b978-0-444-53766-9.00013-6)
 :::

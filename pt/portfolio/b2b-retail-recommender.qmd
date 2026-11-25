@@ -225,3 +225,14 @@ python -m b2bretail.cli --out results
 A suíte tem **25 testes**. O CI roda todos a cada push, e um segundo job com Java 17 roda os
 testes de paridade do Spark e o job Spark.
 :::
+
+::: {.rh-section}
+## Referências
+
+- Athey, S. and Imbens, G. (2016). Recursive partitioning for heterogeneous causal effects. *Proceedings of the National Academy of Sciences*, 113(27), 7353-7360. [doi:10.1073/pnas.1510489113](https://doi.org/10.1073/pnas.1510489113)
+- Chen, D. (2012). Online Retail II. *UCI Machine Learning Repository*. [doi:10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D)
+- Hidasi, B., Karatzoglou, A., Baltrunas, L. and Tikk, D. (2015). Session-based Recommendations with Recurrent Neural Networks. *arXiv*. [doi:10.48550/arXiv.1511.06939](https://doi.org/10.48550/arXiv.1511.06939)
+- Hu, Y., Koren, Y. and Volinsky, C. (2008). Collaborative Filtering for Implicit Feedback Datasets. *2008 Eighth IEEE International Conference on Data Mining*, 263-272. [doi:10.1109/ICDM.2008.22](https://doi.org/10.1109/ICDM.2008.22)
+- Künzel, S. R., Sekhon, J. S., Bickel, P. J. and Yu, B. (2019). Metalearners for estimating heterogeneous treatment effects using machine learning. *Proceedings of the National Academy of Sciences*, 116(10), 4156-4165. [doi:10.1073/pnas.1804597116](https://doi.org/10.1073/pnas.1804597116)
+- Sarwar, B., Karypis, G., Konstan, J. and Riedl, J. (2001). Item-based collaborative filtering recommendation algorithms. *Proceedings of the 10th international conference on World Wide Web*, 285-295. [doi:10.1145/371920.372071](https://doi.org/10.1145/371920.372071)
+:::

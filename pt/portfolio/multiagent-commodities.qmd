@@ -103,3 +103,15 @@ Roda do cache congelado — sem chave de API, sem rede. A suíte tem **167 teste
 `pytest -q`. A pasta `examples/` traz os relatórios das duas commodities, gerados pelo próprio
 sistema.
 :::
+
+::: {.rh-section}
+## Referências
+
+- Ardia, D., Bluteau, K., Boudt, K., Catania, L. and Trottier, D. A. (2019). Markov-Switching GARCH Models in R: The MSGARCH Package. *Journal of Statistical Software*, 91(4). [doi:10.18637/jss.v091.i04](https://doi.org/10.18637/jss.v091.i04)
+- Bollerslev, T. (1986). Generalized autoregressive conditional heteroskedasticity. *Journal of Econometrics*, 31(3), 307-327. [doi:10.1016/0304-4076(86)90063-1](https://doi.org/10.1016/0304-4076(86)90063-1)
+- Engle, R. F. (1982). Autoregressive Conditional Heteroscedasticity with Estimates of the Variance of United Kingdom Inflation. *Econometrica*, 50(4), 987-1007. [doi:10.2307/1912773](https://doi.org/10.2307/1912773)
+- Hamilton, J. D. (1989). A New Approach to the Economic Analysis of Nonstationary Time Series and the Business Cycle. *Econometrica*, 57(2), 357-384. [doi:10.2307/1912559](https://doi.org/10.2307/1912559)
+- Ji, Z., Lee, N., Frieske, R., Yu, T., Su, D., Xu, Y. et al. (2023). Survey of Hallucination in Natural Language Generation. *ACM Computing Surveys*, 55(12), 1-38. [doi:10.1145/3571730](https://doi.org/10.1145/3571730)
+- Ljung, G. M. and Box, G. E. P. (1978). On a measure of lack of fit in time series models. *Biometrika*, 65(2), 297-303. [doi:10.1093/biomet/65.2.297](https://doi.org/10.1093/biomet/65.2.297)
+- Yao, S., Zhao, J., Yu, D., Du, N., Shafran, I., Narasimhan, K. et al. (2022). ReAct: Synergizing Reasoning and Acting in Language Models. *arXiv*. [doi:10.48550/arXiv.2210.03629](https://doi.org/10.48550/arXiv.2210.03629)
+:::

@@ -187,3 +187,19 @@ build se algo publicado citar uma empresa sem evento ao lado de uma probabilidad
 nota. O CI roda os testes a cada push. O README em inglês lista as decisões de projeto e os
 limites.
 :::
+
+::: {.rh-section}
+## Referências
+
+- Altman, E. I. (1968). Financial Ratios, Discriminant Analysis and the Prediction of Corporate Bankruptcy. *The Journal of Finance*, 23(4), 589-609. [doi:10.1111/j.1540-6261.1968.tb00843.x](https://doi.org/10.1111/j.1540-6261.1968.tb00843.x)
+- Altman, E. I. (2005). An emerging market credit scoring system for corporate bonds. *Emerging Markets Review*, 6(4), 311-323. [doi:10.1016/j.ememar.2005.09.007](https://doi.org/10.1016/j.ememar.2005.09.007)
+- Campbell, J. Y., Hilscher, J. and Szilagyi, J. (2008). In Search of Distress Risk. *The Journal of Finance*, 63(6), 2899-2939. [doi:10.1111/j.1540-6261.2008.01416.x](https://doi.org/10.1111/j.1540-6261.2008.01416.x)
+- Chen, T. and Guestrin, C. (2016). XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*, 785-794. [doi:10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785)
+- Cox, D. R. (1972). Regression Models and Life-Tables. *Journal of the Royal Statistical Society Series B: Statistical Methodology*, 34(2), 187-202. [doi:10.1111/j.2517-6161.1972.tb00899.x](https://doi.org/10.1111/j.2517-6161.1972.tb00899.x)
+- DeLong, E. R., DeLong, D. M. and Clarke-Pearson, D. L. (1988). Comparing the Areas under Two or More Correlated Receiver Operating Characteristic Curves: A Nonparametric Approach. *Biometrics*, 44(3), 837-845. [doi:10.2307/2531595](https://doi.org/10.2307/2531595)
+- Ishwaran, H., Kogalur, U. B., Blackstone, E. H. and Lauer, M. S. (2008). Random survival forests. *The Annals of Applied Statistics*, 2(3), 841-860. [doi:10.1214/08-AOAS169](https://doi.org/10.1214/08-AOAS169)
+- Katzman, J. L., Shaham, U., Cloninger, A., Bates, J., Jiang, T. and Kluger, Y. (2018). DeepSurv: personalized treatment recommender system using a Cox proportional hazards deep neural network. *BMC Medical Research Methodology*, 18(1). [doi:10.1186/s12874-018-0482-1](https://doi.org/10.1186/s12874-018-0482-1)
+- Lee, C., Zame, W., Yoon, J. and Van der Schaar, M. (2018). DeepHit: A Deep Learning Approach to Survival Analysis With Competing Risks. *Proceedings of the AAAI Conference on Artificial Intelligence*, 32(1). [doi:10.1609/aaai.v32i1.11842](https://doi.org/10.1609/aaai.v32i1.11842)
+- Page, M. J., McKenzie, J. E., Bossuyt, P. M., Boutron, I., Hoffmann, T. C., Mulrow, C. D. et al. (2021). The PRISMA 2020 statement: an updated guideline for reporting systematic reviews. *BMJ*, 372, n71. [doi:10.1136/bmj.n71](https://doi.org/10.1136/bmj.n71)
+- Shumway, T. (2001). Forecasting Bankruptcy More Accurately: A Simple Hazard Model. *The Journal of Business*, 74(1), 101-124. [doi:10.1086/209665](https://doi.org/10.1086/209665)
+:::
