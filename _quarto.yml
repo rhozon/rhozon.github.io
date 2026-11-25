@@ -18,6 +18,7 @@ project:
     - portfolio/b2b-retail-recommender.qmd
     - portfolio/brazil-airline-competition.qmd
     - portfolio/basket-microeconometrics.qmd
+    - portfolio/rio-short-term-rental-pricing.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

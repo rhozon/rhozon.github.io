@@ -1,0 +1,152 @@
+---
+title: ""
+pagetitle: "Preço de Aluguel por Temporada no Rio — Estudo de Caso"
+description: "Quanto vale uma noite em cada parte do Rio, quanto caem as estadias quando o anfitrião sobe o preço e quão cheios já estão o Réveillon e o Carnaval. Quatro raspagens trimestrais de 44 mil anúncios do Inside Airbnb, efeitos fixos e um instrumento, com simulador de preço."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 13 · No ar, 25 de novembro de 2026</div>
+# Preço de Aluguel por Temporada no Rio
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Preço hedônico · XGBoost · Efeitos fixos em painel · Variáveis instrumentais · Demanda futura · Python · 5 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Um anfitrião no Rio, ou uma empresa que administra centenas de apartamentos, define o preço da
+noite com três perguntas na cabeça. Quanto vale um imóvel como este aqui? Se eu cobrar mais,
+quantas estadias perco? E quais datas já estão enchendo? A gestão de receita de hotéis e locadoras
+faz as mesmas perguntas com dados internos de reserva. Este case responde a elas só com dados
+públicos.
+:::
+
+::: {.rh-section}
+## Os dados
+
+O [Inside Airbnb](https://insideairbnb.com/) (CC BY 4.0) publica a cada trimestre uma raspagem de
+todos os anúncios do Rio. Este case usa as quatro raspagens com preço, de 27 de novembro de 2025 a
+22 de setembro de 2026: **44.058 anúncios de 24.694 anfitriões** na mais recente, e um painel de
+**41.440 anúncios vistos pelo menos duas vezes**. Cada anúncio tem um preço por noite, cotado para
+uma estadia poucos dias depois da raspagem. **1,46 milhão de avaliações com data** servem de proxy
+das estadias: uma avaliação vem depois de uma estadia, então as avaliações nos 90 dias seguintes a
+uma raspagem medem as estadias que vieram depois daquele preço.
+
+Duas mudanças na fonte moldaram o desenho. Os arquivos de calendário não trazem mais o preço de
+cada noite, só se ela ainda está disponível, então preço por data e antecedência da reserva não
+podem ser estudados. E a raspagem de 28 de dezembro de 2025 veio sem nenhum preço, por isso ficou
+de fora.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Descreva um imóvel e veja o preço de mercado estimado. Depois coloque o seu preço acima ou abaixo
+do mercado e veja o que a elasticidade estimada implica para estadias e receita. O calendário
+mostra quão cheia já estava cada data dos doze meses seguintes em setembro, e a tabela de bairros
+compara preços e reservas pela cidade.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case13/sim.css?v=1">
+<div id="strp-app" data-src="../../assets/case13/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case13/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
+## Método
+
+**Quanto vale uma noite.** Um modelo hedônico regride o log do preço por noite no bairro, no tipo
+de imóvel, em hóspedes, quartos, banheiros, nota, número de avaliações, itens de comodidade,
+selo de superhost, reserva instantânea e mínimo de noites. A versão log-linear dá coeficientes que
+um anfitrião consegue ler e roda no simulador; um XGBoost com as mesmas variáveis mostra o que um
+modelo flexível acrescenta. Os dois são avaliados num quinto dos anúncios sorteado e, à parte, nos
+anúncios que apareceram pela primeira vez na raspagem mais recente.
+
+**Como as estadias respondem ao preço.** Para os anúncios vistos em várias raspagens, o log de um
+mais as estadias nos 90 dias seguintes é regredido no log do preço, com efeito fixo para cada
+anúncio e para cada bairro em cada raspagem. O efeito do anúncio tira a qualidade duradoura, que
+faz os bons imóveis serem ao mesmo tempo caros e procurados; o efeito de bairro e raspagem tira a
+estação e a demanda local. O que sobra é o mesmo anfitrião mexendo no preço do mesmo imóvel, em
+relação ao bairro. Como o anfitrião pode subir o preço quando espera mais demanda, o preço também
+é instrumentado pelo preço médio dos outros anúncios do mesmo anfitrião naquela raspagem: uma
+decisão tomada para a carteira toda, não para a demanda deste imóvel.
+
+**O que já está reservado.** Para cada uma das 365 noites depois de 22 de setembro de 2026, a
+parcela dos anúncios ativos cuja noite já não está disponível. Uma noite pode estar indisponível
+porque foi reservada ou porque o anfitrião a bloqueou; não dá para separar as duas.
+:::
+
+::: {.rh-section}
+## Resultados
+
+**Localização e tamanho fazem a maior parte do preço.** O modelo log-linear explica 54% da
+variância do log do preço. Num quinto dos anúncios sorteado, o erro mediano é de 31%, e o do
+XGBoost, de 28%. Nos anúncios recém-chegados, os erros sobem para 55% e 47%: anfitriões novos
+cobram longe do que imóveis parecidos cobram, e é aí que uma ferramenta de preço mais ajuda.
+Ipanema tem preço mediano de R$ 750, a Barra da Tijuca de R$ 640, Copacabana, com 13.645
+anúncios, de R$ 457.
+
+**As estadias caem pouco quando o anfitrião sobe o preço.** No mesmo anúncio, um preço 10% maior
+vem com cerca de 1,6% menos estadias: o coeficiente é -0,17 (intervalo de 95% de -0,18 a -0,16),
+e medida sobre as estadias em nível, a elasticidade na média é -0,24. Instrumentada pelos outros
+anúncios do anfitrião, a estimativa é a mesma, -0,17 (intervalo de -0,24 a -0,11, F do primeiro
+estágio de 392), então as expectativas do próprio anfitrião não parecem estar por trás dela.
+Nesses valores, um aumento moderado de preço aumenta a receita: +10% no preço, cerca de -1,6% nas
+estadias, cerca de +8% na receita.
+
+**Réveillon e Carnaval enchem cedo.** Em 22 de setembro, 67% dos anúncios já estavam
+indisponíveis no Réveillon, contra 23% nos primeiros vinte dias de dezembro; os dias de Carnaval
+de fevereiro de 2027 estavam em 61%, contra 36% nas semanas seguintes. As noites a mais de oito
+meses também parecem cheias (56% a partir de junho de 2027), mas isso são anfitriões fechando o
+calendário com antecedência, não reservas.
+:::
+
+::: {.rh-section}
+## Limites
+
+As avaliações subcontam as estadias e não dizem quantas noites cada uma durou, então a
+elasticidade é sobre o número de estadias, não sobre noites ou receita diretamente. O preço é uma
+cotação por raspagem, para uma data próxima da raspagem, não o preço de cada noite. O painel
+cobre quatro raspagens num único ano, então a elasticidade é uma resposta de curto prazo a
+mudanças moderadas; longe do preço de mercado a resposta pode ser maior. As noites indisponíveis
+misturam reservas e bloqueios. Os dados do Inside Airbnb são uma raspagem de páginas públicas,
+não os registros do Airbnb.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Este é o
+<a href="../oquant.html#packages">pacote de Previsão sob Medida</a> aplicado a preço. Para uma
+administradora de imóveis, um hotel, uma locadora ou qualquer negócio que vende noites ou diárias
+de capacidade, as mesmas peças rodam sobre as suas reservas: um preço de mercado para cada
+unidade, uma resposta ao preço medida no seu histórico e uma visão das datas que estão enchendo,
+com datas de reserva e preço por noite onde esta fonte pública não tem.
+:::
+
+::: {.rh-section}
+## Código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/rio-short-term-rental-pricing">github.com/rhozon/rio-short-term-rental-pricing</a>
+</p>
+```
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m strp.cli download     # raspagens do Rio no Inside Airbnb (STRP_RAW)
+python -m strp.cli analyse      # todas as tabelas em results/
+```
+
+Referências: Inside Airbnb, raspagens do Rio de Janeiro (CC BY 4.0); Rosen (1974), *Hedonic Prices
+and Implicit Markets*, Journal of Political Economy; Wooldridge (2010), *Econometric Analysis of
+Cross Section and Panel Data*, MIT Press.
+:::

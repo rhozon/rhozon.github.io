@@ -1,0 +1,28 @@
+#strp-app { margin: 1rem 0 2rem; }
+#strp-app .strp-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#strp-app .strp-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#strp-app .strp-tabs button.on { background: #0f766e; color: #fff; }
+#strp-app .strp-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#strp-app .strp-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#strp-app .strp-ctl span { font-weight: 600; }
+#strp-app .strp-ctl select { width: 100%; }
+#strp-app .strp-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; margin: .5rem 0; }
+#strp-app .strp-col h4 { font-size: .9rem; margin: .2rem 0 .4rem; }
+#strp-app .strp-col ol { padding-left: 1.2rem; margin: 0; font-size: .84rem; }
+#strp-app .strp-col li span { font-family: 'IBM Plex Mono', monospace; font-size: .78rem; opacity: .75; margin-left: .3rem; }
+#strp-app .strp-chart { position: relative; height: 460px; margin: .5rem 0 1rem; }
+#strp-app .strp-picks { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: .15rem .8rem; font-size: .8rem; margin-bottom: .8rem; }
+#strp-app .strp-note { font-size: .82rem; opacity: .85; }
+@media (max-width: 600px) { #strp-app .strp-chart { height: 420px; } }
+#strp-app .strp-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#strp-app .strp-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#strp-app .strp-card-l { font-size: .75rem; opacity: .8; }
+#strp-app .strp-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#strp-app .strp-card-s { font-size: .75rem; opacity: .8; }
+#strp-app .strp-ctl input { width: 100%; }
+#strp-app .strp-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#strp-app .strp-table { width: 100%; border-collapse: collapse; font-size: .82rem; display: block; overflow-x: auto; }
+#strp-app .strp-table th, #strp-app .strp-table td { padding: .35rem .5rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; white-space: nowrap; }
+#strp-app .strp-table th:first-child, #strp-app .strp-table td:first-child { text-align: left; }
+#strp-app .strp-chart { height: 320px; }

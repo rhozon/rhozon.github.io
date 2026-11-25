@@ -1,0 +1,145 @@
+---
+title: ""
+pagetitle: "Pricing Short-Term Rentals in Rio — Case Study"
+description: "What a night is worth in each part of Rio, how much stays fall when a host raises the price, and how full New Year's Eve and Carnival already are. Four quarterly scrapes of 44 thousand Inside Airbnb listings, fixed effects and an instrument, with a pricing simulator."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 13 · Live, 25 November 2026</div>
+# Pricing Short-Term Rentals in Rio
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Hedonic pricing · XGBoost · Panel fixed effects · Instrumental variables · Forward demand · Python · 5 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A host in Rio, or a company that manages hundreds of apartments, sets a nightly price with three
+questions in mind. What is a place like this worth here? If I charge more, how many stays do I
+lose? And which dates are already filling up? Revenue management in hotels and car rental asks
+the same questions with internal booking data. This case answers them with public data only.
+:::
+
+::: {.rh-section}
+## The data
+
+[Inside Airbnb](https://insideairbnb.com/) (CC BY 4.0) publishes a scrape of every Rio listing
+each quarter. This case uses the four scrapes with prices, from 27 November 2025 to 22 September
+2026: **44,058 listings of 24,694 hosts** in the latest one, and a panel of **41,440 listings seen
+at least twice**. Each listing has one nightly price, quoted for a stay a few days after the scrape.
+**1.46 million dated reviews** are the proxy for stays: a review follows a stay, so reviews in the
+90 days after a scrape measure the stays that followed that price.
+
+Two changes in the source shaped the design. The calendar files no longer carry a price per
+night, only whether the night is still available, so price by date and booking lead time cannot
+be studied. And the scrape of 28 December 2025 has no prices at all, so it is left out.
+:::
+
+::: {.rh-section}
+## Try it
+
+Describe a place and see its estimated market price. Then set your price above or below the
+market and see what the estimated elasticity implies for stays and revenue. The calendar shows
+how full each date of the next twelve months already was in September, and the neighbourhood
+table compares prices and bookings across the city.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case13/sim.css?v=1">
+<div id="strp-app" data-src="../assets/case13/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case13/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
+## Method
+
+**What a night is worth.** A hedonic model regresses the log nightly price on the neighbourhood,
+the type of place, guests, bedrooms, bathrooms, rating, number of reviews, amenities, superhost
+status, instant booking and minimum nights. The log-linear version gives coefficients a host can
+read and runs in the simulator; XGBoost on the same features shows what a flexible model adds.
+Both are scored on a random fifth of the listings and, separately, on the listings that appeared
+for the first time in the latest scrape.
+
+**How stays respond to price.** For listings seen in several scrapes, the log of one plus the
+stays in the next 90 days is regressed on the log price, with a fixed effect for each listing and
+for each neighbourhood in each scrape. The listing effect removes lasting quality, which makes
+good places both expensive and busy; the neighbourhood-scrape effect removes the season and local
+demand. What is left is the same host moving the price of the same place, relative to the
+neighbourhood. Since a host may raise the price when expecting more demand, the price is also
+instrumented with the mean price of the same host's other listings in that scrape: a decision
+taken for the whole portfolio, not for this one place's demand.
+
+**What is already booked.** For each of the next 365 nights after 22 September 2026, the share of
+active listings whose night is no longer available. A night can be unavailable because it was
+booked or because the host blocked it; the two cannot be told apart.
+:::
+
+::: {.rh-section}
+## Results
+
+**Location and size set most of the price.** The log-linear model explains 54% of the variance of
+log prices. On a random fifth of listings, its median error is 31% and XGBoost's 28%. On listings
+that had just appeared, the errors rise to 55% and 47%: new hosts price far from what comparable
+places charge, which is where a pricing tool helps most. Ipanema has a median price of R$ 750, Barra
+da Tijuca R$ 640, Copacabana, with 13,645 listings, R$ 457.
+
+**Stays fall little when a host raises the price.** Within the same listing, a 10% higher price
+goes with about 1.6% fewer stays: the coefficient is -0.17 (95% interval -0.18 to -0.16), and
+measured on stays in levels the elasticity at the mean is -0.24. Instrumented by the host's other
+listings, the estimate is the same, -0.17 (interval -0.24 to -0.11, first-stage F of 392), so the
+hosts' own expectations do not seem to drive it. At these values a moderate price increase raises
+revenue: +10% in price, about -1.6% in stays, about +8% in revenue.
+
+**New Year's Eve and Carnival fill early.** On 22 September, 67% of the listings were already
+unavailable for New Year's Eve, against 23% for the first twenty days of December; the Carnival days
+of February 2027 were at 61%, against 36% in the weeks after it. Nights more than eight months away
+also look full (56% from June 2027 on), but that is hosts closing their calendars far ahead, not
+bookings.
+:::
+
+::: {.rh-section}
+## Limits
+
+Reviews undercount stays and do not say how many nights each stay lasted, so the elasticity is
+about the number of stays, not nights or revenue directly. The price is one quote per scrape, for a
+date near the scrape, not the price of every night. The panel covers four scrapes in a single year,
+so the elasticity is a short-run response to moderate price moves; far from the market price the
+response can be larger. Unavailable nights mix bookings and blocks. Inside Airbnb's data are a
+scrape of public pages, not Airbnb's records.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+This is the
+<a href="../oquant.html#packages">Custom Forecasting package</a> applied to price. For a property
+manager, a hotel, a car rental or any business that sells nights or days of capacity, the same
+pieces run on your own bookings: a market price for each unit, a price response measured on your
+history, and a forward view of the dates that are filling up, with booking dates and prices per
+night where this public source has none.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/rio-short-term-rental-pricing">github.com/rhozon/rio-short-term-rental-pricing</a>
+</p>
+```
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m strp.cli download     # Inside Airbnb scrapes of Rio (STRP_RAW)
+python -m strp.cli analyse      # every table in results/
+```
+
+References: Inside Airbnb, Rio de Janeiro scrapes (CC BY 4.0); Rosen (1974), *Hedonic Prices and
+Implicit Markets*, Journal of Political Economy; Wooldridge (2010), *Econometric Analysis of Cross
+Section and Panel Data*, MIT Press.
+:::

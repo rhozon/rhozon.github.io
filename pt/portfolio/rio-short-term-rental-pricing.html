@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Quanto vale uma noite em cada parte do Rio, quanto caem as estadias quando o anfitrião sobe o preço e quão cheios já estão o Réveillon e o Carnaval. Quatro raspagens trimestrais de 44 mil anúncios do Inside Airbnb, efeitos fixos e um instrumento, com simulador de preço.">
+
+<title>Preço de Aluguel por Temporada no Rio — Estudo de Caso – Rodrigo Hermont Ozon</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Preço de Aluguel por Temporada no Rio — Estudo de Caso">
+<meta property="og:description" content="Quanto vale uma noite em cada parte do Rio, quanto caem as estadias quando o anfitrião sobe o preço e quão cheios já estão o Réveillon e o Carnaval. Quatro raspagens trimestrais de 44 mil anúncios do Inside Airbnb, efeitos fixos e um instrumento, com simulador de preço.">
+<meta property="og:image" content="https://rhozon.github.io/pt/portfolio/assets/profile_square.jpg">
+<meta property="og:site_name" content="Rodrigo Hermont Ozon">
+<meta name="twitter:title" content="Preço de Aluguel por Temporada no Rio — Estudo de Caso">
+<meta name="twitter:description" content="Quanto vale uma noite em cada parte do Rio, quanto caem as estadias quando o anfitrião sobe o preço e quão cheios já estão o Réveillon e o Carnaval. Quatro raspagens trimestrais de 44 mil anúncios do Inside Airbnb, efeitos fixos e um instrumento, com simulador de preço.">
+<meta name="twitter:image" content="https://rhozon.github.io/pt/portfolio/assets/profile_square.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Rodrigo Hermont Ozon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/experience.html"> 
+<span class="menu-text">Experiência</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/research.html"> 
+<span class="menu-text">Pesquisa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/teaching.html"> 
+<span class="menu-text">Ensino</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/oquant.html"> 
+<span class="menu-text">Consultoria</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV Completo</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/contact.html"> 
+<span class="menu-text">Contato</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">EN</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rhozon"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="rh-section">
+<div class="rh-kicker">
+Estudo de Caso 13 · No ar, 25 de novembro de 2026
+</div>
+<section id="preço-de-aluguel-por-temporada-no-rio" class="level1">
+<h1>Preço de Aluguel por Temporada no Rio</h1>
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Preço hedônico · XGBoost · Efeitos fixos em painel · Variáveis instrumentais · Demanda futura · Python · 5 testes
+</p>
+</section>
+</div>
+<section id="a-pergunta-de-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
+<p>Um anfitrião no Rio, ou uma empresa que administra centenas de apartamentos, define o preço da noite com três perguntas na cabeça. Quanto vale um imóvel como este aqui? Se eu cobrar mais, quantas estadias perco? E quais datas já estão enchendo? A gestão de receita de hotéis e locadoras faz as mesmas perguntas com dados internos de reserva. Este case responde a elas só com dados públicos.</p>
+</section>
+<section id="os-dados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
+<p>O <a href="https://insideairbnb.com/">Inside Airbnb</a> (CC BY 4.0) publica a cada trimestre uma raspagem de todos os anúncios do Rio. Este case usa as quatro raspagens com preço, de 27 de novembro de 2025 a 22 de setembro de 2026: <strong>44.058 anúncios de 24.694 anfitriões</strong> na mais recente, e um painel de <strong>41.440 anúncios vistos pelo menos duas vezes</strong>. Cada anúncio tem um preço por noite, cotado para uma estadia poucos dias depois da raspagem. <strong>1,46 milhão de avaliações com data</strong> servem de proxy das estadias: uma avaliação vem depois de uma estadia, então as avaliações nos 90 dias seguintes a uma raspagem medem as estadias que vieram depois daquele preço.</p>
+<p>Duas mudanças na fonte moldaram o desenho. Os arquivos de calendário não trazem mais o preço de cada noite, só se ela ainda está disponível, então preço por data e antecedência da reserva não podem ser estudados. E a raspagem de 28 de dezembro de 2025 veio sem nenhum preço, por isso ficou de fora.</p>
+</section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Descreva um imóvel e veja o preço de mercado estimado. Depois coloque o seu preço acima ou abaixo do mercado e veja o que a elasticidade estimada implica para estadias e receita. O calendário mostra quão cheia já estava cada data dos doze meses seguintes em setembro, e a tabela de bairros compara preços e reservas pela cidade.</p>
+<link rel="stylesheet" href="../../assets/case13/sim.css?v=1">
+<div id="strp-app" data-src="../../assets/case13/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case13/sim.js?v=1"></script>
+</section>
+<section id="método" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="método">Método</h2>
+<p><strong>Quanto vale uma noite.</strong> Um modelo hedônico regride o log do preço por noite no bairro, no tipo de imóvel, em hóspedes, quartos, banheiros, nota, número de avaliações, itens de comodidade, selo de superhost, reserva instantânea e mínimo de noites. A versão log-linear dá coeficientes que um anfitrião consegue ler e roda no simulador; um XGBoost com as mesmas variáveis mostra o que um modelo flexível acrescenta. Os dois são avaliados num quinto dos anúncios sorteado e, à parte, nos anúncios que apareceram pela primeira vez na raspagem mais recente.</p>
+<p><strong>Como as estadias respondem ao preço.</strong> Para os anúncios vistos em várias raspagens, o log de um mais as estadias nos 90 dias seguintes é regredido no log do preço, com efeito fixo para cada anúncio e para cada bairro em cada raspagem. O efeito do anúncio tira a qualidade duradoura, que faz os bons imóveis serem ao mesmo tempo caros e procurados; o efeito de bairro e raspagem tira a estação e a demanda local. O que sobra é o mesmo anfitrião mexendo no preço do mesmo imóvel, em relação ao bairro. Como o anfitrião pode subir o preço quando espera mais demanda, o preço também é instrumentado pelo preço médio dos outros anúncios do mesmo anfitrião naquela raspagem: uma decisão tomada para a carteira toda, não para a demanda deste imóvel.</p>
+<p><strong>O que já está reservado.</strong> Para cada uma das 365 noites depois de 22 de setembro de 2026, a parcela dos anúncios ativos cuja noite já não está disponível. Uma noite pode estar indisponível porque foi reservada ou porque o anfitrião a bloqueou; não dá para separar as duas.</p>
+</section>
+<section id="resultados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="resultados">Resultados</h2>
+<p><strong>Localização e tamanho fazem a maior parte do preço.</strong> O modelo log-linear explica 54% da variância do log do preço. Num quinto dos anúncios sorteado, o erro mediano é de 31%, e o do XGBoost, de 28%. Nos anúncios recém-chegados, os erros sobem para 55% e 47%: anfitriões novos cobram longe do que imóveis parecidos cobram, e é aí que uma ferramenta de preço mais ajuda. Ipanema tem preço mediano de R$ 750, a Barra da Tijuca de R$ 640, Copacabana, com 13.645 anúncios, de R$ 457.</p>
+<p><strong>As estadias caem pouco quando o anfitrião sobe o preço.</strong> No mesmo anúncio, um preço 10% maior vem com cerca de 1,6% menos estadias: o coeficiente é -0,17 (intervalo de 95% de -0,18 a -0,16), e medida sobre as estadias em nível, a elasticidade na média é -0,24. Instrumentada pelos outros anúncios do anfitrião, a estimativa é a mesma, -0,17 (intervalo de -0,24 a -0,11, F do primeiro estágio de 392), então as expectativas do próprio anfitrião não parecem estar por trás dela. Nesses valores, um aumento moderado de preço aumenta a receita: +10% no preço, cerca de -1,6% nas estadias, cerca de +8% na receita.</p>
+<p><strong>Réveillon e Carnaval enchem cedo.</strong> Em 22 de setembro, 67% dos anúncios já estavam indisponíveis no Réveillon, contra 23% nos primeiros vinte dias de dezembro; os dias de Carnaval de fevereiro de 2027 estavam em 61%, contra 36% nas semanas seguintes. As noites a mais de oito meses também parecem cheias (56% a partir de junho de 2027), mas isso são anfitriões fechando o calendário com antecedência, não reservas.</p>
+</section>
+<section id="limites" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="limites">Limites</h2>
+<p>As avaliações subcontam as estadias e não dizem quantas noites cada uma durou, então a elasticidade é sobre o número de estadias, não sobre noites ou receita diretamente. O preço é uma cotação por raspagem, para uma data próxima da raspagem, não o preço de cada noite. O painel cobre quatro raspagens num único ano, então a elasticidade é uma resposta de curto prazo a mudanças moderadas; longe do preço de mercado a resposta pode ser maior. As noites indisponíveis misturam reservas e bloqueios. Os dados do Inside Airbnb são uma raspagem de páginas públicas, não os registros do Airbnb.</p>
+</section>
+<section id="aplicado-ao-seu-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="aplicado-ao-seu-negócio">Aplicado ao seu negócio</h2>
+<p>Este é o <a href="../oquant.html#packages">pacote de Previsão sob Medida</a> aplicado a preço. Para uma administradora de imóveis, um hotel, uma locadora ou qualquer negócio que vende noites ou diárias de capacidade, as mesmas peças rodam sobre as suas reservas: um preço de mercado para cada unidade, uma resposta ao preço medida no seu histórico e uma visão das datas que estão enchendo, com datas de reserva e preço por noite onde esta fonte pública não tem.</p>
+</section>
+<section id="código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="código">Código</h2>
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/rio-short-term-rental-pricing">github.com/rhozon/rio-short-term-rental-pricing</a>
+</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">".[dev]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> strp.cli download     <span class="co"># raspagens do Rio no Inside Airbnb (STRP_RAW)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> strp.cli analyse      <span class="co"># todas as tabelas em results/</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>Referências: Inside Airbnb, raspagens do Rio de Janeiro (CC BY 4.0); Rosen (1974), <em>Hedonic Prices and Implicit Markets</em>, Journal of Political Economy; Wooldridge (2010), <em>Econometric Analysis of Cross Section and Panel Data</em>, MIT Press.</p>
+</section>
+
+
+
+</main> <!-- /main -->
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>
+<script>
+// EN/PT no menu leva à mesma página na outra língua, quando ela existe
+(function () {
+  var links = document.querySelectorAll('.navbar a.nav-link');
+  var lang = null;
+  for (var i = 0; i < links.length; i++) {
+    var t = links[i].textContent.trim();
+    if (t === 'EN' || t === 'PT') { lang = links[i]; break; }
+  }
+  if (!lang || !window.fetch || location.protocol === 'file:') return;
+  var toPt = lang.textContent.trim() === 'PT';
+  var base = lang.href.replace(toPt ? /pt\/(index\.html)?$/ : /(index\.html)?$/, '');
+  var here = location.origin + location.pathname;
+  if (here.indexOf(base) !== 0) return;
+  var rel = here.slice(base.length);
+  if (rel === 'cv.html') return; // o CV só existe em inglês
+  var target = toPt ? base + 'pt/' + rel : base + rel.replace(/^pt\//, '');
+  fetch(target, { method: 'HEAD' }).then(function (r) {
+    if (r.ok) { lang.href = target; }
+  }).catch(function () {});
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>
