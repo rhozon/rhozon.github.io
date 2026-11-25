@@ -1,0 +1,189 @@
+---
+title: ""
+pagetitle: "Dynamic Pricing for Ride-Hailing — Case Study"
+description: "How riders and drivers adapt when prices move. A fare model, a week-ahead demand forecast, a natural price experiment and an evolutionary simulator, on 301 million New York ride-hailing trips, with an interactive simulator."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 09 · Live, 25 November 2026</div>
+# Dynamic Pricing for Ride-Hailing
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Python · 13 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A ride-hailing platform sets a price for every area and every hour. Two populations answer
+it, and neither answers at once. Riders compare the app with its rival, and with not riding
+at all. Drivers look at what each part of the city paid yesterday and decide where to work
+today. A price that clears the market this evening changes where the drivers will be
+tomorrow, and that changes the price the platform will need then.
+
+So the useful questions are dynamic. How much of the fare is the trip and how much is the
+market? How many requests will each zone get next week? How fast do riders switch apps when
+one becomes cheaper? And does the price that looks best today make supply and waits swing
+later? The same questions apply to any business that prices a perishable capacity under
+moving demand: car rental, delivery, parking, hotels, events.
+:::
+
+::: {.rh-section}
+## The data
+
+Every trip is public. New York's Taxi and Limousine Commission publishes each Uber and Lyft
+trip with the time of the request and of the pickup, the zones, distance, time, the fare
+before fees, the driver's pay, and since 5 January 2025 the congestion fee. This case reads
+**15 months, 301.6 million trips** (December 2023 to April 2024, and September 2024 to June
+2025), with DuckDB, one pass per month, in about a minute for the whole set.
+
+A quality report runs on every month. It found what the documentation does not say: the
+time the car arrived is missing for 99.7% of Lyft trips until February 2025, and is filled
+only from March 2025 on, so the wait used here is pickup minus request, which exists for every
+trip; about 1% of trips have a pickup before the request and are left out of the waits.
+
+The natural experiment comes from the platforms themselves. When the congestion fee started,
+Lyft credited riders the $1.50 fee on rides in the zone, from 5 to 31 January 2025, each
+credit valid for a week. Uber did not. The fee hits both apps alike inside the zone; the
+credit made Lyft cheaper there for about five weeks.
+:::
+
+::: {.rh-section}
+## Try it
+
+The simulator below uses the estimates of this case. Change the price in an area and hour and
+see trips, revenue, the platform's margin and the wait. Switch to the adaptation tab to see
+riders and drivers react day after day under three pricing policies, or plan an experiment.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case09/sim.css">
+<div id="mdp-app" data-src="../assets/case09/data.json"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case09/sim.js"></script>
+```
+:::
+
+::: {.rh-section}
+## Method
+
+**A fare model that separates the trip from the market.** A log-linear base fare on distance,
+time, app and airport explains 79% of the variance of log fares. What is left, averaged by
+area and hour, is a dynamic price index. An XGBoost model with place and time on top shows
+how much a full pricing model gains.
+
+**A forecast made a week ahead.** Trips per zone and hour for 253 zones, with only what is
+known a week before: calendar, holidays and lags of one to four weeks. Each test month,
+April to June 2025, is forecast by a model trained on everything before it, against two
+baselines: the same hour last week and the mean of the last four weeks.
+
+**Riders as an evolving population.** The Lyft share among Uber and Lyft trips that start in
+each zone of the congestion zone is followed day by day. Three nested choice models compete:
+static choice, where the share depends only on today's prices and waits; a logit dynamic with
+inertia, where the share moves part of the way toward that target each day; and
+replicator-like drift, where it never comes back. The inertia parameter decides between them.
+The credit is measured by difference in differences against zones outside the congestion
+zone, and the same calendar a year earlier, when there was no credit, serves as placebo.
+
+**Drivers as a second population, in a simulator.** Six areas, calibrated on Lyft's weekday
+evening peak from February to June 2025. Each day drivers move toward the areas that paid
+more than usual, by an exponential replicator whose speed is the one thing the public data
+cannot pin down, so it is varied. The wait responds to demand per driver with an elasticity
+of 0.21, estimated within zone and hour of the week. Riders follow the choice model above.
+The demand elasticity, -0.4 with a range of -0.2 to -0.6, comes from published estimates for
+Uber (Cohen et al., 2016). Three policies face a lasting 25% rise in demand in the
+congestion zone: a fixed price, a surge that clears the market every day, and the same surge
+smoothed.
+
+**An experiment the platform could run.** Price policies interfere across riders and
+drivers, so a rider-level A/B test is biased. The planner uses switchback blocks and the
+observed variability of the hourly margin to give the smallest effect a test can detect.
+:::
+
+::: {.rh-section}
+## Results
+
+**The fare.** Out of sample, in June 2025, the base fare misses by 23.4% on average (mean
+absolute percentage error) and the full XGBoost model by 18.3%. Trips that start in the
+congestion zone cost 5% to 39% more than the same distance and time would cost on average,
+depending on the hour, highest late at night; in the Bronx, Queens and Staten Island trips run
+at 0.84 to 1.02 of that level.
+
+**The forecast.** A week ahead, the XGBoost model's error (WAPE) averages 13.1% over the three
+test months, against 16.1% for the same hour last week and 13.0% for the mean of the last four
+weeks. The four-week mean is a hard benchmark at this horizon, and the model only ties it.
+
+**The riders.** The data choose the middle model. The daily inertia is 0.61 (95% interval
+0.58 to 0.64): the share closes about 39% of the gap to its target each day, a half-life of
+about 1.4 days. Relative price and wait matter as expected: one extra minute of Lyft wait
+against Uber lowers Lyft's log-odds share by 0.08. The credit, however, left no measurable
+mark. Inside the zone, Lyft's share rose by 0.021 in log-odds during the credit (interval
+-0.002 to 0.045), but the same weeks a year earlier, with no credit, show 0.029. Forecasting
+8 February to 30 April 2025, the dynamic model is not more accurate than the static one (share
+error of 2.83 against 2.80 points). Riders adapt, but within days, and a five-week credit did
+not move them for good.
+
+**The drivers and the price policy.** With slow drivers the three policies settle, and the
+market-clearing surge earns 4.6% more margin than a fixed price with a shorter wait. The
+surge, though, makes drivers' relative pay move with the multiplier itself, which amplifies
+their reaction about 2.5 times. Cycles start at an imitation speed of 0.75 under the clearing
+surge, at 1.75 when it is smoothed to a tenth of the gap per day, and between 1 and 2 with a
+fixed price. When prices cycle, the margin can even rise, because short-run demand is
+inelastic, while waits grow and drivers crowd in and out of the same areas. A platform that
+looks only at the margin will not see the cost; riders and drivers will.
+
+**The experiment.** With four-hour blocks the log margin of a block varies around its usual
+level with a standard deviation of 0.22, so two weeks detect a 15% change in margin, four weeks 10%, eight
+weeks 7%. Since drivers keep moving after a switch, the dynamics above argue for blocks long
+enough to let them settle.
+:::
+
+::: {.rh-section}
+## Limits
+
+Prices are what the platforms chose, so the price coefficients are associations given zone,
+day of week and wait, not causal elasticities; the causal part of the case is the credit, and
+there the effect is not distinguishable from the placebo. Credits and promotions do not appear
+in the fares, and Uber's own promotions are unknown. Daily inertia may mix habits with
+persistent local shocks. The simulator assumes the observed split of drivers is a rest point,
+uses a published elasticity, and has no driver identifiers, so its speeds are scenarios, not
+estimates. In 2025 Uber started passing some requests to yellow cabs, which leave this data.
+:::
+
+::: {.rh-section}
+## Applied to your pricing
+
+This is the
+<a href="../oquant.html#packages">Custom Forecasting package</a> applied to price. For a
+mobility or delivery platform, a car rental or fleet operator, a parking or events business,
+it becomes a pricing engine with three parts: a demand forecast by place and hour, a price
+response measured on your own data, and a policy tested in a simulator and then in a
+switchback before it goes live. The decision on prices stays with your people.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
+</p>
+```
+
+With Python 3.11 or later:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m mdp.cli download     # monthly trip files (about 7 GB)
+python -m mdp.cli aggregate    # one DuckDB pass per month
+python -m mdp.cli analyse      # every table in results/
+```
+
+References: NYC Taxi and Limousine Commission, trip record data; Lyft, "NYC congestion fee"
+credit terms; Cohen, Hahn, Hall, Levitt and Metcalfe (2016), *Using Big Data to Estimate
+Consumer Surplus: The Case of Uber*, NBER Working Paper 22627; Sandholm (2010), *Population
+Games and Evolutionary Dynamics*, MIT Press; Bojinov, Simchi-Levi and Zhao (2023), *Design and
+Analysis of Switchback Experiments*, Management Science.
+:::

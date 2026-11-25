@@ -1,0 +1,200 @@
+---
+title: ""
+pagetitle: "Preço Dinâmico em Mobilidade — Estudo de Caso"
+description: "Como passageiros e motoristas se adaptam quando o preço muda. Modelo de tarifa, previsão de demanda com uma semana de antecedência, um experimento natural de preço e um simulador evolucionário, sobre 301 milhões de viagens de aplicativo em Nova York, com simulador interativo."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 09 · No ar, 25 de novembro de 2026</div>
+# Preço Dinâmico em Mobilidade
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jogos evolucionários · Experimento switchback · Python · 13 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Uma plataforma de transporte por aplicativo define um preço para cada área e cada hora. Duas
+populações respondem a ele, e nenhuma responde na hora. O passageiro compara o aplicativo com
+o concorrente e com não pedir carro. O motorista olha quanto cada parte da cidade pagou ontem
+e decide onde trabalhar hoje. Um preço que equilibra o mercado nesta noite muda onde os
+motoristas estarão amanhã, e isso muda o preço de que a plataforma vai precisar então.
+
+Por isso as perguntas úteis são dinâmicas. Quanto da tarifa é a viagem e quanto é o mercado?
+Quantos pedidos cada zona vai ter na semana que vem? Com que rapidez o passageiro troca de
+aplicativo quando um fica mais barato? E o preço que parece o melhor hoje faz a oferta e a
+espera oscilarem depois? As mesmas perguntas valem para qualquer negócio que precifica uma
+capacidade perecível com demanda em movimento: locadoras de carro, entregas, estacionamentos,
+hotéis, eventos.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Todas as viagens são públicas. A comissão de táxis e limusines de Nova York publica cada
+viagem de Uber e Lyft com a hora do pedido e do embarque, as zonas, a distância, o tempo, a
+tarifa antes das taxas, o repasse ao motorista e, desde 5 de janeiro de 2025, a taxa de
+congestionamento. Este case lê **15 meses, 301,6 milhões de viagens** (dezembro de 2023 a
+abril de 2024 e setembro de 2024 a junho de 2025), com DuckDB, uma passada por mês, em cerca
+de um minuto para tudo.
+
+Um relatório de qualidade roda em cada mês. Ele achou o que a documentação não diz: a hora em
+que o carro chegou falta em 99,7% das viagens da Lyft até fevereiro de 2025 e só passa a vir
+preenchida a partir de março de 2025; por isso a espera usada aqui é embarque menos pedido,
+que existe em todas as viagens. Cerca de 1% das viagens tem embarque antes do pedido e fica
+fora das esperas.
+
+O experimento natural veio das próprias plataformas. Quando a taxa de congestionamento
+começou, a Lyft devolveu ao passageiro os US$ 1,50 da taxa em crédito nas viagens da zona, de
+5 a 31 de janeiro de 2025, cada crédito válido por uma semana. A Uber não fez isso. A taxa
+atinge os dois aplicativos igualmente dentro da zona; o crédito deixou a Lyft mais barata ali
+por cerca de cinco semanas.
+:::
+
+::: {.rh-section}
+## Experimente
+
+O simulador abaixo usa as estimativas deste case. Mude o preço numa área e numa hora e veja
+viagens, receita, margem da plataforma e espera. Na aba de adaptação, veja passageiros e
+motoristas reagirem dia após dia a três políticas de preço, ou planeje um experimento.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case09/sim.css">
+<div id="mdp-app" data-src="../../assets/case09/data.json"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case09/sim.js"></script>
+```
+:::
+
+::: {.rh-section}
+## Método
+
+**Um modelo de tarifa que separa a viagem do mercado.** Uma tarifa base log-linear em
+distância, tempo, aplicativo e aeroporto explica 79% da variância do log da tarifa. O que
+sobra, em média por área e hora, é um índice de preço dinâmico. Um XGBoost com lugar e hora
+mostra quanto um modelo de preço completo ganha.
+
+**Uma previsão feita com uma semana de antecedência.** Viagens por zona e hora em 253 zonas,
+só com o que se sabe uma semana antes: calendário, feriados e defasagens de uma a quatro
+semanas. Cada mês de teste, de abril a junho de 2025, é previsto por um modelo treinado com
+tudo o que veio antes, contra duas referências: a mesma hora da semana anterior e a média das
+últimas quatro semanas.
+
+**Passageiros como uma população que evolui.** A fatia da Lyft entre as viagens de Uber e Lyft
+que começam em cada zona da área de congestionamento é seguida dia a dia. Três modelos de
+escolha aninhados competem: escolha estática, em que a fatia depende só dos preços e esperas
+do dia; uma dinâmica logit com inércia, em que a fatia anda a cada dia uma parte do caminho
+até esse alvo; e uma deriva do tipo replicador, em que ela nunca volta. O parâmetro de inércia
+decide entre eles. O crédito é medido por diferença em diferenças contra zonas fora da área
+de congestionamento, e o mesmo calendário um ano antes, sem crédito, serve de placebo.
+
+**Motoristas como segunda população, num simulador.** Seis áreas, calibradas no pico do fim
+de tarde dos dias úteis da Lyft, de fevereiro a junho de 2025. A cada dia os motoristas vão
+para as áreas que pagaram mais do que o normal, por um replicador exponencial cuja velocidade
+é a única coisa que os dados públicos não conseguem fixar, e por isso ela varia. A espera
+responde à demanda por motorista com elasticidade de 0,21, estimada dentro de zona e hora da
+semana. Os passageiros seguem o modelo de escolha acima. A elasticidade da demanda, -0,4 com
+faixa de -0,2 a -0,6, vem de estimativas publicadas para a Uber (Cohen et al., 2016). Três
+políticas enfrentam uma alta duradoura de 25% na demanda da zona de congestionamento: preço
+fixo, um preço dinâmico que equilibra o mercado todo dia e esse mesmo preço suavizado.
+
+**Um experimento que a plataforma poderia rodar.** Políticas de preço interferem entre
+passageiros e motoristas, então um teste A/B por passageiro sai viesado. O planejador usa
+blocos de tempo (switchback) e a variabilidade observada da margem por hora para dar o menor
+efeito que um teste consegue detectar.
+:::
+
+::: {.rh-section}
+## Resultados
+
+**A tarifa.** Fora da amostra, em junho de 2025, a tarifa base erra em média 23,4% (erro
+percentual absoluto médio) e o XGBoost completo, 18,3%. Viagens que começam na zona de
+congestionamento custam de 5% a 39% mais do que a mesma distância e tempo custariam em média,
+conforme a hora, mais no fim da noite; no Bronx, no Queens e em Staten Island as viagens
+ficam entre 0,84 e 1,02 desse nível.
+
+**A previsão.** Com uma semana de antecedência, o erro do XGBoost (WAPE) fica em média em
+13,1% nos três meses de teste, contra 16,1% da mesma hora da semana anterior e 13,0% da média
+das últimas quatro semanas. A média de quatro semanas é uma referência difícil nesse
+horizonte, e o modelo só empata com ela.
+
+**Os passageiros.** Os dados escolhem o modelo do meio. A inércia diária é 0,61 (intervalo de
+95% de 0,58 a 0,64): a fatia fecha cerca de 39% da distância até o alvo a cada dia, uma
+meia-vida de cerca de 1,4 dia. Preço relativo e espera pesam como se espera: um minuto a mais
+de espera na Lyft em relação à Uber reduz a fatia da Lyft, em log-chances, em 0,08. O crédito,
+porém, não deixou marca mensurável. Dentro da zona, a fatia da Lyft subiu 0,021 em
+log-chances durante o crédito (intervalo de -0,002 a 0,045), mas as mesmas semanas um ano
+antes, sem crédito, mostram 0,029. Na previsão de 8 de fevereiro a 30 de abril de 2025, o
+modelo dinâmico não acerta mais do que o estático (erro de 2,83 contra 2,80 pontos na fatia).
+Os passageiros se adaptam, mas em dias, e um crédito de cinco semanas não os mudou de vez.
+
+**Os motoristas e a política de preço.** Com motoristas lentos, as três políticas se
+acomodam, e o preço que equilibra o mercado rende 4,6% mais margem do que o preço fixo, com
+espera menor. Só que esse preço faz o ganho relativo do motorista andar junto com o próprio
+multiplicador, o que amplia a reação deles em cerca de 2,5 vezes. Os ciclos começam com
+velocidade de imitação 0,75 nesse preço, 1,75 quando ele é suavizado para um décimo da
+distância por dia, e entre 1 e 2 com preço fixo. Quando o preço oscila, a margem pode até
+subir, porque a demanda de curto prazo é inelástica, enquanto a espera cresce e os motoristas
+entram e saem em massa das mesmas áreas. Uma plataforma que olha só para a margem não vê esse
+custo; passageiros e motoristas veem.
+
+**O experimento.** Com blocos de quatro horas, o log da margem de um bloco varia em torno do
+nível usual com desvio-padrão de 0,22, então duas semanas detectam uma mudança de 15% na
+margem, quatro semanas 10%, oito semanas 7%. Como os motoristas continuam se movendo depois de
+cada troca, a dinâmica acima pede blocos longos o bastante para eles se acomodarem.
+:::
+
+::: {.rh-section}
+## Limites
+
+Os preços são os que as plataformas escolheram, então os coeficientes de preço são
+associações dadas a zona, o dia da semana e a espera, não elasticidades causais; a parte
+causal do case é o crédito, e ali o efeito não se distingue do placebo. Créditos e promoções
+não aparecem nas tarifas, e as promoções da própria Uber são desconhecidas. A inércia diária
+pode misturar hábito com choques locais persistentes. O simulador supõe que a divisão
+observada dos motoristas é um ponto de repouso, usa uma elasticidade publicada e não tem
+identificação de motorista, então as velocidades são cenários, não estimativas. Em 2025 a
+Uber passou a repassar parte dos pedidos a táxis amarelos, que saem destes dados.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu preço
+
+Este é o
+<a href="../oquant.html#packages">pacote de Previsão sob Medida</a> aplicado a preço. Para
+uma plataforma de mobilidade ou entrega, uma locadora ou operadora de frota, um
+estacionamento ou um negócio de eventos, ele vira um motor de preço com três partes: previsão
+de demanda por lugar e hora, resposta ao preço medida nos seus próprios dados e uma política
+testada num simulador e depois num switchback antes de entrar no ar. A decisão sobre preço
+fica com a sua equipe.
+:::
+
+::: {.rh-section}
+## Código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
+</p>
+```
+
+Com Python 3.11 ou superior:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m mdp.cli download     # arquivos mensais de viagens (cerca de 7 GB)
+python -m mdp.cli aggregate    # uma passada do DuckDB por mês
+python -m mdp.cli analyse      # todas as tabelas em results/
+```
+
+Referências: NYC Taxi and Limousine Commission, trip record data; Lyft, termos do crédito
+"NYC congestion fee"; Cohen, Hahn, Hall, Levitt e Metcalfe (2016), *Using Big Data to
+Estimate Consumer Surplus: The Case of Uber*, NBER Working Paper 22627; Sandholm (2010),
+*Population Games and Evolutionary Dynamics*, MIT Press; Bojinov, Simchi-Levi e Zhao (2023),
+*Design and Analysis of Switchback Experiments*, Management Science.
+:::

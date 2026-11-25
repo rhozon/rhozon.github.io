@@ -1,0 +1,19 @@
+#mdp-app { margin: 1rem 0 2rem; }
+#mdp-app .mdp-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#mdp-app .mdp-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#mdp-app .mdp-tabs button.on { background: #0f766e; color: #fff; }
+#mdp-app .mdp-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#mdp-app .mdp-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#mdp-app .mdp-ctl span { font-weight: 600; }
+#mdp-app .mdp-ctl select, #mdp-app .mdp-ctl input { width: 100%; }
+#mdp-app .mdp-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#mdp-app .mdp-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#mdp-app .mdp-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#mdp-app .mdp-card-l { font-size: .75rem; opacity: .8; }
+#mdp-app .mdp-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#mdp-app .mdp-card-s { font-size: .75rem; opacity: .8; }
+#mdp-app .mdp-chart { position: relative; height: 280px; margin: .5rem 0 1.2rem; }
+#mdp-app .mdp-note { font-size: .82rem; opacity: .85; }
+#mdp-app .mdp-heat canvas { width: 100%; max-width: 640px; height: auto; }
+@media (max-width: 600px) { #mdp-app .mdp-chart { height: 230px; } }

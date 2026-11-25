@@ -14,6 +14,7 @@ project:
     - portfolio/hybrid-rag.qmd
     - portfolio/hospital-admissions.qmd
     - portfolio/credit-early-warning.qmd
+    - portfolio/mobility-dynamic-pricing.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

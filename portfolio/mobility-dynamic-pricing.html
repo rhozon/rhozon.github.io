@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="How riders and drivers adapt when prices move. A fare model, a week-ahead demand forecast, a natural price experiment and an evolutionary simulator, on 301 million New York ride-hailing trips, with an interactive simulator.">
+
+<title>Dynamic Pricing for Ride-Hailing — Case Study – Rodrigo Hermont Ozon</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../">
+<link href="../assets/favicon.png" rel="icon" type="image/png">
+<script src="../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../site_libs/quarto-html/popper.min.js"></script>
+<script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../styles.css">
+<meta property="og:title" content="Dynamic Pricing for Ride-Hailing — Case Study">
+<meta property="og:description" content="How riders and drivers adapt when prices move. A fare model, a week-ahead demand forecast, a natural price experiment and an evolutionary simulator, on 301 million New York ride-hailing trips, with an interactive simulator.">
+<meta property="og:image" content="https://rhozon.github.io/portfolio/assets/profile_square.jpg">
+<meta property="og:site_name" content="Rodrigo Hermont Ozon">
+<meta name="twitter:title" content="Dynamic Pricing for Ride-Hailing — Case Study">
+<meta name="twitter:description" content="How riders and drivers adapt when prices move. A fare model, a week-ahead demand forecast, a natural price experiment and an evolutionary simulator, on 301 million New York ride-hailing trips, with an interactive simulator.">
+<meta name="twitter:image" content="https://rhozon.github.io/portfolio/assets/profile_square.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../index.html">
+    <span class="navbar-title">Rodrigo Hermont Ozon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Search"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Toggle navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../index.html"> 
+<span class="menu-text">Home</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../experience.html"> 
+<span class="menu-text">Experience</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../research.html"> 
+<span class="menu-text">Research</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../portfolio/index.html"> 
+<span class="menu-text">Portfolio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../teaching.html"> 
+<span class="menu-text">Teaching</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../oquant.html"> 
+<span class="menu-text">Consulting</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../cv.html"> 
+<span class="menu-text">Full CV</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../contact.html"> 
+<span class="menu-text">Contact</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../pt/index.html"> 
+<span class="menu-text">PT</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rhozon"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="rh-section">
+<div class="rh-kicker">
+Case Study 09 · Live, 25 November 2026
+</div>
+<section id="dynamic-pricing-for-ride-hailing" class="level1">
+<h1>Dynamic Pricing for Ride-Hailing</h1>
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Python · 13 tests
+</p>
+</section>
+</div>
+<section id="the-business-question" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-business-question">The business question</h2>
+<p>A ride-hailing platform sets a price for every area and every hour. Two populations answer it, and neither answers at once. Riders compare the app with its rival, and with not riding at all. Drivers look at what each part of the city paid yesterday and decide where to work today. A price that clears the market this evening changes where the drivers will be tomorrow, and that changes the price the platform will need then.</p>
+<p>So the useful questions are dynamic. How much of the fare is the trip and how much is the market? How many requests will each zone get next week? How fast do riders switch apps when one becomes cheaper? And does the price that looks best today make supply and waits swing later? The same questions apply to any business that prices a perishable capacity under moving demand: car rental, delivery, parking, hotels, events.</p>
+</section>
+<section id="the-data" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="the-data">The data</h2>
+<p>Every trip is public. New York’s Taxi and Limousine Commission publishes each Uber and Lyft trip with the time of the request and of the pickup, the zones, distance, time, the fare before fees, the driver’s pay, and since 5 January 2025 the congestion fee. This case reads <strong>15 months, 301.6 million trips</strong> (December 2023 to April 2024, and September 2024 to June 2025), with DuckDB, one pass per month, in about a minute for the whole set.</p>
+<p>A quality report runs on every month. It found what the documentation does not say: the time the car arrived is missing for 99.7% of Lyft trips until February 2025, and is filled only from March 2025 on, so the wait used here is pickup minus request, which exists for every trip; about 1% of trips have a pickup before the request and are left out of the waits.</p>
+<p>The natural experiment comes from the platforms themselves. When the congestion fee started, Lyft credited riders the $1.50 fee on rides in the zone, from 5 to 31 January 2025, each credit valid for a week. Uber did not. The fee hits both apps alike inside the zone; the credit made Lyft cheaper there for about five weeks.</p>
+</section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>The simulator below uses the estimates of this case. Change the price in an area and hour and see trips, revenue, the platform’s margin and the wait. Switch to the adaptation tab to see riders and drivers react day after day under three pricing policies, or plan an experiment.</p>
+<link rel="stylesheet" href="../assets/case09/sim.css">
+<div id="mdp-app" data-src="../assets/case09/data.json"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case09/sim.js"></script>
+</section>
+<section id="method" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="method">Method</h2>
+<p><strong>A fare model that separates the trip from the market.</strong> A log-linear base fare on distance, time, app and airport explains 79% of the variance of log fares. What is left, averaged by area and hour, is a dynamic price index. An XGBoost model with place and time on top shows how much a full pricing model gains.</p>
+<p><strong>A forecast made a week ahead.</strong> Trips per zone and hour for 253 zones, with only what is known a week before: calendar, holidays and lags of one to four weeks. Each test month, April to June 2025, is forecast by a model trained on everything before it, against two baselines: the same hour last week and the mean of the last four weeks.</p>
+<p><strong>Riders as an evolving population.</strong> The Lyft share among Uber and Lyft trips that start in each zone of the congestion zone is followed day by day. Three nested choice models compete: static choice, where the share depends only on today’s prices and waits; a logit dynamic with inertia, where the share moves part of the way toward that target each day; and replicator-like drift, where it never comes back. The inertia parameter decides between them. The credit is measured by difference in differences against zones outside the congestion zone, and the same calendar a year earlier, when there was no credit, serves as placebo.</p>
+<p><strong>Drivers as a second population, in a simulator.</strong> Six areas, calibrated on Lyft’s weekday evening peak from February to June 2025. Each day drivers move toward the areas that paid more than usual, by an exponential replicator whose speed is the one thing the public data cannot pin down, so it is varied. The wait responds to demand per driver with an elasticity of 0.21, estimated within zone and hour of the week. Riders follow the choice model above. The demand elasticity, -0.4 with a range of -0.2 to -0.6, comes from published estimates for Uber (Cohen et al., 2016). Three policies face a lasting 25% rise in demand in the congestion zone: a fixed price, a surge that clears the market every day, and the same surge smoothed.</p>
+<p><strong>An experiment the platform could run.</strong> Price policies interfere across riders and drivers, so a rider-level A/B test is biased. The planner uses switchback blocks and the observed variability of the hourly margin to give the smallest effect a test can detect.</p>
+</section>
+<section id="results" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="results">Results</h2>
+<p><strong>The fare.</strong> Out of sample, in June 2025, the base fare misses by 23.4% on average (mean absolute percentage error) and the full XGBoost model by 18.3%. Trips that start in the congestion zone cost 5% to 39% more than the same distance and time would cost on average, depending on the hour, highest late at night; in the Bronx, Queens and Staten Island trips run at 0.84 to 1.02 of that level.</p>
+<p><strong>The forecast.</strong> A week ahead, the XGBoost model’s error (WAPE) averages 13.1% over the three test months, against 16.1% for the same hour last week and 13.0% for the mean of the last four weeks. The four-week mean is a hard benchmark at this horizon, and the model only ties it.</p>
+<p><strong>The riders.</strong> The data choose the middle model. The daily inertia is 0.61 (95% interval 0.58 to 0.64): the share closes about 39% of the gap to its target each day, a half-life of about 1.4 days. Relative price and wait matter as expected: one extra minute of Lyft wait against Uber lowers Lyft’s log-odds share by 0.08. The credit, however, left no measurable mark. Inside the zone, Lyft’s share rose by 0.021 in log-odds during the credit (interval -0.002 to 0.045), but the same weeks a year earlier, with no credit, show 0.029. Forecasting 8 February to 30 April 2025, the dynamic model is not more accurate than the static one (share error of 2.83 against 2.80 points). Riders adapt, but within days, and a five-week credit did not move them for good.</p>
+<p><strong>The drivers and the price policy.</strong> With slow drivers the three policies settle, and the market-clearing surge earns 4.6% more margin than a fixed price with a shorter wait. The surge, though, makes drivers’ relative pay move with the multiplier itself, which amplifies their reaction about 2.5 times. Cycles start at an imitation speed of 0.75 under the clearing surge, at 1.75 when it is smoothed to a tenth of the gap per day, and between 1 and 2 with a fixed price. When prices cycle, the margin can even rise, because short-run demand is inelastic, while waits grow and drivers crowd in and out of the same areas. A platform that looks only at the margin will not see the cost; riders and drivers will.</p>
+<p><strong>The experiment.</strong> With four-hour blocks the log margin of a block varies around its usual level with a standard deviation of 0.22, so two weeks detect a 15% change in margin, four weeks 10%, eight weeks 7%. Since drivers keep moving after a switch, the dynamics above argue for blocks long enough to let them settle.</p>
+</section>
+<section id="limits" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="limits">Limits</h2>
+<p>Prices are what the platforms chose, so the price coefficients are associations given zone, day of week and wait, not causal elasticities; the causal part of the case is the credit, and there the effect is not distinguishable from the placebo. Credits and promotions do not appear in the fares, and Uber’s own promotions are unknown. Daily inertia may mix habits with persistent local shocks. The simulator assumes the observed split of drivers is a rest point, uses a published elasticity, and has no driver identifiers, so its speeds are scenarios, not estimates. In 2025 Uber started passing some requests to yellow cabs, which leave this data.</p>
+</section>
+<section id="applied-to-your-pricing" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="applied-to-your-pricing">Applied to your pricing</h2>
+<p>This is the <a href="../oquant.html#packages">Custom Forecasting package</a> applied to price. For a mobility or delivery platform, a car rental or fleet operator, a parking or events business, it becomes a pricing engine with three parts: a demand forecast by place and hour, a price response measured on your own data, and a policy tested in a simulator and then in a switchback before it goes live. The decision on prices stays with your people.</p>
+</section>
+<section id="code" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="code">Code</h2>
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
+</p>
+<p>With Python 3.11 or later:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">".[dev]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli download     <span class="co"># monthly trip files (about 7 GB)</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli aggregate    <span class="co"># one DuckDB pass per month</span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli analyse      <span class="co"># every table in results/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<p>References: NYC Taxi and Limousine Commission, trip record data; Lyft, “NYC congestion fee” credit terms; Cohen, Hahn, Hall, Levitt and Metcalfe (2016), <em>Using Big Data to Estimate Consumer Surplus: The Case of Uber</em>, NBER Working Paper 22627; Sandholm (2010), <em>Population Games and Evolutionary Dynamics</em>, MIT Press; Bojinov, Simchi-Levi and Zhao (2023), <em>Design and Analysis of Switchback Experiments</em>, Management Science.</p>
+</section>
+
+
+
+</main> <!-- /main -->
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>
+<script>
+// EN/PT no menu leva à mesma página na outra língua, quando ela existe
+(function () {
+  var links = document.querySelectorAll('.navbar a.nav-link');
+  var lang = null;
+  for (var i = 0; i < links.length; i++) {
+    var t = links[i].textContent.trim();
+    if (t === 'EN' || t === 'PT') { lang = links[i]; break; }
+  }
+  if (!lang || !window.fetch || location.protocol === 'file:') return;
+  var toPt = lang.textContent.trim() === 'PT';
+  var base = lang.href.replace(toPt ? /pt\/(index\.html)?$/ : /(index\.html)?$/, '');
+  var here = location.origin + location.pathname;
+  if (here.indexOf(base) !== 0) return;
+  var rel = here.slice(base.length);
+  if (rel === 'cv.html') return; // o CV só existe em inglês
+  var target = toPt ? base + 'pt/' + rel : base + rel.replace(/^pt\//, '');
+  fetch(target, { method: 'HEAD' }).then(function (r) {
+    if (r.ok) { lang.href = target; }
+  }).catch(function () {});
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Rodrigo Hermont Ozon · Econometrician &amp; Data Scientist · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

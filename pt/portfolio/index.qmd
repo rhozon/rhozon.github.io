@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
-que esse, o resultado e o código. O que muda é o que pode ser mostrado. Cinco são
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. Seis são
 totalmente públicos, com repositório, testes e resultados. Dois descrevem pesquisa
 de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
 retidos até os periódicos se pronunciarem. Um roda sobre dados sintéticos, porque o
@@ -100,6 +100,17 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
       Análise de sobrevivência &middot; XGBoost &middot; Teste pré-registrado
     </p>
     <p><a href="credit-early-warning.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="mobility-dynamic-pricing.html">Preço Dinâmico em Mobilidade</a></h3>
+    <p>Como passageiros e motoristas se adaptam quando o preço muda: modelo de tarifa, previsão
+    com uma semana de antecedência, um experimento natural de preço e um simulador
+    evolucionário sobre 301 milhões de viagens em Nova York, com simulador para experimentar.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Pricing &middot; Dinâmica evolucionária &middot; Simulador interativo
+    </p>
+    <p><a href="mobility-dynamic-pricing.html">Ler o caso </a></p>
   </div>
 </div>
 ```
