@@ -317,6 +317,14 @@ Séries temporais · SARIMA sazonal · Backtest com origem móvel · Faixas de 8
 <p>Cerca de 1,16 milhão de internações nos doze meses, 3,8% a mais do que nos doze anteriores. O repositório tem a mesma previsão para todos os estados.</p>
 <p>Os limites fazem parte do resultado. Estados pequenos são difíceis para qualquer modelo: Roraima e Amapá ficam acima de 16% de erro. O total por estado é o nível certo para uma secretaria de saúde, enquanto um hospital precisa do mesmo processo no seu próprio recorte dos dados. E a janela da pandemia foi definida à mão. Um choque desse tamanho pediria a mesma decisão de novo.</p>
 </section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Escolha um estado para ver o histórico e a previsão dos próximos doze meses; refaça qualquer uma das 33 previsões do teste contra o que de fato aconteceu, ao lado do benchmark ou do modelo com a pandemia no ajuste; ou compare o erro de cada modelo estado por estado.</p>
+<link rel="stylesheet" href="../../assets/case07/sim.css?v=1">
+<div id="adm-app" data-src="../../assets/case07/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case07/sim.js?v=1"></script>
+</section>
 <section id="aplicado-aos-seus-dados" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="aplicado-aos-seus-dados">Aplicado aos seus dados</h2>
 <p>Este é o <a href="../oquant.html#pacotes">pacote de Previsão sob Medida</a> com dados públicos: internações aqui e, no seu caso, demanda, sinistros, exames ou inadimplência. Os passos são os mesmos: achar o que nos dados é artefato de registro, vencer uma referência simples em meses que o modelo não viu e entregar uma faixa que cumpre o que promete.</p>

@@ -1,0 +1,29 @@
+#adm-app { max-width: 100%; overflow-x: hidden; }
+#adm-app { margin: 1rem 0 2rem; }
+#adm-app .adm-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#adm-app .adm-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#adm-app .adm-tabs button.on { background: #0f766e; color: #fff; }
+#adm-app .adm-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#adm-app .adm-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#adm-app .adm-ctl span { font-weight: 600; }
+#adm-app .adm-ctl select, #adm-app .adm-ctl input { width: 100%; }
+#adm-app .adm-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#adm-app .adm-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#adm-app .adm-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#adm-app .adm-card-l { font-size: .75rem; opacity: .8; }
+#adm-app .adm-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#adm-app .adm-card-s { font-size: .75rem; opacity: .8; }
+#adm-app .adm-chart { position: relative; height: 380px; margin: .5rem 0 1rem; }
+#adm-app .adm-chart-s { height: 320px; }
+#adm-app .adm-note { font-size: .82rem; opacity: .85; }
+#adm-app .adm-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+#adm-app .adm-split h4 { font-size: .9rem; margin: .2rem 0 .3rem; }
+#adm-app .adm-table { width: 100%; border-collapse: collapse; font-size: .8rem; display: block; overflow-x: auto; max-height: 560px; overflow-y: auto; }
+#adm-app .adm-table th, #adm-app .adm-table td { padding: .3rem .45rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; white-space: nowrap; }
+#adm-app .adm-table th { font-weight: 600; white-space: normal; vertical-align: bottom; position: sticky; top: 0; background: var(--bs-body-bg, #fff); }
+#adm-app .adm-table th:first-child, #adm-app .adm-table td:first-child { text-align: left; }
+#adm-app .adm-table tbody tr { cursor: pointer; }
+#adm-app .adm-table tbody tr:hover, #adm-app .adm-table tbody tr.on { background: rgba(15,118,110,.1); }
+#adm-app .adm-table td.best { font-weight: 700; }
+@media (max-width: 760px) { #adm-app .adm-split { grid-template-columns: minmax(0, 1fr); } #adm-app .adm-chart { height: 320px; } }

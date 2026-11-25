@@ -116,6 +116,19 @@ window was set by hand. A shock of that size would call for the same decision ag
 :::
 
 ::: {.rh-section}
+## Try it
+
+Pick a state to see its history and the forecast for the next twelve months; replay any of the 33 forecasts in the test against what actually happened, next to the benchmark or to the model with the pandemic left in; or compare the error of every model state by state.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case07/sim.css?v=1">
+<div id="adm-app" data-src="../assets/case07/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case07/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## Applied to your data
 
 This is the

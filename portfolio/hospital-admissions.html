@@ -317,6 +317,14 @@ Time series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked fo
 <p>About 1.16 million admissions over the twelve months, 3.8% more than in the previous twelve. The repository has the same forecast for every state.</p>
 <p>The limits are part of the result. Small states are hard for every model: Roraima and Amapá stay above 16% error. State totals are the right level for a health department, while a hospital needs the same pipeline on its own cut of the data. And the pandemic window was set by hand. A shock of that size would call for the same decision again.</p>
 </section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Pick a state to see its history and the forecast for the next twelve months; replay any of the 33 forecasts in the test against what actually happened, next to the benchmark or to the model with the pandemic left in; or compare the error of every model state by state.</p>
+<link rel="stylesheet" href="../assets/case07/sim.css?v=1">
+<div id="adm-app" data-src="../assets/case07/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case07/sim.js?v=1"></script>
+</section>
 <section id="applied-to-your-data" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="applied-to-your-data">Applied to your data</h2>
 <p>This is the <a href="../oquant.html#packages">Custom Forecasting package</a> on public data: admissions here, and in your case demand, claims, exams or default. The steps are the same: find what in the data is a recording artifact, beat a simple benchmark on months the model has not seen, and deliver a band that holds what it promises.</p>

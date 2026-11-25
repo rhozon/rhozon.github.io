@@ -992,5 +992,12 @@
     "title": "Pricing Short-Term Rentals in Rio",
     "section": "References",
     "text": "References\nData: Inside Airbnb, Rio de Janeiro scrapes (CC BY 4.0).\n\nGibbs, C., Guttentag, D., Gretzel, U., Morton, J. and Goodwill, A. (2018). Pricing in the sharing economy: a hedonic pricing model applied to Airbnb listings. Journal of Travel & Tourism Marketing, 35(1), 46-56. doi:10.1080/10548408.2017.1308292\nHausman, J. A. (1978). Specification Tests in Econometrics. Econometrica, 46(6), 1251-1271. doi:10.2307/1913827\nNevo, A. (2001). Measuring Market Power in the Ready-to-Eat Cereal Industry. Econometrica, 69(2), 307-342. doi:10.1111/1468-0262.00194\nRosen, S. (1974). Hedonic Prices and Implicit Markets: Product Differentiation in Pure Competition. Journal of Political Economy, 82(1), 34-55. doi:10.1086/260169\nWang, D. and Nicolau, J. L. (2017). Price determinants of sharing economy based accommodation rental: A study of listings from 33 cities on Airbnb.com. International Journal of Hospitality Management, 62, 120-131. doi:10.1016/j.ijhm.2016.12.007\nZervas, G., Proserpio, D. and Byers, J. W. (2017). The Rise of the Sharing Economy: Estimating the Impact of Airbnb on the Hotel Industry. Journal of Marketing Research, 54(5), 687-705. doi:10.1509/jmr.15.0204"
+  },
+  {
+    "objectID": "portfolio/hospital-admissions.html#try-it",
+    "href": "portfolio/hospital-admissions.html#try-it",
+    "title": "Forecasting Hospital Admissions",
+    "section": "Try it",
+    "text": "Try it\nPick a state to see its history and the forecast for the next twelve months; replay any of the 33 forecasts in the test against what actually happened, next to the benchmark or to the model with the pandemic left in; or compare the error of every model state by state."
   }
 ]
