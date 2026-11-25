@@ -6,11 +6,11 @@ toc: false
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Case Study 09 · Live, 25 November 2026</div>
+<div class="rh-kicker">Case Study 09 · Live, version 2 of 25 November 2026</div>
 # Dynamic Pricing for Ride-Hailing
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Python · 13 tests
+DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Pricing API · Python · 19 tests
 </p>
 :::
 
@@ -53,15 +53,16 @@ credit made Lyft cheaper there for about five weeks.
 ::: {.rh-section}
 ## Try it
 
-The simulator below uses the estimates of this case. Change the price in an area and hour and
-see trips, revenue, the platform's margin and the wait. Switch to the adaptation tab to see
+The simulator below uses the estimates of this case. The map shows trips, fare per mile and wait
+in each of the 263 taxi zones by hour. Change the price in an area and hour and see trips,
+revenue, the platform's margin and the wait. Switch to the adaptation tab to see
 riders and drivers react day after day under three pricing policies, or plan an experiment.
 
 ```{=html}
-<link rel="stylesheet" href="../assets/case09/sim.css">
-<div id="mdp-app" data-src="../assets/case09/data.json"></div>
+<link rel="stylesheet" href="../assets/case09/sim.css?v=3">
+<div id="mdp-app" data-src="../assets/case09/data.json?v=3"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../assets/case09/sim.js"></script>
+<script src="../assets/case09/sim.js?v=3"></script>
 ```
 :::
 
@@ -163,10 +164,18 @@ switchback before it goes live. The decision on prices stays with your people.
 :::
 
 ::: {.rh-section}
-## Code
+## Paper and code
+
+**Version 2, 25 November 2026.** The first version went live in a hurry; this one adds what it
+left out: a working paper, a pricing API with a Docker image and a model card, a monthly drift
+monitor and the zone map. The drift monitor compares the distribution of trip distance, minutes,
+fare per mile and wait each month with the end of 2024: every month through June 2025 has a
+population stability index below 0.05, so the data the model sees have not moved. No result of
+the first version changed.
 
 ```{=html}
 <p>
+<a class="rh-btn rh-btn-primary" href="../assets/mobility-dynamic-pricing-paper.pdf">Read the paper (PDF)</a>
 <a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
 </p>
 ```
@@ -179,6 +188,8 @@ pytest -v
 python -m mdp.cli download     # monthly trip files (about 7 GB)
 python -m mdp.cli aggregate    # one DuckDB pass per month
 python -m mdp.cli analyse      # every table in results/
+python -m mdp.cli drift        # monthly drift report
+docker build -t mdp-api . && docker run -p 8000:8000 mdp-api   # POST /quote, POST /multiplier
 ```
 
 References: NYC Taxi and Limousine Commission, trip record data; Lyft, "NYC congestion fee"

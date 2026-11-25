@@ -5,7 +5,8 @@
   if (!root) return;
   var PT = (document.documentElement.lang || '').toLowerCase().indexOf('pt') === 0;
   var T = PT ? {
-    tabs: ['Simulador de preço', 'Dinâmica de adaptação', 'Planejador de experimento', 'Passageiros e o crédito'],
+    tabs: ['Mapa', 'Simulador de preço', 'Dinâmica de adaptação', 'Planejador de experimento', 'Passageiros e o crédito'],
+    metric: 'Medida', mTrips: 'Viagens por hora', mFpm: 'Tarifa por milha (US$)', mWait: 'Espera média (min)', crz: 'Contorno: zona de congestionamento', noData: 'sem dados',
     area: 'Área', day: 'Dia', weekday: 'Dia útil', weekend: 'Fim de semana', hour: 'Hora', price: 'Mudança de preço',
     elas: 'Elasticidade da demanda', low: 'baixa', central: 'central', high: 'alta',
     trips: 'Viagens por hora', revenue: 'Receita por hora', margin: 'Margem da plataforma por hora', wait: 'Espera média',
@@ -22,7 +23,8 @@
     credit: 'crédito de US$1,50 da Lyft (5/1 a 7/2)', y2025: 'dez/2024 a abr/2025', y2024: 'dez/2023 a abr/2024 (sem crédito)',
     perMin: 'min', loading: 'Carregando dados do modelo...'
   } : {
-    tabs: ['Price simulator', 'Adaptation dynamics', 'Experiment planner', 'Riders and the credit'],
+    tabs: ['Map', 'Price simulator', 'Adaptation dynamics', 'Experiment planner', 'Riders and the credit'],
+    metric: 'Measure', mTrips: 'Trips per hour', mFpm: 'Fare per mile (US$)', mWait: 'Mean wait (min)', crz: 'Outline: congestion zone', noData: 'no data',
     area: 'Area', day: 'Day', weekday: 'Weekday', weekend: 'Weekend', hour: 'Hour', price: 'Price change',
     elas: 'Demand elasticity', low: 'low', central: 'central', high: 'high',
     trips: 'Trips per hour', revenue: 'Revenue per hour', margin: 'Platform margin per hour', wait: 'Mean wait',
@@ -75,8 +77,54 @@
       b.addEventListener('click', function () { show(i); }); return {b: b, p: p};
     });
     function show(i) { panes.forEach(function (x, j) { x.p.style.display = i === j ? 'block' : 'none'; x.b.classList.toggle('on', i === j); }); }
-    priceTab(panes[0].p, D, P, areas); dynTab(panes[1].p, D, P, areas); expTab(panes[2].p, D); creditTab(panes[3].p, D);
+    mapTab(panes[0].p, D); priceTab(panes[1].p, D, P, areas); dynTab(panes[2].p, D, P, areas); expTab(panes[3].p, D); creditTab(panes[4].p, D);
     show(0);
+  }
+
+  // ---------- 0. zone map ----------
+  function mapTab(p, D) {
+    var ctl = el('div', {class: 'mdp-ctls'}); p.appendChild(ctl);
+    var sm = control(ctl, T.metric, select([['trips', T.mTrips], ['fare_per_mile', T.mFpm], ['wait', T.mWait]], 'trips'));
+    var sd = control(ctl, T.day, select([[0, T.weekday], [1, T.weekend]], 0));
+    var ho = el('output'); var sh = control(ctl, T.hour, range(0, 23, 1, 18), ho);
+    var box = el('div', {class: 'mdp-map'}); p.appendChild(box);
+    var cv = el('canvas', {width: 900, height: 900}); box.appendChild(cv);
+    var tip = el('div', {class: 'mdp-tip'}); box.appendChild(tip);
+    var legend = el('p', {class: 'mdp-note'}); p.appendChild(legend);
+    var Z = D.zones, crz = {}; (D.crz || []).forEach(function (z) { crz[z] = 1; });
+    var src = root.getAttribute('data-src').replace('data.json', 'zones.json');
+    fetch(src).then(function (r) { return r.json(); }).then(function (G) {
+      var xs = [], ys = []; G.forEach(function (f) { f.rings.forEach(function (r) { r.forEach(function (q) { xs.push(q[0]); ys.push(q[1]); }); }); });
+      var x0 = Math.min.apply(null, xs), x1 = Math.max.apply(null, xs), y0 = Math.min.apply(null, ys), y1 = Math.max.apply(null, ys);
+      var sc = Math.min(880 / (x1 - x0), 880 / (y1 - y0));
+      var g = cv.getContext('2d'), paths = [];
+      G.forEach(function (f) { var path = new Path2D(); f.rings.forEach(function (r) { r.forEach(function (q, i) { var X = 10 + (q[0] - x0) * sc, Y = 890 - (q[1] - y0) * sc; if (i) path.lineTo(X, Y); else path.moveTo(X, Y); }); path.closePath(); }); paths.push({f: f, path: path}); });
+      var vals = {};
+      function draw() {
+        var m = sm.value, wk = +sd.value, h = +sh.value; ho.textContent = h + ':00'; vals = {};
+        for (var i = 0; i < Z.zone.length; i++) if (Z.weekend[i] === wk && Z.hour[i] === h) vals[Z.zone[i]] = Z[m][i];
+        var v = Object.keys(vals).map(function (k) { return vals[k]; }).filter(function (x) { return x != null && isFinite(x); }).sort(function (a, b) { return a - b; });
+        var lo = v[Math.floor(v.length * 0.05)], hi = v[Math.floor(v.length * 0.95)];
+        g.clearRect(0, 0, 900, 900);
+        paths.forEach(function (o) {
+          var x = vals[o.f.id];
+          if (x == null || !isFinite(x)) g.fillStyle = 'rgba(127,127,127,.15)';
+          else { var t = Math.max(0, Math.min(1, (m === 'trips' ? Math.log(1 + x) - Math.log(1 + lo) : x - lo) / ((m === 'trips' ? Math.log(1 + hi) - Math.log(1 + lo) : hi - lo) || 1))); g.fillStyle = 'rgba(15,118,110,' + (0.08 + 0.9 * t) + ')'; }
+          g.fill(o.path); g.strokeStyle = 'rgba(255,255,255,.6)'; g.lineWidth = 0.6; g.stroke(o.path);
+        });
+        paths.forEach(function (o) { if (crz[o.f.id]) { g.strokeStyle = '#c2410c'; g.lineWidth = 1.6; g.stroke(o.path); } });
+        legend.textContent = T[m === 'trips' ? 'mTrips' : m === 'wait' ? 'mWait' : 'mFpm'] + ': ' + fmt(lo, 1) + (PT ? ' a ' : ' to ') + fmt(hi, 1) + (PT ? ' (percentis 5 e 95). ' : ' (5th and 95th percentiles). ') + T.crz + '.';
+      }
+      cv.addEventListener('mousemove', function (e) {
+        var r = cv.getBoundingClientRect(), X = (e.clientX - r.left) * 900 / r.width, Y = (e.clientY - r.top) * 900 / r.height;
+        var hit = paths.find(function (o) { return g.isPointInPath(o.path, X, Y); });
+        if (!hit) { tip.style.display = 'none'; return; }
+        var x = vals[hit.f.id]; tip.style.display = 'block'; tip.style.left = (e.clientX - r.left + 12) + 'px'; tip.style.top = (e.clientY - r.top + 12) + 'px';
+        tip.textContent = hit.f.zone + ' (' + hit.f.borough + '): ' + (x == null ? T.noData : fmt(x, 1));
+      });
+      cv.addEventListener('mouseleave', function () { tip.style.display = 'none'; });
+      [sm, sd, sh].forEach(function (c) { c.addEventListener('input', draw); }); draw();
+    });
   }
 
   // ---------- 1. price simulator ----------

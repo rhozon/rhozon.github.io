@@ -17,3 +17,6 @@
 #mdp-app .mdp-note { font-size: .82rem; opacity: .85; }
 #mdp-app .mdp-heat canvas { width: 100%; max-width: 640px; height: auto; }
 @media (max-width: 600px) { #mdp-app .mdp-chart { height: 230px; } }
+#mdp-app .mdp-map { position: relative; max-width: 620px; margin: .5rem auto; }
+#mdp-app .mdp-map canvas { width: 100%; height: auto; display: block; }
+#mdp-app .mdp-tip { position: absolute; display: none; background: rgba(20,20,20,.85); color: #fff; font-size: .75rem; padding: .25rem .45rem; border-radius: 4px; pointer-events: none; white-space: nowrap; }

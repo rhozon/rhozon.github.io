@@ -585,7 +585,7 @@
     "href": "portfolio/mobility-dynamic-pricing.html",
     "title": "Dynamic Pricing for Ride-Hailing",
     "section": "",
-    "text": "Case Study 09 · Live, 25 November 2026\n\n\n\n\nDuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Python · 13 tests"
+    "text": "Case Study 09 · Live, version 2 of 25 November 2026\n\n\n\n\nDuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Pricing API · Python · 19 tests"
   },
   {
     "objectID": "portfolio/mobility-dynamic-pricing.html#the-business-question",
@@ -606,7 +606,7 @@
     "href": "portfolio/mobility-dynamic-pricing.html#try-it",
     "title": "Dynamic Pricing for Ride-Hailing",
     "section": "Try it",
-    "text": "Try it\nThe simulator below uses the estimates of this case. Change the price in an area and hour and see trips, revenue, the platform’s margin and the wait. Switch to the adaptation tab to see riders and drivers react day after day under three pricing policies, or plan an experiment."
+    "text": "Try it\nThe simulator below uses the estimates of this case. The map shows trips, fare per mile and wait in each of the 263 taxi zones by hour. Change the price in an area and hour and see trips, revenue, the platform’s margin and the wait. Switch to the adaptation tab to see riders and drivers react day after day under three pricing policies, or plan an experiment."
   },
   {
     "objectID": "portfolio/mobility-dynamic-pricing.html#method",
@@ -894,5 +894,12 @@
     "title": "Pricing Short-Term Rentals in Rio",
     "section": "Code",
     "text": "Code\n\ngithub.com/rhozon/rio-short-term-rental-pricing\n\npip install -e \".[dev]\"\npytest -v\npython -m strp.cli download     # Inside Airbnb scrapes of Rio (STRP_RAW)\npython -m strp.cli analyse      # every table in results/\nReferences: Inside Airbnb, Rio de Janeiro scrapes (CC BY 4.0); Rosen (1974), Hedonic Prices and Implicit Markets, Journal of Political Economy; Wooldridge (2010), Econometric Analysis of Cross Section and Panel Data, MIT Press."
+  },
+  {
+    "objectID": "portfolio/mobility-dynamic-pricing.html#paper-and-code",
+    "href": "portfolio/mobility-dynamic-pricing.html#paper-and-code",
+    "title": "Dynamic Pricing for Ride-Hailing",
+    "section": "Paper and code",
+    "text": "Paper and code\nVersion 2, 25 November 2026. The first version went live in a hurry; this one adds what it left out: a working paper, a pricing API with a Docker image and a model card, a monthly drift monitor and the zone map. The drift monitor compares the distribution of trip distance, minutes, fare per mile and wait each month with the end of 2024: every month through June 2025 has a population stability index below 0.05, so the data the model sees have not moved. No result of the first version changed.\n\nRead the paper (PDF)\ngithub.com/rhozon/mobility-dynamic-pricing\n\nWith Python 3.11 or later:\npip install -e \".[dev]\"\npytest -v\npython -m mdp.cli download     # monthly trip files (about 7 GB)\npython -m mdp.cli aggregate    # one DuckDB pass per month\npython -m mdp.cli analyse      # every table in results/\npython -m mdp.cli drift        # monthly drift report\ndocker build -t mdp-api . && docker run -p 8000:8000 mdp-api   # POST /quote, POST /multiplier\nReferences: NYC Taxi and Limousine Commission, trip record data; Lyft, “NYC congestion fee” credit terms; Cohen, Hahn, Hall, Levitt and Metcalfe (2016), Using Big Data to Estimate Consumer Surplus: The Case of Uber, NBER Working Paper 22627; Sandholm (2010), Population Games and Evolutionary Dynamics, MIT Press; Bojinov, Simchi-Levi and Zhao (2023), Design and Analysis of Switchback Experiments, Management Science."
   }
 ]

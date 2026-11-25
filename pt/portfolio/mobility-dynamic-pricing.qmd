@@ -7,11 +7,11 @@ lang: pt-BR
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Estudo de Caso 09 · No ar, 25 de novembro de 2026</div>
+<div class="rh-kicker">Estudo de Caso 09 · No ar, versão 2 de 25 de novembro de 2026</div>
 # Preço Dinâmico em Mobilidade
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jogos evolucionários · Experimento switchback · Python · 13 testes
+DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jogos evolucionários · Experimento switchback · API de preço · Python · 19 testes
 </p>
 :::
 
@@ -58,15 +58,16 @@ por cerca de cinco semanas.
 ::: {.rh-section}
 ## Experimente
 
-O simulador abaixo usa as estimativas deste case. Mude o preço numa área e numa hora e veja
+O simulador abaixo usa as estimativas deste case. O mapa mostra viagens, tarifa por milha e espera
+em cada uma das 263 zonas de táxi, hora a hora. Mude o preço numa área e numa hora e veja
 viagens, receita, margem da plataforma e espera. Na aba de adaptação, veja passageiros e
 motoristas reagirem dia após dia a três políticas de preço, ou planeje um experimento.
 
 ```{=html}
-<link rel="stylesheet" href="../../assets/case09/sim.css">
-<div id="mdp-app" data-src="../../assets/case09/data.json"></div>
+<link rel="stylesheet" href="../../assets/case09/sim.css?v=3">
+<div id="mdp-app" data-src="../../assets/case09/data.json?v=3"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../../assets/case09/sim.js"></script>
+<script src="../../assets/case09/sim.js?v=3"></script>
 ```
 :::
 
@@ -174,10 +175,18 @@ fica com a sua equipe.
 :::
 
 ::: {.rh-section}
-## Código
+## Artigo e código
+
+**Versão 2, 25 de novembro de 2026.** A primeira versão entrou no ar às pressas; esta acrescenta o
+que ficou de fora: um artigo, uma API de preço com imagem Docker e cartão do modelo, um monitor
+mensal de deriva e o mapa das zonas. O monitor compara a distribuição de distância, minutos,
+tarifa por milha e espera de cada mês com o fim de 2024: todos os meses até junho de 2025 têm
+índice de estabilidade populacional abaixo de 0,05, então os dados que o modelo vê não se
+moveram. Nenhum resultado da primeira versão mudou.
 
 ```{=html}
 <p>
+<a class="rh-btn rh-btn-primary" href="../../assets/mobility-dynamic-pricing-paper.pdf">Ler o artigo (PDF, em inglês)</a>
 <a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
 </p>
 ```
@@ -190,6 +199,8 @@ pytest -v
 python -m mdp.cli download     # arquivos mensais de viagens (cerca de 7 GB)
 python -m mdp.cli aggregate    # uma passada do DuckDB por mês
 python -m mdp.cli analyse      # todas as tabelas em results/
+python -m mdp.cli drift        # relatório mensal de deriva
+docker build -t mdp-api . && docker run -p 8000:8000 mdp-api   # POST /quote, POST /multiplier
 ```
 
 Referências: NYC Taxi and Limousine Commission, trip record data; Lyft, termos do crédito

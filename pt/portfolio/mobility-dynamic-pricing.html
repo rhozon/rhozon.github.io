@@ -220,12 +220,12 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Estudo de Caso 09 · No ar, 25 de novembro de 2026
+Estudo de Caso 09 · No ar, versão 2 de 25 de novembro de 2026
 </div>
 <section id="preço-dinâmico-em-mobilidade" class="level1">
 <h1>Preço Dinâmico em Mobilidade</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jogos evolucionários · Experimento switchback · Python · 13 testes
+DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jogos evolucionários · Experimento switchback · API de preço · Python · 19 testes
 </p>
 </section>
 </div>
@@ -242,11 +242,11 @@ DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jog
 </section>
 <section id="experimente" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
-<p>O simulador abaixo usa as estimativas deste case. Mude o preço numa área e numa hora e veja viagens, receita, margem da plataforma e espera. Na aba de adaptação, veja passageiros e motoristas reagirem dia após dia a três políticas de preço, ou planeje um experimento.</p>
-<link rel="stylesheet" href="../../assets/case09/sim.css">
-<div id="mdp-app" data-src="../../assets/case09/data.json"></div>
+<p>O simulador abaixo usa as estimativas deste case. O mapa mostra viagens, tarifa por milha e espera em cada uma das 263 zonas de táxi, hora a hora. Mude o preço numa área e numa hora e veja viagens, receita, margem da plataforma e espera. Na aba de adaptação, veja passageiros e motoristas reagirem dia após dia a três políticas de preço, ou planeje um experimento.</p>
+<link rel="stylesheet" href="../../assets/case09/sim.css?v=3">
+<div id="mdp-app" data-src="../../assets/case09/data.json?v=3"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../../assets/case09/sim.js"></script>
+<script src="../../assets/case09/sim.js?v=3"></script>
 </section>
 <section id="método" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="método">Método</h2>
@@ -272,9 +272,11 @@ DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jog
 <h2 class="anchored" data-anchor-id="aplicado-ao-seu-preço">Aplicado ao seu preço</h2>
 <p>Este é o <a href="../oquant.html#packages">pacote de Previsão sob Medida</a> aplicado a preço. Para uma plataforma de mobilidade ou entrega, uma locadora ou operadora de frota, um estacionamento ou um negócio de eventos, ele vira um motor de preço com três partes: previsão de demanda por lugar e hora, resposta ao preço medida nos seus próprios dados e uma política testada num simulador e depois num switchback antes de entrar no ar. A decisão sobre preço fica com a sua equipe.</p>
 </section>
-<section id="código" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="código">Código</h2>
+<section id="artigo-e-código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="artigo-e-código">Artigo e código</h2>
+<p><strong>Versão 2, 25 de novembro de 2026.</strong> A primeira versão entrou no ar às pressas; esta acrescenta o que ficou de fora: um artigo, uma API de preço com imagem Docker e cartão do modelo, um monitor mensal de deriva e o mapa das zonas. O monitor compara a distribuição de distância, minutos, tarifa por milha e espera de cada mês com o fim de 2024: todos os meses até junho de 2025 têm índice de estabilidade populacional abaixo de 0,05, então os dados que o modelo vê não se moveram. Nenhum resultado da primeira versão mudou.</p>
 <p>
+<a class="rh-btn rh-btn-primary" href="../../assets/mobility-dynamic-pricing-paper.pdf">Ler o artigo (PDF, em inglês)</a>
 <a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
 </p>
 <p>Com Python 3.11 ou superior:</p>
@@ -282,7 +284,9 @@ DuckDB · XGBoost · Modelos de escolha · Experimento natural · Teoria dos jog
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli download     <span class="co"># arquivos mensais de viagens (cerca de 7 GB)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli aggregate    <span class="co"># uma passada do DuckDB por mês</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli analyse      <span class="co"># todas as tabelas em results/</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli analyse      <span class="co"># todas as tabelas em results/</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli drift        <span class="co"># relatório mensal de deriva</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> mdp-api . <span class="kw">&amp;&amp;</span> <span class="ex">docker</span> run <span class="at">-p</span> 8000:8000 mdp-api   <span class="co"># POST /quote, POST /multiplier</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
 <p>Referências: NYC Taxi and Limousine Commission, trip record data; Lyft, termos do crédito “NYC congestion fee”; Cohen, Hahn, Hall, Levitt e Metcalfe (2016), <em>Using Big Data to Estimate Consumer Surplus: The Case of Uber</em>, NBER Working Paper 22627; Sandholm (2010), <em>Population Games and Evolutionary Dynamics</em>, MIT Press; Bojinov, Simchi-Levi e Zhao (2023), <em>Design and Analysis of Switchback Experiments</em>, Management Science.</p>
 </section>
 

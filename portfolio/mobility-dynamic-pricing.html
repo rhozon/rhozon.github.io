@@ -220,12 +220,12 @@ gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
 
 <div class="rh-section">
 <div class="rh-kicker">
-Case Study 09 · Live, 25 November 2026
+Case Study 09 · Live, version 2 of 25 November 2026
 </div>
 <section id="dynamic-pricing-for-ride-hailing" class="level1">
 <h1>Dynamic Pricing for Ride-Hailing</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Python · 13 tests
+DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game theory · Switchback design · Pricing API · Python · 19 tests
 </p>
 </section>
 </div>
@@ -242,11 +242,11 @@ DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game th
 </section>
 <section id="try-it" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="try-it">Try it</h2>
-<p>The simulator below uses the estimates of this case. Change the price in an area and hour and see trips, revenue, the platform’s margin and the wait. Switch to the adaptation tab to see riders and drivers react day after day under three pricing policies, or plan an experiment.</p>
-<link rel="stylesheet" href="../assets/case09/sim.css">
-<div id="mdp-app" data-src="../assets/case09/data.json"></div>
+<p>The simulator below uses the estimates of this case. The map shows trips, fare per mile and wait in each of the 263 taxi zones by hour. Change the price in an area and hour and see trips, revenue, the platform’s margin and the wait. Switch to the adaptation tab to see riders and drivers react day after day under three pricing policies, or plan an experiment.</p>
+<link rel="stylesheet" href="../assets/case09/sim.css?v=3">
+<div id="mdp-app" data-src="../assets/case09/data.json?v=3"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../assets/case09/sim.js"></script>
+<script src="../assets/case09/sim.js?v=3"></script>
 </section>
 <section id="method" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="method">Method</h2>
@@ -272,9 +272,11 @@ DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game th
 <h2 class="anchored" data-anchor-id="applied-to-your-pricing">Applied to your pricing</h2>
 <p>This is the <a href="../oquant.html#packages">Custom Forecasting package</a> applied to price. For a mobility or delivery platform, a car rental or fleet operator, a parking or events business, it becomes a pricing engine with three parts: a demand forecast by place and hour, a price response measured on your own data, and a policy tested in a simulator and then in a switchback before it goes live. The decision on prices stays with your people.</p>
 </section>
-<section id="code" class="level2 rh-section">
-<h2 class="anchored" data-anchor-id="code">Code</h2>
+<section id="paper-and-code" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="paper-and-code">Paper and code</h2>
+<p><strong>Version 2, 25 November 2026.</strong> The first version went live in a hurry; this one adds what it left out: a working paper, a pricing API with a Docker image and a model card, a monthly drift monitor and the zone map. The drift monitor compares the distribution of trip distance, minutes, fare per mile and wait each month with the end of 2024: every month through June 2025 has a population stability index below 0.05, so the data the model sees have not moved. No result of the first version changed.</p>
 <p>
+<a class="rh-btn rh-btn-primary" href="../assets/mobility-dynamic-pricing-paper.pdf">Read the paper (PDF)</a>
 <a class="rh-btn" href="https://github.com/rhozon/mobility-dynamic-pricing">github.com/rhozon/mobility-dynamic-pricing</a>
 </p>
 <p>With Python 3.11 or later:</p>
@@ -282,7 +284,9 @@ DuckDB · XGBoost · Choice models · Natural experiment · Evolutionary game th
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli download     <span class="co"># monthly trip files (about 7 GB)</span></span>
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli aggregate    <span class="co"># one DuckDB pass per month</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli analyse      <span class="co"># every table in results/</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli analyse      <span class="co"># every table in results/</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> mdp.cli drift        <span class="co"># monthly drift report</span></span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a><span class="ex">docker</span> build <span class="at">-t</span> mdp-api . <span class="kw">&amp;&amp;</span> <span class="ex">docker</span> run <span class="at">-p</span> 8000:8000 mdp-api   <span class="co"># POST /quote, POST /multiplier</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <p>References: NYC Taxi and Limousine Commission, trip record data; Lyft, “NYC congestion fee” credit terms; Cohen, Hahn, Hall, Levitt and Metcalfe (2016), <em>Using Big Data to Estimate Consumer Surplus: The Case of Uber</em>, NBER Working Paper 22627; Sandholm (2010), <em>Population Games and Evolutionary Dynamics</em>, MIT Press; Bojinov, Simchi-Levi and Zhao (2023), <em>Design and Analysis of Switchback Experiments</em>, Management Science.</p>
 </section>
 
