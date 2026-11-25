@@ -126,6 +126,19 @@ average. Americanas, whose problem sat inside its own statements, came out below
 :::
 
 ::: {.rh-section}
+## Try it
+
+Compare the eight models on the out-of-time test under each measure, with the significance of each difference; check, horizon by horizon, whether the predicted probabilities match the rate that occurred; see what moves the risk; or open the four past cases with the memo the agents wrote. Only aggregate results and companies that already went through a recovery appear here.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case08/sim.css?v=1">
+<div id="cew-app" data-src="../assets/case08/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case08/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## What the literature has and has not done
 
 A systematic review under the PRISMA 2020 protocol screened 4,019 studies and included

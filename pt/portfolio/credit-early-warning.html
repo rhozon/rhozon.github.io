@@ -261,6 +261,14 @@ Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por
 <p>O que move o risco está sobretudo nos balanços. No XGBoost, cobertura de juros, capital de giro sobre ativos e prejuízos recentes pesam mais; no modelo de Cox, prejuízos, parágrafo de continuidade operacional, patrimônio negativo e atraso na entrega aumentam o risco, e capital de giro e caixa o reduzem. A troca de auditor no último ano, testada depois da abertura do teste e por isso só como exploração, não acrescentou nada significativo a nenhum modelo.</p>
 <p>Pareceres de quatro casos passados, escritos com o que se sabia um ano antes de cada pedido, mostram o alcance e o limite. A Casas Bahia aparecia com PD de 12 meses de 3,3%, cerca de três vezes a média. A Americanas, cujo problema estava dentro dos próprios balanços, aparecia abaixo da média.</p>
 </section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Compare os oito modelos no teste fora do tempo em cada medida, com a significância de cada diferença; confira, horizonte por horizonte, se as probabilidades previstas batem com a taxa que ocorreu; veja o que move o risco; ou abra os quatro casos passados com o parecer que os agentes escreveram. Aqui aparecem só resultados agregados e empresas que já passaram por uma recuperação.</p>
+<link rel="stylesheet" href="../../assets/case08/sim.css?v=1">
+<div id="cew-app" data-src="../../assets/case08/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case08/sim.js?v=1"></script>
+</section>
 <section id="o-que-a-literatura-fez-e-não-fez" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-que-a-literatura-fez-e-não-fez">O que a literatura fez e não fez</h2>
 <p>Uma revisão sistemática pelo protocolo PRISMA 2020 triou 4.019 estudos e incluiu 1.642. Modelos de sobrevivência aparecem em 96 deles, e só um estudo combina modelos de sobrevivência com modelos de linguagem. Dos 59 estudos com dados brasileiros, um usa modelo de sobrevivência e nenhum usa deep learning ou modelo de linguagem. A maioria dos resumos não diz como os modelos foram validados, e ler 60 estudos inteiros não muda muito o quadro: 32 deles continuam sem dizer como montaram a amostra de teste, e só 10 conferem se as probabilidades estão calibradas, que é do que a provisão depende. O artigo traz o protocolo, as contagens e as lacunas.</p>

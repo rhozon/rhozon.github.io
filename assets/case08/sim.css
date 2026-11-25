@@ -1,0 +1,31 @@
+#cew-app { margin: 1rem 0 2rem; max-width: 100%; overflow-x: hidden; }
+#cew-app .cew-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#cew-app .cew-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#cew-app .cew-tabs button.on { background: #0f766e; color: #fff; }
+#cew-app .cew-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: .6rem 1rem; margin: .4rem 0 .8rem; align-items: end; }
+#cew-app .cew-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#cew-app .cew-ctl span { font-weight: 600; }
+#cew-app .cew-ctl select { width: 100%; }
+#cew-app .cew-check { font-size: .82rem; }
+#cew-app .cew-chart { position: relative; height: 340px; margin: .5rem 0 1rem; }
+#cew-app .cew-chart-t { height: 620px; }
+#cew-app .cew-note { font-size: .82rem; opacity: .85; }
+#cew-app .cew-meta { font-size: .88rem; }
+#cew-app .cew-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(170px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#cew-app .cew-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#cew-app .cew-card-l { font-size: .75rem; opacity: .8; }
+#cew-app .cew-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#cew-app .cew-card-s { font-size: .75rem; opacity: .8; }
+#cew-app .cew-table { width: 100%; border-collapse: collapse; font-size: .82rem; display: block; overflow-x: auto; margin-bottom: .5rem; }
+#cew-app .cew-table th, #cew-app .cew-table td { padding: .35rem .5rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; }
+#cew-app .cew-table th { font-weight: 600; vertical-align: bottom; }
+#cew-app .cew-table th:first-child, #cew-app .cew-table td:first-child { text-align: left; }
+#cew-app .cew-table td.sig { font-weight: 700; }
+#cew-app .cew-split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr); gap: 1.2rem; align-items: start; }
+#cew-app .cew-split h4 { font-size: .9rem; margin: .2rem 0 .4rem; }
+#cew-app .cew-memo { font-size: .86rem; border-left: 3px solid #0f766e; padding: .2rem .8rem; }
+#cew-app .cew-memo p { margin: 0 0 .6rem; }
+#cew-app .cew-guard { font-size: .8rem; font-weight: 600; color: #0f766e; }
+#cew-app .cew-guard.bad { color: #b91c1c; }
+@media (max-width: 760px) { #cew-app .cew-split { grid-template-columns: minmax(0, 1fr); } #cew-app .cew-chart-t { height: 680px; } }

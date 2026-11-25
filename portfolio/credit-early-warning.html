@@ -261,6 +261,14 @@ Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals ·
 <p>What moves the risk is mostly in the accounts. In the XGBoost model, interest coverage, working capital over assets and recent losses weigh the most; in the Cox model, losses, a going-concern paragraph, negative equity and late filing raise the hazard, and working capital and cash lower it. A change of audit firm in the past year, tested after the test period was opened and so only as an exploration, added nothing significant to any model.</p>
 <p>Memos on four past cases, written with what was known a year before each filing, show the reach and the limit. Casas Bahia came out with a 12-month PD of 3.3%, about three times the average. Americanas, whose problem sat inside its own statements, came out below the average.</p>
 </section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Compare the eight models on the out-of-time test under each measure, with the significance of each difference; check, horizon by horizon, whether the predicted probabilities match the rate that occurred; see what moves the risk; or open the four past cases with the memo the agents wrote. Only aggregate results and companies that already went through a recovery appear here.</p>
+<link rel="stylesheet" href="../assets/case08/sim.css?v=1">
+<div id="cew-app" data-src="../assets/case08/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case08/sim.js?v=1"></script>
+</section>
 <section id="what-the-literature-has-and-has-not-done" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="what-the-literature-has-and-has-not-done">What the literature has and has not done</h2>
 <p>A systematic review under the PRISMA 2020 protocol screened 4,019 studies and included 1,642. Survival models appear in 96 of them, and only one study combines survival models with language models. Of the 59 studies with Brazilian data, one uses a survival model and none uses deep learning or a language model. Most abstracts do not say how the models were validated, and reading 60 of the studies in full does not change the picture much: 32 of them still do not say how the test set was formed, and only 10 check whether their probabilities are calibrated, which is what a provision depends on. The paper sets out the protocol, the counts and the gaps.</p>

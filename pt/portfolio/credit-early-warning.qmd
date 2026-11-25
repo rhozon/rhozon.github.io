@@ -133,6 +133,19 @@ da média.
 :::
 
 ::: {.rh-section}
+## Experimente
+
+Compare os oito modelos no teste fora do tempo em cada medida, com a significância de cada diferença; confira, horizonte por horizonte, se as probabilidades previstas batem com a taxa que ocorreu; veja o que move o risco; ou abra os quatro casos passados com o parecer que os agentes escreveram. Aqui aparecem só resultados agregados e empresas que já passaram por uma recuperação.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case08/sim.css?v=1">
+<div id="cew-app" data-src="../../assets/case08/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case08/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## O que a literatura fez e não fez
 
 Uma revisão sistemática pelo protocolo PRISMA 2020 triou 4.019 estudos e incluiu 1.642.

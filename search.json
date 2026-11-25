@@ -999,5 +999,12 @@
     "title": "Forecasting Hospital Admissions",
     "section": "Try it",
     "text": "Try it\nPick a state to see its history and the forecast for the next twelve months; replay any of the 33 forecasts in the test against what actually happened, next to the benchmark or to the model with the pandemic left in; or compare the error of every model state by state."
+  },
+  {
+    "objectID": "portfolio/credit-early-warning.html#try-it",
+    "href": "portfolio/credit-early-warning.html#try-it",
+    "title": "Corporate Credit Early Warning",
+    "section": "Try it",
+    "text": "Try it\nCompare the eight models on the out-of-time test under each measure, with the significance of each difference; check, horizon by horizon, whether the predicted probabilities match the rate that occurred; see what moves the risk; or open the four past cases with the memo the agents wrote. Only aggregate results and companies that already went through a recovery appear here."
   }
 ]
