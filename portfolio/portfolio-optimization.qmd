@@ -75,6 +75,19 @@ the ConBRepro proceedings.
 :::
 
 ::: {.rh-section}
+## Try it
+
+A demonstration of the method on public weekly returns of nine agricultural futures (Yahoo Finance), 2014 to 2025, not the results of the manuscripts. NSGA-II runs in your browser with two or three objectives, a cap per asset and the weeks of one regime or all of them; with two objectives and no cap, the exact mean-variance frontier checks its answer.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case03/sim.css?v=1">
+<div id="po-app" data-src="../assets/case03/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case03/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## Code
 
 Not yet public. The implementation belongs to manuscripts under review, and releasing it

@@ -76,6 +76,19 @@ the part that is public and running today.
 :::
 
 ::: {.rh-section}
+## Try it
+
+A demonstration of the methods on public futures prices (Yahoo Finance) from 2014 to 2025, not the results of the manuscripts. See how the shape of the return distribution moves over time, where a two-regime model places the calm and the turbulent periods, and what happens to a volatility forecast when it is tested the way it would be used, refitted every week on the past only.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case02/sim.css?v=1">
+<div id="cf-app" data-src="../assets/case02/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case02/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## Code
 
 The model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA

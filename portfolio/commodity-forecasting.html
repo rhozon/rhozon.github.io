@@ -216,6 +216,14 @@ GAMLSS · Bayesian MSGARCH · Rolling-origin validation · R
 <p>What can be said is the shape of the work: this is one stage of a doctoral thesis on multi-period, multi-objective portfolio optimisation in agricultural commodity markets, where distributional modelling feeds regime-switching volatility, which feeds scenario simulation, which feeds the optimisation layer. Each stage stands as its own manuscript.</p>
 <p>Whatever of this line reaches print is listed on the <a href="../research.html">research page</a>, alongside the conference papers that already carry proceedings links. The case below is the part that is public and running today.</p>
 </section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>A demonstration of the methods on public futures prices (Yahoo Finance) from 2014 to 2025, not the results of the manuscripts. See how the shape of the return distribution moves over time, where a two-regime model places the calm and the turbulent periods, and what happens to a volatility forecast when it is tested the way it would be used, refitted every week on the past only.</p>
+<link rel="stylesheet" href="../assets/case02/sim.css?v=1">
+<div id="cf-app" data-src="../assets/case02/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case02/sim.js?v=1"></script>
+</section>
 <section id="code" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
 <p>The model ladder described here — MSGARCH first, backing down to GARCH and then ARIMA when the residual diagnostics reject it — is implemented and running in the multi-agent case study, with public data and a frozen cache so anyone can reproduce it:</p>

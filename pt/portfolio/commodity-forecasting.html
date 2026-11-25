@@ -216,6 +216,14 @@ GAMLSS · MSGARCH bayesiano · Validação em origem móvel · R
 <p>O que dá para dizer é o formato do trabalho: esta é uma etapa de uma tese de doutorado sobre otimização multiobjetivo e multiperíodo de portfólio em mercados de commodities agrícolas, na qual a modelagem distribucional alimenta a volatilidade com mudança de regime, que alimenta a simulação de cenários, que alimenta a camada de otimização. Cada etapa se sustenta como manuscrito próprio.</p>
 <p>O que desta linha chegar a sair está listado na <a href="../research.html">página de pesquisa</a>, ao lado dos artigos de congresso que já trazem link para os anais. O caso abaixo é a parte que hoje é pública e roda.</p>
 </section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Uma demonstração dos métodos em preços públicos de futuros (Yahoo Finance) de 2014 a 2025, não os resultados dos artigos. Veja como a forma da distribuição dos retornos muda com o tempo, onde um modelo de dois regimes coloca os períodos calmos e os turbulentos, e o que acontece com uma previsão de volatilidade quando ela é testada do jeito que seria usada, reajustada toda semana só com o passado.</p>
+<link rel="stylesheet" href="../../assets/case02/sim.css?v=1">
+<div id="cf-app" data-src="../../assets/case02/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case02/sim.js?v=1"></script>
+</section>
 <section id="o-código" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-código">O código</h2>
 <p>A escada de modelos descrita aqui — MSGARCH primeiro, recuando para GARCH e depois ARIMA quando os diagnósticos de resíduo reprovam — está implementada e rodando no estudo de caso multiagente, com dado público e cache congelado para que qualquer um reproduza:</p>

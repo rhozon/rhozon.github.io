@@ -77,6 +77,19 @@ que hoje é pública e roda.
 :::
 
 ::: {.rh-section}
+## Experimente
+
+Uma demonstração dos métodos em preços públicos de futuros (Yahoo Finance) de 2014 a 2025, não os resultados dos artigos. Veja como a forma da distribuição dos retornos muda com o tempo, onde um modelo de dois regimes coloca os períodos calmos e os turbulentos, e o que acontece com uma previsão de volatilidade quando ela é testada do jeito que seria usada, reajustada toda semana só com o passado.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case02/sim.css?v=1">
+<div id="cf-app" data-src="../../assets/case02/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case02/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## O código
 
 A escada de modelos descrita aqui — MSGARCH primeiro, recuando para GARCH e depois ARIMA

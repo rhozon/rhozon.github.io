@@ -1034,5 +1034,19 @@
     "title": "Hybrid RAG with a Numeric Guardrail",
     "section": "Try it",
     "text": "Try it\nSearch the handbook and compare, side by side, what vector search, keyword search and their fusion return; edit a draft answer and see the guardrail release it or withhold it; or check every test question. Everything runs in your browser, with the repository’s offline settings and no model download."
+  },
+  {
+    "objectID": "portfolio/commodity-forecasting.html#try-it",
+    "href": "portfolio/commodity-forecasting.html#try-it",
+    "title": "Commodity Price Forecasting",
+    "section": "Try it",
+    "text": "Try it\nA demonstration of the methods on public futures prices (Yahoo Finance) from 2014 to 2025, not the results of the manuscripts. See how the shape of the return distribution moves over time, where a two-regime model places the calm and the turbulent periods, and what happens to a volatility forecast when it is tested the way it would be used, refitted every week on the past only."
+  },
+  {
+    "objectID": "portfolio/portfolio-optimization.html#try-it",
+    "href": "portfolio/portfolio-optimization.html#try-it",
+    "title": "Multi-Objective Portfolio Optimization",
+    "section": "Try it",
+    "text": "Try it\nA demonstration of the method on public weekly returns of nine agricultural futures (Yahoo Finance), 2014 to 2025, not the results of the manuscripts. NSGA-II runs in your browser with two or three objectives, a cap per asset and the weeks of one regime or all of them; with two objectives and no cap, the exact mean-variance frontier checks its answer."
   }
 ]
