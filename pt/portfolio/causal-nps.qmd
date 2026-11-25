@@ -96,6 +96,19 @@ eram fiéis — e nenhum filtro adicional no painel teria revelado isso.
 :::
 
 ::: {.rh-section}
+## Experimente
+
+Mude o efeito verdadeiro, a força da confusão e o tamanho da amostra, ou deixe uma variável fora do ajuste. Os dados são gerados de novo no seu navegador e as três estimativas são recalculadas.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case04/sim.css?v=1">
+<div id="nps-app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case04/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## O código
 
 O script gera os dados, roda os três estimadores e produz o gráfico acima. É autocontido e

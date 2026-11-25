@@ -1006,5 +1006,12 @@
     "title": "Corporate Credit Early Warning",
     "section": "Try it",
     "text": "Try it\nCompare the eight models on the out-of-time test under each measure, with the significance of each difference; check, horizon by horizon, whether the predicted probabilities match the rate that occurred; see what moves the risk; or open the four past cases with the memo the agents wrote. Only aggregate results and companies that already went through a recovery appear here."
+  },
+  {
+    "objectID": "portfolio/causal-nps.html#try-it",
+    "href": "portfolio/causal-nps.html#try-it",
+    "title": "Causal Modeling of NPS",
+    "section": "Try it",
+    "text": "Try it\nChange the true effect, the strength of the confounding and the sample size, or leave a variable out of the adjustment. The data are generated again in your browser and the three estimates are recomputed."
   }
 ]

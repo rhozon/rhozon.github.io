@@ -1,0 +1,20 @@
+#nps-app { margin: 1rem 0 2rem; max-width: 100%; overflow-x: hidden; }
+#nps-app .nps-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .7rem 1.1rem; margin-bottom: .8rem; }
+#nps-app .nps-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#nps-app .nps-ctl > span { font-weight: 600; }
+#nps-app .nps-ctl input[type=range] { width: 100%; }
+#nps-app .nps-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#nps-app .nps-ctl small { font-size: .74rem; opacity: .75; }
+#nps-app .nps-check { font-size: .82rem; }
+#nps-app .nps-btn { margin-top: .3rem; align-self: flex-start; font: 500 .82rem 'Source Sans 3', sans-serif; padding: .35rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#nps-app .nps-btn:hover { background: #0f766e; color: #fff; }
+#nps-app .nps-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#nps-app .nps-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#nps-app .nps-card-l { font-size: .75rem; opacity: .8; }
+#nps-app .nps-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#nps-app .nps-card-s { font-size: .75rem; opacity: .8; }
+#nps-app .nps-chart { position: relative; height: 230px; margin: .5rem 0 .6rem; }
+#nps-app .nps-chart-s { height: 200px; }
+#nps-app h4 { font-size: .9rem; margin: 1rem 0 .2rem; }
+#nps-app .nps-note { font-size: .82rem; opacity: .85; }

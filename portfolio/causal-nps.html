@@ -267,6 +267,14 @@ Causal inference · Backdoor adjustment · Propensity weighting · Python
 <p>Both causal estimators land at <strong>0.84</strong>, within their confidence intervals of the truth, and they agree with each other despite resting on different assumptions.</p>
 <p>The point is not the decimals. It is that the gap between 1.41 and 0.80 is the difference between a programme that justifies its budget and one that mostly re-labels customers who were already loyal — and no amount of extra dashboard filtering would have revealed it.</p>
 </section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Change the true effect, the strength of the confounding and the sample size, or leave a variable out of the adjustment. The data are generated again in your browser and the three estimates are recomputed.</p>
+<link rel="stylesheet" href="../assets/case04/sim.css?v=1">
+<div id="nps-app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case04/sim.js?v=1"></script>
+</section>
 <section id="code" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="code">Code</h2>
 <p>The script generates the data, runs all three estimators and produces the chart above. It is self-contained and deterministic — same seed, same numbers:</p>

@@ -98,6 +98,19 @@ were already loyal — and no amount of extra dashboard filtering would have rev
 :::
 
 ::: {.rh-section}
+## Try it
+
+Change the true effect, the strength of the confounding and the sample size, or leave a variable out of the adjustment. The data are generated again in your browser and the three estimates are recomputed.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case04/sim.css?v=1">
+<div id="nps-app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case04/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## Code
 
 The script generates the data, runs all three estimators and produces the chart above.

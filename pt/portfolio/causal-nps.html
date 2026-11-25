@@ -267,6 +267,14 @@ Inferência causal · Ajuste por backdoor · Ponderação por propensão · Pyth
 <p>Os dois estimadores causais chegam a <strong>0,84</strong>, com a verdade dentro dos intervalos de confiança, e concordam entre si apesar de partirem de premissas diferentes.</p>
 <p>O ponto não são as casas decimais. É que a distância entre 1,41 e 0,80 é a diferença entre um programa que justifica seu orçamento e um que basicamente reetiqueta clientes que já eram fiéis — e nenhum filtro adicional no painel teria revelado isso.</p>
 </section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Mude o efeito verdadeiro, a força da confusão e o tamanho da amostra, ou deixe uma variável fora do ajuste. Os dados são gerados de novo no seu navegador e as três estimativas são recalculadas.</p>
+<link rel="stylesheet" href="../../assets/case04/sim.css?v=1">
+<div id="nps-app"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case04/sim.js?v=1"></script>
+</section>
 <section id="o-código" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="o-código">O código</h2>
 <p>O script gera os dados, roda os três estimadores e produz o gráfico acima. É autocontido e determinístico — mesma semente, mesmos números:</p>
