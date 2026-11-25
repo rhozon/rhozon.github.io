@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 # Framework ou feito à mão?
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-LangGraph · StateGraph · Teste de paridade · 173 testes
+LangGraph · StateGraph · Teste de paridade · 181 testes
 </p>
 :::
 
@@ -130,7 +130,7 @@ Avance passo a passo pela mesma execução nos dois motores, lado a lado: o que 
 
 Os dois motores vivem no mesmo repositório: `agents/orchestrator.py` e
 `agents_langgraph/graph.py`, com `tests/test_paridade.py` prendendo os dois ao mesmo
-resultado. A suíte tem **173 testes**, e roda sem chave de API e sem rede.
+resultado. A suíte tem **181 testes**, e roda sem chave de API e sem rede.
 
 `langgraph` e `langchain-core` estão no `requirements.txt`, mas só o motor do grafo e o
 teste de paridade os importam — o import é adiado, então o motor padrão não precisa deles.

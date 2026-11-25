@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 # Framework or Hand-Rolled?
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-LangGraph · StateGraph · Parity testing · 173 tests
+LangGraph · StateGraph · Parity testing · 181 tests
 </p>
 :::
 
@@ -131,7 +131,7 @@ Step through the same run in both engines, side by side: what each one executes,
 
 Both engines live in the same repository: `agents/orchestrator.py` and
 `agents_langgraph/graph.py`, with `tests/test_paridade.py` holding them to the same result.
-The suite is **173 tests**, and it runs with no API key and no network.
+The suite is **181 tests**, and it runs with no API key and no network.
 
 `langgraph` and `langchain-core` are in `requirements.txt`, but only the graph engine and
 the parity test import them — the import is deferred, so the default engine needs neither.

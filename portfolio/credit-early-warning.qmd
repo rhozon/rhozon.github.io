@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/case-credit-early-warning.png"
 # Corporate Credit Early Warning
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 222 tests
+Survival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 224 tests
 </p>
 :::
 
@@ -188,7 +188,7 @@ python -m distress.cli test        # the out-of-time test
 ```
 
 Every language-model answer is cached in the repository, so the labels reproduce without an
-API key. The suite has **222 tests**, among them one that fails the build if anything
+API key. The suite has **224 tests**, among them one that fails the build if anything
 published names a company without an event next to a probability or a score. CI runs them
 on every push.
 :::

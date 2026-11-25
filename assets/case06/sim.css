@@ -1,0 +1,32 @@
+#rag-app { margin: 1rem 0 2rem; max-width: 100%; overflow-x: hidden; }
+#rag-app .rag-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#rag-app .rag-tabs button, #rag-app .rag-presets button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .4rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#rag-app .rag-tabs button.on, #rag-app .rag-presets button:hover { background: #0f766e; color: #fff; }
+#rag-app .rag-form { display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr); gap: .6rem 1rem; margin-bottom: .5rem; }
+#rag-app .rag-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#rag-app .rag-ctl span { font-weight: 600; }
+#rag-app .rag-ctl input, #rag-app .rag-ctl select { width: 100%; box-sizing: border-box; font-size: .88rem; padding: .35rem .4rem; }
+#rag-app .rag-cols { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: .8rem; }
+#rag-app .rag-col { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .5rem .6rem; }
+#rag-app .rag-col h4 { font-size: .9rem; margin: .1rem 0 .4rem; }
+#rag-app .rag-col ol { padding-left: 1.1rem; margin: 0; font-size: .78rem; }
+#rag-app .rag-col li { margin: .35rem 0; }
+#rag-app .rag-col li.hit { background: rgba(15,118,110,.12); border-radius: 4px; }
+#rag-app .rag-doc { font: 600 .72rem 'IBM Plex Mono', monospace; }
+#rag-app .rag-sc { font: .7rem 'IBM Plex Mono', monospace; opacity: .7; }
+#rag-app .rag-note { font-size: .82rem; opacity: .85; }
+#rag-app .rag-ta { width: 100%; box-sizing: border-box; font: .9rem 'IBM Plex Mono', monospace; padding: .5rem; border: 1px solid rgba(127,127,127,.4); border-radius: 6px; background: transparent; color: inherit; }
+#rag-app .rag-presets { display: flex; gap: .3rem; margin: .4rem 0; }
+#rag-app .rag-presets button { padding: .2rem .6rem; font-size: .78rem; }
+#rag-app .rag-verdict { font-weight: 600; font-size: .88rem; }
+#rag-app .rag-verdict.good { color: #0f766e; }
+#rag-app .rag-verdict.bad { color: #b91c1c; }
+#rag-app .rag-passages { font-size: .8rem; }
+#rag-app .rag-passages mark { background: rgba(15,118,110,.25); color: inherit; padding: 0 .15rem; border-radius: 3px; }
+#rag-app .rag-table { width: 100%; border-collapse: collapse; font-size: .8rem; display: block; overflow-x: auto; margin: .4rem 0 1rem; }
+#rag-app .rag-table th, #rag-app .rag-table td { padding: .3rem .5rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: left; }
+#rag-app .rag-table td.hit { color: #0f766e; }
+#rag-app .rag-table td.miss { color: #b91c1c; }
+#rag-app h4 { font-size: .9rem; }
+@media (max-width: 760px) { #rag-app .rag-cols, #rag-app .rag-form { grid-template-columns: minmax(0, 1fr); } }

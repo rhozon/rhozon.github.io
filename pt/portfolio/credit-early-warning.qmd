@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/case-credit-early-warning-pt.png"
 # Alerta Antecipado de Risco de Crédito Corporativo
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por modelos de linguagem · Agentes com trava numérica · Revisão sistemática · Python · 222 testes
+Análise de sobrevivência · XGBoost · DeepSurv · DeepHit · Sinais lidos por modelos de linguagem · Agentes com trava numérica · Revisão sistemática · Python · 224 testes
 </p>
 :::
 
@@ -195,7 +195,7 @@ python -m distress.cli test        # o teste fora do tempo
 ```
 
 Toda resposta dos modelos de linguagem fica em cache no repositório, então os rótulos se
-reproduzem sem chave de API. A suíte tem **222 testes**, entre eles um que derruba o
+reproduzem sem chave de API. A suíte tem **224 testes**, entre eles um que derruba o
 build se algo publicado citar uma empresa sem evento ao lado de uma probabilidade ou de uma
 nota. O CI roda os testes a cada push. O README em inglês lista as decisões de projeto e os
 limites.

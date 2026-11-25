@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/case-multiagent-milho.png"
 # Multi-Agent Commodity Analyst
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-LLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 167 tests
+LLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 181 tests
 </p>
 :::
 
@@ -115,7 +115,7 @@ README, then:
 python run.py --commodity milho --fake-llm
 ```
 
-It runs from the frozen cache — no API key, no network. The test suite is **167 tests**
+It runs from the frozen cache — no API key, no network. The test suite is **181 tests**
 via `pytest -q`. The `examples/` folder holds the reports for both commodities, generated
 by the system itself.
 :::

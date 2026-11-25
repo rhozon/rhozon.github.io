@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/case-admissions-forecast-pt.png"
 # Previsão de Internações Hospitalares
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Séries temporais · SARIMA sazonal · Backtest com origem móvel · Faixas de 80% conferidas · Python · 19 testes
+Séries temporais · SARIMA sazonal · Backtest com origem móvel · Faixas de 80% conferidas · Python · 21 testes
 </p>
 :::
 
@@ -160,7 +160,7 @@ python -m admissions.cli fetch    # atualiza os dados a partir do DATASUS
 ```
 
 O repositório traz uma cópia dos dados do DATASUS, então o backtest se reproduz sem
-internet. A suíte tem **19 testes**, entre eles um teste do leitor sobre saída real do
+internet. A suíte tem **21 testes**, entre eles um teste do leitor sobre saída real do
 DATASUS e contagens de dias úteis conferidas à mão. O CI roda os testes a cada push,
 seguidos de um backtest curto. O README em inglês lista as decisões de projeto e os
 limites.

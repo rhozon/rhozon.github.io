@@ -225,7 +225,7 @@ Estudo de Caso 06 · No ar
 <section id="rag-híbrido-com-trava-numérica" class="level1">
 <h1>RAG Híbrido com Trava Numérica</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-RAG · Postgres + pgvector · Busca textual · Fusão por posição · FastAPI · 22 testes
+RAG · Postgres + pgvector · Busca textual · Fusão por posição · FastAPI · 23 testes
 </p>
 </section>
 </div>
@@ -278,6 +278,13 @@ RAG · Postgres + pgvector · Busca textual · Fusão por posição · FastAPI �
 <p>A trava, do jeito que os testes conferem. Pergunte <em>“How long do I have to appeal a denied claim?”</em> O manual diz 180 dias, a resposta diz 180 dias e cita o documento de recursos. Troque por um modelo que responde <em>“You have 90 days to appeal”</em> e o serviço retém a resposta e aponta o 90 como número sem fonte.</p>
 <p>O repositório também declara os seus limites. Ainda não há reranker, a avaliação cobre a busca e não a qualidade da resposta, a busca textual está configurada só para inglês, e a trava não confere números escritos por extenso.</p>
 </section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Busque no manual e compare, lado a lado, o que a busca vetorial, a busca por palavras e a fusão das duas devolvem; edite um rascunho de resposta e veja a trava liberar ou segurar; ou confira cada pergunta de teste. Tudo roda no seu navegador, com a configuração offline do repositório e sem baixar modelo. O manual e as perguntas estão em inglês.</p>
+<link rel="stylesheet" href="../../assets/case06/sim.css?v=1">
+<div id="rag-app" data-src="../../assets/case06/data.json?v=1"></div>
+<script src="../../assets/case06/sim.js?v=1"></script>
+</section>
 <section id="aplicado-aos-seus-documentos" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="aplicado-aos-seus-documentos">Aplicado aos seus documentos</h2>
 <p>Esse é o núcleo do <a href="../oquant.html#pacotes">piloto do Assistente de IA Confiável</a>: os seus documentos ou tabelas no lugar do manual, 20 perguntas-teste aprovadas por você como critério de aceite, e a mesma regra de que nenhum número chega ao usuário sem ter sido encontrado na fonte.</p>
@@ -292,7 +299,7 @@ RAG · Postgres + pgvector · Busca textual · Fusão por posição · FastAPI �
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> rag.cli ask <span class="st">"How long do I have to appeal a denied claim?"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> rag.cli eval <span class="at">--k</span> 1</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
-<p>A configuração padrão não precisa de chave de API nem de download de modelo. A suíte tem <strong>22 testes</strong>, incluindo os de Postgres, e roda a cada push junto com a avaliação da busca. O README lista as decisões de projeto, da escolha do índice ao motivo de a consulta textual ser um OU de termos.</p>
+<p>A configuração padrão não precisa de chave de API nem de download de modelo. A suíte tem <strong>23 testes</strong>, incluindo os de Postgres, e roda a cada push junto com a avaliação da busca. O README lista as decisões de projeto, da escolha do índice ao motivo de a consulta textual ser um OU de termos.</p>
 </section>
 <section id="referências" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="referências">Referências</h2>

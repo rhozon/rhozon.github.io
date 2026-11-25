@@ -67,7 +67,7 @@
     "href": "portfolio/credit-early-warning.html",
     "title": "Corporate Credit Early Warning",
     "section": "",
-    "text": "Case Study 08 · Live, version 2 of 24 November 2026\n\n\n\n\nSurvival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 222 tests"
+    "text": "Case Study 08 · Live, version 2 of 24 November 2026\n\n\n\n\nSurvival analysis · XGBoost · DeepSurv · DeepHit · Language-model signals · Agents with a numeric guardrail · Systematic review · Python · 224 tests"
   },
   {
     "objectID": "portfolio/credit-early-warning.html#the-business-question",
@@ -116,14 +116,14 @@
     "href": "portfolio/credit-early-warning.html#paper-and-code",
     "title": "Corporate Credit Early Warning",
     "section": "Paper and code",
-    "text": "Paper and code\n\nRead the paper (PDF)\ngithub.com/rhozon/corporate-credit-early-warning\n\nWith Python 3.11 or later:\npip install -e \".[models,dev]\"\npytest -v\npython -m distress.cli events      # event base from CVM filings\npython -m distress.cli panel       # point-in-time panel\npython -m distress.cli test        # the out-of-time test\nEvery language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has 222 tests, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push."
+    "text": "Paper and code\n\nRead the paper (PDF)\ngithub.com/rhozon/corporate-credit-early-warning\n\nWith Python 3.11 or later:\npip install -e \".[models,dev]\"\npytest -v\npython -m distress.cli events      # event base from CVM filings\npython -m distress.cli panel       # point-in-time panel\npython -m distress.cli test        # the out-of-time test\nEvery language-model answer is cached in the repository, so the labels reproduce without an API key. The suite has 224 tests, among them one that fails the build if anything published names a company without an event next to a probability or a score. CI runs them on every push."
   },
   {
     "objectID": "portfolio/hybrid-rag.html",
     "href": "portfolio/hybrid-rag.html",
     "title": "Hybrid RAG with a Numeric Guardrail",
     "section": "",
-    "text": "Case Study 06 · Live\n\n\n\n\nRAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 22 tests"
+    "text": "Case Study 06 · Live\n\n\n\n\nRAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 23 tests"
   },
   {
     "objectID": "portfolio/hybrid-rag.html#the-business-question",
@@ -165,7 +165,7 @@
     "href": "portfolio/hybrid-rag.html#code",
     "title": "Hybrid RAG with a Numeric Guardrail",
     "section": "Code",
-    "text": "Code\ngithub.com/rhozon/rag-pgvector-hybrid\nWith Docker and Python 3.12:\ndocker compose up -d\npip install -e \".[dev,embed]\"\npython -m rag.cli ingest data/handbook --reset\npython -m rag.cli ask \"How long do I have to appeal a denied claim?\"\npython -m rag.cli eval --k 1\npytest -v\nThe defaults need no API key and no model download. The suite has 22 tests, the Postgres ones included, and runs on every push together with the retrieval evaluation. The README lists the design decisions, from the choice of index to why the full-text query is an OR of terms."
+    "text": "Code\ngithub.com/rhozon/rag-pgvector-hybrid\nWith Docker and Python 3.12:\ndocker compose up -d\npip install -e \".[dev,embed]\"\npython -m rag.cli ingest data/handbook --reset\npython -m rag.cli ask \"How long do I have to appeal a denied claim?\"\npython -m rag.cli eval --k 1\npytest -v\nThe defaults need no API key and no model download. The suite has 23 tests, the Postgres ones included, and runs on every push together with the retrieval evaluation. The README lists the design decisions, from the choice of index to why the full-text query is an OR of terms."
   },
   {
     "objectID": "portfolio/causal-nps.html",
@@ -361,7 +361,7 @@
     "href": "portfolio/multiagent-commodities.html",
     "title": "Multi-Agent Commodity Analyst",
     "section": "",
-    "text": "Case Study 01 · Live\n\n\n\n\nLLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 167 tests"
+    "text": "Case Study 01 · Live\n\n\n\n\nLLM Agents · MSGARCH / GARCH / ARIMA · Python orchestrates, R models · 181 tests"
   },
   {
     "objectID": "portfolio/multiagent-commodities.html#the-business-question",
@@ -396,7 +396,7 @@
     "href": "portfolio/multiagent-commodities.html#code",
     "title": "Multi-Agent Commodity Analyst",
     "section": "Code",
-    "text": "Code\ngithub.com/rhozon/commodity-agents\nClone it, pip install -r requirements.txt, install R 4.x with the packages listed in the README, then:\npython run.py --commodity milho --fake-llm\nIt runs from the frozen cache — no API key, no network. The test suite is 167 tests via pytest -q. The examples/ folder holds the reports for both commodities, generated by the system itself."
+    "text": "Code\ngithub.com/rhozon/commodity-agents\nClone it, pip install -r requirements.txt, install R 4.x with the packages listed in the README, then:\npython run.py --commodity milho --fake-llm\nIt runs from the frozen cache — no API key, no network. The test suite is 181 tests via pytest -q. The examples/ folder holds the reports for both commodities, generated by the system itself."
   },
   {
     "objectID": "portfolio/portfolio-optimization.html",
@@ -445,7 +445,7 @@
     "href": "portfolio/langgraph-parity.html",
     "title": "Framework or Hand-Rolled?",
     "section": "",
-    "text": "Case Study 05 · Live\n\n\n\n\nLangGraph · StateGraph · Parity testing · 173 tests"
+    "text": "Case Study 05 · Live\n\n\n\n\nLangGraph · StateGraph · Parity testing · 181 tests"
   },
   {
     "objectID": "portfolio/langgraph-parity.html#the-business-question",
@@ -480,14 +480,14 @@
     "href": "portfolio/langgraph-parity.html#code",
     "title": "Framework or Hand-Rolled?",
     "section": "Code",
-    "text": "Code\ngithub.com/rhozon/commodity-agents\nBoth engines live in the same repository: agents/orchestrator.py and agents_langgraph/graph.py, with tests/test_paridade.py holding them to the same result. The suite is 173 tests, and it runs with no API key and no network.\nlanggraph and langchain-core are in requirements.txt, but only the graph engine and the parity test import them — the import is deferred, so the default engine needs neither."
+    "text": "Code\ngithub.com/rhozon/commodity-agents\nBoth engines live in the same repository: agents/orchestrator.py and agents_langgraph/graph.py, with tests/test_paridade.py holding them to the same result. The suite is 181 tests, and it runs with no API key and no network.\nlanggraph and langchain-core are in requirements.txt, but only the graph engine and the parity test import them — the import is deferred, so the default engine needs neither."
   },
   {
     "objectID": "portfolio/hospital-admissions.html",
     "href": "portfolio/hospital-admissions.html",
     "title": "Forecasting Hospital Admissions",
     "section": "",
-    "text": "Case Study 07 · Live\n\n\n\n\nTime series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked for coverage · Python · 19 tests"
+    "text": "Case Study 07 · Live\n\n\n\n\nTime series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked for coverage · Python · 21 tests"
   },
   {
     "objectID": "portfolio/hospital-admissions.html#the-business-question",
@@ -529,7 +529,7 @@
     "href": "portfolio/hospital-admissions.html#code",
     "title": "Forecasting Hospital Admissions",
     "section": "Code",
-    "text": "Code\ngithub.com/rhozon/hospital-admissions-forecast\nWith Python 3.11 or later:\npip install -e \".[dev]\"\npytest -v\npython -m admissions.cli backtest\npython -m admissions.cli forecast\npython -m admissions.cli figures\npython -m admissions.cli fetch    # refresh the data from DATASUS\nThe repository includes a snapshot of the DATASUS data, so the backtest reproduces without network access. The suite has 19 tests, among them a parser test on real DATASUS output and hand-checked working-day counts. CI runs them on every push, followed by a short backtest. The README lists the design decisions and the limits."
+    "text": "Code\ngithub.com/rhozon/hospital-admissions-forecast\nWith Python 3.11 or later:\npip install -e \".[dev]\"\npytest -v\npython -m admissions.cli backtest\npython -m admissions.cli forecast\npython -m admissions.cli figures\npython -m admissions.cli fetch    # refresh the data from DATASUS\nThe repository includes a snapshot of the DATASUS data, so the backtest reproduces without network access. The suite has 21 tests, among them a parser test on real DATASUS output and hand-checked working-day counts. CI runs them on every push, followed by a short backtest. The README lists the design decisions and the limits."
   },
   {
     "objectID": "teaching.html",
@@ -1027,5 +1027,12 @@
     "title": "Framework or Hand-Rolled?",
     "section": "Try it",
     "text": "Try it\nStep through the same run in both engines, side by side: what each one executes, when it reads the series from disk, how long it takes, and whether the two reports come out the same."
+  },
+  {
+    "objectID": "portfolio/hybrid-rag.html#try-it",
+    "href": "portfolio/hybrid-rag.html#try-it",
+    "title": "Hybrid RAG with a Numeric Guardrail",
+    "section": "Try it",
+    "text": "Try it\nSearch the handbook and compare, side by side, what vector search, keyword search and their fusion return; edit a draft answer and see the guardrail release it or withhold it; or check every test question. Everything runs in your browser, with the repository’s offline settings and no model download."
   }
 ]

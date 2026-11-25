@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/case-multiagent-milho.png"
 # Analista de Commodities Multiagente
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Agentes de LLM · MSGARCH / GARCH / ARIMA · Python orquestra, R modela · 167 testes
+Agentes de LLM · MSGARCH / GARCH / ARIMA · Python orquestra, R modela · 181 testes
 </p>
 :::
 
@@ -113,7 +113,7 @@ então:
 python run.py --commodity milho --fake-llm
 ```
 
-Roda do cache congelado — sem chave de API, sem rede. A suíte tem **167 testes** por
+Roda do cache congelado — sem chave de API, sem rede. A suíte tem **181 testes** por
 `pytest -q`. A pasta `examples/` traz os relatórios das duas commodities, gerados pelo próprio
 sistema.
 :::

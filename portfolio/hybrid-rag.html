@@ -225,7 +225,7 @@ Case Study 06 · Live
 <section id="hybrid-rag-with-a-numeric-guardrail" class="level1">
 <h1>Hybrid RAG with a Numeric Guardrail</h1>
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 22 tests
+RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 23 tests
 </p>
 </section>
 </div>
@@ -278,6 +278,13 @@ RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 22 t
 <p>The guardrail, as the tests check it. Ask <em>“How long do I have to appeal a denied claim?”</em> The handbook says 180 days, the answer says 180 days, and it cites the appeals document. Swap in a model that answers <em>“You have 90 days to appeal”</em> and the service withholds the answer and reports 90 as unsupported.</p>
 <p>The repository states its limits too. There is no reranker yet, the evaluation covers retrieval and not answer quality, the full-text search is configured for English only, and the guardrail does not check numbers written out as words.</p>
 </section>
+<section id="try-it" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="try-it">Try it</h2>
+<p>Search the handbook and compare, side by side, what vector search, keyword search and their fusion return; edit a draft answer and see the guardrail release it or withhold it; or check every test question. Everything runs in your browser, with the repository’s offline settings and no model download.</p>
+<link rel="stylesheet" href="../assets/case06/sim.css?v=1">
+<div id="rag-app" data-src="../assets/case06/data.json?v=1"></div>
+<script src="../assets/case06/sim.js?v=1"></script>
+</section>
 <section id="applied-to-your-documents" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="applied-to-your-documents">Applied to your documents</h2>
 <p>This is the core of the <a href="../oquant.html#packages">Reliable AI Assistant pilot</a>: your documents or tables in place of the handbook, 20 test questions you approve as the acceptance criterion, and the same rule that no number reaches a user without being found in the source.</p>
@@ -292,7 +299,7 @@ RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 22 t
 <span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> rag.cli ask <span class="st">"How long do I have to appeal a denied claim?"</span></span>
 <span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> rag.cli eval <span class="at">--k</span> 1</span>
 <span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<p>The defaults need no API key and no model download. The suite has <strong>22 tests</strong>, the Postgres ones included, and runs on every push together with the retrieval evaluation. The README lists the design decisions, from the choice of index to why the full-text query is an OR of terms.</p>
+<p>The defaults need no API key and no model download. The suite has <strong>23 tests</strong>, the Postgres ones included, and runs on every push together with the retrieval evaluation. The README lists the design decisions, from the choice of index to why the full-text query is an OR of terms.</p>
 </section>
 <section id="references" class="level2 rh-section">
 <h2 class="anchored" data-anchor-id="references">References</h2>

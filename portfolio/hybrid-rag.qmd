@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 # Hybrid RAG with a Numeric Guardrail
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 22 tests
+RAG · Postgres + pgvector · Full-text search · Rank fusion · FastAPI · 23 tests
 </p>
 :::
 
@@ -99,6 +99,18 @@ and the guardrail does not check numbers written out as words.
 :::
 
 ::: {.rh-section}
+## Try it
+
+Search the handbook and compare, side by side, what vector search, keyword search and their fusion return; edit a draft answer and see the guardrail release it or withhold it; or check every test question. Everything runs in your browser, with the repository's offline settings and no model download.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case06/sim.css?v=1">
+<div id="rag-app" data-src="../assets/case06/data.json?v=1"></div>
+<script src="../assets/case06/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
 ## Applied to your documents
 
 This is the core of the
@@ -125,7 +137,7 @@ python -m rag.cli eval --k 1
 pytest -v
 ```
 
-The defaults need no API key and no model download. The suite has **22 tests**, the
+The defaults need no API key and no model download. The suite has **23 tests**, the
 Postgres ones included, and runs on every push together with the retrieval evaluation.
 The README lists the design decisions, from the choice of index to why the full-text
 query is an OR of terms.

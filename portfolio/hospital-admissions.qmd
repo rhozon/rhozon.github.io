@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/case-admissions-forecast.png"
 # Forecasting Hospital Admissions
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Time series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked for coverage · Python · 19 tests
+Time series · Seasonal ARIMA · Rolling-origin backtest · 80% bands checked for coverage · Python · 21 tests
 </p>
 :::
 
@@ -157,7 +157,7 @@ python -m admissions.cli fetch    # refresh the data from DATASUS
 ```
 
 The repository includes a snapshot of the DATASUS data, so the backtest reproduces
-without network access. The suite has **19 tests**, among them a parser test on real
+without network access. The suite has **21 tests**, among them a parser test on real
 DATASUS output and hand-checked working-day counts. CI runs them on every push,
 followed by a short backtest. The README lists the design decisions and the limits.
 :::
