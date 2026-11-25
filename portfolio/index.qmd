@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problems, methods, and code you can run
 
 Each case follows the same five blocks: the business question, the data, the method and
-why that one, the result, and the code. What differs is what can be shown. Seven are
+why that one, the result, and the code. What differs is what can be shown. Eight are
 fully public, with repository, tests and results. Two describe doctoral research under
 peer review, so method is here and results are withheld until the journals rule. One
 runs on synthetic data, because the engagement behind it is under NDA. Each page says
@@ -122,6 +122,17 @@ which it is, at the top.
       PyTorch &middot; Implicit ALS &middot; Uplift &middot; PySpark
     </p>
     <p><a href="b2b-retail-recommender.html">Read the case </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="brazil-airline-competition.html">Airline Pricing and Competition in Brazil</a></h3>
+    <p>What a rival on the route does to fares, and what a merger of two of the three large
+    airlines would do: natural experiments, demand with instruments and a Bertrand-Nash merger
+    simulator on 218 million seats sold, with a simulator you can play with.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Industrial organization &middot; Game theory &middot; Merger simulation
+    </p>
+    <p><a href="brazil-airline-competition.html">Read the case </a></p>
   </div>
 </div>
 ```

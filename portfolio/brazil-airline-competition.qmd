@@ -1,0 +1,180 @@
+---
+title: ""
+pagetitle: "Airline Pricing and Competition in Brazil — Case Study"
+description: "How much does a rival on the route lower fares, and what would a merger of two of Brazil's three large airlines do to prices? 218 million seats sold, natural experiments, demand with instruments, Bertrand-Nash equilibrium and a merger simulator."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 11 · Live, 25 November 2026</div>
+# Airline Pricing and Competition in Brazil
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Industrial organization · Natural experiments · Instrumental variables · Logit demand · Bertrand-Nash · Merger simulation · Python · 7 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+Three airlines carry almost every domestic passenger in Brazil. When a carrier leaves a route,
+how much do the fares of those who stay go up? When a new one arrives, do the incumbents cut
+prices? And if two of the three merged, which routes would pay for it, and how much? In January
+2025 Azul and Abra, the controller of Gol, signed a memorandum to study a combination that
+would have held about 60% of the domestic market; the talks ended in September 2025, with
+Abra saying the idea still had merit. The question is alive for regulators, airports, travel
+buyers and the carriers themselves.
+:::
+
+::: {.rh-section}
+## The data
+
+ANAC, the civil aviation agency, publishes every domestic fare sold to the public each month
+and how many seats were sold at it. This case reads **89 months, January 2019 to May 2026:
+42.7 million fare lines and 217.9 million seats**. The files changed header, encoding and
+decimal mark several times; the loader reads them all and a quality table records each one.
+ANAC's traffic statistics add paid passengers, seats offered, fuel burned, distance and
+departures for every route, carrier and month. Fares are deflated by the IPCA to 2025 reais.
+
+Two limits come with the source. The fare files cover public sales only, about 27% of paid
+passengers; corporate deals, miles and free tickets are not in them, so the fare is the price
+of a public ticket, not the average revenue per passenger. And a market here is an airport
+pair, so Congonhas and Guarulhos are different markets.
+:::
+
+::: {.rh-section}
+## Try it
+
+Pick one of the 60 busiest routes. See each carrier's fare, passengers and the cost and margin
+the model implies; start a price war and watch the rivals answer; merge two carriers; or let
+a low-cost entrant in. The price sensitivity can be set to the central estimate or to either
+end of the range the specifications give.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case11/sim.css?v=2">
+<div id="bac-app" data-src="../assets/case11/data.json?v=2"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case11/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## Method
+
+**Natural experiments first.** Avianca Brasil collapsed in the first half of 2019; ITA flew
+from mid-2021 until it stopped in December 2021. Each event is measured by difference in
+differences on the fares of the carriers that stayed: routes where the event carrier had a
+meaningful share against routes it never served, with carrier-route and month fixed effects,
+passenger weights and errors clustered by route.
+
+**Demand with instruments.** Passengers choose a carrier on the route or not to fly it, in a
+logit model (Berry, 1994) estimated on 164 routes and 392 carrier-route products from January
+2022 to May 2026. Fixed effects for each carrier on each route absorb lasting quality, and month
+effects absorb seasons. Price is endogenous: fares rise when demand is strong, which is why
+ordinary least squares finds almost no response to price. The instruments shift price without
+moving this route's demand: the same carrier's fare per kilometre on its other routes that month
+(a Hausman-type cost instrument), the number of carriers on the route and the rivals'
+frequency.
+
+**Competition as a game.** Each carrier sets its fare to maximize profit given the others', a
+Bertrand-Nash equilibrium with differentiated products. Its first-order condition gives the
+margin each carrier must have and, from the observed fare, the marginal cost it implies.
+A merger changes who owns what, an exit removes a carrier, an entry adds one; new equilibria
+are found by iterating the first-order conditions.
+
+**A test before the forecast.** Before simulating a merger, the model is asked to predict the
+fares that followed Avianca Brasil's exit, using only the first quarter of 2019.
+:::
+
+::: {.rh-section}
+## Results
+
+**When Avianca Brasil left, rivals' fares spiked, then settled a little higher.** On the 50
+routes where it had at least 10% of passengers, the fares of those who stayed rose 15% in April,
+22% in May and 19% in June 2019 against control routes, while flights were cancelled and seats
+disappeared. From July to December the difference was 3.0% (95% interval -3.0% to 9.3%), not
+distinguishable from zero.
+
+**ITA's year is too short to say much.** On the 9 routes where it had at least 5% of passengers,
+rivals' fares moved 6.8% while it flew (interval -17% to 38%) and 21.9% in the months after it
+stopped (interval -6% to 58%). The direction fits the story; nine routes cannot confirm it.
+
+**Price matters once it is instrumented.** Least squares gives a price coefficient of 0.034 per
+hundred reais, which would make every carrier's demand inelastic. With the instruments the
+coefficient is 0.276 (standard error 0.048, first-stage F of 154), and the median carrier faces
+an own-price elasticity of -1.35. The estimate depends on the instruments: adding a fuel-cost
+shifter gives 0.285, treating frequency as given gives 0.171, the Hausman instrument alone gives
+0.036, and the overidentification test rejects in every case with several instruments. A
+nested logit that would let carriers be closer substitutes for each other than for not flying
+gave a nesting parameter below zero, outside the model, so the plain logit is used. The
+simulator lets the visitor move between 0.171 and 0.285.
+
+**The model passes the Avianca test.** Removing Avianca Brasil from the first-quarter 2019
+equilibrium, the model predicts a 3.3% rise in the fares of those who stay, against the 3.0%
+observed in the second half of the year. With the lowest price sensitivity it predicts 5.2%.
+The observed interval is wide, so this is a consistency check, not a proof.
+
+**A merger of two large carriers.** On the routes where both carriers fly, over the twelve
+months to May 2026, with the central estimate:
+
+| Merger | Routes | Fares of the merging carriers | Fares of the rivals | Passengers | Consumer surplus per month |
+|---|---:|---:|---:|---:|---:|
+| Azul + Gol | 51 | +12.9% | +0.7% | -5.1% | -R$ 127 million |
+| Azul + LATAM | 43 | +12.1% | +0.8% | -5.3% | -R$ 126 million |
+| Gol + LATAM | 105 | +19.5% | +1.0% | -12.7% | -R$ 525 million |
+
+Across the range of price sensitivity, the Azul and Gol fares rise between 12.5% and 20.5%. The
+passenger change does not depend on that choice, a property of the logit with costs recovered
+from margins; the fare change in reais and the loss of surplus do. Rivals barely move because
+the logit makes them compete with everyone equally; a model with closer substitutes would
+raise their response.
+:::
+
+::: {.rh-section}
+## Limits
+
+The fare is the public-sale fare, a minority of passengers. The model sees monthly averages,
+so it ignores how fares change as departure approaches and how carriers manage seats. The
+instruments disagree with each other, which the overidentification test shows; the range of
+results is reported rather than hidden. Costs come from the pricing model, not from accounts:
+they are positive for 77% of carrier-routes, and margins look large (a median of 75% of the
+fare), which says the marginal cost of one more passenger on a scheduled flight is small,
+not that the airlines are profitable. Mergers also change networks, frequencies and costs,
+which this model holds fixed.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+This is the
+<a href="../oquant.html#packages">Custom Forecasting package</a> applied to competition and
+price. For an airline, an airport, a travel buyer, a bus or logistics operator, or a
+regulator, the same tools measure how your fares respond to rivals, what an entry or an exit
+does to a route, and what a merger would do before anyone signs it.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/brazil-airline-competition">github.com/rhozon/brazil-airline-competition</a>
+</p>
+```
+
+With Python 3.11 or later and ANAC's files in `BAC_RAW` (the fare files come from ANAC's
+DataSAS download page, one zip per year; the traffic file from ANAC's open-data portal):
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m bac.cli load       # fare files and traffic statistics
+python -m bac.cli analyse    # events, demand, equilibrium, mergers
+```
+
+References: ANAC, microdata of domestic fares sold and air transport statistics; Berry
+(1994), *Estimating Discrete-Choice Models of Product Differentiation*, RAND Journal of
+Economics; Nevo (2001), *Measuring Market Power in the Ready-to-Eat Cereal Industry*,
+Econometrica; Peters (2006), *Evaluating the Performance of Merger Simulation: Evidence from the
+U.S. Airline Industry*, Journal of Law and Economics.
+:::

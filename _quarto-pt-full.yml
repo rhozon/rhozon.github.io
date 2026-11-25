@@ -17,6 +17,7 @@ project:
     - pt/portfolio/credit-early-warning.qmd
     - pt/portfolio/mobility-dynamic-pricing.qmd
     - pt/portfolio/b2b-retail-recommender.qmd
+    - pt/portfolio/brazil-airline-competition.qmd
     - pt/teaching.qmd
     - pt/oquant.qmd
     - pt/contact.qmd

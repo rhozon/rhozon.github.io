@@ -1,0 +1,187 @@
+---
+title: ""
+pagetitle: "Preço e Concorrência nas Companhias Aéreas Brasileiras — Estudo de Caso"
+description: "Quanto uma concorrente na rota baixa a tarifa, e o que uma fusão entre duas das três grandes companhias faria com os preços? 218 milhões de assentos vendidos, experimentos naturais, demanda com instrumentos, equilíbrio de Nash e um simulador de fusão."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 11 · No ar, 25 de novembro de 2026</div>
+# Preço e Concorrência nas Companhias Aéreas Brasileiras
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Organização industrial · Experimentos naturais · Variáveis instrumentais · Demanda logit · Bertrand-Nash · Simulação de fusão · Python · 7 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Três companhias levam quase todos os passageiros domésticos do Brasil. Quando uma companhia
+sai de uma rota, quanto sobem as tarifas de quem fica? Quando uma nova chega, as que já estão
+lá baixam preço? E se duas das três se fundissem, quais rotas pagariam a conta, e quanto? Em
+janeiro de 2025 a Azul e a Abra, controladora da Gol, assinaram um memorando para estudar uma
+união que teria cerca de 60% do mercado doméstico; a conversa terminou em setembro de 2025,
+com a Abra dizendo que a ideia ainda tinha mérito. A pergunta segue viva para reguladores,
+aeroportos, compradores corporativos de viagem e as próprias companhias.
+:::
+
+::: {.rh-section}
+## Os dados
+
+A ANAC publica todo mês cada tarifa doméstica vendida ao público e quantos assentos foram
+vendidos a ela. Este case lê **89 meses, de janeiro de 2019 a maio de 2026: 42,7 milhões de
+linhas de tarifa e 217,9 milhões de assentos**. Os arquivos mudaram de cabeçalho, de
+codificação e de separador decimal várias vezes; a carga lê todos, e uma tabela de qualidade
+registra cada um. As estatísticas de transporte aéreo da ANAC trazem passageiros pagos,
+assentos oferecidos, combustível, distância e decolagens por rota, companhia e mês. As
+tarifas são corrigidas pelo IPCA para reais de 2025.
+
+A fonte tem dois limites. Os arquivos de tarifa cobrem só a venda ao público, cerca de 27% dos
+passageiros pagos; acordos corporativos, milhas e bilhetes gratuitos não entram, então a
+tarifa é o preço de um bilhete vendido ao público, não a receita média por passageiro. E um
+mercado aqui é um par de aeroportos, então Congonhas e Guarulhos são mercados diferentes.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Escolha uma das 60 rotas mais movimentadas. Veja a tarifa e os passageiros de cada
+companhia, o custo e a margem que o modelo implica; comece uma guerra de preços e veja as
+rivais responderem; funda duas companhias; ou deixe entrar uma concorrente de baixo custo. A
+sensibilidade ao preço pode ficar na estimativa central ou em qualquer ponta da faixa que as
+especificações dão.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case11/sim.css?v=2">
+<div id="bac-app" data-src="../../assets/case11/data.json?v=2"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case11/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## Método
+
+**Primeiro, os experimentos naturais.** A Avianca Brasil quebrou no primeiro semestre de 2019;
+a ITA voou de meados de 2021 até parar, em dezembro de 2021. Cada evento é medido por diferença
+em diferenças nas tarifas das companhias que ficaram: rotas em que a companhia do evento tinha
+fatia relevante contra rotas que ela nunca serviu, com efeitos fixos de companhia na rota e de
+mês, pesos por passageiro e erros agrupados por rota.
+
+**Demanda com instrumentos.** O passageiro escolhe uma companhia na rota ou não voar nela, num
+modelo logit (Berry, 1994) estimado em 164 rotas e 392 produtos companhia-rota, de janeiro de
+2022 a maio de 2026. Efeitos fixos de cada companhia em cada rota absorvem a qualidade
+duradoura, e efeitos de mês absorvem as estações. O preço é endógeno: a tarifa sobe quando a
+demanda está forte, e por isso os mínimos quadrados quase não acham resposta ao preço. Os
+instrumentos mexem no preço sem mexer na demanda desta rota: a tarifa por quilômetro da mesma
+companhia nas suas outras rotas no mês (um instrumento de custo do tipo Hausman), o número de
+companhias na rota e a frequência das rivais.
+
+**A concorrência como um jogo.** Cada companhia escolhe a tarifa que maximiza o lucro dadas as
+tarifas das outras: um equilíbrio de Bertrand-Nash com produtos diferenciados. A condição de
+primeira ordem dá a margem que cada companhia precisa ter e, a partir da tarifa observada, o
+custo marginal que ela implica. Uma fusão muda quem é dono de quê, uma saída remove uma
+companhia, uma entrada acrescenta uma; os novos equilíbrios saem da iteração das condições de
+primeira ordem.
+
+**Um teste antes da previsão.** Antes de simular uma fusão, o modelo precisa prever as
+tarifas que vieram depois da saída da Avianca Brasil, usando só o primeiro trimestre de 2019.
+:::
+
+::: {.rh-section}
+## Resultados
+
+**Quando a Avianca Brasil saiu, as tarifas das rivais dispararam e depois se acomodaram um
+pouco mais altas.** Nas 50 rotas em que ela tinha pelo menos 10% dos passageiros, as tarifas de
+quem ficou subiram 15% em abril, 22% em maio e 19% em junho de 2019 em relação às rotas de
+controle, enquanto voos eram cancelados e assentos sumiam. De julho a dezembro, a diferença foi
+de 3,0% (intervalo de 95% de -3,0% a 9,3%), indistinguível de zero.
+
+**O ano da ITA é curto demais para dizer muito.** Nas 9 rotas em que ela tinha pelo menos 5% dos
+passageiros, as tarifas das rivais variaram 6,8% enquanto ela voava (intervalo de -17% a 38%) e
+21,9% nos meses depois que ela parou (intervalo de -6% a 58%). A direção bate com a história;
+nove rotas não bastam para confirmar.
+
+**O preço pesa quando é instrumentado.** Os mínimos quadrados dão um coeficiente de preço de
+0,034 por cem reais, o que tornaria inelástica a demanda de toda companhia. Com os instrumentos,
+o coeficiente é 0,276 (erro-padrão de 0,048, F do primeiro estágio de 154), e a companhia
+mediana enfrenta elasticidade-preço própria de -1,35. A estimativa depende dos instrumentos:
+somando um deslocador de custo de combustível, 0,285; tratando a frequência como dada, 0,171;
+só o instrumento de Hausman, 0,036; e o teste de sobreidentificação rejeita em todos os casos
+com mais de um instrumento. Um logit aninhado, que deixaria as companhias serem substitutas
+mais próximas entre si do que de não voar, deu parâmetro de aninhamento abaixo de zero, fora
+do modelo, então fica o logit simples. O simulador deixa o visitante andar entre 0,171 e 0,285.
+
+**O modelo passa no teste da Avianca.** Retirando a Avianca Brasil do equilíbrio do primeiro
+trimestre de 2019, o modelo prevê alta de 3,3% nas tarifas de quem fica, contra os 3,0%
+observados no segundo semestre. Com a menor sensibilidade ao preço, prevê 5,2%. O intervalo
+observado é largo, então isto é um teste de coerência, não uma prova.
+
+**Uma fusão de duas grandes.** Nas rotas em que as duas companhias voam, nos doze meses até maio
+de 2026, com a estimativa central:
+
+| Fusão | Rotas | Tarifa das que se fundem | Tarifa das rivais | Passageiros | Excedente do consumidor por mês |
+|---|---:|---:|---:|---:|---:|
+| Azul + Gol | 51 | +12,9% | +0,7% | -5,1% | -R$ 127 milhões |
+| Azul + LATAM | 43 | +12,1% | +0,8% | -5,3% | -R$ 126 milhões |
+| Gol + LATAM | 105 | +19,5% | +1,0% | -12,7% | -R$ 525 milhões |
+
+Na faixa de sensibilidade ao preço, as tarifas de Azul e Gol sobem entre 12,5% e 20,5%. A
+variação de passageiros não depende dessa escolha, uma propriedade do logit com custos
+recuperados das margens; a variação da tarifa em reais e a perda de excedente dependem. As
+rivais quase não se mexem porque o logit as faz concorrer igualmente com todos; um modelo com
+substitutas mais próximas aumentaria a resposta delas.
+:::
+
+::: {.rh-section}
+## Limites
+
+A tarifa é a da venda ao público, uma minoria dos passageiros. O modelo vê médias mensais,
+então ignora como a tarifa muda com a proximidade do voo e como as companhias administram os
+assentos. Os instrumentos discordam entre si, como mostra o teste de sobreidentificação; a
+faixa de resultados é reportada, não escondida. Os custos vêm do modelo de preço, não da
+contabilidade: são positivos em 77% dos pares companhia-rota, e as margens parecem grandes
+(mediana de 75% da tarifa), o que diz que o custo marginal de mais um passageiro num voo
+regular é pequeno, não que as companhias sejam lucrativas. Fusões também mudam redes,
+frequências e custos, que este modelo mantém fixos.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Este é o
+<a href="../oquant.html#packages">pacote de Previsão sob Medida</a> aplicado a concorrência e
+preço. Para uma companhia aérea, um aeroporto, um comprador corporativo de viagens, uma
+operadora de ônibus ou de logística, ou um regulador, as mesmas ferramentas medem como as suas
+tarifas respondem às rivais, o que uma entrada ou uma saída faz com uma rota e o que uma fusão
+faria antes de alguém assiná-la.
+:::
+
+::: {.rh-section}
+## Código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/brazil-airline-competition">github.com/rhozon/brazil-airline-competition</a>
+</p>
+```
+
+Com Python 3.11 ou superior e os arquivos da ANAC em `BAC_RAW` (as tarifas saem da página de
+download DataSAS da ANAC, um zip por ano; o arquivo de tráfego, do portal de dados abertos da
+ANAC):
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m bac.cli load       # arquivos de tarifa e estatísticas de tráfego
+python -m bac.cli analyse    # eventos, demanda, equilíbrio, fusões
+```
+
+Referências: ANAC, microdados de tarifas aéreas domésticas comercializadas e estatísticas do
+transporte aéreo; Berry (1994), *Estimating Discrete-Choice Models of Product
+Differentiation*, RAND Journal of Economics; Nevo (2001), *Measuring Market Power in the
+Ready-to-Eat Cereal Industry*, Econometrica; Peters (2006), *Evaluating the Performance of
+Merger Simulation: Evidence from the U.S. Airline Industry*, Journal of Law and Economics.
+:::

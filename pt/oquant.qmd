@@ -108,7 +108,7 @@ Escopo, prazo e valor fechados antes de começar. O valor depende dos seus dados
       <li>Relatório executivo, código documentado e painel simples</li>
       <li>Treinamento de 2 horas e 30 dias de suporte</li>
     </ul>
-    <p>Veja funcionando no <a href="portfolio/hospital-admissions.html">caso das internações hospitalares</a>, testado nos 27 estados, e aplicado a default no <a href="portfolio/credit-early-warning.html">caso de alerta antecipado de crédito corporativo</a> e a preço no <a href="portfolio/mobility-dynamic-pricing.html">caso de preço dinâmico em mobilidade</a>.</p>
+    <p>Veja funcionando no <a href="portfolio/hospital-admissions.html">caso das internações hospitalares</a>, testado nos 27 estados, e aplicado a default no <a href="portfolio/credit-early-warning.html">caso de alerta antecipado de crédito corporativo</a>, a preço no <a href="portfolio/mobility-dynamic-pricing.html">caso de preço dinâmico em mobilidade</a> e a concorrência no <a href="portfolio/brazil-airline-competition.html">caso das companhias aéreas</a>.</p>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Prazo: 6 semanas</p>
   </div>
   <div class="rh-card">
