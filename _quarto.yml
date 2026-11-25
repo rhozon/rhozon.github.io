@@ -17,6 +17,7 @@ project:
     - portfolio/mobility-dynamic-pricing.qmd
     - portfolio/b2b-retail-recommender.qmd
     - portfolio/brazil-airline-competition.qmd
+    - portfolio/basket-microeconometrics.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

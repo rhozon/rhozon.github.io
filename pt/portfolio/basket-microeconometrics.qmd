@@ -1,0 +1,159 @@
+---
+title: ""
+pagetitle: "Análise de Cesta com Microeconometria — Estudo de Caso"
+description: "Comprado junto não é o mesmo que complementar. Lift, tamanho da compra e gosto dos domicílios separados em 156 mil idas ao mercado, promoções testadas com efeitos fixos e controle de testes múltiplos, e um recomendador de cesta testado fora do tempo."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 12 · No ar, 25 de novembro de 2026</div>
+# Análise de Cesta com Microeconometria
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Regras de associação · Efeitos fixos · Medidas sem a própria compra · Testes múltiplos · Completar a cesta · Python e R · 6 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Todo varejista tem uma tabela de produtos comprados juntos, e os pares de maior lift acabam nas
+promoções: dê desconto no molho de tomate, o macarrão vem junto. A tabela não diz se isso é
+verdade. Dois produtos aparecem juntos por três motivos diferentes: são usados juntos
+(complementares), as compras grandes levam um pouco de tudo, e os mesmos domicílios gostam dos
+dois. Só o primeiro quer dizer que um desconto num vende mais do outro. Este case separa os
+três, testa se preço e promoção movem complementares e mostra onde o lift ainda é útil.
+:::
+
+::: {.rh-section}
+## Os dados
+
+[The Complete Journey](https://cran.r-project.org/package=completejourney), da 84.51°, a empresa
+de ciência de dados do grupo Kroger, distribuída no pacote completejourney do R (CC0): um ano de
+compras de **2.469 domicílios, 155.848 idas ao mercado e 1,47 milhão de linhas** em 457 lojas,
+com o preço pago, o desconto do cartão fidelidade e o cupom de cada linha, e **20,9 milhões de
+registros semanais de quais produtos estavam em destaque na loja ou no encarte** de cada loja.
+A análise usa as 46 categorias de mercearia mais frequentes, de refrigerante e leite a
+macarrão, molho, salsicha e pasta de amendoim. Os dados são baixados por um script em R e
+analisados em Python.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Escolha uma categoria para ver seus parceiros sob três medidas; dê a uma categoria um desconto
+mais profundo e veja o efeito estimado sobre todas as outras, com a incerteza; ou marque o que
+já está numa cesta e compare o que o lift e a associação ajustada sugerem.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case12/sim.css?v=1">
+<div id="bmx-app" data-src="../../assets/case12/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case12/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
+## Método
+
+**Primeiro, a análise de cesta clássica.** Suporte, confiança e lift para cada par das 46
+categorias.
+
+**Depois, do que o lift é feito.** O lift é recalculado dentro de decis do tamanho da compra, o
+que tira o efeito das compras grandes. Uma segunda medida tira a compra média de cada domicílio
+em cada categoria e o tamanho da compra, e correlaciona o que sobra: compra conjunta que não é
+gosto nem tamanho, a parte mais próxima do uso na mesma refeição (Gentzkow, 2007, faz a mesma
+distinção entre complementaridade e gostos correlacionados).
+
+**Promoções movem complementares?** Para cada categoria, a chance de ela estar na cesta é
+regredida sobre o marketing de todas as categorias na loja e na semana: a profundidade do
+desconto do cartão fidelidade, o número de produtos em destaque na loja e no encarte semanal.
+Efeitos fixos de domicílio absorvem os gostos duradouros; efeitos de mês e de feriados absorvem
+o calendário. O desconto que cada cesta enfrentou é medido nas outras cestas da mesma loja e
+semana, então a compra do próprio cliente nunca entra no preço que ele enfrenta. Com 46
+categorias há 2.070 efeitos cruzados para cada tipo de marketing, e o procedimento de
+Benjamini-Hochberg controla a proporção de falsas descobertas. Uma segunda especificação usa o
+preço pago em relação ao preço usual de cada produto.
+
+**Onde o lift ainda ajuda.** Um teste de completar a cesta esconde, uma de cada vez, cada
+categoria de cada cesta e pergunta qual modelo a coloca mais alto: popularidade, hábito do
+domicílio, hábito mais lift, hábito mais a associação ajustada. As associações vêm das primeiras
+26 semanas, o peso é escolhido nas semanas 27 a 39, e a comparação é feita nas semanas 40 a 53.
+:::
+
+::: {.rh-section}
+## Resultados
+
+**O lift é sobretudo tamanho da compra.** Todos os 1.035 pares têm lift acima de um, com média
+de 2,53: tudo parece combinar com tudo. Dentro de compras de tamanho parecido, a média cai para
+1,27. Macarrão e molho continuam no topo em todas as medidas (lift bruto de 10,9, 4,4 sem o
+tamanho da compra, correlação residual de 0,42), mas os rankings mudam: dos 50 pares de maior
+lift, só 22 estão entre os 50 de maior associação ajustada.
+
+**As promoções mexem um pouco na própria categoria e em nada mais de forma mensurável.** Um
+desconto 10 pontos mais profundo no leite aumenta em 0,66 ponto a chance de o leite estar na
+cesta, sobre uma base de 25%; na maioria das categorias o efeito próprio é menor e
+indistinguível de zero. Nas 46 categorias, 7 efeitos próprios do desconto são positivos a 5% e
+4 sobrevivem ao controle de falsas descobertas; para destaque na loja, 12 e 5; para encarte, 8
+e 2. **Nenhum dos 2.070 efeitos cruzados sobrevive**, nem para desconto, nem para destaque, nem
+para encarte. Entre 6% e 9% deles são significativos a 5%, contra 5% só pelo acaso, sem que
+nenhum se destaque.
+
+**Os limites superiores são a parte útil.** Um desconto 10 pontos mais profundo no molho muda
+em 0,006 ponto a chance de comprar macarrão; o intervalo de 95% chega a 0,11 ponto, sobre uma
+base de 4,1%. Para salsicha e pão, cereal e leite, salgadinho e refrigerante, os limites
+superiores ficam abaixo de 0,4 ponto. Neste painel, um efeito de meio ponto ou mais teria
+aparecido.
+
+**Para prever, o lift funciona.** Fora da amostra, o hábito do domicílio sozinho chega a uma AUC
+de 0,764 no teste de completar a cesta, e a popularidade a 0,654. Somar o lift leva a 0,810; a
+associação ajustada, a 0,803. O lift prevê bem o que mais está na cesta porque carrega o tamanho
+da compra; ele não diz o que uma promoção vai mover.
+:::
+
+::: {.rh-section}
+## Limites
+
+Um varejista, um ano, 2.469 domicílios com cartão fidelidade: o resultado vale para este
+painel. O marketing é medido no nível da categoria; uma promoção numa marca se dilui na média
+da categoria, o que enfraquece os efeitos próprios e pode esconder efeitos no nível do produto.
+Os descontos são escolhidos pelo varejista, e os efeitos fixos e a medida sem a própria compra
+removem os principais fatores de confusão, mas não os tornam aleatórios. A associação ajustada
+está mais perto do uso conjunto do que o lift, mas é uma correlação, não um efeito causal. A
+forma de resolver um efeito específico é uma promoção aleatorizada, e os intervalos acima dão o
+tamanho dela.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Para um varejista, um distribuidor ou uma indústria de bens de consumo, o mesmo pipeline roda
+sobre as suas transações: o que o lift realmente mede nas suas lojas, quais promoções mexem na
+própria categoria e quais não mexem em mais nada, o tamanho do teste que resolveria um efeito
+cruzado, e um recomendador de cesta para o aplicativo ou para a equipe de vendas. Começa pelo
+<a href="../oquant.html#packages">Diagnóstico de Dados e IA</a>.
+:::
+
+::: {.rh-section}
+## Código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/basket-microeconometrics">github.com/rhozon/basket-microeconometrics</a>
+</p>
+```
+
+```bash
+Rscript r/fetch.R ~/data/completejourney     # baixa os dados (pacote completejourney)
+pip install -e ".[dev]"
+pytest -v
+python -m bmx.cli analyse                     # todas as tabelas em results/
+```
+
+Referências: 84.51°, The Complete Journey 2.0, no pacote completejourney do R (Boehmke e
+Mortimer); Gentzkow (2007), *Valuing New Goods in a Model with Complementarity: Online
+Newspapers*, American Economic Review; Benjamini e Hochberg (1995), *Controlling the False
+Discovery Rate*, Journal of the Royal Statistical Society B; Agrawal e Srikant (1994), *Fast
+Algorithms for Mining Association Rules*, VLDB.
+:::

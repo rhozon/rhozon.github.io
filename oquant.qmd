@@ -86,7 +86,7 @@ Fixed scope, fixed timeline and a fixed fee agreed before any work starts. The f
       <li>A 90-day plan and a 1-hour presentation to leadership</li>
     </ul>
     <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">Timeline: 2 weeks</p>
-    <p>See where one can lead in the <a href="portfolio/b2b-retail-recommender.html">B2B recommendations and promotions case</a>.</p>
+    <p>See where one can lead in the <a href="portfolio/b2b-retail-recommender.html">B2B recommendations and promotions case</a> and the <a href="portfolio/basket-microeconometrics.html">basket analysis case</a>.</p>
   </div>
   <div class="rh-card">
     <h3>AI &amp; Data Workshop for Managers</h3>

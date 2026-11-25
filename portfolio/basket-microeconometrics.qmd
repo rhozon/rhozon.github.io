@@ -1,0 +1,155 @@
+---
+title: ""
+pagetitle: "Market Basket Analysis with Microeconometrics — Case Study"
+description: "Bought together is not the same as complementary. Lift, trip size and household tastes separated on 156 thousand shopping trips, promotions tested for halo effects with fixed effects and multiple-testing control, and a basket recommender tested out of time."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 12 · Live, 25 November 2026</div>
+# Market Basket Analysis with Microeconometrics
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Association rules · Fixed effects · Leave-one-out instruments · Multiple testing · Basket completion · Python and R · 6 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+Every retailer has a table of products bought together, and the pairs with the highest lift end
+up in promotions: discount the pasta sauce, the pasta will follow. The table cannot say whether
+that is true. Two products appear together for three different reasons: they are used together
+(complements), big shopping trips contain a bit of everything, and the same households like
+both. Only the first one means that a discount on one sells more of the other. This case
+separates the three, tests whether price and promotions move complements at all, and shows
+where lift is still useful.
+:::
+
+::: {.rh-section}
+## The data
+
+[The Complete Journey](https://cran.r-project.org/package=completejourney) from 84.51°, the data
+science company of the Kroger group, distributed in the completejourney R package (CC0): a year
+of purchases of **2,469 households, 155,848 shopping trips, 1.47 million lines** in 457 stores,
+with the price paid, the loyalty-card discount and the coupon of every line, and **20.9 million
+weekly records of which products were on display or in the weekly mailer** in each store. The
+analysis uses the 46 most frequent grocery categories, from soft drinks and milk to pasta,
+pasta sauce, hot dogs and peanut butter. The data are downloaded by an R script and analysed in
+Python.
+:::
+
+::: {.rh-section}
+## Try it
+
+Pick a category to see its partners under three measures; give a category a deeper discount and
+see the estimated effect on everything else, with its uncertainty; or tick what is already in a
+basket and compare what lift and the adjusted association would suggest.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case12/sim.css?v=1">
+<div id="bmx-app" data-src="../assets/case12/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case12/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
+## Method
+
+**Classic basket analysis first.** Support, confidence and lift for every pair of the 46
+categories.
+
+**Then what lift is made of.** Lift is recomputed within deciles of trip size, which removes the
+pull of big trips. A second measure removes each household's average purchase of each category
+and the trip size, and correlates what is left: co-purchase that is neither taste nor trip size,
+the part closest to use in the same meal (Gentzkow, 2007, makes the same distinction between
+complementarity and correlated tastes).
+
+**Do promotions move complements?** For each category, the chance that it is in a basket is
+regressed on every category's marketing in that store and week: the depth of the loyalty-card
+discount, the number of products on display and in the weekly mailer. Household fixed effects
+absorb lasting tastes; month and holiday effects absorb the calendar. The discount each basket
+faced is measured on the other baskets of the same store and week, so a shopper's own purchases
+never enter the price they face. With 46 categories there are 2,070 cross effects for each kind
+of marketing, so the Benjamini-Hochberg procedure controls the share of false discoveries. A
+second specification uses the price paid relative to each product's usual price.
+
+**Where lift still helps.** A basket-completion test hides each category of each basket in
+turn and asks which model ranks it highest: popularity, the household's habit, habit plus lift,
+habit plus the adjusted association. Associations come from the first 26 weeks, the weight is
+chosen on weeks 27 to 39, and the comparison is made on weeks 40 to 53.
+:::
+
+::: {.rh-section}
+## Results
+
+**Lift is mostly trip size.** Every one of the 1,035 pairs has a lift above one, with a mean of
+2.53: everything seems to go with everything. Within trips of similar size the mean falls to
+1.27. Pasta and pasta sauce stay at the top under every measure (raw lift 10.9, 4.4 net of trip
+size, a residual correlation of 0.42), but the rankings move: of the 50 pairs with the highest
+lift, only 22 are among the 50 with the highest adjusted association.
+
+**Promotions move their own category a little, and nothing else measurably.** A 10-point deeper
+discount on milk raises the chance that milk is in the basket by 0.66 points, on a base of 25%;
+for most categories the own effect is smaller and not distinguishable from zero. Across the 46
+categories, 7 own discount effects are positive at the 5% level and 4 survive the
+false-discovery control; for displays, 12 and 5; for mailers, 8 and 2. **None of the 2,070
+cross effects survives,** for discounts, displays or mailers. Between 6% and 9% of them are
+significant at the 5% level, against 5% by chance alone, none by enough to stand out.
+
+**The upper bounds are the useful part.** A 10-point deeper discount on pasta sauce changes the
+chance of buying pasta by 0.006 points; the 95% interval reaches 0.11 points, on a base of
+4.1%. For hot dogs and buns, cereal and milk, chips and soft drinks, the upper bounds stay below
+0.4 points. In this panel, a halo of half a point or more would have been seen.
+
+**For prediction, lift works.** Out of sample, household habit alone reaches an AUC of 0.764 in
+the basket-completion test, popularity 0.654. Adding lift raises it to 0.810, the adjusted
+association to 0.803. Lift predicts what else is in the basket well, because it carries the
+size of the trip; it does not say what a promotion will move.
+:::
+
+::: {.rh-section}
+## Limits
+
+One retailer, one year, 2,469 loyalty-card households: the result is about this panel. Marketing
+is measured at the category level; a promotion on one brand dilutes into the category's
+average, which weakens own effects and can hide product-level halos. Discounts are chosen by the
+retailer, and the fixed effects and leave-one-out measurement remove the main confounders but do
+not make them random. The adjusted association is closer to joint use than lift, but it is a
+correlation, not a causal effect. The way to settle a specific halo is a randomized promotion,
+and the intervals above give its size.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+For a retailer, a distributor or a consumer-goods company, the same pipeline runs on your
+transactions: what lift really measures in your stores, which promotions move their own
+category and which move nothing else, the size of the test that would settle a halo, and a
+basket recommender for the app or the sales team. It starts with the
+<a href="../oquant.html#packages">Data &amp; AI Diagnostic</a>.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/basket-microeconometrics">github.com/rhozon/basket-microeconometrics</a>
+</p>
+```
+
+```bash
+Rscript r/fetch.R ~/data/completejourney     # downloads the data (completejourney package)
+pip install -e ".[dev]"
+pytest -v
+python -m bmx.cli analyse                     # every table in results/
+```
+
+References: 84.51°, The Complete Journey 2.0, in the completejourney R package (Boehmke and
+Mortimer); Gentzkow (2007), *Valuing New Goods in a Model with Complementarity: Online
+Newspapers*, American Economic Review; Benjamini and Hochberg (1995), *Controlling the False
+Discovery Rate*, Journal of the Royal Statistical Society B; Agrawal and Srikant (1994), *Fast
+Algorithms for Mining Association Rules*, VLDB.
+:::
