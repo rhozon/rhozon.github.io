@@ -6,11 +6,11 @@ toc: false
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Case Study 10 · Live, 25 November 2026</div>
+<div class="rh-kicker">Case Study 10 · Live, 25 November 2026 · Version 2, 27 November 2026</div>
 # Recommendations and Promotions for a B2B Wholesaler
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
-Recommendations · PyTorch · Implicit ALS · Segmentation · Imputation · Assortment optimization · Uplift modeling · PySpark · Python · 25 tests
+Recommendations · PyTorch · SASRec · Implicit ALS · Segmentation · Imputation · Assortment optimization · Causal ML · PySpark · MLflow · Delta Lake · Databricks · Python · 38 tests
 </p>
 :::
 
@@ -85,6 +85,31 @@ discount to frequent buyers who would have ordered anyway). Because the true eff
 for every customer, any targeting rule can be scored exactly. This measures whether uplift
 models find who responds; it does not show how this wholesaler's customers respond to real
 promotions.
+
+**Version 2: transformers.** SASRec, the self-attention recommender of Kang and McAuley
+(2018), joins the comparison in two forms: read product by product, as published, and read
+basket by basket, with each order as one step, the same way the GRU reads it. Both have their
+number of epochs chosen on the validation window.
+
+**Version 2: real campaigns.** The simulated voucher above says whether the methods can find who
+responds; it cannot say how real customers respond. For that, the case adds a second public
+panel with real campaigns: The Complete Journey, a year of purchases by 2,469 households of a
+US grocery chain, with the households each campaign reached and the coupons they redeemed. The
+three largest campaigns each reached about 1,100 households, but they were not randomized, so
+every estimate is observational and checked against a placebo. The effect on weekly spend is
+estimated with augmented inverse probability weighting (AIPW), cross-fitted, adjusting for each
+household's spend, trips, range of products, discounts, coupons and earlier campaigns. The
+placebo runs the same estimator on the weeks just before the campaign, which the campaign cannot
+have caused. A third estimate uses the change in spend, which removes selection on stable
+spending levels. A doubly robust learner ranks households by their estimated effect, a best
+linear predictor test (Chernozhukov et al.) checks whether that ranking captures real
+differences, and every targeting rule is scored by its AIPW policy value. A 0-1 knapsack in
+scipy picks households under a coupon budget.
+
+**Version 2: lakehouse and tracking.** The pipeline writes bronze, silver and gold Delta tables
+(raw lines, clean sales, customer features with segments, and the evaluation table), logs every
+run to MLflow with the chosen settings and each model's metrics, and ships a Databricks Asset
+Bundle that runs the same steps as a three-task job on Unity Catalog.
 
 **Spark, with a parity test.** The cleaning rules and an implicit ALS are also written in
 PySpark. CI runs them on a sample of the raw file and fails if Spark and pandas disagree on
@@ -165,6 +190,39 @@ happens to match it. With an effect twice as large the X-learner reaches 41%; wi
 as large, the three learners on the scaled outcome pass the rule (the X-learner reaches 61%).
 For a real campaign: a randomized test on about 5,500 customers already pays off when the
 budget is small and targeted; ranking the whole base needs a larger effect or a larger test.
+**Version 2: SASRec ties when it reads orders, and fails when it reads products.** On the same
+test window:
+
+| Model | New to the customer, NDCG@10 | All products, NDCG@10 |
+|---|---:|---:|
+| Sequential GRU (PyTorch) | 0.071 (0.066 to 0.077) | 0.260 (0.249 to 0.271) |
+| Implicit ALS | 0.070 (0.064 to 0.075) | 0.196 (0.187 to 0.205) |
+| SASRec, basket by basket | 0.069 (0.063 to 0.074) | 0.251 (0.240 to 0.262) |
+| SASRec, product by product | 0.017 (0.014 to 0.019) | 0.075 (0.069 to 0.081) |
+
+Read product by product, as in the original paper, SASRec does worst of all: inside a wholesale
+order the products have no order of their own, so "the next product" is mostly noise. Read order
+by order, it lands with the GRU and ALS, within each other's intervals. A newer architecture does
+not beat the recurrent model here; how the sequence is defined matters more than the encoder.
+
+**Version 2: the real campaigns show selection, not effect.** Households that got a campaign
+spent about US$ 34 to 37 a week more during it than those that did not. The placebo shows where
+that gap comes from: they already spent as much more in the weeks before. After adjustment:
+
+| Campaign | Raw difference | Adjusted, campaign weeks | Placebo, weeks before | Change in spend |
+|---|---:|---:|---:|---:|
+| 8 (May to June 2017) | +33.7 | +7.6 ± 7.2 | +5.2 ± 6.9 | +2.7 ± 5.2 |
+| 13 (August to September) | +36.6 | +3.9 ± 12.6 | +0.3 ± 11.9 | +2.1 ± 7.3 |
+| 18 (November to December) | +36.3 | -0.2 ± 9.3 | +1.0 ± 6.3 | -1.2 ± 5.7 |
+
+US$ per household per week, with 95% intervals. No campaign has a detectable effect on spend,
+and the smallest effect this design could detect on the change in spend is US$ 7.5 to 10.5 a
+week, against a typical spend of about US$ 39. The doubly robust learner finds no heterogeneity
+it can rank on: the best linear predictor slopes are 0.10, 0.00 and 0.15, none clearly above zero.
+So the model-based targeting rule is no better than random here, and the case says so instead of
+showing a gain curve. What the data does support is the next step: a randomized test, sized in
+the app below, on the change in spend.
+
 :::
 
 ::: {.rh-section}
@@ -178,6 +236,17 @@ incremental revenue each targeting rule brings in the simulated experiment.
 <div id="c10-sim"></div>
 <script src="../assets/case10/sim.js?v=1" defer></script>
 ```
+
+**Version 2.** Compare every recommender, SASRec included, with the intervals and the validation
+curves; open the three real campaigns, with the raw gap, the placebo and the adjusted effect,
+and the value of each targeting rule; or size the randomized test that would settle the question.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case10/sim2.css?v=2">
+<div id="c10-v2" data-src="../assets/case10/data_v2.json?v=2"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case10/sim2.js?v=2"></script>
+```
 :::
 
 ::: {.rh-section}
@@ -188,7 +257,10 @@ evidence about the methods, not about any other company. The promotion experimen
 simulated on real customers, so it tests the targeting methods, not real price sensitivity.
 Products launched in the test window cannot be recommended by any of these models; a
 content-based model on product attributes would be the next step. The Spark job runs locally
-in CI on a sample; it has not run on a cluster.
+in CI on a sample; it has not run on a cluster. The Databricks bundle has not been deployed to
+a workspace: CI checks that it parses and that its tasks point to working scripts. The real
+campaigns come from a US grocery chain, not a wholesaler, and were not randomized; the placebo
+supports the adjustment for campaigns 13 and 18 better than for campaign 8.
 :::
 
 ::: {.rh-section}
@@ -215,20 +287,29 @@ With Python 3.11 or later and the workbook in `~/data/online-retail-ii`:
 ```bash
 pip install -e ".[dev]"
 pytest -v
-python -m b2bretail.cli --out results
+python -m b2bretail.cli --out results --lake lake --track sqlite:///mlflow.db
+python -m b2bretail.promos --out results    # real campaigns, The Complete Journey
+databricks bundle deploy -t dev             # with a Databricks workspace
 ```
 
-The suite has **25 tests**. CI runs them on every push, and a second job with Java 17
+The suite has **38 tests**. CI runs them on every push, and a second job with Java 17
 runs the Spark parity tests and the Spark job.
 :::
 
 ::: {.rh-section}
 ## References
 
+- Armbrust, M., Das, T., Sun, L., Yavuz, B., Zhu, S., Murthy, M. et al. (2020). Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores. *Proceedings of the VLDB Endowment*, 13(12), 3411-3424. [doi:10.14778/3415478.3415560](https://doi.org/10.14778/3415478.3415560)
 - Athey, S. and Imbens, G. (2016). Recursive partitioning for heterogeneous causal effects. *Proceedings of the National Academy of Sciences*, 113(27), 7353-7360. [doi:10.1073/pnas.1510489113](https://doi.org/10.1073/pnas.1510489113)
+- Athey, S. and Wager, S. (2021). Policy Learning With Observational Data. *Econometrica*, 89(1), 133-161. [doi:10.3982/ECTA15732](https://doi.org/10.3982/ECTA15732)
 - Chen, D. (2012). Online Retail II. *UCI Machine Learning Repository*. [doi:10.24432/C5CG6D](https://doi.org/10.24432/C5CG6D)
+- Chernozhukov, V., Demirer, M., Duflo, E. and Fernández-Val, I. (2017). Fisher-Schultz Lecture: Generic Machine Learning Inference on Heterogenous Treatment Effects in Randomized Experiments, with an Application to Immunization in India. *arXiv*. [doi:10.48550/arXiv.1712.04802](https://doi.org/10.48550/arXiv.1712.04802)
 - Hidasi, B., Karatzoglou, A., Baltrunas, L. and Tikk, D. (2015). Session-based Recommendations with Recurrent Neural Networks. *arXiv*. [doi:10.48550/arXiv.1511.06939](https://doi.org/10.48550/arXiv.1511.06939)
 - Hu, Y., Koren, Y. and Volinsky, C. (2008). Collaborative Filtering for Implicit Feedback Datasets. *2008 Eighth IEEE International Conference on Data Mining*, 263-272. [doi:10.1109/ICDM.2008.22](https://doi.org/10.1109/ICDM.2008.22)
+- Kang, W. C. and McAuley, J. (2018). Self-Attentive Sequential Recommendation. *2018 IEEE International Conference on Data Mining (ICDM)*, 197-206. [doi:10.1109/ICDM.2018.00035](https://doi.org/10.1109/ICDM.2018.00035)
+- Kennedy, E. H. (2023). Towards optimal doubly robust estimation of heterogeneous causal effects. *Electronic Journal of Statistics*, 17(2), 3008-3049. [doi:10.1214/23-EJS2157](https://doi.org/10.1214/23-EJS2157)
 - Künzel, S. R., Sekhon, J. S., Bickel, P. J. and Yu, B. (2019). Metalearners for estimating heterogeneous treatment effects using machine learning. *Proceedings of the National Academy of Sciences*, 116(10), 4156-4165. [doi:10.1073/pnas.1804597116](https://doi.org/10.1073/pnas.1804597116)
+- Robins, J. M., Rotnitzky, A. and Zhao, L. P. (1994). Estimation of Regression Coefficients When Some Regressors are not Always Observed. *Journal of the American Statistical Association*, 89(427), 846-866. [doi:10.1080/01621459.1994.10476818](https://doi.org/10.1080/01621459.1994.10476818)
 - Sarwar, B., Karypis, G., Konstan, J. and Riedl, J. (2001). Item-based collaborative filtering recommendation algorithms. *Proceedings of the 10th international conference on World Wide Web*, 285-295. [doi:10.1145/371920.372071](https://doi.org/10.1145/371920.372071)
+- Vaswani, A., Shazeer, N., Parmar, N., Uszkoreit, J., Jones, L., Gomez, A. N. et al. (2017). Attention Is All You Need. *arXiv*. [doi:10.48550/arXiv.1706.03762](https://doi.org/10.48550/arXiv.1706.03762)
 :::

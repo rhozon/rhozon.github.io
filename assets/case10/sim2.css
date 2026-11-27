@@ -1,0 +1,31 @@
+#c10-v2 { max-width: 100%; overflow-x: hidden; }
+#c10-v2 { margin: 1rem 0 2rem; }
+#c10-v2 .v2-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#c10-v2 .v2-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#c10-v2 .v2-tabs button.on { background: #0f766e; color: #fff; }
+#c10-v2 .v2-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#c10-v2 .v2-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#c10-v2 .v2-ctl span { font-weight: 600; }
+#c10-v2 .v2-ctl select, #c10-v2 .v2-ctl input { width: 100%; }
+#c10-v2 .v2-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#c10-v2 .v2-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#c10-v2 .v2-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#c10-v2 .v2-card-l { font-size: .75rem; opacity: .8; }
+#c10-v2 .v2-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#c10-v2 .v2-card-s { font-size: .75rem; opacity: .8; }
+#c10-v2 .v2-chart { position: relative; height: 380px; margin: .5rem 0 1rem; }
+#c10-v2 .v2-chart-s { height: 320px; }
+#c10-v2 .v2-note { font-size: .82rem; opacity: .85; }
+#c10-v2 .v2-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+#c10-v2 .v2-split h4 { font-size: .9rem; margin: .2rem 0 .3rem; }
+#c10-v2 .v2-table { width: 100%; border-collapse: collapse; font-size: .8rem; display: block; overflow-x: auto; max-height: 560px; overflow-y: auto; }
+#c10-v2 .v2-table th, #c10-v2 .v2-table td { padding: .3rem .45rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; white-space: nowrap; }
+#c10-v2 .v2-table th { font-weight: 600; white-space: normal; vertical-align: bottom; position: sticky; top: 0; background: var(--bs-body-bg, #fff); }
+#c10-v2 .v2-table th:first-child, #c10-v2 .v2-table td:first-child { text-align: left; }
+#c10-v2 .v2-table tbody tr { cursor: pointer; }
+#c10-v2 .v2-table tbody tr:hover, #c10-v2 .v2-table tbody tr.on { background: rgba(15,118,110,.1); }
+#c10-v2 .v2-table td.best { font-weight: 700; }
+@media (max-width: 760px) { #c10-v2 .v2-split { grid-template-columns: minmax(0, 1fr); } #c10-v2 .v2-chart { height: 320px; } }
+#c10-v2 .v2-meta { font-size: .85rem; }
+#c10-v2 h4 { font-size: .9rem; margin: 1rem 0 .3rem; }
