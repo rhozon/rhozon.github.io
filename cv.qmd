@@ -379,7 +379,7 @@ MSc in Economic Development from UFPR, with over 18 years of experience in data 
 :::
 
 ::: {#icon-list}
-[<i class="fab fa-linkedin icon-fa" style="font-size:12.5px;"></i>](https://www.linkedin.com/in/rodrigohermontozon/){title="LinkedIn"} [<i class="fab fa-github icon-fa" style="font-size:12.5px;"></i>](https://github.com/rhozon){title="GitHub"} [<i class="fab fa-whatsapp icon-fa" style="font-size:12.5px;"></i>](https://wa.me/5541988382904){title="WhatsApp"} [<i class="fas fa-envelope icon-fa" style="font-size:12.5px;"></i>](mailto:contato.oquant@gmail.com){title="E-mail"} [<i class="fas fa-school icon-fa" style="font-size:12.5px;"></i>](mailto:rodrigo.hermont@pucpr.edu.br){title="PUCPR"} [<i class="fab fa-google icon-fa" style="font-size:12.5px;"></i>](https://scholar.google.com/citations?user=hPcIR9oAAAAJ&hl=en){title="Google Scholar"} [<i class="fab fa-orcid icon-fa" style="font-size:12.5px;"></i>](https://orcid.org/my-orcid?orcid=0000-0001-8003-4849){title="ORCID"} [<i class="fas fa-id-card icon-fa" style="font-size:12.5px;"></i>](https://wwws.cnpq.br/cvlattesweb/PKG_MENU.menu?f_cod=CAE59CF7D29E4B95B7C13C648C78B21F#){title="CV Lattes"}
+[<i class="fab fa-linkedin icon-fa" style="font-size:12.5px;"></i>](https://www.linkedin.com/in/rodrigohermontozon/){title="LinkedIn"} [<i class="fab fa-github icon-fa" style="font-size:12.5px;"></i>](https://github.com/rhozon){title="GitHub"} [<i class="fab fa-whatsapp icon-fa" style="font-size:12.5px;"></i>](https://wa.me/5541988382904){title="WhatsApp"} [<i class="fas fa-envelope icon-fa" style="font-size:12.5px;"></i>](mailto:contato.oquant@gmail.com){title="E-mail"} [<i class="fas fa-school icon-fa" style="font-size:12.5px;"></i>](mailto:rodrigo.hermont@pucpr.edu.br){title="PUCPR"} [<i class="fab fa-google icon-fa" style="font-size:12.5px;"></i>](https://scholar.google.com/citations?user=hPcIR9oAAAAJ&hl=en){title="Google Scholar"} [<i class="fab fa-orcid icon-fa" style="font-size:12.5px;"></i>](https://orcid.org/0000-0001-8003-4849){title="ORCID"} [<i class="fas fa-id-card icon-fa" style="font-size:12.5px;"></i>](https://lattes.cnpq.br/3532649625879285){title="CV Lattes"}
 :::
 :::::
 
@@ -599,6 +599,120 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 }
 </style>
 
+<!-- Recent credentials verified 2026-11-27; records: data/certifications.json -->
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Ruzora Vetted Engineer</strong><br>
+    <span>Ruzora · 2026-11</span><br>
+    <a href="https://developers.ruzora.com/verified/de4d3964-8300-4782-97af-6cd51585700b" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Implementing AI Solutions in Business</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/3442dc7517730b1849c6d54718ad6f4b176ac616" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Introduction to Apache Airflow in Python</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/29fcccb14db9cae87964c005be9f76c95c5e573c" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Designing Forecasting Pipelines for Production</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/00be488f7cd9dd20a47708a5ff459f28442945c2" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Advanced Data Engineering with Snowflake</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/73a7a116bda896eacf9572a61e862b3a0af2ea11" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Case Study: Sales Analytics with Databricks Genie</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/ca7a1ef509fbe45fd0bae9c657248ae8df9cb86a" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Multi-Modal Models with Hugging Face</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/f4fb1c72d1df7b02eb17ef9bcc1a6ba81f865b5c" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Graph RAG with LangChain and Neo4j</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/6a155b7b0176a4d599b80ed7f63ac3e0ab330c01" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Retrieval Augmented Generation (RAG) with LangChain</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/1a737d8a6e72eef845def0003ff8b896853aa316" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Developing LLM Applications with LangChain</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/8fdab36e883892c737fcd6180412a2629801b30f" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Multi-Agent Systems with LangGraph</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/06844c489ec8ecaaf87cde916d99b3b4aafbdf73" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Designing Agentic Systems with LangChain</strong><br>
+    <span>DataCamp · 2026-09</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/36ad8d73d41d76742253158e05aa4f078bb3b22d" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Software Development with Claude Code</strong><br>
+    <span>DataCamp · 2026-08</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/fb4c232936fee764f0cde0786bb6eeb0feb3d73a" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<div class="certification-item">
+  <div class="cert-info">
+    <strong>Building AI Agents with Snowflake</strong><br>
+    <span>DataCamp · 2026-08</span><br>
+    <a href="https://www.datacamp.com/completed/statement-of-accomplishment/course/99937f8a487e00bc5a762faeefc100540849a446" target="_blank" rel="noopener noreferrer">View credential</a>
+  </div>
+</div>
+
+<!-- END RECENT CREDENTIALS -->
 <div class="certification-item">
   <a href="https://www.datacamp.com" target="_blank">
     <img class="cert-logo" src="https://raw.githubusercontent.com/rhozon/site/refs/heads/master/datacamp_logo.jpg" alt="Datacamp">
@@ -938,11 +1052,11 @@ $\Rightarrow$ See the complete [academic CV in Curriculum Lattes (pt br) Platfor
 <div class="professional-experiences">
   <!-- Experience Item: Unimed -->
   <div class="experience-item">
-    <div class="exp-dates">Jan 2026 – Present</div>
+    <div class="exp-dates">Jan 2026 – Aug 2026</div>
     <div class="exp-main">
       <h3 title="Healthcare analytics, business intelligence and Generative AI initiatives supporting data-driven decision-making.">Data Scientist</h3>
       <div class="location">Unimed do Estado do Paraná – Curitiba, PR</div>
-      <p>Working with Data Science, Analytics, Business Intelligence, and Generative AI initiatives in the healthcare sector, supporting data-driven and AI-assisted decision-making. My responsibilities include:</p>
+      <p>Worked with Data Science, Analytics, Business Intelligence, and Generative AI initiatives in the healthcare sector, supporting data-driven and AI-assisted decision-making. Responsibilities included:</p>
       <ul style="color: #ccc; font-size: 0.95em; line-height: 1.4;">
         <li>Healthcare analytics and business intelligence (KPI monitoring, dashboards and performance analysis);</li>
         <li>Generative AI applications for internal business processes;</li>

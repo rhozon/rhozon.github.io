@@ -89,6 +89,10 @@ Formação contínua em econometria, finanças e ciência de dados em instituiç
   <span class="rh-pill">Econometrics: Methods &amp; Applications — Erasmus Rotterdam (56h)</span>
   <span class="rh-pill">Financial Markets — Yale University (38h)</span>
   <span class="rh-pill">The R Programming Environment — Johns Hopkins (16h)</span>
+  <span class="rh-pill">Multi-Agent Systems with LangGraph — DataCamp (2026)</span>
+  <span class="rh-pill">Graph RAG with LangChain and Neo4j — DataCamp (2026)</span>
+  <span class="rh-pill">Advanced Data Engineering with Snowflake — DataCamp (2026)</span>
+  <span class="rh-pill">Software Development with Claude Code — DataCamp (2026)</span>
   <span class="rh-pill">ETL and ELT in Python — DataCamp (2025)</span>
   <span class="rh-pill">~40 cursos DataCamp / Dataquest em R, Python, SQL &amp; ML</span>
 </div>

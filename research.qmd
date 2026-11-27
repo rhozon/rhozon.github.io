@@ -209,6 +209,7 @@ Doctoral research pipeline: sixteen manuscripts in preparation and submission. T
   <a class="rh-btn rh-btn-ghost" href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ&amp;hl=en">Google Scholar</a>
   <a class="rh-btn rh-btn-ghost" href="http://lattes.cnpq.br/3532649625879285">Lattes CV</a>
   <a class="rh-btn rh-btn-ghost" href="https://orcid.org/0000-0001-8003-4849">ORCID</a>
+  <a class="rh-btn rh-btn-ghost" href="https://www.researchgate.net/profile/Rodrigo-Ozon">ResearchGate</a>
 </p>
 ```
 :::

@@ -1,0 +1,122 @@
+[
+  {
+    "name": "Ruzora Vetted Engineer",
+    "issuer": "Ruzora",
+    "issued": "2026-11",
+    "credential_id": "de4d3964-8300-4782-97af-6cd51585700b",
+    "url": "https://developers.ruzora.com/verified/de4d3964-8300-4782-97af-6cd51585700b",
+    "hours": null
+  },
+  {
+    "name": "Implementing AI Solutions in Business",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "3442dc7517730b1849c6d54718ad6f4b176ac616",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/3442dc7517730b1849c6d54718ad6f4b176ac616",
+    "hours": 2
+  },
+  {
+    "name": "Introduction to Apache Airflow in Python",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "29fcccb14db9cae87964c005be9f76c95c5e573c",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/29fcccb14db9cae87964c005be9f76c95c5e573c",
+    "hours": 4
+  },
+  {
+    "name": "Designing Forecasting Pipelines for Production",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "00be488f7cd9dd20a47708a5ff459f28442945c2",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/00be488f7cd9dd20a47708a5ff459f28442945c2",
+    "hours": 4
+  },
+  {
+    "name": "Advanced Data Engineering with Snowflake",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "73a7a116bda896eacf9572a61e862b3a0af2ea11",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/73a7a116bda896eacf9572a61e862b3a0af2ea11",
+    "hours": 3
+  },
+  {
+    "name": "Case Study: Sales Analytics with Databricks Genie",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "ca7a1ef509fbe45fd0bae9c657248ae8df9cb86a",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/ca7a1ef509fbe45fd0bae9c657248ae8df9cb86a",
+    "hours": 2
+  },
+  {
+    "name": "Multi-Modal Models with Hugging Face",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "f4fb1c72d1df7b02eb17ef9bcc1a6ba81f865b5c",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/f4fb1c72d1df7b02eb17ef9bcc1a6ba81f865b5c",
+    "hours": 4
+  },
+  {
+    "name": "Graph RAG with LangChain and Neo4j",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "6a155b7b0176a4d599b80ed7f63ac3e0ab330c01",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/6a155b7b0176a4d599b80ed7f63ac3e0ab330c01",
+    "hours": 3
+  },
+  {
+    "name": "Retrieval Augmented Generation (RAG) with LangChain",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "1a737d8a6e72eef845def0003ff8b896853aa316",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/1a737d8a6e72eef845def0003ff8b896853aa316",
+    "hours": 3
+  },
+  {
+    "name": "Developing LLM Applications with LangChain",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "8fdab36e883892c737fcd6180412a2629801b30f",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/8fdab36e883892c737fcd6180412a2629801b30f",
+    "hours": 3
+  },
+  {
+    "name": "Multi-Agent Systems with LangGraph",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "06844c489ec8ecaaf87cde916d99b3b4aafbdf73",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/06844c489ec8ecaaf87cde916d99b3b4aafbdf73",
+    "hours": 2.75
+  },
+  {
+    "name": "Designing Agentic Systems with LangChain",
+    "issuer": "DataCamp",
+    "issued": "2026-09",
+    "credential_id": "36ad8d73d41d76742253158e05aa4f078bb3b22d",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/36ad8d73d41d76742253158e05aa4f078bb3b22d",
+    "hours": 3
+  },
+  {
+    "name": "Software Development with Claude Code",
+    "issuer": "DataCamp",
+    "issued": "2026-08",
+    "credential_id": "fb4c232936fee764f0cde0786bb6eeb0feb3d73a",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/fb4c232936fee764f0cde0786bb6eeb0feb3d73a",
+    "hours": 4
+  },
+  {
+    "name": "Building AI Agents with Snowflake",
+    "issuer": "DataCamp",
+    "issued": "2026-08",
+    "credential_id": "99937f8a487e00bc5a762faeefc100540849a446",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/99937f8a487e00bc5a762faeefc100540849a446",
+    "hours": 4
+  },
+  {
+    "name": "ETL and ELT in Python",
+    "issuer": "DataCamp",
+    "issued": "2025-04",
+    "credential_id": "bc6d792058f3ec5bccfc37b05bb09ce9b3d41f11",
+    "url": "https://www.datacamp.com/completed/statement-of-accomplishment/course/bc6d792058f3ec5bccfc37b05bb09ce9b3d41f11",
+    "hours": 4
+  }
+]

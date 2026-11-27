@@ -41,6 +41,7 @@ Whether it's a consulting engagement, research collaboration, a class or a talk 
       <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> ·
       <a href="https://orcid.org/0000-0001-8003-4849">ORCID</a> ·
       <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a> ·
+      <a href="https://www.researchgate.net/profile/Rodrigo-Ozon">ResearchGate</a> ·
       <a href="https://github.com/rhozon">GitHub</a>
     </p>
   </div>
