@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
-que esse, o resultado e o código. O que muda é o que pode ser mostrado. Dez são
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. Onze são
 totalmente públicos, com repositório, testes e resultados. Dois descrevem pesquisa
 de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
 retidos até os periódicos se pronunciarem. Um roda sobre dados sintéticos, porque o
@@ -155,6 +155,18 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
       Preço hedônico &middot; Painel com IV &middot; Gestão de receita
     </p>
     <p><a href="rio-short-term-rental-pricing.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="clearing-margin-risk.html">Margem e Recursos de Default de uma Câmara de Compensação</a></h3>
+    <p>Margem inicial para futuros e opções de cripto por simulação histórica filtrada, com
+    backtesting em 1.443 janelas, ferramentas contra a pró-ciclicidade, teste de estresse Cover 2
+    sobre as posições em aberto reais, o custo de liquidar um inadimplente no livro de ofertas real
+    e um whitepaper do modelo.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Simulação histórica filtrada &middot; Backtesting &middot; Teste de estresse
+    </p>
+    <p><a href="clearing-margin-risk.html">Ler o caso </a></p>
   </div>
 </div>
 ```

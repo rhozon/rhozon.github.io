@@ -1,0 +1,212 @@
+---
+title: ""
+pagetitle: "Clearing House Margin and Default Resources — Case Study"
+description: "Initial margin by filtered historical simulation for crypto futures and options, back-tested out of time, with procyclicality tools, a Cover 2 stress test, the cost of liquidating a defaulter on the real order book, binary-option margin and a model whitepaper."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 15 · Live, 27 November 2026</div>
+# Margin and Default Resources for a Clearing House
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Filtered historical simulation · GARCH · Expected shortfall · Black-76 · Back-testing · Procyclicality · Stress testing · Cover 2 · Liquidation · Model governance · Python · 17 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A clearing house stands between the two sides of every trade it clears. If a member fails, the
+clearing house still has to pay the other side, so it collects margin from every member every
+day and keeps a default fund for what margin does not cover. Three questions decide whether
+that works: is the margin enough most of the time, does it jump in a crisis just when members
+can least afford it, and could the clearing house survive the failure of its two largest
+members and close their positions without losing more than it holds?
+
+This case answers the three for a clearing house of bitcoin and ether futures and options, on
+public market data, and documents the model in a whitepaper written the way a risk committee
+or a regulator reviews one.
+:::
+
+::: {.rh-section}
+## The data
+
+All public, with no account needed:
+
+* **Prices**: Coinbase daily closes of BTC and ETH in dollars, from May 2016 to 27 November
+  2026, 3,843 days.
+* **Options and futures**: a snapshot of the Deribit market on 27 November 2026, every listed
+  option (1,722) and future (28) with its mark price, implied volatility and open interest,
+  and the full order books of the futures.
+* **Implied volatility**: Deribit's DVOL index, daily since March 2024.
+:::
+
+::: {.rh-section}
+## Try it
+
+Build a book of futures and options and see its margin computed in your browser on the same
+scenarios as the model; follow the back-test day by day; compare the procyclicality tools; pick
+a stress scenario and see which members the default fund has to cover; see what it costs to
+close a defaulter's position over different horizons; and see why binary options need a
+different margin rule near expiry.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case15/sim.css?v=1">
+<div id="ccp-app" data-src="../assets/case15/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case15/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**Margin by filtered historical simulation.** Each asset gets a GARCH(1,1) with Student-t
+errors. Dividing returns by their conditional volatility leaves standardised residuals that
+keep the dependence between BTC and ETH on the same day. A scenario draws two days of those
+residuals (the margin period of risk: the time to close a defaulter's position), scales them by
+today's volatility and adds them up. The margin is the 99% expected shortfall of the loss across
+20,000 scenarios. This is the method most clearing houses use for futures and options, because
+it reacts to the market without assuming normal returns.
+
+**Options repriced in full.** Every option is revalued with Black-76 on each scenario of the
+price and of implied volatility, so its gamma and vega enter the margin, not only its delta.
+Each drawn day carries its own change of implied volatility. A SPAN-style grid of 16 price and
+volatility moves runs alongside as a benchmark.
+
+**Back-tested as it would be used.** From 2019, the margin is set every other day from data up
+to that day only and compared with the loss over the next two days: 1,443 non-overlapping
+windows. Kupiec's test checks the breach rate, Christoffersen's checks that breaches do not
+cluster, and the traffic light counts breaches over the last 250 windows.
+
+**Procyclicality measured, then limited.** Three anti-procyclicality tools: a 25% buffer
+released in stress, a floor at half the margin of the most volatile year, and a 25% weight on
+that stressed margin. Each is scored on how much it damps the swings and what it costs in
+average margin.
+
+**Cover 2 on the real open interest.** The live open interest of each Deribit instrument is
+split at random between ten synthetic members, long and short, so the cleared book nets to zero
+as a real one does. Under the six worst and six best two-day moves since 2016 and two
+hypothetical ones, the loss each member's margin does not cover is what the default fund must
+absorb. Cover 2 is the sum of the two largest in the worst scenario.
+
+**Liquidation on the real order book.** The largest defaulter's futures are sold into the
+visible bids of the perpetual, at once or in slices over hours, trading the impact of large
+orders against the risk of holding the rest.
+
+**Governance.** A model inventory, a change policy with approval levels, monitoring thresholds
+with amber and red levels and who is told, and CI on every change.
+:::
+
+::: {.rh-section}
+## Result
+
+**The margin passes its back-test, and the simpler model does not.** Over 1,443 windows, the
+model's 99% VaR is breached 16 times for long BTC (Kupiec p = 0.68), 20 for long ETH (0.16) and
+12 for long BTC against short ETH (0.51), with no clustering. Plain historical simulation
+breaches less than 1% of the time because its window keeps the 2017 to 2020 crashes long after
+they pass, so it charges too much in calm years: 14% more margin on average for ETH, and Kupiec
+rejects it at 5% for ETH and for the spread.
+
+| Portfolio | Model | VaR breaches | Kupiec p | Christoffersen p | Mean margin |
+|---|---|---:|---:|---:|---:|
+| Long BTC | FHS (GARCH) | 16 | 0.683 | 0.549 | US$ 160 thousand |
+| Long BTC | Historical simulation | 9 | 0.123 | 0.737 | US$ 165 thousand |
+| Long ETH | FHS (GARCH) | 20 | 0.164 | 0.279 | US$ 191 thousand |
+| Long ETH | Historical simulation | 7 | 0.029 | 0.794 | US$ 218 thousand |
+| Long BTC, short ETH | FHS (GARCH) | 12 | 0.508 | 0.654 | US$ 167 thousand |
+| Long BTC, short ETH | Historical simulation | 7 | 0.029 | 0.794 | US$ 195 thousand |
+
+US$ 1 million positions, 2-day margin period. Margin is the 99% expected shortfall; the tests
+use the 99% VaR.
+
+**A hedge that is not a hedge.** Long US$ 1 million of BTC against short US$ 1 million of ETH
+needs more margin today (US$ 134 thousand) than the long BTC alone (US$ 122 thousand), although
+the two move together. ETH is a third more volatile and has its own right tail: its three
+largest two-day rises were 37% to 47%. A short ETH leg carries that tail.
+
+**The responsive model swings, and the tools cost money.** For long BTC, the model's margin
+moves 9.5 times from its trough to its peak and rose fivefold within 15 days. A 25% weight on
+the stressed-period margin brings the swing to 5.3 times for 9% more margin on average; a 25%
+buffer cuts the largest 15-day jump to fourfold for 22% more. Which to use is a decision for the risk
+committee, and this table is the input it needs.
+
+**Cover 2 is US$ 150 million.** In the worst scenario, BTC down 40% with implied volatility up
+30 points, the two members with the largest net long BTC positions leave US$ 149.6 million
+uncovered, against US$ 194.3 million of total member margin. The March 2020 move alone gives
+US$ 142.3 million. Concentration drives the result: two members out of ten carry it.
+
+**The book is too thin to close a defaulter at once.** The largest member in Cover 2 holds
+US$ 286 million of net long BTC futures; the visible bids of the perpetual add up to US$ 48
+million. Selling over about four hours costs least, about US$ 4 million, under the optimistic
+assumption that the book refills between slices. Waiting longer adds more price risk than it
+saves in impact. When the book is this thin, a default auction to other members, after hedging
+the delta, is the alternative the whitepaper sets out.
+
+**Binary options need a different rule near expiry.** Priced from the live smile, an
+at-the-money binary is worth 0.52 per dollar, against 0.47 with a single volatility. A short
+binary needs 65% of its maximum loss 30 days before expiry, 96% a week before, and the whole
+maximum loss within four days.
+:::
+
+::: {.rh-section}
+## Limits
+
+The data covers one exchange; the options and order books are one snapshot, because a daily
+history of the volatility surface is not public, so the back-test covers futures portfolios and
+the option margins are as of today. Members are synthetic: real portfolios are more
+concentrated in some places and more hedged in others. The liquidation assumes the book refills
+between slices and ignores what a large seller reveals. DVOL starts in 2024; earlier changes of
+implied volatility are predicted from returns. No figure here is a margin requirement of any
+clearing house, and no model has had an independent validation.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+For a clearing house, an exchange, a broker that margins its clients, or a fund that wants to
+know its margin before the clearing house calls it, the same framework runs on your positions:
+margin by portfolio, back-tested; the cost and effect of each anti-procyclicality tool; stress
+tests and default fund sizing; and a liquidation plan for the largest positions. It starts with
+the <a href="../oquant.html#packages">Data &amp; AI Diagnostic</a> and runs in your environment.
+:::
+
+::: {.rh-section}
+## Whitepaper and code
+
+```{=html}
+<p>
+<a class="rh-btn rh-btn-primary" href="../assets/clearing-margin-risk-whitepaper.pdf">Read the whitepaper (PDF)</a>
+<a class="rh-btn" href="https://github.com/rhozon/clearing-margin-risk">github.com/rhozon/clearing-margin-risk</a>
+</p>
+```
+
+With Python 3.11 or later:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -I tools/fetch_clearing_data.py ~/data/clearing   # public data, no account
+python -m ccp.cli --out results
+```
+
+The suite has **17 tests** and CI runs them on every push.
+:::
+
+::: {.rh-section}
+## References
+
+Data: Coinbase Exchange, public market data; Deribit, public market data API and DVOL index.
+
+- Acerbi, C. and Tasche, D. (2002). On the coherence of expected shortfall. *Journal of Banking & Finance*, 26(7), 1487-1503. [doi:10.1016/S0378-4266(02)00283-2](https://doi.org/10.1016/S0378-4266(02)00283-2)
+- Almgren, R. and Chriss, N. (2001). Optimal execution of portfolio transactions. *The Journal of Risk*, 3(2), 5-39. [doi:10.21314/JOR.2001.041](https://doi.org/10.21314/JOR.2001.041)
+- Barone-Adesi, G., Giannopoulos, K. and Vosper, L. (1999). VaR without correlations for portfolios of derivative securities. *Journal of Futures Markets*, 19(5), 583-602. [doi:10.1002/(SICI)1096-9934(199908)19:5<583::AID-FUT5>3.0.CO;2-S](https://doi.org/10.1002/(SICI)1096-9934(199908)19:5<583::AID-FUT5>3.0.CO;2-S)
+- Black, F. (1976). The pricing of commodity contracts. *Journal of Financial Economics*, 3(1-2), 167-179. [doi:10.1016/0304-405X(76)90024-6](https://doi.org/10.1016/0304-405X(76)90024-6)
+- Bollerslev, T. (1986). Generalized autoregressive conditional heteroskedasticity. *Journal of Econometrics*, 31(3), 307-327. [doi:10.1016/0304-4076(86)90063-1](https://doi.org/10.1016/0304-4076(86)90063-1)
+- Christoffersen, P. F. (1998). Evaluating Interval Forecasts. *International Economic Review*, 39(4), 841-862. [doi:10.2307/2527341](https://doi.org/10.2307/2527341)
+- Duffie, D. and Zhu, H. (2011). Does a Central Clearing Counterparty Reduce Counterparty Risk?. *Review of Asset Pricing Studies*, 1(1), 74-95. [doi:10.1093/rapstu/rar001](https://doi.org/10.1093/rapstu/rar001)
+- Glasserman, P. and Wu, Q. (2018). Persistence and Procyclicality in Margin Requirements. *Management Science*, 64(12), 5705-5724. [doi:10.1287/mnsc.2017.2915](https://doi.org/10.1287/mnsc.2017.2915)
+- Kupiec, P. H. (1995). Techniques for Verifying the Accuracy of Risk Measurement Models. *The Journal of Derivatives*, 3(2), 73-84. [doi:10.3905/jod.1995.407942](https://doi.org/10.3905/jod.1995.407942)
+- Menkveld, A. J. (2017). Crowded Positions: An Overlooked Systemic Risk for Central Clearing Parties. *The Review of Asset Pricing Studies*, 7(2), 209-242. [doi:10.1093/rapstu/rax016](https://doi.org/10.1093/rapstu/rax016)
+:::

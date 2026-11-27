@@ -1,0 +1,855 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR" xml:lang="pt-BR"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.10.18">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="description" content="Margem inicial por simulação histórica filtrada para futuros e opções de cripto, com backtesting fora do tempo, ferramentas contra a pró-ciclicidade, teste de estresse Cover 2, o custo de liquidar um inadimplente no livro de ofertas real, margem de opções binárias e um whitepaper do modelo.">
+
+<title>Margem e Recursos de Default de uma Câmara de Compensação — Estudo de Caso – Rodrigo Hermont Ozon</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="../../site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="../../site_libs/clipboard/clipboard.min.js"></script>
+<script src="../../site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="../../site_libs/quarto-search/fuse.min.js"></script>
+<script src="../../site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="../../">
+<link href="../../assets/favicon.png" rel="icon" type="image/png">
+<script src="../../site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="../../site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="../../site_libs/quarto-html/popper.min.js"></script>
+<script src="../../site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="../../site_libs/quarto-html/anchor.min.js"></script>
+<link href="../../site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="../../site_libs/quarto-html/quarto-syntax-highlighting-b7108238545c7aa9b4ba43f5fd76eb99.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="../../site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="../../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="../../site_libs/bootstrap/bootstrap-b54426dcde9c56de93b932e5108fca42.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "navbar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "end",
+  "type": "overlay",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "Nenhum resultado",
+    "search-matching-documents-text": "documentos correspondentes",
+    "search-copy-link-title": "Copiar link para a busca",
+    "search-hide-matches-text": "Esconder correspondências adicionais",
+    "search-more-match-text": "mais correspondência neste documento",
+    "search-more-matches-text": "mais correspondências neste documento",
+    "search-clear-button-title": "Limpar",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancelar",
+    "search-submit-button-title": "Enviar",
+    "search-label": "Procurar"
+  }
+}</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-0H8KEXEMKH"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-0H8KEXEMKH', { 'anonymize_ip': true});
+</script>
+<style>html{ scroll-behavior: smooth; }</style>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:opsz,wght@6..72,400;6..72,500;6..72,600&amp;family=Source+Sans+3:wght@400;500;600&amp;family=IBM+Plex+Mono:wght@400;500;600&amp;display=swap" rel="stylesheet">
+
+
+<link rel="stylesheet" href="../../styles.css">
+<meta property="og:title" content="Margem e Recursos de Default de uma Câmara de Compensação — Estudo de Caso">
+<meta property="og:description" content="Margem inicial por simulação histórica filtrada para futuros e opções de cripto, com backtesting fora do tempo, ferramentas contra a pró-ciclicidade, teste de estresse Cover 2, o custo de liquidar um inadimplente no livro de ofertas real, margem de opções binárias e um whitepaper do modelo.">
+<meta property="og:image" content="https://rhozon.github.io/pt/portfolio/assets/profile_square.jpg">
+<meta property="og:site_name" content="Rodrigo Hermont Ozon">
+<meta name="twitter:title" content="Margem e Recursos de Default de uma Câmara de Compensação — Estudo de Caso">
+<meta name="twitter:description" content="Margem inicial por simulação histórica filtrada para futuros e opções de cripto, com backtesting fora do tempo, ferramentas contra a pró-ciclicidade, teste de estresse Cover 2, o custo de liquidar um inadimplente no livro de ofertas real, margem de opções binárias e um whitepaper do modelo.">
+<meta name="twitter:image" content="https://rhozon.github.io/pt/portfolio/assets/profile_square.jpg">
+<meta name="twitter:card" content="summary_large_image">
+</head>
+
+<body class="nav-fixed fullcontent quarto-light">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+    <nav class="navbar navbar-expand-lg " data-bs-theme="dark">
+      <div class="navbar-container container-fluid">
+      <div class="navbar-brand-container mx-auto">
+    <a class="navbar-brand" href="../../index.html">
+    <span class="navbar-title">Rodrigo Hermont Ozon</span>
+    </a>
+  </div>
+            <div id="quarto-search" class="" title="Procurar"></div>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" role="menu" aria-expanded="false" aria-label="Alternar de navegação" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+  <span class="navbar-toggler-icon"></span>
+</button>
+          <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav navbar-nav-scroll me-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/index.html"> 
+<span class="menu-text">Início</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/experience.html"> 
+<span class="menu-text">Experiência</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/research.html"> 
+<span class="menu-text">Pesquisa</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/portfolio/index.html"> 
+<span class="menu-text">Portfólio</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/teaching.html"> 
+<span class="menu-text">Ensino</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/oquant.html"> 
+<span class="menu-text">Consultoria</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../cv.html"> 
+<span class="menu-text">CV Completo</span></a>
+  </li>  
+</ul>
+            <ul class="navbar-nav navbar-nav-scroll ms-auto">
+  <li class="nav-item">
+    <a class="nav-link" href="../../pt/contact.html"> 
+<span class="menu-text">Contato</span></a>
+  </li>  
+  <li class="nav-item">
+    <a class="nav-link" href="../../index.html"> 
+<span class="menu-text">EN</span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://www.linkedin.com/in/rodrigohermontozon/"> <i class="bi bi-linkedin" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+  <li class="nav-item compact">
+    <a class="nav-link" href="https://github.com/rhozon"> <i class="bi bi-github" role="img">
+</i> 
+<span class="menu-text"></span></a>
+  </li>  
+</ul>
+          </div> <!-- /navcollapse -->
+            <div class="quarto-navbar-tools">
+</div>
+      </div> <!-- /container-fluid -->
+    </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
+<!-- sidebar -->
+<!-- margin-sidebar -->
+    
+<!-- main -->
+<main class="content" id="quarto-document-content"><header id="title-block-header" class="quarto-title-block"></header>
+
+
+
+
+<div class="rh-section">
+<div class="rh-kicker">
+Estudo de Caso 15 · No ar, 27 de novembro de 2026
+</div>
+<section id="margem-e-recursos-de-default-de-uma-câmara-de-compensação" class="level1">
+<h1>Margem e Recursos de Default de uma Câmara de Compensação</h1>
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Simulação histórica filtrada · GARCH · Expected shortfall · Black-76 · Backtesting · Pró-ciclicidade · Teste de estresse · Cover 2 · Liquidação · Governança de modelos · Python · 17 testes
+</p>
+</section>
+</div>
+<section id="a-pergunta-de-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="a-pergunta-de-negócio">A pergunta de negócio</h2>
+<p>Uma câmara de compensação fica entre as duas pontas de cada negócio que ela liquida. Se um membro quebra, a câmara continua tendo de pagar o outro lado; por isso cobra margem de todos os membros todos os dias e mantém um fundo de garantia para o que a margem não cobre. Três perguntas decidem se isso funciona: a margem basta na maior parte do tempo, ela dispara numa crise justo quando os membros menos podem pagar, e a câmara sobreviveria à quebra dos seus dois maiores membros, fechando as posições deles sem perder mais do que tem?</p>
+<p>Este case responde às três para uma câmara de futuros e opções de bitcoin e ether, com dados públicos de mercado, e documenta o modelo num whitepaper escrito do jeito que um comitê de risco ou um regulador revisa.</p>
+</section>
+<section id="os-dados" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="os-dados">Os dados</h2>
+<p>Todos públicos, sem precisar de conta:</p>
+<ul>
+<li><strong>Preços</strong>: fechamentos diários de BTC e ETH em dólar na Coinbase, de maio de 2016 a 27 de novembro de 2026, 3.843 dias.</li>
+<li><strong>Opções e futuros</strong>: um retrato do mercado da Deribit em 27 de novembro de 2026, com todas as opções listadas (1.722) e os futuros (28), com preço de marcação, volatilidade implícita e posições em aberto, e os livros de ofertas completos dos futuros.</li>
+<li><strong>Volatilidade implícita</strong>: o índice DVOL da Deribit, diário desde março de 2024.</li>
+</ul>
+</section>
+<section id="experimente" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="experimente">Experimente</h2>
+<p>Monte uma carteira de futuros e opções e veja a margem dela calculada no seu navegador sobre os mesmos cenários do modelo; acompanhe o backtesting dia a dia; compare as ferramentas contra a pró-ciclicidade; escolha um cenário de estresse e veja quais membros o fundo de garantia tem de cobrir; veja quanto custa fechar a posição de um inadimplente em horizontes diferentes; e veja por que opções binárias pedem outra regra de margem perto do vencimento.</p>
+<link rel="stylesheet" href="../../assets/case15/sim.css?v=1">
+<div id="ccp-app" data-src="../../assets/case15/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case15/sim.js?v=2"></script>
+</section>
+<section id="o-método-e-por-que-esse" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-método-e-por-que-esse">O método, e por que esse</h2>
+<p><strong>Margem por simulação histórica filtrada.</strong> Cada ativo tem um GARCH(1,1) com erros t de Student. Dividir os retornos pela volatilidade condicional deixa resíduos padronizados que guardam a dependência entre BTC e ETH no mesmo dia. Um cenário sorteia dois dias desses resíduos (o período de risco da margem: o tempo para fechar a posição de um inadimplente), multiplica pela volatilidade de hoje e soma. A margem é o expected shortfall de 99% da perda em 20.000 cenários. É o método que a maioria das câmaras usa para futuros e opções, porque reage ao mercado sem supor retornos normais.</p>
+<p><strong>Opções reprecificadas por inteiro.</strong> Cada opção é reavaliada com Black-76 em cada cenário de preço e de volatilidade implícita, então o gama e o vega entram na margem, não só o delta. Cada dia sorteado traz a sua própria mudança de volatilidade implícita. Uma grade no estilo SPAN, com 16 movimentos de preço e de volatilidade, roda ao lado como referência.</p>
+<p><strong>Backtesting do jeito que seria usado.</strong> A partir de 2019, a margem é calculada a cada dois dias só com o passado e comparada com a perda dos dois dias seguintes: 1.443 janelas sem sobreposição. O teste de Kupiec confere a taxa de rompimentos, o de Christoffersen confere que eles não vêm em grupos, e o semáforo conta os rompimentos nas últimas 250 janelas.</p>
+<p><strong>Pró-ciclicidade medida, depois limitada.</strong> Três ferramentas: um colchão de 25% liberado no estresse, um piso na metade da margem do ano mais volátil, e um peso de 25% nessa margem estressada. Cada uma é avaliada por quanto amortece as oscilações e quanto custa em margem média.</p>
+<p><strong>Cover 2 sobre as posições em aberto reais.</strong> As posições em aberto de cada instrumento da Deribit são repartidas ao acaso entre dez membros sintéticos, comprados e vendidos, de modo que o livro somado dá zero, como num real. Nos seis piores e seis melhores movimentos de dois dias desde 2016 e em dois hipotéticos, a perda que a margem de cada membro não cobre é o que o fundo de garantia teria de absorver. O Cover 2 é a soma das duas maiores no pior cenário.</p>
+<p><strong>Liquidação no livro de ofertas real.</strong> Os futuros do maior inadimplente são vendidos contra as ofertas de compra visíveis do perpétuo, de uma vez ou em fatias ao longo de horas, trocando o impacto de ordens grandes pelo risco de segurar o resto.</p>
+<p><strong>Governança.</strong> Um inventário de modelos, uma política de mudança com níveis de aprovação, limites de monitoramento com níveis amarelo e vermelho e quem é avisado, e CI a cada mudança.</p>
+</section>
+<section id="o-resultado" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="o-resultado">O resultado</h2>
+<p><strong>A margem passa no backtesting, e o modelo mais simples não.</strong> Em 1.443 janelas, o VaR de 99% do modelo é rompido 16 vezes para BTC comprado (p de Kupiec = 0,68), 20 para ETH comprado (0,16) e 12 para BTC comprado contra ETH vendido (0,51), sem rompimentos em grupo. A simulação histórica simples é rompida menos de 1% das vezes porque a janela dela guarda as quedas de 2017 a 2020 muito depois de passarem, então cobra demais nos anos calmos: 14% a mais de margem em média no ETH, e o teste de Kupiec a rejeita a 5% no ETH e no spread.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 13%">
+<col style="width: 13%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+<col style="width: 18%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Carteira</th>
+<th>Modelo</th>
+<th style="text-align: right;">Rompimentos do VaR</th>
+<th style="text-align: right;">p de Kupiec</th>
+<th style="text-align: right;">p de Christoffersen</th>
+<th style="text-align: right;">Margem média</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>BTC comprado</td>
+<td>FHS (GARCH)</td>
+<td style="text-align: right;">16</td>
+<td style="text-align: right;">0,683</td>
+<td style="text-align: right;">0,549</td>
+<td style="text-align: right;">US$ 160 mil</td>
+</tr>
+<tr class="even">
+<td>BTC comprado</td>
+<td>Simulação histórica</td>
+<td style="text-align: right;">9</td>
+<td style="text-align: right;">0,123</td>
+<td style="text-align: right;">0,737</td>
+<td style="text-align: right;">US$ 165 mil</td>
+</tr>
+<tr class="odd">
+<td>ETH comprado</td>
+<td>FHS (GARCH)</td>
+<td style="text-align: right;">20</td>
+<td style="text-align: right;">0,164</td>
+<td style="text-align: right;">0,279</td>
+<td style="text-align: right;">US$ 191 mil</td>
+</tr>
+<tr class="even">
+<td>ETH comprado</td>
+<td>Simulação histórica</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0,029</td>
+<td style="text-align: right;">0,794</td>
+<td style="text-align: right;">US$ 218 mil</td>
+</tr>
+<tr class="odd">
+<td>BTC comprado, ETH vendido</td>
+<td>FHS (GARCH)</td>
+<td style="text-align: right;">12</td>
+<td style="text-align: right;">0,508</td>
+<td style="text-align: right;">0,654</td>
+<td style="text-align: right;">US$ 167 mil</td>
+</tr>
+<tr class="even">
+<td>BTC comprado, ETH vendido</td>
+<td>Simulação histórica</td>
+<td style="text-align: right;">7</td>
+<td style="text-align: right;">0,029</td>
+<td style="text-align: right;">0,794</td>
+<td style="text-align: right;">US$ 195 mil</td>
+</tr>
+</tbody>
+</table>
+<p>Posições de US$ 1 milhão, período de risco de 2 dias. A margem é o expected shortfall de 99%; os testes usam o VaR de 99%.</p>
+<p><strong>Um hedge que não protege.</strong> US$ 1 milhão comprado em BTC contra US$ 1 milhão vendido em ETH pede mais margem hoje (US$ 134 mil) do que só o BTC comprado (US$ 122 mil), embora os dois andem juntos. O ETH é um terço mais volátil e tem a sua própria cauda direita: as três maiores altas dele em dois dias foram de 37% a 47%. A ponta vendida em ETH carrega essa cauda.</p>
+<p><strong>O modelo que reage oscila, e as ferramentas custam.</strong> Para BTC comprado, a margem do modelo varia 9,5 vezes entre o vale e o pico e chegou a quintuplicar em 15 dias. Um peso de 25% na margem do período estressado leva a oscilação a 5,3 vezes com 9% a mais de margem em média; um colchão de 25% reduz o maior salto em 15 dias a quatro vezes com 22% a mais. Qual usar é decisão do comitê de risco, e esta tabela é o insumo de que ele precisa.</p>
+<p><strong>O Cover 2 é de US$ 150 milhões.</strong> No pior cenário, o BTC caindo 40% com a volatilidade implícita subindo 30 pontos, os dois membros com as maiores posições líquidas compradas em BTC deixam US$ 149,6 milhões descobertos, contra US$ 194,3 milhões de margem total dos membros. O movimento de março de 2020 sozinho dá US$ 142,3 milhões. A concentração explica o resultado: dois membros de dez carregam tudo.</p>
+<p><strong>O livro é raso demais para fechar um inadimplente de uma vez.</strong> O maior membro do Cover 2 tem US$ 286 milhões líquidos comprados em futuros de BTC; as ofertas de compra visíveis do perpétuo somam US$ 48 milhões. Vender ao longo de cerca de quatro horas custa menos, cerca de US$ 4 milhões, na hipótese otimista de que o livro se recompõe entre as fatias. Esperar mais acrescenta mais risco de preço do que economiza em impacto. Com um livro tão raso, um leilão aos outros membros, depois de proteger o delta, é a alternativa que o whitepaper descreve.</p>
+<p><strong>Opções binárias pedem outra regra perto do vencimento.</strong> Precificada pelo sorriso real, uma binária no dinheiro vale 0,52 por dólar, contra 0,47 com uma volatilidade só. Uma binária vendida pede 65% da perda máxima 30 dias antes do vencimento, 96% uma semana antes, e a perda máxima inteira nos últimos quatro dias.</p>
+</section>
+<section id="limites" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="limites">Limites</h2>
+<p>Os dados são de uma única corretora; as opções e os livros de ofertas são um retrato só, porque um histórico diário da superfície de volatilidade não é público, então o backtesting cobre carteiras de futuros e as margens de opções são as de hoje. Os membros são sintéticos: carteiras reais são mais concentradas em alguns pontos e mais protegidas em outros. A liquidação supõe que o livro se recompõe entre as fatias e ignora o que um vendedor grande revela. O DVOL começa em 2024; antes disso, as mudanças de volatilidade implícita são previstas a partir dos retornos. Nenhum número aqui é exigência de margem de alguma câmara, e nenhum modelo passou por validação independente.</p>
+</section>
+<section id="aplicado-ao-seu-negócio" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="aplicado-ao-seu-negócio">Aplicado ao seu negócio</h2>
+<p>Para uma câmara de compensação, uma bolsa, uma corretora que cobra margem dos clientes ou um fundo que quer saber a sua margem antes de a câmara chamar, a mesma estrutura roda sobre as suas posições: margem por carteira, com backtesting; o custo e o efeito de cada ferramenta contra a pró-ciclicidade; testes de estresse e dimensionamento do fundo de garantia; e um plano de liquidação para as maiores posições. Começa pelo <a href="../oquant.html#packages">Diagnóstico de Dados e IA</a> e roda no seu ambiente.</p>
+</section>
+<section id="whitepaper-e-código" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="whitepaper-e-código">Whitepaper e código</h2>
+<p>
+<a class="rh-btn rh-btn-primary" href="../../assets/clearing-margin-risk-whitepaper.pdf">Ler o whitepaper (PDF, em inglês)</a>
+<a class="rh-btn" href="https://github.com/rhozon/clearing-margin-risk">github.com/rhozon/clearing-margin-risk</a>
+</p>
+<p>Com Python 3.11 ou mais recente:</p>
+<div class="code-copy-outer-scaffold"><div class="sourceCode" id="cb1"><pre class="sourceCode bash code-with-copy"><code class="sourceCode bash"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="ex">pip</span> install <span class="at">-e</span> <span class="st">".[dev]"</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="ex">pytest</span> <span class="at">-v</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-I</span> tools/fetch_clearing_data.py ~/data/clearing   <span class="co"># dados públicos, sem conta</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="ex">python</span> <span class="at">-m</span> ccp.cli <span class="at">--out</span> results</span></code></pre></div><button title="Copiar para a área de transferência" class="code-copy-button"><i class="bi"></i></button></div>
+<p>A suíte tem <strong>17 testes</strong>, e o CI roda todos a cada push.</p>
+</section>
+<section id="referências" class="level2 rh-section">
+<h2 class="anchored" data-anchor-id="referências">Referências</h2>
+<p>Dados: Coinbase Exchange, dados públicos de mercado; Deribit, API pública de dados de mercado e índice DVOL.</p>
+<ul>
+<li>Acerbi, C. and Tasche, D. (2002). On the coherence of expected shortfall. <em>Journal of Banking &amp; Finance</em>, 26(7), 1487-1503. <a href="https://doi.org/10.1016/S0378-4266(02)00283-2">doi:10.1016/S0378-4266(02)00283-2</a></li>
+<li>Almgren, R. and Chriss, N. (2001). Optimal execution of portfolio transactions. <em>The Journal of Risk</em>, 3(2), 5-39. <a href="https://doi.org/10.21314/JOR.2001.041">doi:10.21314/JOR.2001.041</a></li>
+<li>Barone-Adesi, G., Giannopoulos, K. and Vosper, L. (1999). VaR without correlations for portfolios of derivative securities. <em>Journal of Futures Markets</em>, 19(5), 583-602. <a href="https://doi.org/10.1002/(SICI)1096-9934(199908)19:5%3C583::AID-FUT5%3E3.0.CO;2-S">doi:10.1002/(SICI)1096-9934(199908)19:5&lt;583::AID-FUT5&gt;3.0.CO;2-S</a></li>
+<li>Black, F. (1976). The pricing of commodity contracts. <em>Journal of Financial Economics</em>, 3(1-2), 167-179. <a href="https://doi.org/10.1016/0304-405X(76)90024-6">doi:10.1016/0304-405X(76)90024-6</a></li>
+<li>Bollerslev, T. (1986). Generalized autoregressive conditional heteroskedasticity. <em>Journal of Econometrics</em>, 31(3), 307-327. <a href="https://doi.org/10.1016/0304-4076(86)90063-1">doi:10.1016/0304-4076(86)90063-1</a></li>
+<li>Christoffersen, P. F. (1998). Evaluating Interval Forecasts. <em>International Economic Review</em>, 39(4), 841-862. <a href="https://doi.org/10.2307/2527341">doi:10.2307/2527341</a></li>
+<li>Duffie, D. and Zhu, H. (2011). Does a Central Clearing Counterparty Reduce Counterparty Risk?. <em>Review of Asset Pricing Studies</em>, 1(1), 74-95. <a href="https://doi.org/10.1093/rapstu/rar001">doi:10.1093/rapstu/rar001</a></li>
+<li>Glasserman, P. and Wu, Q. (2018). Persistence and Procyclicality in Margin Requirements. <em>Management Science</em>, 64(12), 5705-5724. <a href="https://doi.org/10.1287/mnsc.2017.2915">doi:10.1287/mnsc.2017.2915</a></li>
+<li>Kupiec, P. H. (1995). Techniques for Verifying the Accuracy of Risk Measurement Models. <em>The Journal of Derivatives</em>, 3(2), 73-84. <a href="https://doi.org/10.3905/jod.1995.407942">doi:10.3905/jod.1995.407942</a></li>
+<li>Menkveld, A. J. (2017). Crowded Positions: An Overlooked Systemic Risk for Central Clearing Parties. <em>The Review of Asset Pricing Studies</em>, 7(2), 209-242. <a href="https://doi.org/10.1093/rapstu/rax016">doi:10.1093/rapstu/rax016</a></li>
+</ul>
+</section>
+
+
+
+</main> <!-- /main -->
+<a id="rh-wa" href="https://wa.me/5541988382904" aria-label="Fale comigo no WhatsApp">WhatsApp</a>
+<a id="rh-top" href="#" aria-label="Back to top" title="Back to top">↑</a>
+<script>
+(function () {
+  var btn = document.getElementById('rh-top');
+  if (!btn) return;
+  function toggle() {
+    if (window.scrollY > 600) { btn.classList.add('show'); }
+    else { btn.classList.remove('show'); }
+  }
+  window.addEventListener('scroll', toggle, { passive: true });
+  btn.addEventListener('click', function (e) {
+    e.preventDefault();
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+  toggle();
+  // imagens fora da primeira dobra carregam sob demanda
+  document.querySelectorAll('img').forEach(function (img, i) {
+    if (i > 0 && !img.hasAttribute('loading')) { img.setAttribute('loading', 'lazy'); }
+    if (!img.hasAttribute('decoding')) { img.setAttribute('decoding', 'async'); }
+    if (!img.getAttribute('alt')) { img.setAttribute('alt', ''); }
+  });
+})();
+</script>
+<script>
+// EN/PT no menu leva à mesma página na outra língua, quando ela existe
+(function () {
+  var links = document.querySelectorAll('.navbar a.nav-link');
+  var lang = null;
+  for (var i = 0; i < links.length; i++) {
+    var t = links[i].textContent.trim();
+    if (t === 'EN' || t === 'PT') { lang = links[i]; break; }
+  }
+  if (!lang || !window.fetch || location.protocol === 'file:') return;
+  var toPt = lang.textContent.trim() === 'PT';
+  var base = lang.href.replace(toPt ? /pt\/(index\.html)?$/ : /(index\.html)?$/, '');
+  var here = location.origin + location.pathname;
+  if (here.indexOf(base) !== 0) return;
+  var rel = here.slice(base.length);
+  if (rel === 'cv.html') return; // o CV só existe em inglês
+  var target = toPt ? base + 'pt/' + rel : base + rel.replace(/^pt\//, '');
+  fetch(target, { method: 'HEAD' }).then(function (r) {
+    if (r.ok) { lang.href = target; }
+  }).catch(function () {});
+})();
+</script>
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copiada");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copiada");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp("https:\/\/rhozon\.github\.io\/");
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+            // target, if specified
+            link.setAttribute("target", "_blank");
+            if (link.getAttribute("rel") === null) {
+              link.setAttribute("rel", "noopener");
+            }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+      &nbsp;
+    </div>   
+    <div class="nav-footer-center">
+<p>© 2026 Rodrigo Hermont Ozon · Econometrista &amp; Cientista de Dados · <a href="https://www.linkedin.com/in/rodrigohermontozon/">LinkedIn</a> · <a href="https://github.com/rhozon">GitHub</a> · <a href="https://scholar.google.com/citations?user=hPcIR9oAAAAJ">Google Scholar</a> · <a href="http://lattes.cnpq.br/3532649625879285">Lattes</a></p>
+</div>
+    <div class="nav-footer-right">
+      &nbsp;
+    </div>
+  </div>
+</footer>
+
+
+
+
+<script src="../../site_libs/quarto-html/zenscroll-min.js"></script>
+</body></html>

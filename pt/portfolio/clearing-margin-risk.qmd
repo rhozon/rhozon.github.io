@@ -1,0 +1,215 @@
+---
+title: ""
+pagetitle: "Margem e Recursos de Default de uma Câmara de Compensação — Estudo de Caso"
+description: "Margem inicial por simulação histórica filtrada para futuros e opções de cripto, com backtesting fora do tempo, ferramentas contra a pró-ciclicidade, teste de estresse Cover 2, o custo de liquidar um inadimplente no livro de ofertas real, margem de opções binárias e um whitepaper do modelo."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 15 · No ar, 27 de novembro de 2026</div>
+# Margem e Recursos de Default de uma Câmara de Compensação
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Simulação histórica filtrada · GARCH · Expected shortfall · Black-76 · Backtesting · Pró-ciclicidade · Teste de estresse · Cover 2 · Liquidação · Governança de modelos · Python · 17 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Uma câmara de compensação fica entre as duas pontas de cada negócio que ela liquida. Se um
+membro quebra, a câmara continua tendo de pagar o outro lado; por isso cobra margem de todos os
+membros todos os dias e mantém um fundo de garantia para o que a margem não cobre. Três
+perguntas decidem se isso funciona: a margem basta na maior parte do tempo, ela dispara numa
+crise justo quando os membros menos podem pagar, e a câmara sobreviveria à quebra dos seus dois
+maiores membros, fechando as posições deles sem perder mais do que tem?
+
+Este case responde às três para uma câmara de futuros e opções de bitcoin e ether, com dados
+públicos de mercado, e documenta o modelo num whitepaper escrito do jeito que um comitê de
+risco ou um regulador revisa.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Todos públicos, sem precisar de conta:
+
+* **Preços**: fechamentos diários de BTC e ETH em dólar na Coinbase, de maio de 2016 a 27 de
+  novembro de 2026, 3.843 dias.
+* **Opções e futuros**: um retrato do mercado da Deribit em 27 de novembro de 2026, com todas as
+  opções listadas (1.722) e os futuros (28), com preço de marcação, volatilidade implícita e
+  posições em aberto, e os livros de ofertas completos dos futuros.
+* **Volatilidade implícita**: o índice DVOL da Deribit, diário desde março de 2024.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Monte uma carteira de futuros e opções e veja a margem dela calculada no seu navegador sobre os
+mesmos cenários do modelo; acompanhe o backtesting dia a dia; compare as ferramentas contra a
+pró-ciclicidade; escolha um cenário de estresse e veja quais membros o fundo de garantia tem de
+cobrir; veja quanto custa fechar a posição de um inadimplente em horizontes diferentes; e veja
+por que opções binárias pedem outra regra de margem perto do vencimento.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case15/sim.css?v=1">
+<div id="ccp-app" data-src="../../assets/case15/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case15/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Margem por simulação histórica filtrada.** Cada ativo tem um GARCH(1,1) com erros t de
+Student. Dividir os retornos pela volatilidade condicional deixa resíduos padronizados que
+guardam a dependência entre BTC e ETH no mesmo dia. Um cenário sorteia dois dias desses
+resíduos (o período de risco da margem: o tempo para fechar a posição de um inadimplente),
+multiplica pela volatilidade de hoje e soma. A margem é o expected shortfall de 99% da perda
+em 20.000 cenários. É o método que a maioria das câmaras usa para futuros e opções, porque
+reage ao mercado sem supor retornos normais.
+
+**Opções reprecificadas por inteiro.** Cada opção é reavaliada com Black-76 em cada cenário de
+preço e de volatilidade implícita, então o gama e o vega entram na margem, não só o delta. Cada
+dia sorteado traz a sua própria mudança de volatilidade implícita. Uma grade no estilo SPAN, com
+16 movimentos de preço e de volatilidade, roda ao lado como referência.
+
+**Backtesting do jeito que seria usado.** A partir de 2019, a margem é calculada a cada dois dias
+só com o passado e comparada com a perda dos dois dias seguintes: 1.443 janelas sem sobreposição.
+O teste de Kupiec confere a taxa de rompimentos, o de Christoffersen confere que eles não vêm em
+grupos, e o semáforo conta os rompimentos nas últimas 250 janelas.
+
+**Pró-ciclicidade medida, depois limitada.** Três ferramentas: um colchão de 25% liberado no
+estresse, um piso na metade da margem do ano mais volátil, e um peso de 25% nessa margem
+estressada. Cada uma é avaliada por quanto amortece as oscilações e quanto custa em margem
+média.
+
+**Cover 2 sobre as posições em aberto reais.** As posições em aberto de cada instrumento da
+Deribit são repartidas ao acaso entre dez membros sintéticos, comprados e vendidos, de modo que o
+livro somado dá zero, como num real. Nos seis piores e seis melhores movimentos de dois dias
+desde 2016 e em dois hipotéticos, a perda que a margem de cada membro não cobre é o que o fundo
+de garantia teria de absorver. O Cover 2 é a soma das duas maiores no pior cenário.
+
+**Liquidação no livro de ofertas real.** Os futuros do maior inadimplente são vendidos contra as
+ofertas de compra visíveis do perpétuo, de uma vez ou em fatias ao longo de horas, trocando o
+impacto de ordens grandes pelo risco de segurar o resto.
+
+**Governança.** Um inventário de modelos, uma política de mudança com níveis de aprovação,
+limites de monitoramento com níveis amarelo e vermelho e quem é avisado, e CI a cada mudança.
+:::
+
+::: {.rh-section}
+## O resultado
+
+**A margem passa no backtesting, e o modelo mais simples não.** Em 1.443 janelas, o VaR de 99%
+do modelo é rompido 16 vezes para BTC comprado (p de Kupiec = 0,68), 20 para ETH comprado (0,16)
+e 12 para BTC comprado contra ETH vendido (0,51), sem rompimentos em grupo. A simulação histórica
+simples é rompida menos de 1% das vezes porque a janela dela guarda as quedas de 2017 a 2020 muito
+depois de passarem, então cobra demais nos anos calmos: 14% a mais de margem em média no ETH, e o
+teste de Kupiec a rejeita a 5% no ETH e no spread.
+
+| Carteira | Modelo | Rompimentos do VaR | p de Kupiec | p de Christoffersen | Margem média |
+|---|---|---:|---:|---:|---:|
+| BTC comprado | FHS (GARCH) | 16 | 0,683 | 0,549 | US$ 160 mil |
+| BTC comprado | Simulação histórica | 9 | 0,123 | 0,737 | US$ 165 mil |
+| ETH comprado | FHS (GARCH) | 20 | 0,164 | 0,279 | US$ 191 mil |
+| ETH comprado | Simulação histórica | 7 | 0,029 | 0,794 | US$ 218 mil |
+| BTC comprado, ETH vendido | FHS (GARCH) | 12 | 0,508 | 0,654 | US$ 167 mil |
+| BTC comprado, ETH vendido | Simulação histórica | 7 | 0,029 | 0,794 | US$ 195 mil |
+
+Posições de US$ 1 milhão, período de risco de 2 dias. A margem é o expected shortfall de 99%; os
+testes usam o VaR de 99%.
+
+**Um hedge que não protege.** US$ 1 milhão comprado em BTC contra US$ 1 milhão vendido em ETH
+pede mais margem hoje (US$ 134 mil) do que só o BTC comprado (US$ 122 mil), embora os dois andem
+juntos. O ETH é um terço mais volátil e tem a sua própria cauda direita: as três maiores altas
+dele em dois dias foram de 37% a 47%. A ponta vendida em ETH carrega essa cauda.
+
+**O modelo que reage oscila, e as ferramentas custam.** Para BTC comprado, a margem do modelo
+varia 9,5 vezes entre o vale e o pico e chegou a quintuplicar em 15 dias. Um peso de 25% na margem
+do período estressado leva a oscilação a 5,3 vezes com 9% a mais de margem em média; um colchão de
+25% reduz o maior salto em 15 dias a quatro vezes com 22% a mais. Qual usar é decisão do comitê de risco, e esta
+tabela é o insumo de que ele precisa.
+
+**O Cover 2 é de US$ 150 milhões.** No pior cenário, o BTC caindo 40% com a volatilidade implícita
+subindo 30 pontos, os dois membros com as maiores posições líquidas compradas em BTC deixam US$
+149,6 milhões descobertos, contra US$ 194,3 milhões de margem total dos membros. O movimento de
+março de 2020 sozinho dá US$ 142,3 milhões. A concentração explica o resultado: dois membros de dez
+carregam tudo.
+
+**O livro é raso demais para fechar um inadimplente de uma vez.** O maior membro do Cover 2 tem US$
+286 milhões líquidos comprados em futuros de BTC; as ofertas de compra visíveis do perpétuo somam
+US$ 48 milhões. Vender ao longo de cerca de quatro horas custa menos, cerca de US$ 4 milhões, na
+hipótese otimista de que o livro se recompõe entre as fatias. Esperar mais acrescenta mais risco de
+preço do que economiza em impacto. Com um livro tão raso, um leilão aos outros membros, depois de
+proteger o delta, é a alternativa que o whitepaper descreve.
+
+**Opções binárias pedem outra regra perto do vencimento.** Precificada pelo sorriso real, uma
+binária no dinheiro vale 0,52 por dólar, contra 0,47 com uma volatilidade só. Uma binária vendida
+pede 65% da perda máxima 30 dias antes do vencimento, 96% uma semana antes, e a perda máxima
+inteira nos últimos quatro dias.
+:::
+
+::: {.rh-section}
+## Limites
+
+Os dados são de uma única corretora; as opções e os livros de ofertas são um retrato só, porque um
+histórico diário da superfície de volatilidade não é público, então o backtesting cobre carteiras
+de futuros e as margens de opções são as de hoje. Os membros são sintéticos: carteiras reais são
+mais concentradas em alguns pontos e mais protegidas em outros. A liquidação supõe que o livro se
+recompõe entre as fatias e ignora o que um vendedor grande revela. O DVOL começa em 2024; antes
+disso, as mudanças de volatilidade implícita são previstas a partir dos retornos. Nenhum número
+aqui é exigência de margem de alguma câmara, e nenhum modelo passou por validação independente.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Para uma câmara de compensação, uma bolsa, uma corretora que cobra margem dos clientes ou um fundo
+que quer saber a sua margem antes de a câmara chamar, a mesma estrutura roda sobre as suas
+posições: margem por carteira, com backtesting; o custo e o efeito de cada ferramenta contra a
+pró-ciclicidade; testes de estresse e dimensionamento do fundo de garantia; e um plano de
+liquidação para as maiores posições. Começa pelo
+<a href="../oquant.html#packages">Diagnóstico de Dados e IA</a> e roda no seu ambiente.
+:::
+
+::: {.rh-section}
+## Whitepaper e código
+
+```{=html}
+<p>
+<a class="rh-btn rh-btn-primary" href="../../assets/clearing-margin-risk-whitepaper.pdf">Ler o whitepaper (PDF, em inglês)</a>
+<a class="rh-btn" href="https://github.com/rhozon/clearing-margin-risk">github.com/rhozon/clearing-margin-risk</a>
+</p>
+```
+
+Com Python 3.11 ou mais recente:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -I tools/fetch_clearing_data.py ~/data/clearing   # dados públicos, sem conta
+python -m ccp.cli --out results
+```
+
+A suíte tem **17 testes**, e o CI roda todos a cada push.
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: Coinbase Exchange, dados públicos de mercado; Deribit, API pública de dados de mercado e índice DVOL.
+
+- Acerbi, C. and Tasche, D. (2002). On the coherence of expected shortfall. *Journal of Banking & Finance*, 26(7), 1487-1503. [doi:10.1016/S0378-4266(02)00283-2](https://doi.org/10.1016/S0378-4266(02)00283-2)
+- Almgren, R. and Chriss, N. (2001). Optimal execution of portfolio transactions. *The Journal of Risk*, 3(2), 5-39. [doi:10.21314/JOR.2001.041](https://doi.org/10.21314/JOR.2001.041)
+- Barone-Adesi, G., Giannopoulos, K. and Vosper, L. (1999). VaR without correlations for portfolios of derivative securities. *Journal of Futures Markets*, 19(5), 583-602. [doi:10.1002/(SICI)1096-9934(199908)19:5<583::AID-FUT5>3.0.CO;2-S](https://doi.org/10.1002/(SICI)1096-9934(199908)19:5<583::AID-FUT5>3.0.CO;2-S)
+- Black, F. (1976). The pricing of commodity contracts. *Journal of Financial Economics*, 3(1-2), 167-179. [doi:10.1016/0304-405X(76)90024-6](https://doi.org/10.1016/0304-405X(76)90024-6)
+- Bollerslev, T. (1986). Generalized autoregressive conditional heteroskedasticity. *Journal of Econometrics*, 31(3), 307-327. [doi:10.1016/0304-4076(86)90063-1](https://doi.org/10.1016/0304-4076(86)90063-1)
+- Christoffersen, P. F. (1998). Evaluating Interval Forecasts. *International Economic Review*, 39(4), 841-862. [doi:10.2307/2527341](https://doi.org/10.2307/2527341)
+- Duffie, D. and Zhu, H. (2011). Does a Central Clearing Counterparty Reduce Counterparty Risk?. *Review of Asset Pricing Studies*, 1(1), 74-95. [doi:10.1093/rapstu/rar001](https://doi.org/10.1093/rapstu/rar001)
+- Glasserman, P. and Wu, Q. (2018). Persistence and Procyclicality in Margin Requirements. *Management Science*, 64(12), 5705-5724. [doi:10.1287/mnsc.2017.2915](https://doi.org/10.1287/mnsc.2017.2915)
+- Kupiec, P. H. (1995). Techniques for Verifying the Accuracy of Risk Measurement Models. *The Journal of Derivatives*, 3(2), 73-84. [doi:10.3905/jod.1995.407942](https://doi.org/10.3905/jod.1995.407942)
+- Menkveld, A. J. (2017). Crowded Positions: An Overlooked Systemic Risk for Central Clearing Parties. *The Review of Asset Pricing Studies*, 7(2), 209-242. [doi:10.1093/rapstu/rax016](https://doi.org/10.1093/rapstu/rax016)
+:::

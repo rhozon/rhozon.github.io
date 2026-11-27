@@ -1,0 +1,32 @@
+#ccp-app { max-width: 100%; overflow-x: hidden; }
+#ccp-app { margin: 1rem 0 2rem; }
+#ccp-app .ccp-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#ccp-app .ccp-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#ccp-app .ccp-tabs button.on { background: #0f766e; color: #fff; }
+#ccp-app .ccp-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#ccp-app .ccp-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#ccp-app .ccp-ctl span { font-weight: 600; }
+#ccp-app .ccp-ctl select, #ccp-app .ccp-ctl input { width: 100%; }
+#ccp-app .ccp-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#ccp-app .ccp-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#ccp-app .ccp-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#ccp-app .ccp-card-l { font-size: .75rem; opacity: .8; }
+#ccp-app .ccp-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#ccp-app .ccp-card-s { font-size: .75rem; opacity: .8; }
+#ccp-app .ccp-chart { position: relative; height: 380px; margin: .5rem 0 1rem; }
+#ccp-app .ccp-chart-s { height: 320px; }
+#ccp-app .ccp-note { font-size: .82rem; opacity: .85; }
+#ccp-app .ccp-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+#ccp-app .ccp-split h4 { font-size: .9rem; margin: .2rem 0 .3rem; }
+#ccp-app .ccp-table { width: 100%; border-collapse: collapse; font-size: .8rem; display: block; overflow-x: auto; max-height: 560px; overflow-y: auto; }
+#ccp-app .ccp-table th, #ccp-app .ccp-table td { padding: .3rem .45rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; white-space: nowrap; }
+#ccp-app .ccp-table th { font-weight: 600; white-space: normal; vertical-align: bottom; position: sticky; top: 0; background: var(--bs-body-bg, #fff); }
+#ccp-app .ccp-table th:first-child, #ccp-app .ccp-table td:first-child { text-align: left; }
+#ccp-app .ccp-table tbody tr { cursor: pointer; }
+#ccp-app .ccp-table tbody tr:hover, #ccp-app .ccp-table tbody tr.on { background: rgba(15,118,110,.1); }
+#ccp-app .ccp-table td.best { font-weight: 700; }
+@media (max-width: 760px) { #ccp-app .ccp-split { grid-template-columns: minmax(0, 1fr); } #ccp-app .ccp-chart { height: 320px; } }
+#ccp-app .ccp-check { font-size: .82rem; align-self: end; }
+#ccp-app h4 { font-size: .9rem; margin: 1rem 0 .3rem; }
+#ccp-app .ccp-chart-s { height: 300px; }

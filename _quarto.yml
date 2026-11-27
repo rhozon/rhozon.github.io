@@ -19,6 +19,7 @@ project:
     - portfolio/brazil-airline-competition.qmd
     - portfolio/basket-microeconometrics.qmd
     - portfolio/rio-short-term-rental-pricing.qmd
+    - portfolio/clearing-margin-risk.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd
