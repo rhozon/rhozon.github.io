@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
-que esse, o resultado e o código. O que muda é o que pode ser mostrado. Treze são
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. Catorze são
 totalmente públicos, com repositório, testes e resultados. Dois descrevem pesquisa
 de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
 retidos até os periódicos se pronunciarem. Um roda sobre dados sintéticos, porque o
@@ -189,6 +189,17 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
       Correção de erros &middot; Previsão hierárquica &middot; Databricks
     </p>
     <p><a href="fuel-retail-analytics.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="fraud-detection-analytics.html">Detecção de Fraude: Custo, Capacidade, Grafos e Triagem</a></h3>
+    <p>Fraude em cartão com limiar de alerta definido pelo custo e fila de análise do tamanho da equipe,
+    cada alerta explicado, fluxos ilícitos num grafo de pagamentos que derrubam todos os modelos quando
+    o padrão muda, e triagem de nomes nas listas de sanções da OFAC e da ONU que roda no navegador.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Limiar sensível a custo &middot; GraphSAGE &middot; Triagem de sanções
+    </p>
+    <p><a href="fraud-detection-analytics.html">Ler o caso </a></p>
   </div>
 </div>
 ```

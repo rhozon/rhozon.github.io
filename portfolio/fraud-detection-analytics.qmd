@@ -1,0 +1,191 @@
+---
+title: ""
+pagetitle: "Fraud Detection: Cost, Capacity, Graphs and Screening — Case Study"
+description: "Card fraud with an alert threshold chosen by cost and a review queue sized to the team, illicit flows in a payment graph with GraphSAGE, detection without labels, and name screening against the OFAC and UN sanctions lists, all on public data, with an app that runs in the browser."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 20 · Live, 28 November 2026</div>
+# Fraud Detection: Cost, Capacity, Graphs and Screening
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Gradient boosting · Cost-sensitive threshold · Tree SHAP · PSI · Isolation forest · Autoencoder · GraphSAGE · PageRank · Fuzzy name matching · Python · PyTorch · JavaScript · 7 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A fraud team does not need the model with the best AUC. It needs to know which transactions to
+stop or review today, how many alerts its analysts can read, what each missed fraud and each
+needless alert costs, why the model flagged a payment, when the pattern has changed under the
+model, and whether a new customer's name is on a sanctions list.
+
+This case answers those questions on public data, in four parts: card fraud, illicit flows in a
+payment network, detection without labels, and name screening.
+:::
+
+::: {.rh-section}
+## The data
+
+All public, downloaded by a script with no account:
+
+* **Card transactions** (Université Libre de Bruxelles, Dal Pozzolo et al., 2015): 284,807
+  European card payments over two days, 492 of them fraud (0.17%). The publisher replaced the
+  original features with 28 principal components; time and amount are kept.
+* **The Elliptic payment graph** (Weber et al., 2019): 203,769 Bitcoin transactions linked by
+  234,355 flows over 49 time steps of about two weeks, 4,545 labelled illicit, 42,019 licit and
+  the rest unknown.
+* **Sanctions lists**: the OFAC Specially Designated Nationals list with its alternate names
+  (US Treasury) and the UN Security Council consolidated list, 43,648 names in all.
+:::
+
+::: {.rh-section}
+## Try it
+
+Set the cost of reviewing an alert and move the threshold to see alerts, frauds caught and the
+total cost; see how many frauds a team of a given size reaches; open the explanation of an alert;
+watch every model fail after a dark market closed; and screen any name against the sanctions
+lists. The screening runs in your browser and nothing is sent.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case20/sim.css?v=1">
+<div id="frd-app" data-src="../assets/case20/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case20/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**A split in time, never at random.** Fraud changes, and a model is used on the future. The card
+data is split by time: the first 60% to train, the next 20% to choose the threshold, the last 20%
+(about ten hours, 75 frauds) to report. The graph is split as in the original paper: train on time
+steps 1 to 34, test on 35 to 49.
+
+**A threshold chosen by cost, not by 0.5.** A missed fraud costs its amount; every alert costs a
+review and some friction with a legitimate customer. The threshold minimises the sum on the
+validation period and is then applied, unchanged, to the test period (Bahnsen, Aouada and
+Ottersten, 2014). The models are logistic regression and gradient boosting (Chen and Guestrin,
+2016); ranking quality is reported as the area under the precision-recall curve, which is what
+matters at 0.17% fraud.
+
+**A queue sized to the team.** When the team can read k alerts an hour, the question is not the
+threshold but the order: the k highest scores of each hour go to review.
+
+**Every alert explained.** Gradient boosting gives exact SHAP contributions per tree path
+(Lundberg et al., 2020): how much each feature pushed this payment's score up or down. The
+population stability index tracks each feature and the score between training and today.
+
+**Graphs, where the money moves.** On Elliptic, random forests on the node's own features, on
+features aggregated from its neighbours, and on features from the network itself (in and out
+degree, PageRank, neighbour means), against GraphSAGE (Hamilton, Ying and Leskovec, 2017), two
+layers of mean aggregation written in plain PyTorch on a sparse adjacency matrix.
+
+**Without labels.** New fraud patterns have no labels yet. Isolation forest (Liu, Ting and Zhou,
+2008) and an autoencoder learn only what a normal transaction looks like, and are then scored
+against the labels they never saw.
+
+**Screening that tolerates spelling.** Names are normalised (accents, punctuation, case),
+transliteration variants are folded (KH and H, Y and I, W and V and others), and compared with a
+token-sort and a token-set similarity. Token-set similarity is only used when both names have two
+or more words: otherwise a one-word alias such as "DANIEL" would flag every customer called
+Daniel. The same code runs in the page and gives the same scores as the Python, checked in CI.
+:::
+
+::: {.rh-section}
+## Result
+
+**The cost-based threshold cuts the cost of fraud by almost two thirds.** With US$ 5 per review,
+gradient boosting alerts on 209 of the 56,962 test payments and catches 62 of the 75 frauds; the
+cost of missed fraud plus reviews is US$ 2,796, against US$ 7,729 with no model. Its threshold is
+0.02, far from 0.5. Logistic regression, at its own best threshold, catches 50 with 52 alerts and
+costs US$ 3,325. Gradient boosting also ranks better: PR-AUC 0.80 against 0.75, while both have a
+ROC-AUC of 0.98, which hides the difference.
+
+**The threshold follows the cost of a review.** At US$ 10 per alert it jumps to 0.84: 62 alerts,
+56 frauds caught, 90% precision. At US$ 50 every one of the 45 alerts is fraud and 30 frauds get
+through. That is a business decision the model supports, not one it makes.
+
+**Team size has a sharp limit.** Reading the 5 highest scores of each hour reaches 31 of the 75
+frauds; 10 an hour, 49; 20 an hour, 60; 50 an hour, only 65.
+
+**Without labels, half as good.** In its strangest 1% of payments, isolation forest finds 51% of
+the frauds and the autoencoder 35%, against 87% for gradient boosting. Their PR-AUC is 0.05 and
+0.03 against a base rate of 0.13%: useful to surface new patterns for analysts, not to replace a
+supervised model.
+
+**A pattern change breaks every model.** On the payment graph, a random forest with all features
+reaches an illicit F1 of 0.82 (precision 0.95, recall 0.72); features from the network add a
+little to the node's own; GraphSAGE reaches 0.62, in line with the original paper, where random
+forests also beat graph networks on this data. But F1 is 0.91 up to time step 42 and 0.03 after:
+a dark market closed, the illicit flows changed, and no model trained before saw the new pattern.
+The answer is monitoring and retraining, not a deeper model.
+
+**Screening at similarity 88: every altered name found, no false alert.** On 300 listed names with
+one change (order, transliteration, a missing letter, a dropped middle name, accents) and 300
+common Brazilian and English names, a threshold of 88 finds all 300 and alerts on none. At 80,
+3% of common names alert; at 75, 17%. Requiring a perfect score would miss 15% of the altered names.
+:::
+
+::: {.rh-section}
+## Limits
+
+The card data covers two days and its features are anonymised, so the explanations show the
+mechanism, not the business meaning, and the cost figures use the transaction amount as the loss,
+without chargebacks, recoveries or the value of a lost customer. The hour of day shifts between
+training and test by construction. Labels on the graph are incomplete: 77% of its nodes are
+unknown. The screening test uses altered names and synthetic common names, not a real customer
+base; a production system adds dates of birth, nationalities and addresses to clear alerts. There
+is no streaming or real-time component here: the models are batch, as in the first months of most
+fraud programmes.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+For a bank, a payment institution or a marketplace, the same steps run on your transactions,
+chargebacks and alert outcomes: a threshold set by your costs, a queue sized to your team, an
+explanation for every alert, a drift report every week, and screening against the lists you are
+required to check. It starts with the <a href="../oquant.html#packages">Data &amp; AI Diagnostic</a>
+and runs in your environment.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/fraud-detection-analytics">github.com/rhozon/fraud-detection-analytics</a>
+</p>
+```
+
+With Python 3.11 or later:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+node tests/check_js.js                               # browser scorer = Python scorer
+python -I tools/fetch_fraud_data.py ~/data/fraud     # public data, no account
+python -m fraudx.cli all --site results
+```
+
+The suite has **7 tests** and CI runs them, and the JavaScript check, on every push.
+:::
+
+::: {.rh-section}
+## References
+
+Data: Machine Learning Group, Université Libre de Bruxelles, credit card fraud detection (OpenML 1597); Elliptic Data Set; OFAC Specially Designated Nationals and Blocked Persons list (US Treasury); United Nations Security Council Consolidated List.
+
+- Bahnsen, A. C., Aouada, D. and Ottersten, B. (2014). Example-Dependent Cost-Sensitive Logistic Regression for Credit Scoring. *2014 13th International Conference on Machine Learning and Applications*, 263-269. [doi:10.1109/ICMLA.2014.48](https://doi.org/10.1109/ICMLA.2014.48)
+- Chen, T. and Guestrin, C. (2016). XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*, 785-794. [doi:10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785)
+- Dal Pozzolo, A., Caelen, O., Johnson, R. A. and Bontempi, G. (2015). Calibrating Probability with Undersampling for Unbalanced Classification. *2015 IEEE Symposium Series on Computational Intelligence*, 159-166. [doi:10.1109/SSCI.2015.33](https://doi.org/10.1109/SSCI.2015.33)
+- Dal Pozzolo, A., Boracchi, G., Caelen, O., Alippi, C. and Bontempi, G. (2018). Credit Card Fraud Detection: A Realistic Modeling and a Novel Learning Strategy. *IEEE Transactions on Neural Networks and Learning Systems*, 29(8), 3784-3797. [doi:10.1109/TNNLS.2017.2736643](https://doi.org/10.1109/TNNLS.2017.2736643)
+- Hamilton, W. L., Ying, R. and Leskovec, J. (2017). Inductive Representation Learning on Large Graphs. *arXiv*. [doi:10.48550/arXiv.1706.02216](https://doi.org/10.48550/arXiv.1706.02216)
+- Liu, F. T., Ting, K. M. and Zhou, Z. H. (2008). Isolation Forest. *2008 Eighth IEEE International Conference on Data Mining*, 413-422. [doi:10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17)
+- Lundberg, S. M., Erion, G., Chen, H., DeGrave, A., Prutkin, J. M., Nair, B. et al. (2020). From local explanations to global understanding with explainable AI for trees. *Nature Machine Intelligence*, 2(1), 56-67. [doi:10.1038/s42256-019-0138-9](https://doi.org/10.1038/s42256-019-0138-9)
+- Weber, M., Domeniconi, G., Chen, J., Weidele, D. K. I., Bellei, C., Robinson, T. et al. (2019). Anti-Money Laundering in Bitcoin: Experimenting with Graph Convolutional Networks for Financial Forensics. *arXiv*. [doi:10.48550/arXiv.1908.02591](https://doi.org/10.48550/arXiv.1908.02591)
+:::

@@ -1,0 +1,195 @@
+---
+title: ""
+pagetitle: "Detecção de Fraude: Custo, Capacidade, Grafos e Triagem — Estudo de Caso"
+description: "Fraude em cartão com limiar de alerta escolhido pelo custo e fila de análise do tamanho da equipe, fluxos ilícitos num grafo de pagamentos com GraphSAGE, detecção sem rótulos e triagem de nomes nas listas de sanções da OFAC e da ONU, tudo com dados públicos e um app que roda no navegador."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 20 · No ar, 28 de novembro de 2026</div>
+# Detecção de Fraude: Custo, Capacidade, Grafos e Triagem
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Gradient boosting · Limiar sensível a custo · SHAP de árvores · PSI · Isolation forest · Autoencoder · GraphSAGE · PageRank · Comparação aproximada de nomes · Python · PyTorch · JavaScript · 7 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Uma equipe de fraude não precisa do modelo com a maior AUC. Precisa saber quais transações bloquear
+ou analisar hoje, quantos alertas os analistas conseguem ler, quanto custa cada fraude perdida e
+cada alerta à toa, por que o modelo marcou um pagamento, quando o padrão mudou debaixo do modelo e
+se o nome de um cliente novo está numa lista de sanções.
+
+Este caso responde a essas perguntas com dados públicos, em quatro partes: fraude em cartão, fluxos
+ilícitos numa rede de pagamentos, detecção sem rótulos e triagem de nomes.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Todos públicos, baixados por um script, sem conta:
+
+* **Transações de cartão** (Université Libre de Bruxelles, Dal Pozzolo et al., 2015): 284.807
+  pagamentos com cartões europeus em dois dias, 492 deles fraude (0,17%). O publicador trocou as
+  variáveis originais por 28 componentes principais; hora e valor foram mantidos.
+* **O grafo de pagamentos Elliptic** (Weber et al., 2019): 203.769 transações de Bitcoin ligadas
+  por 234.355 fluxos em 49 passos de tempo de cerca de duas semanas, 4.545 rotuladas como ilícitas,
+  42.019 como lícitas e o resto desconhecido.
+* **Listas de sanções**: a lista de Specially Designated Nationals da OFAC com os nomes
+  alternativos (Tesouro dos EUA) e a lista consolidada do Conselho de Segurança da ONU, 43.648
+  nomes ao todo.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Defina o custo de analisar um alerta e mova o limiar para ver alertas, fraudes pegas e o custo
+total; veja quantas fraudes uma equipe de certo tamanho alcança; abra a explicação de um alerta;
+veja todos os modelos falharem depois que um mercado da dark web fechou; e verifique qualquer nome
+nas listas de sanções. A triagem roda no seu navegador e nada é enviado.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case20/sim.css?v=1">
+<div id="frd-app" data-src="../../assets/case20/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case20/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Divisão no tempo, nunca ao acaso.** A fraude muda, e o modelo é usado no futuro. A base de cartão
+é dividida pelo tempo: os primeiros 60% para treinar, os 20% seguintes para escolher o limiar, os
+últimos 20% (cerca de dez horas, 75 fraudes) para reportar. O grafo é dividido como no artigo
+original: treino nos passos 1 a 34, teste nos passos 35 a 49.
+
+**Limiar escolhido pelo custo, não 0,5.** Uma fraude perdida custa o seu valor; cada alerta custa
+uma análise e algum atrito com um cliente legítimo. O limiar minimiza a soma no período de validação
+e é aplicado, sem mudança, ao período de teste (Bahnsen, Aouada e Ottersten, 2014). Os modelos são
+regressão logística e gradient boosting (Chen e Guestrin, 2016); a qualidade da ordenação é medida
+pela área sob a curva de precisão e recall, que é o que importa com 0,17% de fraude.
+
+**Uma fila do tamanho da equipe.** Quando a equipe lê k alertas por hora, a questão não é o limiar,
+mas a ordem: os k maiores escores de cada hora vão para análise.
+
+**Todo alerta explicado.** O gradient boosting dá as contribuições SHAP exatas por caminho de árvore
+(Lundberg et al., 2020): quanto cada variável empurrou o escore deste pagamento para cima ou para
+baixo. O índice de estabilidade da população (PSI) acompanha cada variável e o escore entre o
+treino e hoje.
+
+**Grafos, por onde o dinheiro passa.** No Elliptic, random forests com as variáveis da própria
+transação, com variáveis agregadas dos vizinhos e com variáveis da própria rede (grau de entrada e
+de saída, PageRank, médias dos vizinhos), contra o GraphSAGE (Hamilton, Ying e Leskovec, 2017), duas
+camadas de agregação pela média escritas em PyTorch puro sobre uma matriz de adjacência esparsa.
+
+**Sem rótulos.** Padrões novos de fraude ainda não têm rótulo. O isolation forest (Liu, Ting e
+Zhou, 2008) e um autoencoder aprendem só como é uma transação normal e depois são avaliados contra
+rótulos que nunca viram.
+
+**Triagem que tolera grafia.** Os nomes são normalizados (acentos, pontuação, caixa), variantes de
+transliteração são unificadas (KH e H, Y e I, W e V e outras) e a comparação usa similaridade por
+palavras ordenadas e por conjunto de palavras. A similaridade por conjunto só vale quando os dois
+nomes têm duas palavras ou mais: do contrário um alias de uma palavra, como "DANIEL", marcaria todo
+cliente chamado Daniel. O mesmo código roda na página e dá os mesmos escores que o Python, conferido
+no CI.
+:::
+
+::: {.rh-section}
+## Resultado
+
+**O limiar pelo custo corta o custo da fraude em quase dois terços.** Com US$ 5 por análise, o
+gradient boosting alerta 209 dos 56.962 pagamentos de teste e pega 62 das 75 fraudes; o custo da
+fraude perdida mais as análises é US$ 2.796, contra US$ 7.729 sem modelo. O limiar é 0,02, longe de
+0,5. A regressão logística, no seu melhor limiar, pega 50 com 52 alertas e custa US$ 3.325. O
+gradient boosting também ordena melhor: PR-AUC de 0,80 contra 0,75, enquanto os dois têm ROC-AUC de
+0,98, que esconde a diferença.
+
+**O limiar segue o custo da análise.** Com US$ 10 por alerta ele salta para 0,84: 62 alertas, 56
+fraudes pegas, 90% de precisão. Com US$ 50 todos os 45 alertas são fraude e 30 fraudes passam. É uma
+decisão de negócio que o modelo apoia, não uma que ele toma.
+
+**O tamanho da equipe tem um limite claro.** Ler os 5 maiores escores de cada hora alcança 31 das 75
+fraudes; 10 por hora, 49; 20 por hora, 60; 50 por hora, só 65.
+
+**Sem rótulos, metade da eficácia.** No 1% de pagamentos mais estranhos, o isolation forest acha
+51% das fraudes e o autoencoder 35%, contra 87% do gradient boosting. O PR-AUC deles é 0,05 e 0,03
+contra uma taxa base de 0,13%: servem para mostrar padrões novos aos analistas, não para substituir
+um modelo supervisionado.
+
+**Uma mudança de padrão derruba todos os modelos.** No grafo de pagamentos, uma random forest com
+todas as variáveis chega a F1 de 0,82 na classe ilícita (precisão 0,95, recall 0,72); as variáveis da
+rede somam um pouco às da própria transação; o GraphSAGE chega a 0,62, em linha com o artigo
+original, em que as random forests também superam as redes de grafos nesta base. Mas o F1 é 0,91
+até o passo 42 e 0,03 depois: um mercado da dark web fechou, os fluxos ilícitos mudaram e nenhum
+modelo treinado antes viu o padrão novo. A resposta é monitorar e re-treinar, não um modelo mais
+profundo.
+
+**Triagem com similaridade 88: todo nome alterado encontrado, nenhum alerta falso.** Em 300 nomes
+das listas com uma alteração (ordem, transliteração, letra faltando, nome do meio omitido, acentos)
+e 300 nomes comuns brasileiros e ingleses, o limiar de 88 acha os 300 e não alerta nenhum. Com 80,
+3% dos nomes comuns alertam; com 75, 17%. Exigir escore perfeito perderia 15% dos nomes alterados.
+:::
+
+::: {.rh-section}
+## Limites
+
+A base de cartão cobre dois dias e as variáveis são anonimizadas, então as explicações mostram o
+mecanismo, não o significado de negócio, e os custos usam o valor da transação como perda, sem
+chargebacks, recuperações ou o valor de um cliente perdido. A hora do dia muda entre treino e teste
+por construção. Os rótulos do grafo são incompletos: 77% dos nós são desconhecidos. O teste de
+triagem usa nomes alterados e nomes comuns sintéticos, não uma base real de clientes; um sistema em
+produção soma data de nascimento, nacionalidade e endereço para descartar alertas. Não há componente
+de streaming ou tempo real aqui: os modelos são em lote, como nos primeiros meses da maioria dos
+programas de fraude.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Para um banco, uma instituição de pagamento ou um marketplace, os mesmos passos rodam sobre as suas
+transações, chargebacks e resultados de alertas: um limiar definido pelos seus custos, uma fila do
+tamanho da sua equipe, uma explicação para cada alerta, um relatório de mudança de distribuição toda
+semana e triagem nas listas que você é obrigado a verificar. Começa pelo
+<a href="../oquant.html#packages">Diagnóstico de Dados e IA</a> e roda no seu ambiente.
+:::
+
+::: {.rh-section}
+## O código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/fraud-detection-analytics">github.com/rhozon/fraud-detection-analytics</a>
+</p>
+```
+
+Com Python 3.11 ou mais recente:
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+node tests/check_js.js                               # escores do navegador = escores do Python
+python -I tools/fetch_fraud_data.py ~/data/fraud     # dados públicos, sem conta
+python -m fraudx.cli all --site results
+```
+
+A suíte tem **7 testes**, e o CI roda todos, e a conferência do JavaScript, a cada push.
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: Machine Learning Group, Université Libre de Bruxelles, credit card fraud detection (OpenML 1597); Elliptic Data Set; OFAC Specially Designated Nationals and Blocked Persons list (Tesouro dos EUA); Consolidated List do Conselho de Segurança das Nações Unidas.
+
+- Bahnsen, A. C., Aouada, D. and Ottersten, B. (2014). Example-Dependent Cost-Sensitive Logistic Regression for Credit Scoring. *2014 13th International Conference on Machine Learning and Applications*, 263-269. [doi:10.1109/ICMLA.2014.48](https://doi.org/10.1109/ICMLA.2014.48)
+- Chen, T. and Guestrin, C. (2016). XGBoost: A Scalable Tree Boosting System. *Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining*, 785-794. [doi:10.1145/2939672.2939785](https://doi.org/10.1145/2939672.2939785)
+- Dal Pozzolo, A., Caelen, O., Johnson, R. A. and Bontempi, G. (2015). Calibrating Probability with Undersampling for Unbalanced Classification. *2015 IEEE Symposium Series on Computational Intelligence*, 159-166. [doi:10.1109/SSCI.2015.33](https://doi.org/10.1109/SSCI.2015.33)
+- Dal Pozzolo, A., Boracchi, G., Caelen, O., Alippi, C. and Bontempi, G. (2018). Credit Card Fraud Detection: A Realistic Modeling and a Novel Learning Strategy. *IEEE Transactions on Neural Networks and Learning Systems*, 29(8), 3784-3797. [doi:10.1109/TNNLS.2017.2736643](https://doi.org/10.1109/TNNLS.2017.2736643)
+- Hamilton, W. L., Ying, R. and Leskovec, J. (2017). Inductive Representation Learning on Large Graphs. *arXiv*. [doi:10.48550/arXiv.1706.02216](https://doi.org/10.48550/arXiv.1706.02216)
+- Liu, F. T., Ting, K. M. and Zhou, Z. H. (2008). Isolation Forest. *2008 Eighth IEEE International Conference on Data Mining*, 413-422. [doi:10.1109/ICDM.2008.17](https://doi.org/10.1109/ICDM.2008.17)
+- Lundberg, S. M., Erion, G., Chen, H., DeGrave, A., Prutkin, J. M., Nair, B. et al. (2020). From local explanations to global understanding with explainable AI for trees. *Nature Machine Intelligence*, 2(1), 56-67. [doi:10.1038/s42256-019-0138-9](https://doi.org/10.1038/s42256-019-0138-9)
+- Weber, M., Domeniconi, G., Chen, J., Weidele, D. K. I., Bellei, C., Robinson, T. et al. (2019). Anti-Money Laundering in Bitcoin: Experimenting with Graph Convolutional Networks for Financial Forensics. *arXiv*. [doi:10.48550/arXiv.1908.02591](https://doi.org/10.48550/arXiv.1908.02591)
+:::

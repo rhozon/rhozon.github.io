@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problems, methods, and code you can run
 
 Each case follows the same five blocks: the business question, the data, the method and
-why that one, the result, and the code. What differs is what can be shown. Thirteen are
+why that one, the result, and the code. What differs is what can be shown. Fourteen are
 fully public, with repository, tests and results. Two describe doctoral research under
 peer review, so method is here and results are withheld until the journals rule. One
 runs on synthetic data, because the engagement behind it is under NDA. Each page says
@@ -188,6 +188,17 @@ which it is, at the top.
       Error correction &middot; Hierarchical forecasting &middot; Databricks
     </p>
     <p><a href="fuel-retail-analytics.html">Read the case </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="fraud-detection-analytics.html">Fraud Detection: Cost, Capacity, Graphs and Screening</a></h3>
+    <p>Card fraud with an alert threshold set by cost and a review queue sized to the team, every alert
+    explained, illicit flows in a payment graph that break every model when the pattern changes, and
+    name screening against the OFAC and UN sanctions lists that runs in the browser.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Cost-sensitive threshold &middot; GraphSAGE &middot; Sanctions screening
+    </p>
+    <p><a href="fraud-detection-analytics.html">Read the case </a></p>
   </div>
 </div>
 ```

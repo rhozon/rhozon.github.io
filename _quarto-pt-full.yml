@@ -23,6 +23,7 @@ project:
     - pt/portfolio/dynamic-electricity-pricing.qmd
     - pt/portfolio/clearing-margin-risk.qmd
     - pt/portfolio/fuel-retail-analytics.qmd
+    - pt/portfolio/fraud-detection-analytics.qmd
     - pt/teaching.qmd
     - pt/oquant.qmd
     - pt/contact.qmd
