@@ -1,0 +1,33 @@
+#fuel-app { max-width: 100%; overflow-x: hidden; }
+#fuel-app { margin: 1rem 0 2rem; }
+#fuel-app .fuel-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#fuel-app .fuel-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#fuel-app .fuel-tabs button.on { background: #0f766e; color: #fff; }
+#fuel-app .fuel-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#fuel-app .fuel-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; }
+#fuel-app .fuel-ctl span { font-weight: 600; }
+#fuel-app .fuel-ctl select, #fuel-app .fuel-ctl input { width: 100%; }
+#fuel-app .fuel-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#fuel-app .fuel-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#fuel-app .fuel-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; }
+#fuel-app .fuel-card-l { font-size: .75rem; opacity: .8; }
+#fuel-app .fuel-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#fuel-app .fuel-card-s { font-size: .75rem; opacity: .8; }
+#fuel-app .fuel-chart { position: relative; height: 380px; margin: .5rem 0 1rem; }
+#fuel-app .fuel-chart-s { height: 320px; }
+#fuel-app .fuel-note { font-size: .82rem; opacity: .85; }
+#fuel-app .fuel-split { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 1.2rem; align-items: start; }
+#fuel-app .fuel-split h4 { font-size: .9rem; margin: .2rem 0 .3rem; }
+#fuel-app .fuel-table { width: 100%; border-collapse: collapse; font-size: .8rem; display: block; overflow-x: auto; max-height: 560px; overflow-y: auto; }
+#fuel-app .fuel-table th, #fuel-app .fuel-table td { padding: .3rem .45rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; white-space: nowrap; }
+#fuel-app .fuel-table th { font-weight: 600; white-space: normal; vertical-align: bottom; position: sticky; top: 0; background: var(--bs-body-bg, #fff); }
+#fuel-app .fuel-table th:first-child, #fuel-app .fuel-table td:first-child { text-align: left; }
+#fuel-app .fuel-table tbody tr { cursor: pointer; }
+#fuel-app .fuel-table tbody tr:hover, #fuel-app .fuel-table tbody tr.on { background: rgba(15,118,110,.1); }
+#fuel-app .fuel-table td.best { font-weight: 700; }
+@media (max-width: 760px) { #fuel-app .fuel-split { grid-template-columns: minmax(0, 1fr); } #fuel-app .fuel-chart { height: 320px; } }
+#fuel-app .fuel-split { display: grid; grid-template-columns: minmax(0,1fr) minmax(0,1fr); gap: 1rem; }
+#fuel-app h4 { font-size: .9rem; margin: .8rem 0 .2rem; }
+#fuel-app .fuel-table td.sig { font-weight: 700; }
+@media (max-width: 760px) { #fuel-app .fuel-split { grid-template-columns: minmax(0,1fr); } }

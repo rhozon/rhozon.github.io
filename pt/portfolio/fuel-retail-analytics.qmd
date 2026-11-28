@@ -1,0 +1,188 @@
+---
+title: ""
+pagetitle: "Varejo de Combustíveis: Repasse, Concorrência e Demanda — Estudo de Caso"
+description: "O preço na bomba sobe mais rápido do que desce? Como a bandeira e os postos ao redor pesam no preço de cada posto, e quanto combustível cada estado vai vender? 4,2 milhões de preços de postos e vendas públicas da ANP, um modelo de correção de erros assimétrico, previsões conciliadas por MinT, um lakehouse Delta e um bundle do Databricks."
+toc: false
+lang: pt-BR
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 16 · No ar, 28 de novembro de 2026</div>
+# Varejo de Combustíveis: Repasse, Concorrência e Demanda
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Modelo de correção de erros · Repasse assimétrico · Efeitos fixos · Previsão hierárquica · MinT · Gradient boosting · DuckDB · Delta Lake · Databricks · MLflow · Python · 10 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Uma distribuidora de combustíveis e sua rede de postos vivem de três números: quão rápido o preço
+da bomba acompanha o custo, quanto a bandeira e os postos ao redor deixam um posto cobrar, e
+quantos litros cada estado vai comprar. O primeiro também é uma pergunta pública. O motorista
+desconfia que o preço "sobe de foguete e desce de pena", e o regulador pergunta o mesmo.
+
+Este case responde às três com dados públicos, do jeito que um time de dados rodaria em produção:
+dos arquivos do regulador para um lakehouse em camadas bronze, prata e ouro, modelos testados fora
+do tempo e um job pronto para o Databricks.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Todos públicos, da ANP:
+
+* **O levantamento semanal de preços, posto a posto**: 4,2 milhões de preços de 18.921 postos em
+  464 municípios, de janeiro de 2021 a junho de 2026, com a bandeira de cada posto. O primeiro
+  semestre de 2022 não foi publicado.
+* **Preços de distribuição**, semanais por estado, desde agosto de 2020.
+* **Preços de produtores e importadores**, semanais por região, desde 2013.
+* **Vendas**, mensais por estado e produto, desde 1990.
+
+A página agrupa as bandeiras em grandes bandeiras, outras bandeiras e bandeira branca; nenhuma
+distribuidora é citada pelo nome.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Escolha um estado e veja os preços semanais e quão rápido a bomba acompanha uma alta e uma queda de
+custo; mude o preço da distribuidora e veja o preço esperado na bomba semana a semana; compare os 27
+estados; veja quanto valem a bandeira e os concorrentes por perto; e explore a previsão de vendas de
+doze meses de cada estado, região e do país.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case16/sim.css?v=1">
+<div id="fuel-app" data-src="../../assets/case16/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case16/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## O método, e por que esse
+
+**Um lakehouse a partir dos arquivos do regulador.** SQL no DuckDB transforma os arquivos publicados
+(duas codificações, vírgula decimal, vários formatos ao longo dos anos) em tabelas prata, e estas em
+séries semanais por estado e painéis por município e semana na camada ouro, gravados como tabelas
+Delta. Um bundle do Databricks roda os mesmos passos como um job semanal no Unity Catalog, e cada
+execução fica registrada no MLflow.
+
+**Repasse como modelo de correção de erros.** Em cada estado, o preço da bomba e o da distribuidora
+têm uma relação de longo prazo; no curto prazo, altas e quedas de custo têm coeficientes próprios, e
+a distância até a relação de longo prazo se fecha semana a semana (Engle e Granger, 1987; Borenstein,
+Cameron e Gilbert, 1997). A simetria é um teste de Wald sobre as somas dos coeficientes de alta e de
+queda, com erros de Newey-West, e os 27 p-valores são corrigidos para testes múltiplos por
+Benjamini-Hochberg. A janela vai de julho de 2022 a junho de 2026, o trecho contínuo mais longo de
+dados de postos.
+
+**Bandeira e concorrência dentro do mesmo mercado.** O preço de cada posto é comparado com a média do
+seu município na mesma semana, o que tira custos locais, impostos e choques da semana; esse preço
+relativo é regredido na bandeira agrupada e no número de concorrentes pesquisados no mesmo CEP de 5
+dígitos, com erros agrupados por município.
+
+**Previsões que fecham.** As vendas mensais de gasolina C, etanol hidratado e diesel são previstas
+para o Brasil, as 5 regiões e os 27 estados com um ingênuo sazonal de referência, suavização
+exponencial (ETS) e um modelo global de gradient boosting, em 12 origens de 2023 a 2025, 12 meses à
+frente, reajustando só com o passado. O MinT (Wickramasuriya, Athanasopoulos e Hyndman, 2019) torna
+as 33 previsões de cada produto coerentes: os estados somam as regiões, e as regiões, o país.
+:::
+
+::: {.rh-section}
+## O resultado
+
+**Não há foguete e pena na bomba.** A simetria é rejeitada a 5% em 4 dos 27 estados, e em 2 depois
+da correção para testes múltiplos, um em que as altas passam mais rápido e outro em que as quedas
+passam. Em 15 estados a resposta de curto prazo é maior para altas, em 12 para quedas. Em São Paulo,
+cerca de metade de uma mudança no preço da distribuidora chega à bomba na mesma semana, e toda ela em
+duas semanas, nos dois sentidos. Onde o motorista vê o preço emperrar, a demora está antes do posto.
+
+**A bandeira vale cerca de 2%.** No mesmo município e na mesma semana, postos das grandes bandeiras
+cobram 2,1% a mais pela gasolina comum do que os de bandeira branca (intervalo de 95% de 1,7% a 2,6%),
+e os de outras bandeiras, 1,1% a mais. Mais concorrentes por perto não significam preço menor nestes
+dados: postos com onze ou mais concorrentes pesquisados no mesmo CEP cobram 0,6% a mais, porque áreas
+densas são centros de cidade e rodovias. Os preços se espalham mais nos mercados grandes: a diferença
+entre o posto do 9º decil e o do 1º é de R$ 0,22 por litro em municípios com 5 a 9 postos e de R$ 0,64
+naqueles com 50 ou mais.
+
+**Previsão: o simples e coerente vence.** Erro médio 12 meses à frente (WAPE):
+
+| Produto | Nível | Ingênuo sazonal | ETS | ETS + MinT | GBM global |
+|---|---|---:|---:|---:|---:|
+| Gasolina C | Brasil | 5,3% | 3,2% | 3,2% | 3,9% |
+| Gasolina C | Estado | 6,4% | 4,1% | 4,1% | 5,2% |
+| Diesel | Brasil | 4,3% | 3,2% | 3,2% | 3,3% |
+| Diesel | Estado | 6,0% | 4,7% | 4,7% | 5,0% |
+| Etanol hidratado | Brasil | 14,0% | 11,9% | 12,0% | 12,0% |
+| Etanol hidratado | Estado | 15,7% | 13,2% | 13,2% | 14,1% |
+
+O ETS corta de um quarto a dois quintos o erro da referência na gasolina e no diesel, e o MinT faz todos os
+níveis fecharem sem perder precisão, que é o que um time de planejamento precisa. O modelo global de
+gradient boosting não bate o ETS aqui: com 178 meses por estado não há histórico para ele aprender
+mais do que o padrão sazonal. O etanol continua difícil, com 12% a 13%, porque o dono de carro flex
+troca de combustível conforme a relação de preços, que estes modelos não veem.
+:::
+
+::: {.rh-section}
+## Limites
+
+A ligação do produtor para a distribuidora não fica identificada em frequência semanal nesta janela:
+mudanças de ICMS de 2022 a 2025 e a alta do etanol na gasolina de 27% para 30% mexem no preço da
+distribuidora sem mexer no do produtor, e desde 2023 os preços de refinaria mudam em degraus raros. Só
+a parcela de longo prazo é reportada, cerca de 0,74 de uma mudança no preço do produtor, que bate com a
+fatia de gasolina pura na gasolina C. O coeficiente de longo prazo da bomba passa de um na maioria dos
+estados porque as margens dos postos aumentaram no período; não é uma remarcação sobre cada mudança de
+custo. O levantamento é uma amostra de postos, não um censo. As estimativas de concorrência são
+associações. O bundle do Databricks não foi implantado num workspace a partir deste repositório; o CI
+confere que ele é válido e que as tarefas apontam para scripts que funcionam.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Para uma distribuidora, uma rede de postos ou uma rede de lojas de conveniência, o mesmo pipeline roda
+sobre os seus preços e volumes: quão rápido os seus postos acompanham o custo em cada região, quanto
+vale a sua bandeira diante de cada grupo de concorrentes, e uma previsão de vendas por posto, cidade e
+estado que fecha com o plano. Começa pelo <a href="../oquant.html#packages">Diagnóstico de Dados e
+IA</a> e roda no seu ambiente, no Databricks ou em outro lugar.
+:::
+
+::: {.rh-section}
+## O código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/fuel-retail-analytics">github.com/rhozon/fuel-retail-analytics</a>
+</p>
+```
+
+Com Python 3.11 ou mais recente:
+
+```bash
+pip install -e ".[dev,track]"
+pytest -v
+python -I tools/fetch_anp_data.py ~/data/anp      # dados públicos, sem conta
+python -m fuelx.cli --out results --lake lake --track sqlite:///mlflow.db
+databricks bundle deploy -t dev                   # com um workspace Databricks
+```
+
+A suíte tem **10 testes**, e o CI roda todos a cada push.
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: ANP, Levantamento de Preços de Combustíveis, preços de produtores e importadores, preços de distribuição e vendas de derivados (dados abertos).
+
+- Armbrust, M., Das, T., Sun, L., Yavuz, B., Zhu, S., Murthy, M. et al. (2020). Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores. *Proceedings of the VLDB Endowment*, 13(12), 3411-3424. [doi:10.14778/3415478.3415560](https://doi.org/10.14778/3415478.3415560)
+- Benjamini, Y. and Hochberg, Y. (1995). Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. *Journal of the Royal Statistical Society Series B: Statistical Methodology*, 57(1), 289-300. [doi:10.1111/j.2517-6161.1995.tb02031.x](https://doi.org/10.1111/j.2517-6161.1995.tb02031.x)
+- Borenstein, S., Cameron, A. C. and Gilbert, R. (1997). Do Gasoline Prices Respond Asymmetrically to Crude Oil Price Changes?. *The Quarterly Journal of Economics*, 112(1), 305-339. [doi:10.1162/003355397555118](https://doi.org/10.1162/003355397555118)
+- Engle, R. F. and Granger, C. W. J. (1987). Co-Integration and Error Correction: Representation, Estimation, and Testing. *Econometrica*, 55(2), 251-276. [doi:10.2307/1913236](https://doi.org/10.2307/1913236)
+- Gardner, E. S. (1985). Exponential smoothing: The state of the art. *Journal of Forecasting*, 4(1), 1-28. [doi:10.1002/for.3980040103](https://doi.org/10.1002/for.3980040103)
+- Hyndman, R. J., Ahmed, R. A., Athanasopoulos, G. and Shang, H. L. (2011). Optimal combination forecasts for hierarchical time series. *Computational Statistics & Data Analysis*, 55(9), 2579-2589. [doi:10.1016/j.csda.2011.03.006](https://doi.org/10.1016/j.csda.2011.03.006)
+- Lewis, M. S. (2011). Asymmetric Price Adjustment and Consumer Search: An Examination of the Retail Gasoline Market. *Journal of Economics & Management Strategy*, 20(2), 409-449. [doi:10.1111/j.1530-9134.2011.00293.x](https://doi.org/10.1111/j.1530-9134.2011.00293.x)
+- Newey, W. K. and West, K. D. (1987). A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix. *Econometrica*, 55(3), 703-708. [doi:10.2307/1913610](https://doi.org/10.2307/1913610)
+- Peltzman, S. (2000). Prices Rise Faster than They Fall. *Journal of Political Economy*, 108(3), 466-502. [doi:10.1086/262126](https://doi.org/10.1086/262126)
+- Wickramasuriya, S. L., Athanasopoulos, G. and Hyndman, R. J. (2019). Optimal Forecast Reconciliation for Hierarchical and Grouped Time Series Through Trace Minimization. *Journal of the American Statistical Association*, 114(526), 804-819. [doi:10.1080/01621459.2018.1448825](https://doi.org/10.1080/01621459.2018.1448825)
+:::

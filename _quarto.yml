@@ -21,6 +21,7 @@ project:
     - portfolio/rio-short-term-rental-pricing.qmd
     - portfolio/dynamic-electricity-pricing.qmd
     - portfolio/clearing-margin-risk.qmd
+    - portfolio/fuel-retail-analytics.qmd
     - teaching.qmd
     - oquant.qmd
     - contact.qmd

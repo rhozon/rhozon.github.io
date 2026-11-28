@@ -1,0 +1,185 @@
+---
+title: ""
+pagetitle: "Fuel Retail: Pass-Through, Competition and Demand — Case Study"
+description: "Do Brazilian pump prices rise faster than they fall? How do brand and local competition shape a station's price, and how much fuel will each state sell? 4.2 million station prices and public sales data from ANP, an asymmetric error-correction model, MinT-reconciled forecasts, a Delta lakehouse and a Databricks bundle."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 16 · Live, 28 November 2026</div>
+# Fuel Retail: Pass-Through, Competition and Demand
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Error-correction model · Asymmetric pass-through · Fixed effects · Hierarchical forecasting · MinT · Gradient boosting · DuckDB · Delta Lake · Databricks · MLflow · Python · 10 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A fuel distributor and its network of stations live on three numbers: how fast the pump price
+follows the cost, how much a brand and the stations around it allow a station to charge, and how
+many litres each state will buy. The first is also a public question. Drivers suspect that prices
+"go up like a rocket and come down like a feather", and regulators ask the same.
+
+This case answers the three on public data, the way a data team would run it in production: from
+the regulator's files to a bronze, silver and gold lakehouse, models tested out of time, and a
+job ready for Databricks.
+:::
+
+::: {.rh-section}
+## The data
+
+All public, from ANP, Brazil's oil, gas and biofuels regulator:
+
+* **The weekly retail price survey, station by station**: 4.2 million prices from 18,921 stations
+  in 464 municipalities, January 2021 to June 2026, with each station's brand. The first half of
+  2022 is not published.
+* **Distribution prices**, weekly by state, since August 2020.
+* **Producer and importer prices**, weekly by region, since 2013.
+* **Sales**, monthly by state and product, since 1990.
+
+The page groups brands into major brands, other brands and white flag; no distributor is named.
+:::
+
+::: {.rh-section}
+## Try it
+
+Pick a state and see its weekly prices and how fast the pump follows a cost rise and a cost fall;
+move the distribution price and see the expected pump price week by week; compare all 27 states;
+see what brand and nearby competitors are worth; and explore the twelve-month sales forecast of
+each state, region and the country.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case16/sim.css?v=1">
+<div id="fuel-app" data-src="../assets/case16/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case16/sim.js?v=2"></script>
+```
+:::
+
+::: {.rh-section}
+## Method, and why this one
+
+**A lakehouse from the regulator's files.** DuckDB SQL turns the published files (two encodings,
+decimal commas, several layouts over the years) into silver tables, and these into gold weekly
+state series and municipality-week panels, written as Delta tables. A Databricks Asset Bundle runs
+the same steps as a weekly job on Unity Catalog, and every run is logged to MLflow.
+
+**Pass-through as an error-correction model.** For each state, the pump price and the
+distribution price share a long-run relation; in the short run, cost rises and cost falls get
+their own coefficients, and the gap to the long-run relation closes week by week (Engle and
+Granger, 1987; Borenstein, Cameron and Gilbert, 1997). Symmetry is a Wald test on the sums of the
+rise and fall coefficients, with Newey-West errors, and the 27 p-values are corrected for multiple
+testing with Benjamini-Hochberg. The window is July 2022 to June 2026, the longest stretch with
+continuous station data.
+
+**Brand and competition within the same market.** Each station's price is compared with the mean of
+its municipality in the same week, which removes local costs, taxes and the week's shocks; that
+relative price is regressed on the brand group and on the number of surveyed competitors in the
+same 5-digit postal code, with errors clustered by municipality.
+
+**Forecasts that add up.** Monthly sales of gasoline C, hydrous ethanol and diesel are forecast for
+Brazil, its 5 regions and 27 states with a seasonal naive benchmark, exponential smoothing (ETS)
+and a global gradient-boosting model, at 12 origins from 2023 to 2025, 12 months ahead, refitting
+on the past only. MinT (Wickramasuriya, Athanasopoulos and Hyndman, 2019) then makes the 33
+forecasts of each product coherent: states add up to regions and regions to the country.
+:::
+
+::: {.rh-section}
+## Result
+
+**No rockets and feathers at the pump.** Symmetry is rejected at 5% in 4 of 27 states and in 2
+after the correction for multiple testing, one where rises pass faster and one where falls do. In
+15 states the short-run response is larger for rises, in 12 for falls. In São Paulo about half of
+a change in the distribution price reaches the pump in the same week and all of it within two
+weeks, in either direction. Where drivers see prices stick, the delay is upstream of the station.
+
+**A brand is worth about 2%.** Within the same municipality and week, stations of the major brands
+charge 2.1% more for regular gasoline than white-flag stations (95% interval 1.7% to 2.6%), and
+other brands 1.1% more. More competitors nearby do not mean lower prices in this data: stations
+with eleven or more surveyed competitors in their postal area charge 0.6% more, because dense areas
+are city centres and highways. Prices spread more in big markets: the gap between the 90th and the
+10th percentile station is R$ 0.22 per litre in municipalities with 5 to 9 stations and R$ 0.64 in
+those with 50 or more.
+
+**Forecasts: simple and coherent wins.** Mean error 12 months ahead (WAPE):
+
+| Product | Level | Seasonal naive | ETS | ETS + MinT | Global GBM |
+|---|---|---:|---:|---:|---:|
+| Gasoline C | Brazil | 5.3% | 3.2% | 3.2% | 3.9% |
+| Gasoline C | State | 6.4% | 4.1% | 4.1% | 5.2% |
+| Diesel | Brazil | 4.3% | 3.2% | 3.2% | 3.3% |
+| Diesel | State | 6.0% | 4.7% | 4.7% | 5.0% |
+| Hydrous ethanol | Brazil | 14.0% | 11.9% | 12.0% | 12.0% |
+| Hydrous ethanol | State | 15.7% | 13.2% | 13.2% | 14.1% |
+
+ETS cuts the benchmark's error by a quarter to two fifths for gasoline and diesel, and MinT makes every
+level add up without losing accuracy, which is what a planning team needs. The global
+gradient-boosting model does not beat ETS here: with 178 months per state there is not enough
+history for it to learn more than the seasonal pattern. Ethanol stays hard at 12% to 13%, because
+owners of flex cars switch fuel with the price ratio, which these models do not see.
+:::
+
+::: {.rh-section}
+## Limits
+
+The link from producer to distributor is not identified at weekly frequency in this window: state
+tax changes from 2022 to 2025 and the rise of ethanol in gasoline from 27% to 30% move the
+distribution price without the producer price, and since 2023 refinery prices change in rare steps.
+Only its long-run share is reported, about 0.74 of a producer price change, which matches the share
+of pure gasoline in gasoline C. The long-run pump coefficient is above one in most states, because
+station margins widened over the period; it is not a markup on each cost change. The survey is a
+sample of stations, not a census. The competition estimates are associations. The Databricks bundle
+has not been deployed to a workspace from this repository; CI checks that it parses and that its
+tasks point to working scripts.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+For a distributor, a chain of stations or a convenience retailer, the same pipeline runs on your
+own prices and volumes: how fast your stations follow cost in each region, what your brand is worth
+against each competitor set, and a sales forecast by station, city and state that adds up to the
+plan. It starts with the <a href="../oquant.html#packages">Data &amp; AI Diagnostic</a> and runs in
+your environment, on Databricks or elsewhere.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/fuel-retail-analytics">github.com/rhozon/fuel-retail-analytics</a>
+</p>
+```
+
+With Python 3.11 or later:
+
+```bash
+pip install -e ".[dev,track]"
+pytest -v
+python -I tools/fetch_anp_data.py ~/data/anp      # public data, no account
+python -m fuelx.cli --out results --lake lake --track sqlite:///mlflow.db
+databricks bundle deploy -t dev                   # with a Databricks workspace
+```
+
+The suite has **10 tests** and CI runs them on every push.
+:::
+
+::: {.rh-section}
+## References
+
+Data: ANP, Levantamento de Preços de Combustíveis, preços de produtores e importadores, preços de distribuição and vendas de derivados (open data).
+
+- Armbrust, M., Das, T., Sun, L., Yavuz, B., Zhu, S., Murthy, M. et al. (2020). Delta Lake: High-Performance ACID Table Storage over Cloud Object Stores. *Proceedings of the VLDB Endowment*, 13(12), 3411-3424. [doi:10.14778/3415478.3415560](https://doi.org/10.14778/3415478.3415560)
+- Benjamini, Y. and Hochberg, Y. (1995). Controlling the False Discovery Rate: A Practical and Powerful Approach to Multiple Testing. *Journal of the Royal Statistical Society Series B: Statistical Methodology*, 57(1), 289-300. [doi:10.1111/j.2517-6161.1995.tb02031.x](https://doi.org/10.1111/j.2517-6161.1995.tb02031.x)
+- Borenstein, S., Cameron, A. C. and Gilbert, R. (1997). Do Gasoline Prices Respond Asymmetrically to Crude Oil Price Changes?. *The Quarterly Journal of Economics*, 112(1), 305-339. [doi:10.1162/003355397555118](https://doi.org/10.1162/003355397555118)
+- Engle, R. F. and Granger, C. W. J. (1987). Co-Integration and Error Correction: Representation, Estimation, and Testing. *Econometrica*, 55(2), 251-276. [doi:10.2307/1913236](https://doi.org/10.2307/1913236)
+- Gardner, E. S. (1985). Exponential smoothing: The state of the art. *Journal of Forecasting*, 4(1), 1-28. [doi:10.1002/for.3980040103](https://doi.org/10.1002/for.3980040103)
+- Hyndman, R. J., Ahmed, R. A., Athanasopoulos, G. and Shang, H. L. (2011). Optimal combination forecasts for hierarchical time series. *Computational Statistics & Data Analysis*, 55(9), 2579-2589. [doi:10.1016/j.csda.2011.03.006](https://doi.org/10.1016/j.csda.2011.03.006)
+- Lewis, M. S. (2011). Asymmetric Price Adjustment and Consumer Search: An Examination of the Retail Gasoline Market. *Journal of Economics & Management Strategy*, 20(2), 409-449. [doi:10.1111/j.1530-9134.2011.00293.x](https://doi.org/10.1111/j.1530-9134.2011.00293.x)
+- Newey, W. K. and West, K. D. (1987). A Simple, Positive Semi-Definite, Heteroskedasticity and Autocorrelation Consistent Covariance Matrix. *Econometrica*, 55(3), 703-708. [doi:10.2307/1913610](https://doi.org/10.2307/1913610)
+- Peltzman, S. (2000). Prices Rise Faster than They Fall. *Journal of Political Economy*, 108(3), 466-502. [doi:10.1086/262126](https://doi.org/10.1086/262126)
+- Wickramasuriya, S. L., Athanasopoulos, G. and Hyndman, R. J. (2019). Optimal Forecast Reconciliation for Hierarchical and Grouped Time Series Through Trace Minimization. *Journal of the American Statistical Association*, 114(526), 804-819. [doi:10.1080/01621459.2018.1448825](https://doi.org/10.1080/01621459.2018.1448825)
+:::

@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problems, methods, and code you can run
 
 Each case follows the same five blocks: the business question, the data, the method and
-why that one, the result, and the code. What differs is what can be shown. Twelve are
+why that one, the result, and the code. What differs is what can be shown. Thirteen are
 fully public, with repository, tests and results. Two describe doctoral research under
 peer review, so method is here and results are withheld until the journals rule. One
 runs on synthetic data, because the engagement behind it is under NDA. Each page says
@@ -177,6 +177,17 @@ which it is, at the top.
       Filtered historical simulation &middot; Back-testing &middot; Stress testing
     </p>
     <p><a href="clearing-margin-risk.html">Read the case </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="fuel-retail-analytics.html">Fuel Retail: Pass-Through, Competition and Demand</a></h3>
+    <p>Do Brazilian pump prices rise faster than they fall? 4.2 million station prices from the
+    regulator, an asymmetric error-correction model by state, what brand and nearby competitors are
+    worth, and reconciled sales forecasts, on a Delta lakehouse with a Databricks bundle.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Error correction &middot; Hierarchical forecasting &middot; Databricks
+    </p>
+    <p><a href="fuel-retail-analytics.html">Read the case </a></p>
   </div>
 </div>
 ```

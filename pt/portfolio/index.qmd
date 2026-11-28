@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
-que esse, o resultado e o código. O que muda é o que pode ser mostrado. Doze são
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. Treze são
 totalmente públicos, com repositório, testes e resultados. Dois descrevem pesquisa
 de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
 retidos até os periódicos se pronunciarem. Um roda sobre dados sintéticos, porque o
@@ -178,6 +178,17 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
       Simulação histórica filtrada &middot; Backtesting &middot; Teste de estresse
     </p>
     <p><a href="clearing-margin-risk.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="fuel-retail-analytics.html">Varejo de Combustíveis: Repasse, Concorrência e Demanda</a></h3>
+    <p>O preço na bomba sobe mais rápido do que desce? 4,2 milhões de preços de postos do regulador,
+    um modelo de correção de erros assimétrico por estado, quanto valem a bandeira e os concorrentes
+    por perto, e previsões de vendas conciliadas, num lakehouse Delta com bundle do Databricks.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Correção de erros &middot; Previsão hierárquica &middot; Databricks
+    </p>
+    <p><a href="fuel-retail-analytics.html">Ler o caso </a></p>
   </div>
 </div>
 ```
