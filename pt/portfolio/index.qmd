@@ -11,7 +11,7 @@ image: "https://rhozon.github.io/assets/profile_card.jpg"
 ## Problemas, métodos e código que roda
 
 Cada caso segue os mesmos cinco blocos: a pergunta de negócio, os dados, o método e por
-que esse, o resultado e o código. O que muda é o que pode ser mostrado. Onze são
+que esse, o resultado e o código. O que muda é o que pode ser mostrado. Doze são
 totalmente públicos, com repositório, testes e resultados. Dois descrevem pesquisa
 de doutorado em avaliação por pares, então o método está aqui e os resultados ficam
 retidos até os periódicos se pronunciarem. Um roda sobre dados sintéticos, porque o
@@ -155,6 +155,17 @@ projeto por trás dele está sob NDA. Cada página diz qual é o caso, logo no t
       Preço hedônico &middot; Painel com IV &middot; Gestão de receita
     </p>
     <p><a href="rio-short-term-rental-pricing.html">Ler o caso </a></p>
+  </div>
+
+  <div class="rh-card">
+    <h3><a href="dynamic-electricity-pricing.html">Preço Dinâmico de Energia: um Experimento Real</a></h3>
+    <p>Quanto domicílios de Londres cortam o consumo quando avisados na véspera de um preço cinco vezes
+    maior, quem responde, quanto erra uma linha de base prevista e qual calendário de eventos corta o
+    pico de um bairro: 167 milhões de leituras, placebos, estudo de evento e simulador de tarifa.</p>
+    <p style="font-family:'IBM Plex Mono',monospace; font-size:.78rem; letter-spacing:.02em;">
+      Diferença em diferenças &middot; Floresta causal &middot; Programação inteira
+    </p>
+    <p><a href="dynamic-electricity-pricing.html">Ler o caso </a></p>
   </div>
 
   <div class="rh-card">

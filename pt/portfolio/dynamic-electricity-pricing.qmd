@@ -1,0 +1,228 @@
+---
+title: ""
+pagetitle: "Preço Dinâmico de Energia — Estudo de Caso"
+description: "Quanto domicílios de Londres cortam o consumo de energia quando avisados na véspera de um preço cinco vezes maior, quem responde, quanto erra uma linha de base prevista e qual calendário de eventos corta o pico de um bairro. 167 milhões de leituras de meia hora, diferença em diferenças com placebos, estudo de evento, floresta causal, LightGBM e programação inteira, com simulador de tarifa."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Estudo de Caso 14 · No ar, 28 de novembro de 2026</div>
+# Preço Dinâmico de Energia: um Experimento Real
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Diferença em diferenças · Testes placebo · Estudo de evento · Floresta causal · LightGBM · Programação inteira · Python e R · 9 testes
+</p>
+:::
+
+::: {.rh-section}
+## A pergunta de negócio
+
+Uma distribuidora ou um operador de rede que manda um preço alto por algumas horas quer saber
+quatro coisas. Quanto o consumo cai, e ele volta depois? Quem responde? Como medir a resposta sem
+grupo de controle? E em que dias e horários mandar o sinal para que o pico de uma rede local caia
+de fato? Times de pricing de qualquer negócio com capacidade de pico, de transporte a telecom,
+fazem as mesmas perguntas. Poucas bases permitem respondê-las com uma mudança de preço real. Esta
+permite.
+:::
+
+::: {.rh-section}
+## Os dados
+
+Em 2013, o projeto Low Carbon London pôs cerca de 1.100 domicílios de Londres numa tarifa dinâmica.
+Às 8h da véspera, cada um recebia no display do medidor, e por SMS se quisesse, o preço de cada faixa
+do dia seguinte: **Alto (67,20 p/kWh), Normal (11,76) ou Baixo (3,99)**. Os demais domicílios do
+teste, cerca de 4.500, pagavam 14,228 p/kWh fixos. Medidores inteligentes registraram todos a cada
+meia hora, do fim de 2011 a fevereiro de 2014: **167,9 milhões de leituras de 5.566 domicílios**.
+Houve **69 eventos Alto** (26 de 3 horas, 34 de 6 horas, a maioria às 17h) e **92 eventos Baixo**,
+em 115 dias.
+
+Dois fatos do desenho importam para o que vem depois. O grupo da tarifa dinâmica foi **recrutado
+entre os clientes com medidor do teste, não sorteado**: o projeto equilibrou os dois grupos em
+perfil demográfico, mas voluntários podem ser diferentes dos demais. E uma garantia na conta
+prometia que nenhum participante pagaria mais do que na tarifa antiga. Por isso a identificação
+abaixo compara os mesmos domicílios antes, durante e depois de 2013, contra o grupo da tarifa fixa,
+com testes placebo; e as contas calculadas aqui são antes dessa garantia.
+
+A maioria dos medidores foi instalada no primeiro semestre de 2012, então a análise usa domicílios
+com pelo menos 80% das leituras em cada uma de três janelas: julho a dezembro de 2012, todo 2013, e
+janeiro e fevereiro de 2014. Ficam **878 domicílios da tarifa dinâmica e 3.345 da fixa**; 880 destes,
+sorteados para ter a mesma distribuição de consumo antes do teste, formam o grupo de comparação.
+As regras de qualidade tiraram 115.453 leituras duplicadas, 719.230 leituras de dias em que o
+medidor só marcou zero, 5.560 leituras vazias ou fora do horário e 13 valores impossíveis. Todo
+evento começa na hora cheia e dura horas inteiras, então a análise usa somas por hora sem perder
+nenhuma mudança de preço: 25,5 milhões de domicílios-hora.
+:::
+
+::: {.rh-section}
+## Experimente
+
+Veja o dia médio dos dois grupos em dias com cada padrão de preço; o estudo de evento em torno dos
+blocos Alto e Baixo, por trimestre; quem responde e quem economizou; e uma rede de 200 casas em que
+você escolhe quantos eventos Alto mandar, de quantas horas e para quem. Os perfis do dia são
+médias simples: os dois grupos diferem um pouco de nível o dia todo, e por isso as estimativas
+comparam cada domicílio com a própria rotina.
+
+```{=html}
+<link rel="stylesheet" href="../../assets/case14/sim.css?v=1">
+<div id="dtr-app" data-src="../../assets/case14/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../../assets/case14/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
+## Método
+
+**Quanto o consumo se mexe.** O consumo por hora é regredido em indicadores de "domicílio da tarifa
+dinâmica numa hora de preço Alto" e "numa hora de preço Baixo", com efeitos fixos de cada domicílio
+em cada hora do dia em cada período e de cada data em cada hora do dia. O segundo conjunto absorve
+clima, feriados e tudo o que atinge os dois grupos ao mesmo tempo; o primeiro absorve a rotina de
+cada domicílio. Os erros são agrupados por domicílio (R, `fixest`). A mesma regressão roda em nível
+e em log.
+
+**Placebos.** O calendário de 2013 é copiado nas mesmas semanas de 2012 (364 dias antes, mesmo dia
+da semana) e de 2014 (364 dias depois), quando todos pagavam a tarifa fixa. Se a comparação
+estivesse captando outra coisa que não o preço, esses eventos falsos também mostrariam efeito. O
+segundo semestre de 2013 contra a sua cópia de 2012 dá uma diferença tripla.
+
+**Deslocamento e rebote.** Um estudo de evento mede a resposta em cada hora, de 4 horas antes a 3
+horas depois de cada bloco Alto de 3 e de 6 horas e de cada bloco Baixo isolado, por trimestre, com
+a resposta por mês e por horário de início. Esses perfis são estimados na diferença entre o consumo
+médio dos dois grupos hora a hora, com os mesmos efeitos fixos, e um bootstrap de domicílios (300
+sorteios) para os intervalos; nos coeficientes principais os dois caminhos batem.
+
+**Quem responde.** Para cada domicílio, a mudança de consumo nas horas de preço Alto em relação à
+própria rotina, em 2013 menos a mesma medida nas horas placebo de 2012, entra numa floresta causal
+(R, `grf`) com características medidas antes do teste: consumo diário, parcela usada entre 16h e
+20h, variabilidade, razão inverno/verão e consumo de base. Como o grupo dinâmico foi voluntário, a
+floresta também modela a chance de estar nele. Um teste de calibração verifica se a floresta
+consegue ordenar os domicílios, e a ordenação é comparada com simplesmente ordenar pelo consumo.
+
+**Medir sem grupo de controle.** A liquidação de resposta da demanda costuma comparar o evento com
+uma linha de base: a média da mesma hora nos 10 dias anteriores sem evento, às vezes ajustada pelas
+horas logo antes do evento. Essas linhas são postas contra modelos LightGBM treinados só em
+domicílios da tarifa fixa, com o histórico do próprio domicílio, temperatura e calendário, com e sem
+o consumo do grupo fixo na mesma hora, e avaliadas em horas Normais de dias sem evento.
+
+**Desenho do calendário.** Uma rede de 200 casas da tarifa fixa do painel, inverno de 2013. Com a
+resposta do estudo de evento (inclusive o deslocamento antes e depois), ajustada por trimestre e
+pela parcela das casas na tarifa, um programa inteiro (PuLP) escolhe dias e horários de início que
+minimizam a soma dos picos mensais, com no máximo K eventos por mês. Ele é comparado com o
+calendário do próprio teste e com mandar o sinal só para o quinto das casas que mais consome. Só os
+preços observados entram.
+:::
+
+::: {.rh-section}
+## Resultados
+
+**Uma hora Alta corta 5% do consumo; uma hora Baixa sobe 3%.** Numa hora de preço Alto, os
+domicílios da tarifa dinâmica consumiram **28,4 watts a menos** do que a própria rotina e o grupo da
+tarifa fixa indicam (intervalo de 95% de 23 a 34 W), **5,0%** em log, sobre uma média de cerca de
+0,44 kWh nessas horas. Numa hora Baixa, consumiram **16,3 W a mais** (10 a 23 W), **+3,3%**. Contra
+um preço 5,7 vezes o Normal, isso dá uma elasticidade de cerca de **-0,03**; o preço Baixo, um terço
+do Normal, dá os mesmos -0,03. Os domicílios respondem, mas pouco.
+
+**Os placebos dão zero.** O mesmo calendário posto nas semanas de tarifa fixa de 2012 dá -2,3 W
+nas horas Altas (-10,9 a +6,3) e -7,1 W nas Baixas (-14,7 a +0,4); em janeiro e fevereiro de 2014,
+depois do fim da tarifa, +2,0 W e +2,0 W. O horário e a estação dos eventos não fabricam resposta,
+e nenhum hábito sobreviveu à tarifa. O segundo semestre de 2013 contra a sua cópia de 2012 dá
+-19,8 W para o Alto (-32 a -8) e +21,0 W para o Baixo (+10 a +31).
+
+**Quase tudo é corte, pouco é deslocado, e é coisa de inverno.** Nos blocos Altos de 3 horas o
+corte é de 15, 34 e 31 W nas três horas, seguido de um rebote pequeno de 7 a 8 W nas duas seguintes.
+Os blocos de 6 horas, a maioria das 17h às 23h e precedidos de um bloco Baixo, mostram cerca de 11 W
+a mais nas horas antes, 21 a 43 W a menos durante e nenhum rebote depois. Blocos Baixos isolados
+sobem o consumo em 35 a 55 W enquanto duram. A resposta ao Alto é de **-56 W em janeiro e
+fevereiro** e -49 W em novembro, e perto de zero de junho a setembro; a resposta ao Baixo é o
+inverso, maior no verão. Não é cansaço, porque a resposta volta no outono: nas noites de inverno há
+luz, aquecimento e cozinha para cortar. O bloco de 6 horas às 17h tem -40 W, o dobro dos -20 W dos
+blocos de 6 horas em outros horários.
+
+**Quem consome mais corta mais, e a floresta não ordena melhor que isso.** O efeito médio da
+floresta causal no grupo dinâmico é de -25,9 W (±6,8), em linha com a regressão. O teste de
+calibração não mostra que ela distinga os domicílios (coeficiente da diferença prevista 0,43,
+±0,74), e o quinto que ela aponta como mais sensível cortou 24,6 W, o mesmo que todos. Ordenar pelo
+consumo antes do teste funciona melhor: o quinto mais baixo (3,3 kWh por dia) cortou 9 W, o mais
+alto (18,8 kWh por dia) 47 W. **86% dos domicílios dinâmicos pagaram menos** do que na tarifa fixa,
+antes da garantia: £12,73 por ano em média (mediana £9,34) numa conta média de £477, sobretudo
+porque o preço Normal ficava abaixo do fixo. No quinto com maior parcela do consumo entre 16h e
+20h, 67% pagaram menos; no quinto com a menor parcela, 95%.
+
+**Uma linha de base prevista não substitui o grupo de controle.** No nível de um domicílio e uma
+hora, toda linha de base erra cerca de 44% do consumo, e o LightGBM não é melhor que a "10 de 10"
+(erro médio de 0,167 contra 0,169 kWh). Nas horas Altas, a "10 de 10" mede -24,5 W, perto dos
+-28,4 W da regressão. O LightGBM mede -31,9 W, mas acha -7,4 W em domicílios da tarifa fixa que não
+viram preço nenhum. A linha ajustada pelo próprio dia mede **-14,7 W, metade da resposta**, porque
+as horas usadas no ajuste carregam o preço Baixo e o deslocamento antes do evento: nos domicílios da
+tarifa fixa ela acrescenta 13,5 W. Nas horas Baixas, todas as linhas de base exageram a resposta
+(+26,7 a +33,9 W contra +16,3). O modelo ajuda a prever; quem identifica o efeito são o grupo de
+comparação e os placebos.
+
+**Quando importa mais que quantas vezes.** Numa rede de 200 casas com pico de inverno de 215 kW,
+com todos na tarifa, um evento Alto de 6 horas por mês bem escolhido corta o pico mensal médio em
+4,8 kW, e quatro por mês em **10,1 kW (4,7%)**; acima de seis por mês não sobra o que cortar. O
+calendário de inverno do próprio teste, com 16 eventos de 6 horas, corta 1,8 kW, e os de 3 horas
+nada, porque não caíram nos dias e horas de pico da rede. Mandar o sinal só para o quinto das casas
+que mais consome mantém 4,0 kW, 40% do corte com 20% das casas avisadas. Com quatro eventos de 6
+horas por mês, 622 kWh são cortados nas horas Altas e 111 kWh acrescentados fora delas: a maior
+parte da energia deixa de ser usada, em vez de mudar de hora.
+:::
+
+::: {.rh-section}
+## Limites
+
+O grupo dinâmico foi voluntário, e a garantia na conta fazia com que ninguém perdesse dinheiro;
+uma tarifa imposta a todos, sem essa garantia, pode ter resposta diferente. Os placebos descartam
+um artefato de estação ou de horário, não toda diferença entre voluntários e os demais. Só três
+níveis de preço foram testados, então a elasticidade vale para esses saltos e o simulador não
+extrapola para outros preços. A rede é montada com medidores de domicílios, não medida numa
+subestação. O grupo socioeconômico de cada domicílio (Acorn), usado pelo projeto, não está no
+arquivo público, então a heterogeneidade é descrita pelo consumo antes do teste. Os dados são de
+2013: eletrodomésticos, bombas de calor, carros elétricos e baterias mudaram quanto da carga pode se
+mover.
+:::
+
+::: {.rh-section}
+## Aplicado ao seu negócio
+
+Este é o
+<a href="../oquant.html#packages">pacote de Previsão sob Medida</a> aplicado a preço dinâmico. Para uma
+distribuidora, uma comercializadora de energia ou qualquer negócio que precifica capacidade de
+pico, as mesmas peças rodam nos seus medidores ou transações: um teste de preço lido com grupo de
+controle e placebos, a resposta por hora e por cliente, uma linha de base conferida contra o
+experimento, e um calendário de eventos de preço escolhido para os picos que custam caro.
+:::
+
+::: {.rh-section}
+## Código
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/dynamic-tariff-demand-response">github.com/rhozon/dynamic-tariff-demand-response</a>
+</p>
+```
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m dtr.cli download     # arquivos do London Datastore e do Open-Meteo (DTR_DATA)
+python -m dtr.cli all          # qualidade, painel, fixest, estudo de evento, grf, linhas de base, calendário
+```
+
+:::
+
+::: {.rh-section}
+## Referências
+
+Dados: UK Power Networks, SmartMeter Energy Consumption Data in London Households, London Datastore (CC BY 4.0); API de clima histórico do Open-Meteo (CC BY 4.0). Desenho do teste: UK Power Networks (2014), Low Carbon London Project Closedown Report.
+
+- Athey, S., Tibshirani, J. and Wager, S. (2019). Generalized random forests. *The Annals of Statistics*, 47(2), 1148-1178. [doi:10.1214/18-AOS1709](https://doi.org/10.1214/18-AOS1709)
+- Borenstein, S. (2005). The Long-Run Efficiency of Real-Time Electricity Pricing. *The Energy Journal*, 26(3), 93-116. [doi:10.5547/ISSN0195-6574-EJ-Vol26-No3-5](https://doi.org/10.5547/ISSN0195-6574-EJ-Vol26-No3-5)
+- Faruqui, A. and Sergici, S. (2010). Household response to dynamic pricing of electricity: a survey of 15 experiments. *Journal of Regulatory Economics*, 38(2), 193-225. [doi:10.1007/s11149-010-9127-y](https://doi.org/10.1007/s11149-010-9127-y)
+- Fowlie, M., Wolfram, C., Baylis, P., Spurlock, C. A., Todd-Blick, A. and Cappers, P. (2021). Default Effects And Follow-On Behaviour: Evidence From An Electricity Pricing Program. *The Review of Economic Studies*, 88(6), 2886-2934. [doi:10.1093/restud/rdab018](https://doi.org/10.1093/restud/rdab018)
+- Ito, K. (2014). Do Consumers Respond to Marginal or Average Price? Evidence from Nonlinear Electricity Pricing. *American Economic Review*, 104(2), 537-563. [doi:10.1257/aer.104.2.537](https://doi.org/10.1257/aer.104.2.537)
+- Jessoe, K. and Rapson, D. (2014). Knowledge is (Less) Power: Experimental Evidence from Residential Energy Use. *American Economic Review*, 104(4), 1417-1438. [doi:10.1257/aer.104.4.1417](https://doi.org/10.1257/aer.104.4.1417)
+- Joskow, P. L. and Wolfram, C. D. (2012). Dynamic Pricing of Electricity. *American Economic Review*, 102(3), 381-385. [doi:10.1257/aer.102.3.381](https://doi.org/10.1257/aer.102.3.381)
+- Wager, S. and Athey, S. (2018). Estimation and Inference of Heterogeneous Treatment Effects using Random Forests. *Journal of the American Statistical Association*, 113(523), 1228-1242. [doi:10.1080/01621459.2017.1319839](https://doi.org/10.1080/01621459.2017.1319839)
+- Wolak, F. A. (2011). Do Residential Customers Respond to Hourly Prices? Evidence from a Dynamic Pricing Experiment. *American Economic Review*, 101(3), 83-87. [doi:10.1257/aer.101.3.83](https://doi.org/10.1257/aer.101.3.83)
+:::

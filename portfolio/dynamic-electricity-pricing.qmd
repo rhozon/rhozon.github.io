@@ -1,0 +1,226 @@
+---
+title: ""
+pagetitle: "Dynamic Electricity Pricing — Case Study"
+description: "How much London households cut their electricity use when told a day ahead that the price will be five times higher, who responds, how much a forecast baseline gets wrong, and which event calendar cuts a neighbourhood peak. 167 million half-hourly readings, difference in differences with placebos, an event study, a causal forest, LightGBM baselines and an integer program, with a tariff simulator."
+toc: false
+---
+
+::: {.rh-section}
+<div class="rh-kicker">Case Study 14 · Live, 28 November 2026</div>
+# Dynamic Electricity Pricing: a Real Experiment
+
+<p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
+Difference in differences · Placebo tests · Event study · Causal forest · LightGBM · Integer programming · Python and R · 9 tests
+</p>
+:::
+
+::: {.rh-section}
+## The business question
+
+A utility or a grid operator that sends a high price for a few hours wants to know four things.
+How much does consumption fall, and does it come back later? Who responds? How do I measure the
+response without a control group? And on which days and hours should I send the signal so that
+the peak of a local network actually falls? Pricing teams in any business with peak capacity,
+from transport to telecoms, ask the same questions. Few data sets let them be answered with a
+real price change. This one does.
+:::
+
+::: {.rh-section}
+## The data
+
+In 2013, the Low Carbon London project put about 1,100 London households on a dynamic tariff. At
+08:00 the day before, each one received on the in-home display, and by text message if they
+wanted, the price of each part of the next day: **High (67.20 p/kWh), Normal (11.76) or Low
+(3.99)**. Everyone else in the trial, about 4,500 households, paid a flat 14.228 p/kWh. Smart meters
+recorded every household every half hour from late 2011 to February 2014: **167.9 million
+readings of 5,566 households**. There were **69 High events** (26 of 3 hours, 34 of 6 hours, most
+of them at 17:00) and **92 Low events**, on 115 days.
+
+Two facts about the design matter for what follows. The dynamic group was **recruited from the
+trial's smart meter customers, not drawn by lot**: the project balanced the two groups on
+demographics, but volunteers can differ from the rest. And a bill safety net promised that no
+participant would pay more than on the old tariff. The identification below therefore rests on
+comparing the same households before, during and after 2013, against the flat-rate group, with
+placebo tests; and the bills computed here are before that safety net.
+
+Most meters were installed during the first half of 2012, so the analysis uses households with at
+least 80% of their readings in each of three windows: July to December 2012, all of 2013, and
+January and February 2014. That leaves **878 dynamic-tariff households and 3,345 flat-rate ones**;
+880 of the flat-rate households, drawn to match the distribution of consumption before the trial,
+form the comparison group. Quality rules removed 115,453 duplicate readings, 719,230 readings from
+days on which a meter reported only zeros, 5,560 empty or off-the-clock readings and 13 implausible
+values. Every event starts on the hour and lasts whole hours, so the analysis uses hourly sums
+without losing any price change: 25.5 million household-hours.
+:::
+
+::: {.rh-section}
+## Try it
+
+See the average day of both groups on days with each price pattern; the event study around High
+and Low blocks, by quarter; who responds and who saved money; and a feeder of 200 homes on which
+you choose how many High events to send, how long, and to whom. The daily profiles are plain
+averages: the two groups differ a little in level all day, which is why the estimates compare each
+household with its own routine.
+
+```{=html}
+<link rel="stylesheet" href="../assets/case14/sim.css?v=1">
+<div id="dtr-app" data-src="../assets/case14/data.json?v=1"></div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
+<script src="../assets/case14/sim.js?v=1"></script>
+```
+:::
+
+::: {.rh-section}
+## Method
+
+**How much consumption moves.** Hourly consumption is regressed on indicators for "dynamic-tariff
+household in a High hour" and "in a Low hour", with fixed effects for each household at each hour
+of the day in each period and for each date at each hour of the day. The second set absorbs the
+weather, holidays and anything else that hits both groups at the same time; the first absorbs each
+household's routine. Errors are clustered by household (R, `fixest`). The same regression is run in
+levels and in logs.
+
+**Placebos.** The 2013 calendar is copied onto the same weeks of 2012 (364 days earlier, same
+weekday) and of 2014 (364 days later), when everyone paid the flat rate. If the comparison were
+picking up something other than the price, these fake events would show an effect too. The second
+half of 2013 against its 2012 copy gives a triple difference.
+
+**Shift and rebound.** An event study measures the response in each hour from 4 hours before to 3
+hours after each 3-hour and 6-hour High block and each standalone Low block, by quarter, with the
+response by month and by start hour. These profiles are estimated on the difference between the
+two groups' mean consumption hour by hour, with the same fixed effects, and a household bootstrap
+(300 draws) for the intervals; on the headline coefficients the two routes agree.
+
+**Who responds.** For each household, the change in consumption in High hours relative to its own
+routine, in 2013 minus the same quantity on the 2012 placebo hours, goes into a causal forest (R,
+`grf`) with features measured before the trial: daily use, the share used between 16:00 and 20:00,
+variability, the winter-to-summer ratio and the base load. Because the dynamic group volunteered,
+the forest also models the chance of being in it. A calibration test checks whether the forest can
+rank households, and the ranking is compared with simply sorting by consumption.
+
+**Measuring without a control group.** Settlement of demand response usually compares the event
+with a baseline: the mean of the same hour on the 10 previous event-free days, sometimes scaled to
+the hours just before the event. These are set against LightGBM models trained only on flat-rate
+households, with the household's own history, temperature and calendar, with and without the
+flat-rate group's consumption in the same hour, and scored on Normal hours of event-free days.
+
+**Designing the calendar.** A feeder of 200 flat-rate homes from the panel, winter of 2013. With
+the event-study response (including the shift before and after), scaled by quarter and by how many
+homes are on the tariff, an integer program (PuLP) chooses days and start hours to minimise the sum
+of the monthly peaks, given at most K events a month. It is compared with the trial's own calendar
+and with sending the signal only to the fifth of homes that use most. Only the observed prices are
+used.
+:::
+
+::: {.rh-section}
+## Results
+
+**A High hour cuts use by 5%; a Low hour raises it by 3%.** In a High-price hour, dynamic-tariff
+households used **28.4 watts less** than their own routine and the flat-rate group imply (95%
+interval 23 to 34 W), **5.0%** in logs, on an average of about 0.44 kWh in those hours. In a Low
+hour they used **16.3 W more** (10 to 23 W), **+3.3%**. Against a price 5.7 times the Normal one,
+that is an elasticity of about **-0.03**; the Low price, a third of Normal, gives the same -0.03.
+Households do respond, but little.
+
+**The placebos are zero.** The same calendar laid on the flat-rate weeks of 2012 gives -2.3 W for
+High hours (-10.9 to +6.3) and -7.1 W for Low hours (-14.7 to +0.4); on January and February 2014,
+after the tariff ended, +2.0 W and +2.0 W. The time of day and the season of the events do not
+fake a response, and no habit outlived the tariff. Comparing the second half of 2013 with its 2012
+copy gives -19.8 W for High (-32 to -8) and +21.0 W for Low (+10 to +31).
+
+**Mostly cut, little shifted, and a winter thing.** In 3-hour High blocks the cut is 15, 34 and 31 W
+in the three hours, followed by a small rebound of 7 to 8 W in the next two. The 6-hour blocks,
+mostly 17:00 to 23:00 and preceded by a Low block, show about 11 W more in the hours before, 21 to 43
+W less during, and no rebound after. Standalone Low blocks raise use by 35 to 55 W while they last.
+The High response is **-56 W in January and February** and -49 W in November, and close to zero from
+June to September; the Low response is the reverse, largest in summer. That is not fatigue, since
+the response comes back in autumn: on winter evenings there is lighting, heating and cooking to
+cut. The 6-hour block at 17:00 gets -40 W, twice the -20 W of 6-hour blocks at other times.
+
+**Bigger users cut more, and the forest does not rank better than that.** The causal forest's mean
+effect for the dynamic group is -25.9 W (±6.8), in line with the regression. Its calibration test
+does not show that it can tell households apart (coefficient on the predicted difference 0.43,
+±0.74), and the fifth it ranks as most responsive cut 24.6 W, the same as everyone. Sorting by
+consumption before the trial does better: the lowest fifth (3.3 kWh a day) cut 9 W, the highest
+(18.8 kWh a day) 47 W. **86% of the dynamic households paid less** than on the flat rate, before the
+safety net: £12.73 a year on average (median £9.34) on a mean bill of £477, mostly because the
+Normal price was below the flat one. Among the fifth that used the largest share between 16:00 and
+20:00, 67% paid less; among the fifth with the smallest share, 95%.
+
+**A forecast baseline does not replace the control group.** At the level of one household and one
+hour every baseline errs by about 44% of consumption, and LightGBM is no better than "10 of 10"
+(mean error 0.167 against 0.169 kWh). In High hours, "10 of 10" measures -24.5 W, close to the
+-28.4 W of the regression. LightGBM measures -31.9 W, but finds -7.4 W on flat-rate households that
+faced no price at all. The same-day adjusted baseline measures **-14.7 W, half the response**,
+because the hours used for the adjustment carry the Low price and the shift before the event: on
+flat-rate households it adds 13.5 W. In Low hours every baseline overstates the response (+26.7 to
++33.9 W against +16.3). The model helps to forecast; the comparison group and the placebos are what
+identify the effect.
+
+**When matters more than how often.** On a feeder of 200 homes with a winter peak of 215 kW, with
+everyone on the tariff, one optimised 6-hour High event a month cuts the mean monthly peak by 4.8 kW
+and four a month by **10.1 kW (4.7%)**; beyond six a month there is nothing left to cut. The trial's
+own winter calendar, with 16 six-hour events, cuts 1.8 kW, and its 3-hour events none, because they
+did not fall on the days and hours of the feeder's peaks. Sending the signal only to the fifth of
+homes that use most keeps 4.0 kW, 40% of the cut with 20% of the homes notified. With four 6-hour
+events a month, 622 kWh are cut in High hours and 111 kWh added outside them: most of the energy is
+not used, rather than moved.
+:::
+
+::: {.rh-section}
+## Limits
+
+The dynamic group volunteered, and the bill safety net meant that no one could lose money; a tariff
+imposed on everyone, without that guarantee, could see a different response. The placebos rule out
+a seasonal or time-of-day artefact, not every difference between volunteers and the rest. Only
+three price levels were tried, so the elasticity holds for these jumps and the simulator does not
+extrapolate to other prices. The feeder is built from household meters, not measured at a
+substation. The demographic group of each household (Acorn), which the project used, is not in the
+public file, so heterogeneity is described by consumption before the trial instead. The data are
+from 2013: appliances, heat pumps, electric cars and batteries have changed how much load can move.
+:::
+
+::: {.rh-section}
+## Applied to your business
+
+This is the
+<a href="../oquant.html#packages">Custom Forecasting package</a> applied to dynamic pricing. For a
+utility, a retailer of energy or any business that prices peak capacity, the same pieces run on
+your own meters or transactions: a price test read with a control group and placebos, the response
+by hour and by customer, a baseline checked against the experiment, and a calendar of price events
+chosen for the peaks that cost you.
+:::
+
+::: {.rh-section}
+## Code
+
+```{=html}
+<p>
+<a class="rh-btn" href="https://github.com/rhozon/dynamic-tariff-demand-response">github.com/rhozon/dynamic-tariff-demand-response</a>
+</p>
+```
+
+```bash
+pip install -e ".[dev]"
+pytest -v
+python -m dtr.cli download     # London Datastore and Open-Meteo files (DTR_DATA)
+python -m dtr.cli all          # quality rules, panel, fixest, event study, grf, baselines, calendar
+```
+
+:::
+
+::: {.rh-section}
+## References
+
+Data: UK Power Networks, SmartMeter Energy Consumption Data in London Households, London Datastore (CC BY 4.0); Open-Meteo historical weather API (CC BY 4.0). Trial design: UK Power Networks (2014), Low Carbon London Project Closedown Report.
+
+- Athey, S., Tibshirani, J. and Wager, S. (2019). Generalized random forests. *The Annals of Statistics*, 47(2), 1148-1178. [doi:10.1214/18-AOS1709](https://doi.org/10.1214/18-AOS1709)
+- Borenstein, S. (2005). The Long-Run Efficiency of Real-Time Electricity Pricing. *The Energy Journal*, 26(3), 93-116. [doi:10.5547/ISSN0195-6574-EJ-Vol26-No3-5](https://doi.org/10.5547/ISSN0195-6574-EJ-Vol26-No3-5)
+- Faruqui, A. and Sergici, S. (2010). Household response to dynamic pricing of electricity: a survey of 15 experiments. *Journal of Regulatory Economics*, 38(2), 193-225. [doi:10.1007/s11149-010-9127-y](https://doi.org/10.1007/s11149-010-9127-y)
+- Fowlie, M., Wolfram, C., Baylis, P., Spurlock, C. A., Todd-Blick, A. and Cappers, P. (2021). Default Effects And Follow-On Behaviour: Evidence From An Electricity Pricing Program. *The Review of Economic Studies*, 88(6), 2886-2934. [doi:10.1093/restud/rdab018](https://doi.org/10.1093/restud/rdab018)
+- Ito, K. (2014). Do Consumers Respond to Marginal or Average Price? Evidence from Nonlinear Electricity Pricing. *American Economic Review*, 104(2), 537-563. [doi:10.1257/aer.104.2.537](https://doi.org/10.1257/aer.104.2.537)
+- Jessoe, K. and Rapson, D. (2014). Knowledge is (Less) Power: Experimental Evidence from Residential Energy Use. *American Economic Review*, 104(4), 1417-1438. [doi:10.1257/aer.104.4.1417](https://doi.org/10.1257/aer.104.4.1417)
+- Joskow, P. L. and Wolfram, C. D. (2012). Dynamic Pricing of Electricity. *American Economic Review*, 102(3), 381-385. [doi:10.1257/aer.102.3.381](https://doi.org/10.1257/aer.102.3.381)
+- Wager, S. and Athey, S. (2018). Estimation and Inference of Heterogeneous Treatment Effects using Random Forests. *Journal of the American Statistical Association*, 113(523), 1228-1242. [doi:10.1080/01621459.2017.1319839](https://doi.org/10.1080/01621459.2017.1319839)
+- Wolak, F. A. (2011). Do Residential Customers Respond to Hourly Prices? Evidence from a Dynamic Pricing Experiment. *American Economic Review*, 101(3), 83-87. [doi:10.1257/aer.101.3.83](https://doi.org/10.1257/aer.101.3.83)
+:::

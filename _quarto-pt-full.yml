@@ -20,6 +20,7 @@ project:
     - pt/portfolio/brazil-airline-competition.qmd
     - pt/portfolio/basket-microeconometrics.qmd
     - pt/portfolio/rio-short-term-rental-pricing.qmd
+    - pt/portfolio/dynamic-electricity-pricing.qmd
     - pt/portfolio/clearing-margin-risk.qmd
     - pt/teaching.qmd
     - pt/oquant.qmd

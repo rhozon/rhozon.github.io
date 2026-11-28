@@ -2,11 +2,11 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://rhozon.github.io/pt/contact.html</loc>
-    <lastmod>2026-11-16T22:26:28.111Z</lastmod>
+    <lastmod>2026-11-27T22:53:22.885Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/teaching.html</loc>
-    <lastmod>2026-11-16T22:24:27.138Z</lastmod>
+    <lastmod>2026-11-27T22:53:22.955Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/portfolio/hospital-admissions.html</loc>
@@ -26,7 +26,7 @@
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/research.html</loc>
-    <lastmod>2026-11-16T22:24:27.927Z</lastmod>
+    <lastmod>2026-11-27T22:53:58.957Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/index.html</loc>
@@ -38,7 +38,7 @@
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/portfolio/index.html</loc>
-    <lastmod>2026-11-27T20:03:55.329Z</lastmod>
+    <lastmod>2026-11-28T09:39:24.821Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/portfolio/commodity-forecasting.html</loc>
@@ -58,7 +58,7 @@
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/oquant.html</loc>
-    <lastmod>2026-11-25T12:35:20.891Z</lastmod>
+    <lastmod>2026-11-28T09:39:25.034Z</lastmod>
   </url>
   <url>
     <loc>https://rhozon.github.io/pt/portfolio/mobility-dynamic-pricing.html</loc>
@@ -83,5 +83,9 @@
   <url>
     <loc>https://rhozon.github.io/pt/portfolio/clearing-margin-risk.html</loc>
     <lastmod>2026-11-27T20:04:07.111Z</lastmod>
+  </url>
+  <url>
+    <loc>https://rhozon.github.io/pt/portfolio/dynamic-electricity-pricing.html</loc>
+    <lastmod>2026-11-28T09:48:53.312Z</lastmod>
   </url>
 </urlset>

@@ -1,0 +1,23 @@
+#dtr-app { margin: 1rem 0 2rem; }
+#dtr-app .dtr-tabs { display: flex; flex-wrap: wrap; gap: .4rem; margin-bottom: 1rem; }
+#dtr-app .dtr-tabs button { font: 500 .85rem 'Source Sans 3', sans-serif; padding: .45rem .8rem; border: 1px solid #0f766e;
+  background: transparent; color: #0f766e; border-radius: 999px; cursor: pointer; }
+#dtr-app .dtr-tabs button.on { background: #0f766e; color: #fff; }
+#dtr-app .dtr-ctls { display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: .6rem 1rem; margin-bottom: .8rem; }
+#dtr-app .dtr-ctl { display: flex; flex-direction: column; font-size: .82rem; gap: .2rem; min-width: 0; }
+#dtr-app .dtr-ctl span { font-weight: 600; }
+#dtr-app .dtr-ctl select, #dtr-app .dtr-ctl input { width: 100%; max-width: 100%; }
+#dtr-app .dtr-ctl output { font-family: 'IBM Plex Mono', monospace; font-size: .8rem; }
+#dtr-app .dtr-chart { position: relative; height: 340px; margin: .5rem 0 1rem; }
+#dtr-app .dtr-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: .6rem; margin: .6rem 0 1rem; }
+#dtr-app .dtr-card { border: 1px solid rgba(127,127,127,.3); border-radius: 8px; padding: .55rem .7rem; min-width: 0; }
+#dtr-app .dtr-card-l { font-size: .75rem; opacity: .8; }
+#dtr-app .dtr-card-v { font: 600 1.15rem 'IBM Plex Mono', monospace; }
+#dtr-app .dtr-card-s { font-size: .75rem; opacity: .8; }
+#dtr-app .dtr-note { font-size: .82rem; opacity: .85; }
+#dtr-app .dtr-table { width: 100%; border-collapse: collapse; font-size: .82rem; display: block; overflow-x: auto; }
+#dtr-app .dtr-table th, #dtr-app .dtr-table td { padding: .35rem .5rem; border-bottom: 1px solid rgba(127,127,127,.25); text-align: right; white-space: nowrap; }
+#dtr-app .dtr-table th:first-child, #dtr-app .dtr-table td:first-child { text-align: left; }
+#dtr-app .dtr-legend { display: flex; flex-wrap: wrap; gap: .3rem 1rem; font-size: .78rem; margin: -.4rem 0 .6rem; }
+#dtr-app .dtr-legend i { display: inline-block; width: .8rem; height: .8rem; border-radius: 2px; margin-right: .3rem; vertical-align: -1px; }
+@media (max-width: 600px) { #dtr-app .dtr-chart { height: 300px; } }
