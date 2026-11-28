@@ -6,7 +6,7 @@ toc: false
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Case Study 16 · Live, 28 November 2026</div>
+<div class="rh-kicker">Case Study 19 · Live, 28 November 2026</div>
 # Fuel Retail: Pass-Through, Competition and Demand
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
@@ -51,10 +51,10 @@ see what brand and nearby competitors are worth; and explore the twelve-month sa
 each state, region and the country.
 
 ```{=html}
-<link rel="stylesheet" href="../assets/case16/sim.css?v=1">
-<div id="fuel-app" data-src="../assets/case16/data.json?v=1"></div>
+<link rel="stylesheet" href="../assets/case19/sim.css?v=1">
+<div id="fuel-app" data-src="../assets/case19/data.json?v=1"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../assets/case16/sim.js?v=2"></script>
+<script src="../assets/case19/sim.js?v=2"></script>
 ```
 :::
 

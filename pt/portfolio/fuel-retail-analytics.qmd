@@ -7,7 +7,7 @@ lang: pt-BR
 ---
 
 ::: {.rh-section}
-<div class="rh-kicker">Estudo de Caso 16 · No ar, 28 de novembro de 2026</div>
+<div class="rh-kicker">Estudo de Caso 19 · No ar, 28 de novembro de 2026</div>
 # Varejo de Combustíveis: Repasse, Concorrência e Demanda
 
 <p style="font-family:'IBM Plex Mono',monospace; font-size:.8rem; letter-spacing:.02em;">
@@ -53,10 +53,10 @@ estados; veja quanto valem a bandeira e os concorrentes por perto; e explore a p
 doze meses de cada estado, região e do país.
 
 ```{=html}
-<link rel="stylesheet" href="../../assets/case16/sim.css?v=1">
-<div id="fuel-app" data-src="../../assets/case16/data.json?v=1"></div>
+<link rel="stylesheet" href="../../assets/case19/sim.css?v=1">
+<div id="fuel-app" data-src="../../assets/case19/data.json?v=1"></div>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.min.js"></script>
-<script src="../../assets/case16/sim.js?v=2"></script>
+<script src="../../assets/case19/sim.js?v=2"></script>
 ```
 :::
 
